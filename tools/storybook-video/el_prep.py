@@ -139,6 +139,8 @@ class ApiError(Exception):
         if m or self.status == "missing_permissions":
             perm = m.group(1) if m else "（见上面的报错）"
             return f"key 缺少权限 {perm}：到 API Keys 里给这个 key 打开对应权限（或新建一个 key 替换 ~/.zshrc 里那行）。"
+        if self.status in ("feature_unavailable", "limited_access") or "paid plan" in self.message:
+            return "免费档不能通过接口用这个功能，订阅 Starter 后再跑。"
         if self.code == 401:
             return "key 无效：检查 ~/.zshrc 里那行是否完整，然后 source ~/.zshrc。"
         if self.code == 402 or self.status in ("quota_exceeded", "payment_required"):

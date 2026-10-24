@@ -60,6 +60,8 @@ python3 tools/storybook-video/el_prep.py cast nutty   # 某个角色都不满意
 python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2
 ```
 
+实测（2026-10-24）：**免费档只能用接口生成音效**。生成候选音色和生成音乐都提示要付费档，所以 `cast` 和 `bgm` 要订阅 Starter 之后才能跑。免费档期间，选角在网页上做，然后用 `pick narrator=<Voice ID>` 写进配置。
+
 `pick` 会把选中的候选存进你的账号，并把 Voice ID 写进 `series/cast.json`。也可以写 `narrator=<Voice ID>`，直接用网页上现成的音色。报错时脚本会说明缺什么权限、额度够不够，照提示改就行。
 
 **网页做法**：在网页的 Voice Design 里，用英文描述生成候选音色。每个角色出 3 个，用下面的试音句逐个听。也可以在 Voice Library 里筛选"角色 / 动画"类音色。
