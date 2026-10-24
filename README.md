@@ -58,10 +58,14 @@
 
 ```
 README.md                    # 本页：总纲
+HANDOFF.md                   # 当前进度、下一步、待确认事项（新会话先读）
+CLAUDE.md                    # 给 Claude 的项目约定和红线
 milestones/M1-2026-11.md     # 第一个里程碑：目标、判据、每周待办
 tracking/videos.csv          # 每条视频的数据记录
 tracking/sales.csv           # 每笔成交与反馈
 docs/research-2026-10.md     # 完整调研：哇叽星球拆解、版权风险、授权与原创路线、短视频与私域、老师观点对照
+docs/competitor-dudu-2026-10.md  # 竞品：嘟嘟英语绘本馆（初步拆解）
+docs/brand.md                # 账号与品牌：名字、角色、头像提示词、简介、平台分工
 docs/elevenlabs-workflow.md  # ElevenLabs 配音、音效、音乐流程与交付标准
 docs/series-skill-addendum.md  # 可以贴进系列技能的"混合方案"说明
 series/cast.json             # 系列角色音色表（整季固定）
