@@ -78,6 +78,9 @@ curl -L -o fonts/Fredoka.ttf "https://raw.githubusercontent.com/google/fonts/mai
 - 每页的 `hold`：说完后多停几秒。
 - 每页的 `zoom`：推拉幅度，默认 1.12。
 - 每句的 `audio`：直接用你录好的音频（比如 ElevenLabs 导出的），不走合成。
+- 每句的 `say`：给配音用的文本，可以带 v3 语气标签，例如 `[excited] Wow!`；字幕仍然显示 `en`。
+- 每句的 `take`：想重录某一句时改成 2、3……，只重新生成这一句。
+- `cast` 可以写成路径字符串，例如 `"cast": "../../series/cast.json"`，整个系列共用一份角色音色表。
 
 ### 立体运镜与画面特效（可选，按页开启）
 
@@ -114,7 +117,7 @@ python sbv.py episodes/ep02/story.json --out episodes/ep02/out --max-pages 3   #
 | provider | 说明 |
 |---|---|
 | `kokoro` | 离线、免费、可商用。`voice` / `speed` / `pitch`（rubberband 变调，共振峰一起变，更像小孩）。没有词级时间戳，高亮按语音能量 + 字长估算，3–8 词的短句足够准。 |
-| `elevenlabs` | 设环境变量 `ELEVENLABS_API_KEY`，`voice` 填 voice_id。接口自带字符级时间戳，高亮最准。**此处代码未用真实 key 测试过，第一次用请先跑一句试试。** |
+| `elevenlabs` | 设环境变量 `ELEVENLABS_API_KEY`，`voice` 填 voice_id，`settings` 对应 ElevenLabs 的音色参数。优先用带时间戳的接口，高亮最准；如果某个模型不支持时间戳，会自动退回普通接口，高亮改为估算。完整流程见 [docs/elevenlabs-workflow.md](../../docs/elevenlabs-workflow.md)。**这段代码还没用真实 key 测试过，第一次用请先跑一句。** |
 | `edge` | 免费、带词级时间戳，但是非官方接口，**只用来做样片，不要用于发布**。 |
 
 ## 6. 发布前自查

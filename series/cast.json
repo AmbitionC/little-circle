@@ -1,0 +1,19 @@
+{
+  "_说明": "系列统一角色表。voice 填 ElevenLabs 的 Voice ID；定下后整季不换。story.json 里写 \"cast\": \"相对路径/series/cast.json\" 即可引用。",
+  "narrator": {
+    "provider": "elevenlabs", "voice": "填旁白VoiceID", "model": "eleven_multilingual_v2",
+    "settings": {"stability": 0.55, "similarity_boost": 0.75, "style": 0.2, "use_speaker_boost": true, "speed": 0.88}
+  },
+  "nutty": {
+    "provider": "elevenlabs", "voice": "填Nutty的VoiceID", "model": "eleven_multilingual_v2",
+    "settings": {"stability": 0.4, "similarity_boost": 0.75, "style": 0.4, "use_speaker_boost": true, "speed": 0.95}
+  },
+  "hazel": {
+    "provider": "elevenlabs", "voice": "填Hazel的VoiceID", "model": "eleven_multilingual_v2",
+    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.92}
+  },
+  "bun": {
+    "provider": "elevenlabs", "voice": "填Bun的VoiceID", "model": "eleven_multilingual_v2",
+    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.9}
+  }
+}

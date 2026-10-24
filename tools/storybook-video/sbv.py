@@ -185,21 +185,38 @@ def tts_edge(text, v, out_wav):
 
 
 def tts_elevenlabs(text, v, out_wav):
-    """ElevenLabs 带时间戳接口（字符级对齐 → 词级）。需环境变量 ELEVENLABS_API_KEY。"""
-    url = (f"https://api.elevenlabs.io/v1/text-to-speech/{v['voice']}"
-           f"/with-timestamps?output_format=mp3_44100_128")
+    """ElevenLabs 配音。优先走带时间戳的接口（字符级对齐 → 词级）；
+    某个模型不支持时间戳时，退回普通接口，高亮改用能量估算。需环境变量 ELEVENLABS_API_KEY。"""
+    import urllib.error
+    base = f"https://api.elevenlabs.io/v1/text-to-speech/{v['voice']}"
     body = {"text": text, "model_id": v.get("model", "eleven_multilingual_v2")}
     if "settings" in v:
         body["voice_settings"] = v["settings"]
-    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={
-        "xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        data = json.load(r)
+    if "seed" in v:
+        body["seed"] = v["seed"]
+    headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
+    data = None
+    try:
+        req = urllib.request.Request(base + "/with-timestamps?output_format=mp3_44100_128",
+                                     data=json.dumps(body).encode(), headers=headers)
+        with urllib.request.urlopen(req, timeout=180) as r:
+            data = json.load(r)
+        audio = base64.b64decode(data["audio_base64"])
+    except urllib.error.HTTPError as err:
+        if err.code in (401, 402, 429):
+            raise SystemExit(f"ElevenLabs 返回 {err.code}：{err.read()[:300]!r}（检查 key、额度或频率）")
+        print(f"  时间戳接口不可用（{err.code}），改用普通接口：{text[:30]}", flush=True)
+        req = urllib.request.Request(base + "?output_format=mp3_44100_128",
+                                     data=json.dumps(body).encode(), headers=headers)
+        with urllib.request.urlopen(req, timeout=180) as r:
+            audio = r.read()
     with open(out_wav + ".mp3", "wb") as f:
-        f.write(base64.b64decode(data["audio_base64"]))
+        f.write(audio)
     run(["ffmpeg", "-v", "error", "-y", "-i", out_wav + ".mp3", "-ar", str(SR), out_wav])
     os.remove(out_wav + ".mp3")
-    al = data.get("alignment") or data.get("normalized_alignment")
+    al = (data or {}).get("alignment") or (data or {}).get("normalized_alignment")
+    if not al:
+        return []
     words, cur, s, e = [], "", None, None
     for ch, cs, ce in zip(al["characters"], al["character_start_times_seconds"],
                           al["character_end_times_seconds"]):
@@ -765,6 +782,9 @@ def build(story_path, out_dir, max_pages=None, sparkle=True):
         else:
             st[k] = v
     cast = cfg.get("cast") or {"narrator": cfg.get("voice", {"provider": "kokoro", "voice": "af_heart"})}
+    if isinstance(cast, str):   # 指向系列统一的角色表，例如 "../../series/cast.json"
+        with open(os.path.join(base, cast)) as f:
+            cast = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
     os.makedirs(out_dir, exist_ok=True)
     cache, work = os.path.join(out_dir, ".cache"), os.path.join(out_dir, ".work")
     os.makedirs(cache, exist_ok=True)
@@ -819,7 +839,12 @@ def build(story_path, out_dir, max_pages=None, sparkle=True):
             if ln.get("audio"):
                 wav, words = os.path.join(base, ln["audio"]), ln.get("words", [])
             else:
-                wav, words = synthesize(ln["en"], cast[ln.get("speaker", "narrator")], cache)
+                # say：给配音用的文本，可带 v3 语气标签（如 [excited]），字幕仍显示 en；
+                # take：想重录某一句时改成 2、3……，换一个缓存键重新生成
+                voice = dict(cast[ln.get("speaker", "narrator")])
+                if ln.get("take"):
+                    voice["take"] = ln["take"]
+                wav, words = synthesize(ln.get("say", ln["en"]), voice, cache)
             dur = probe_duration(wav)
             tokens = ln["en"].split()
             lines.append(dict(ln, speaker=ln.get("speaker", "narrator"), start=cur, end=cur + dur,

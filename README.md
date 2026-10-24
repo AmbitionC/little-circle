@@ -1,4 +1,6 @@
-# 森林小伙伴英语 · 副业项目总纲
+# 栗栗学英语 · 副业项目总纲
+
+> 账号：抖音 / 小红书 / 视频号「栗栗学英语」。主角是小松鼠栗栗（Nutty），系列名「森林小伙伴」。
 
 > 当前状态：**M1 进行中**（2026-10-26 ～ 2026-11-22），见 [milestones/M1-2026-11.md](milestones/M1-2026-11.md)
 
@@ -39,7 +41,7 @@
 - 画面：GPT 出图。
 - 开头 5 秒钩子：可灵，用首尾帧生成。
 - 其余部分：用 [tools/storybook-video](tools/storybook-video/) 做成动态绘本（运镜、立体视差、逐词高亮字幕）。
-- 配音：ElevenLabs。
+- 配音、音效、背景音乐：ElevenLabs（流程和交付标准见 [docs/elevenlabs-workflow.md](docs/elevenlabs-workflow.md)）。
 
 **成本**：每条视频约 12–20 元；全程用可灵约 90 元。
 
@@ -60,6 +62,8 @@ milestones/M1-2026-11.md     # 第一个里程碑：目标、判据、每周待�
 tracking/videos.csv          # 每条视频的数据记录
 tracking/sales.csv           # 每笔成交与反馈
 docs/research-2026-10.md     # 完整调研：哇叽星球拆解、版权风险、授权与原创路线、短视频与私域、老师观点对照
+docs/elevenlabs-workflow.md  # ElevenLabs 配音、音效、音乐流程与交付标准
 docs/series-skill-addendum.md  # 可以贴进系列技能的"混合方案"说明
+series/cast.json             # 系列角色音色表（整季固定）
 tools/storybook-video/       # 动态绘本视频生成器
 ```
