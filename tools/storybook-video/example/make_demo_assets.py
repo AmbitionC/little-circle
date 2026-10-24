@@ -8,6 +8,8 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__))
 IW, IH = 1024, 1536
 ZH = next(p for p in ["/System/Library/Fonts/PingFang.ttc",
+                      "/System/Library/Fonts/Hiragino Sans GB.ttc",
+                      "/System/Library/Fonts/STHeiti Medium.ttc",
                       "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"] if os.path.exists(p))
 
 

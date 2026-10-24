@@ -11,3 +11,7 @@ __pycache__/
 tools/storybook-video/example/*.png
 tools/storybook-video/example/*.mp4
 .DS_Store
+
+# ElevenLabs 生成的音效和音乐只留在本机（仓库公开）
+assets/sfx/
+assets/bgm/

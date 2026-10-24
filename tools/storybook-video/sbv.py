@@ -60,6 +60,8 @@ FONT_FALLBACKS = {
     "en": ["/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf",
            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"],
     "zh": ["/System/Library/Fonts/PingFang.ttc",
+           "/System/Library/Fonts/Hiragino Sans GB.ttc",
+           "/System/Library/Fonts/STHeiti Medium.ttc",
            "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"],
 }
 

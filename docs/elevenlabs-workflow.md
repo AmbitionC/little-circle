@@ -18,7 +18,7 @@
 > **免费额度怎么用**：免费档生成的音频**不能商用**，公开发布时还必须在标题里注明 "elevenlabs.io"。
 > 订阅之后也**不会补发授权**：只有在付费订阅期间生成的内容才能商用。
 > 所以免费额度只用来选角试音、测通接口、对比 v2 和 v3；**所有要发布的配音、音效和音乐，都在订阅之后重新生成**。
-> 订阅后先删掉 `out/.cache`，否则脚本会直接用缓存里免费期生成的音频。
+> 订阅后先删掉 `out/.cache`，否则脚本会直接用缓存里免费期生成的音频。音效和音乐用 `el_prep.py sfx --force`、`el_prep.py bgm --force` 重新生成。
 
 
 1. 订阅 **Starter**。免费档不能商用。
@@ -32,8 +32,9 @@
    | Text to Speech | **Access** | 配音，必须 |
    | Sound Effects | **Access** | 音效库 |
    | Music Generation | **Access** | 背景音乐；当前档位不支持的话只是调用报错，不影响别的 |
-   | Voices | **Read** | 读音色列表；不要选 Write |
-   | 其余所有项 | **No access** | Speech to Speech、Speech to Text、Audio Isolation、Dubbing、Agents、Studio/Projects、History、Voice Generation 等都用不上 |
+   | Voice Generation | **Access** | 让脚本代你生成候选音色；全在网页上选角可以不开 |
+   | Voices | **Write** | 脚本要把选中的音色存进你的账号；全在网页上选角选 Read 就够 |
+   | 其余所有项 | **No access** | Speech to Speech、Speech to Text、Audio Isolation、Dubbing、Agents、Studio/Projects、History 等都用不上 |
 
    保存后 key **只显示一次**，马上复制。以后需要别的权限，新建一个 key 即可。
 3. 把 key 配到环境变量里，不要发进聊天，也不要提交进仓库：
@@ -50,7 +51,18 @@
 
 ### 1.2 选角：每个角色一个固定音色（约 1.5 小时）
 
-在网页的 Voice Design 里，用英文描述生成候选音色。每个角色出 3 个，用下面的试音句逐个听。也可以在 Voice Library 里筛选"角色 / 动画"类音色。
+**省事做法（推荐）**：在仓库根目录跑脚本，生成、保存、写配置都由脚本完成，你只负责听和挑。
+
+```bash
+python3 tools/storybook-video/el_prep.py cast     # 四个角色各出 3 个候选，存到 out/casting/
+open out/casting                                  # Finder 里选中文件按空格试听
+python3 tools/storybook-video/el_prep.py cast nutty   # 某个角色都不满意，再出 3 个（编号接着排）
+python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2
+```
+
+`pick` 会把选中的候选存进你的账号，并把 Voice ID 写进 `series/cast.json`。也可以写 `narrator=<Voice ID>`，直接用网页上现成的音色。报错时脚本会说明缺什么权限、额度够不够，照提示改就行。
+
+**网页做法**：在网页的 Voice Design 里，用英文描述生成候选音色。每个角色出 3 个，用下面的试音句逐个听。也可以在 Voice Library 里筛选"角色 / 动画"类音色。
 
 | 角色 | Voice Design 描述 | 试音句 |
 |---|---|---|
@@ -76,7 +88,9 @@
 
 ### 1.3 系列音效库（约 30 分钟，用技能包或网页的 Sound Effects 生成）
 
-文件统一放在 `assets/sfx/`，story.json 里按文件名引用。
+一条命令生成全部：`python3 tools/storybook-video/el_prep.py sfx`。已经有的文件会跳过，加 `--force` 才会覆盖。只重做某一个时，写 `sfx crack --force`。
+
+文件统一放在 `assets/sfx/`，story.json 里按文件名引用。生成的音频只留在本机，不提交进仓库，因为仓库是公开的。
 
 | 文件名 | 生成描述（英文） |
 |---|---|
@@ -97,7 +111,7 @@
 
 ### 1.4 背景音乐（三首，整季复用）
 
-用技能包或网页的 Music 生成。统一要求：纯器乐、不要人声、可以循环、60–90 秒。
+用 `python3 tools/storybook-video/el_prep.py bgm` 生成，也可以用技能包或网页的 Music。统一要求：纯器乐、不要人声、可以循环、60 秒左右。如果当前档位用不了音乐接口，先用 `make_bgm.py` 生成的程序化八音盒顶上。
 
 | 文件名 | 情绪 | 描述 |
 |---|---|---|

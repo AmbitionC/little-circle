@@ -120,6 +120,15 @@ python sbv.py episodes/ep02/story.json --out episodes/ep02/out --max-pages 3   #
 | `elevenlabs` | 设环境变量 `ELEVENLABS_API_KEY`，`voice` 填 voice_id，`settings` 对应 ElevenLabs 的音色参数。优先用带时间戳的接口，高亮最准；如果某个模型不支持时间戳，会自动退回普通接口，高亮改为估算。完整流程见 [docs/elevenlabs-workflow.md](../../docs/elevenlabs-workflow.md)。**这段代码还没用真实 key 测试过，第一次用请先跑一句。** |
 | `edge` | 免费、带词级时间戳，但是非官方接口，**只用来做样片，不要用于发布**。 |
 
+ElevenLabs 的一次性准备（选角候选、保存音色、音效库、背景音乐）用 `el_prep.py`，只依赖标准库，在仓库根目录运行：
+
+```bash
+python3 tools/storybook-video/el_prep.py all                     # 候选音色 → out/casting/，音效 → assets/sfx/，音乐 → assets/bgm/
+python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2   # 存下选中的候选，写进 series/cast.json
+```
+
+生成的音频只留在本机，不提交（仓库是公开的）。
+
 ## 6. 发布前自查
 
 1. 第 1 帧是带大字标题的钩子画面，不是黑场。
