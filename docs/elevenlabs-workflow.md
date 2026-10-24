@@ -22,12 +22,27 @@
 
 
 1. 订阅 **Starter**。免费档不能商用。
-2. 新建 API key：
-   - 权限只勾这三项：文字转语音、读取音色、音效。如果要生成音乐，再加上音乐。
-   - 设置每月额度上限。
+2. 新建 API key（网页左下角头像 → API Keys → Create API Key），各项这样设：
+
+   | 界面上的项 | 设成 | 说明 |
+   |---|---|---|
+   | Name | `lili-mac` | 能认出是哪台机器用的就行 |
+   | Restrict Key | **打开** | 打开后才能逐项选权限；关着等于全部权限 |
+   | Credit limit（额度上限） | 免费档填 `10000`；订阅 Starter 后改成 `20000` | key 万一泄露，最多被刷这么多 |
+   | Text to Speech | **Access** | 配音，必须 |
+   | Sound Effects | **Access** | 音效库 |
+   | Music Generation | **Access** | 背景音乐；当前档位不支持的话只是调用报错，不影响别的 |
+   | Voices | **Read** | 读音色列表；不要选 Write |
+   | 其余所有项 | **No access** | Speech to Speech、Speech to Text、Audio Isolation、Dubbing、Agents、Studio/Projects、History、Voice Generation 等都用不上 |
+
+   保存后 key **只显示一次**，马上复制。以后需要别的权限，新建一个 key 即可。
 3. 把 key 配到环境变量里，不要发进聊天，也不要提交进仓库：
    - **本机**：执行 `echo 'export ELEVENLABS_API_KEY=你的key' >> ~/.zshrc && source ~/.zshrc`
    - **云端会话**：在会话标题栏打开云环境菜单 → Edit → Network secrets，新增 `ELEVENLABS_API_KEY`。新开的会话才会读到。
+   - **验证**：执行 `curl -s https://api.elevenlabs.io/v1/voices -H "xi-api-key: $ELEVENLABS_API_KEY" | head -c 200`
+     - 开头是 `{"voices":[` 就是通了；
+     - 报 `invalid_api_key`：key 没复制全，或者没执行 `source ~/.zshrc`；
+     - 报 `missing_permissions`：Voices 没设成 Read。
 4. 本机安装官方技能包：`npx skills add elevenlabs/skills`
 5. （可选）安装官方 MCP：
    - 执行 `claude mcp add --transport http elevenlabs https://api.elevenlabs.io/v1/mcp`
