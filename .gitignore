@@ -1,0 +1,13 @@
+# 渲染输出、模型、字体和缓存
+out/
+**/.cache/
+**/.work/
+models/
+tools/storybook-video/fonts/
+__pycache__/
+*.pyc
+.venv/
+# 演示素材由 make_demo_assets.py 生成
+tools/storybook-video/example/*.png
+tools/storybook-video/example/*.mp4
+.DS_Store

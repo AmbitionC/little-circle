@@ -1,0 +1,28 @@
+{
+  "output_name": "live_with_subs",
+  "title_en": "Nutty's Big Acorn",
+  "title_zh": "小松鼠的大橡果",
+  "series": {"badge_text": "Forest Friends English · 森林小伙伴英语", "badge_alpha": 0.72},
+  "style": {
+    "sparkles": false,
+    "speaker_colors": {"narrator": [74, 52, 38], "nutty": [178, 78, 22], "hazel": [160, 104, 0], "bun": [172, 56, 44]}
+  },
+  "cast": {
+    "narrator": {"provider": "kokoro", "voice": "af_heart", "speed": 0.86, "pitch": 1.0},
+    "nutty":    {"provider": "kokoro", "voice": "af_bella", "speed": 0.92, "pitch": 1.36}
+  },
+  "pages": [
+    {"image": "scene.png", "motion": "in", "focus": [0.5, 0.55], "zoom": 1.13, "hold": 0.6,
+     "parallax": {"amount": 0.035, "dir": [1, 0.2], "dolly": 0.08},
+     "fx": [
+       {"type": "glow", "x": 0.3953, "y": 0.5054, "r": 0.11, "strength": 0.5, "room": 0.05},
+       {"type": "snow", "ellipse": [0.2125, 0.2721, 0.1435, 0.0957], "n": 110},
+       {"type": "motes", "x": 0.42, "y": 0.47, "r": 0.28, "n": 20}
+     ],
+     "lines": [
+       {"speaker": "nutty", "en": "Sharing is fun! Let's share with friends!", "zh": "分享真开心！和朋友一起分享吧！"},
+       {"speaker": "narrator", "en": "The end. Bye-bye!", "zh": "故事讲完啦，再见！"}
+     ]}
+  ],
+  "ending": null
+}
