@@ -1,0 +1,14 @@
+{
+  "output_name": "voice_test",
+  "cast": "../../../series/cast.json",
+  "style": {"sparkles": false},
+  "pages": [
+    {"image": "p1.png", "motion": "in", "lines": [
+      {"speaker": "narrator", "en": "Nutty finds a big, big acorn. Can he open it?", "zh": "栗栗捡到一颗大大的橡果。他能打开吗？"},
+      {"speaker": "nutty", "en": "Wow! Look at this big, big acorn! It's mine!", "zh": "哇！快看这颗大大的橡果！是我的！"},
+      {"speaker": "hazel", "en": "I am so hungry. Can I have some, please?", "zh": "我好饿呀。可以分我一点吗？"},
+      {"speaker": "bun", "en": "One, two, three! I have an orange carrot!", "zh": "一、二、三！我有一根橙色的胡萝卜！"}
+    ]}
+  ],
+  "ending": null
+}
