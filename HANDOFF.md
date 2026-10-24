@@ -77,6 +77,7 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 | 竞品：嘟嘟英语绘本馆（初步） | [docs/competitor-dudu-2026-10.md](docs/competitor-dudu-2026-10.md) |
 | 账号与品牌：名字、角色、头像提示词、简介三版、平台分工 | [docs/brand.md](docs/brand.md) |
 | M1 目标、判据、每周待办 | [milestones/M1-2026-11.md](milestones/M1-2026-11.md) |
+| 首月计划：12 条排期、涨粉拆周、变现路线、收入测算（对照月入 5 万） | [docs/plan-month1-2026-11.md](docs/plan-month1-2026-11.md) |
 | ElevenLabs 流程与交付标准 | [docs/elevenlabs-workflow.md](docs/elevenlabs-workflow.md) |
 | 系列技能的"混合方案"补充（开头 5 秒可灵 + 其余动态绘本） | [docs/series-skill-addendum.md](docs/series-skill-addendum.md) |
 | 动态绘本出片工具 | [tools/storybook-video/](tools/storybook-video/)（`sbv.py` 出片、`qa.py` 成片质检、`brand.py` 封面） |
