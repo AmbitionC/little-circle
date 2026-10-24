@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-24 晚。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-24 晚（定了走 Starter，加了配音自检）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -39,7 +39,7 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 | 音效 `/v1/sound-generation` | ✅ 可用，14 个已生成到 `assets/sfx/`（免费档版本，不能商用） |
 | 设计音色 `/v1/text-to-voice/design` | ❌ 403 `feature_unavailable`：只对付费档开放 |
 | 音乐 `/v1/music` | ❌ 402 `limited_access`：免费用户不能用 |
-| 配音 `/v1/text-to-speech/.../with-timestamps` | 还没测 |
+| 配音 `/v1/text-to-speech/.../with-timestamps` | 还没用真 key 测；`el_prep.py tts` 可以直接测（模拟接口已通过） |
 
 **注意**：
 - `sbv.py` 里的 ElevenLabs 配音代码**还没用真实 key 跑过**。第一次跑如果报错，先修这里。
@@ -47,8 +47,14 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 
 ## 4. 下一步（按顺序）
 
-1. **用户订阅 Starter**（约 5 美元/月）。付款由用户自己操作。
-2. 在仓库根目录执行：
+1. **用户订阅 Starter**（约 5 美元/月）。付款由用户自己操作。2026-10-24 已定：旁白和角色配音走 ElevenLabs Starter，不换别的 TTS。
+   - 理由：免费档生成的音频一律不能商用，换成免费档默认音色也一样，绕开付费档只会多返工一遍。
+   - 备胎：Azure 语音免费档（每月 50 万字符、可商用、带逐词时间戳），但音色就是 edge-tts 那套，只在 ElevenLabs 用不了时再接。
+2. 订阅后，先在仓库根目录跑配音自检（用默认音色配一句，测通带时间戳的接口，花不到 100 字符）：
+   ```bash
+   python3 tools/storybook-video/el_prep.py tts
+   ```
+   看到「时间戳正常」再执行：
    ```bash
    python3 tools/storybook-video/el_prep.py all --force
    ```

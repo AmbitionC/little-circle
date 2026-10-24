@@ -190,7 +190,10 @@ def tts_elevenlabs(text, v, out_wav):
     """ElevenLabs 配音。优先走带时间戳的接口（字符级对齐 → 词级）；
     某个模型不支持时间戳时，退回普通接口，高亮改用能量估算。需环境变量 ELEVENLABS_API_KEY。"""
     import urllib.error
-    base = f"https://api.elevenlabs.io/v1/text-to-speech/{v['voice']}"
+    if not os.environ.get("ELEVENLABS_API_KEY"):
+        raise SystemExit("没读到 ELEVENLABS_API_KEY。先执行 source ~/.zshrc，或新开一个终端窗口。")
+    api = os.environ.get("ELEVENLABS_API_BASE", "https://api.elevenlabs.io").rstrip("/")
+    base = f"{api}/v1/text-to-speech/{v['voice']}"
     body = {"text": text, "model_id": v.get("model", "eleven_multilingual_v2")}
     if "settings" in v:
         body["voice_settings"] = v["settings"]
@@ -205,13 +208,18 @@ def tts_elevenlabs(text, v, out_wav):
             data = json.load(r)
         audio = base64.b64decode(data["audio_base64"])
     except urllib.error.HTTPError as err:
-        if err.code in (401, 402, 429):
-            raise SystemExit(f"ElevenLabs 返回 {err.code}：{err.read()[:300]!r}（检查 key、额度或频率）")
+        raw = err.read()[:300]
+        # 401 key 无效、402 额度、403 权限或档位、404 Voice ID 不对、429 频率：换接口也没用，直接说清楚
+        if err.code in (401, 402, 403, 404, 429):
+            raise SystemExit(f"ElevenLabs 返回 {err.code}：{raw!r}（检查 key 权限、档位、额度、Voice ID 或频率）")
         print(f"  时间戳接口不可用（{err.code}），改用普通接口：{text[:30]}", flush=True)
         req = urllib.request.Request(base + "?output_format=mp3_44100_128",
                                      data=json.dumps(body).encode(), headers=headers)
-        with urllib.request.urlopen(req, timeout=180) as r:
-            audio = r.read()
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                audio = r.read()
+        except urllib.error.HTTPError as err2:
+            raise SystemExit(f"ElevenLabs 返回 {err2.code}：{err2.read()[:300]!r}")
     with open(out_wav + ".mp3", "wb") as f:
         f.write(audio)
     run(["ffmpeg", "-v", "error", "-y", "-i", out_wav + ".mp3", "-ar", str(SR), out_wav])

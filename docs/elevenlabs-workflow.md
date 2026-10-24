@@ -44,6 +44,7 @@
      - 开头是 `{"voices":[` 就是通了；
      - 报 `invalid_api_key`：key 没复制全，或者没执行 `source ~/.zshrc`；
      - 报 `missing_permissions`：Voices 没设成 Read。
+   - **测配音接口**：在仓库根目录执行 `python3 tools/storybook-video/el_prep.py tts`。它用默认音色配一句话，存到 `out/tts_test.mp3`，并检查有没有拿到逐词时间戳。免费档也能跑。选好角色后，可以写 `tts narrator` 测某个角色的音色。
 4. 本机安装官方技能包：`npx skills add elevenlabs/skills`
 5. （可选）安装官方 MCP：
    - 执行 `claude mcp add --transport http elevenlabs https://api.elevenlabs.io/v1/mcp`

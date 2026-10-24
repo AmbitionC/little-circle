@@ -11,6 +11,8 @@
     python3 el_prep.py sfx                   # 生成 14 个音效到 assets/sfx/（已存在的跳过）
     python3 el_prep.py bgm                   # 生成 3 首背景音乐到 assets/bgm/
     python3 el_prep.py all                   # cast + sfx + bgm
+    python3 el_prep.py tts                   # 配音自检：用默认音色配一句，测通带时间戳的接口（免费档也能跑）
+    python3 el_prep.py tts narrator          # 用 series/cast.json 里某个角色的音色自检
     加 --force 覆盖已有文件（订阅付费档后重新生成可商用版本时用）
 """
 import base64
@@ -283,6 +285,46 @@ def cmd_bgm(names, force):
         print(f"  ✓ assets/bgm/{name}.mp3")
 
 
+# 默认音色 Rachel（ElevenLabs 自带，免费档也能用）；只用来测接口，不用于发布
+TEST_VOICE = "21m00Tcm4TlvDq8ikWAM"
+TEST_TEXT = "Nutty finds a big, big acorn."
+
+
+def cmd_tts(role):
+    voice, body = TEST_VOICE, {"text": TEST_TEXT, "model_id": "eleven_multilingual_v2"}
+    if role:
+        with open(CAST_JSON, encoding="utf-8") as f:
+            cast = json.load(f)
+        if role not in cast or not isinstance(cast[role], dict):
+            sys.exit(f"series/cast.json 里没有角色 {role}")
+        voice = cast[role]["voice"]
+        if not re.fullmatch(r"[A-Za-z0-9]{15,40}", voice):
+            sys.exit(f"{role} 的 Voice ID 还没填（现在是 {voice!r}），先跑 pick")
+        body["model_id"] = cast[role].get("model", body["model_id"])
+        if "settings" in cast[role]:
+            body["voice_settings"] = cast[role]["settings"]
+    print(f"· 配音自检：{TEST_TEXT!r}，音色 {voice}")
+    try:
+        res = api(f"/v1/text-to-speech/{voice}/with-timestamps?output_format=mp3_44100_128", body)
+    except ApiError as err:
+        report("配音", err)
+        if err.code == 404:
+            print("    → 找不到这个 Voice ID：检查 series/cast.json，或在网页 Voices 里核对。")
+        return
+    os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
+    out = os.path.join(ROOT, "out", "tts_test.mp3")
+    with open(out, "wb") as f:
+        f.write(base64.b64decode(res["audio_base64"]))
+    al = res.get("alignment") or res.get("normalized_alignment") or {}
+    ends = al.get("character_end_times_seconds") or [0]
+    print(f"  ✓ {os.path.relpath(out, ROOT)}（{ends[-1]:.1f} 秒）")
+    if al.get("characters"):
+        print(f"  ✓ 时间戳正常：{len(al['characters'])} 个字符都有起止时间，字幕高亮能对上")
+    else:
+        print("  ✗ 没拿到时间戳：字幕高亮会退回按音量估算")
+    print(f"试听：open {os.path.relpath(out, ROOT)}")
+
+
 def main(argv):
     force = "--force" in argv
     argv = [a for a in argv if a != "--force"]
@@ -301,6 +343,8 @@ def main(argv):
         cmd_sfx([n for n in rest if n in SFX] or None, force)
     elif cmd == "bgm":
         cmd_bgm([n for n in rest if n in BGM] or None, force)
+    elif cmd == "tts":
+        cmd_tts(rest[0] if rest else None)
     elif cmd == "all":
         print("== 1/3 选角候选 =="); cmd_cast([])
         print("\n== 2/3 音效库 =="); cmd_sfx(None, force)
