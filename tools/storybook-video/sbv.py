@@ -781,7 +781,7 @@ def page_lines(page):
     return [{"speaker": page.get("speaker", "narrator"), "en": page["en"], "zh": page.get("zh", "")}]
 
 
-def build(story_path, out_dir, max_pages=None, sparkle=True):
+def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None):
     base = os.path.dirname(os.path.abspath(story_path))
     with open(story_path) as f:
         cfg = json.load(f)
@@ -792,6 +792,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True):
         else:
             st[k] = v
     cast = cfg.get("cast") or {"narrator": cfg.get("voice", {"provider": "kokoro", "voice": "af_heart"})}
+    if cast_override:           # 命令行 --cast：临时换一份角色表（比如订阅前用 Kokoro 出样片）
+        cast = os.path.abspath(cast_override)
     if isinstance(cast, str):   # 指向系列统一的角色表，例如 "../../series/cast.json"
         with open(os.path.join(base, cast)) as f:
             cast = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
@@ -982,8 +984,9 @@ def main():
     ap.add_argument("--out", default="out", help="输出目录")
     ap.add_argument("--max-pages", type=int, help="只取前 N 页，生成推荐流精华版")
     ap.add_argument("--no-sparkle", action="store_true", help="关闭漂浮光点")
+    ap.add_argument("--cast", help="临时替换角色表，例如 ../../series/cast_kokoro.json（只出样片用）")
     a = ap.parse_args()
-    build(a.story, a.out, a.max_pages, not a.no_sparkle)
+    build(a.story, a.out, a.max_pages, not a.no_sparkle, a.cast)
 
 
 if __name__ == "__main__":

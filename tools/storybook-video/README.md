@@ -81,6 +81,7 @@ curl -L -o fonts/Fredoka.ttf "https://raw.githubusercontent.com/google/fonts/mai
 - 每句的 `say`：给配音用的文本，可以带 v3 语气标签，例如 `[excited] Wow!`；字幕仍然显示 `en`。
 - 每句的 `take`：想重录某一句时改成 2、3……，只重新生成这一句。
 - `cast` 可以写成路径字符串，例如 `"cast": "../../series/cast.json"`，整个系列共用一份角色音色表。
+- 命令行 `--cast <路径>` 可以临时换一份角色表，比如订阅 ElevenLabs 之前用 `--cast ../../series/cast_kokoro.json` 出样片。
 
 ### 立体运镜与画面特效（可选，按页开启）
 

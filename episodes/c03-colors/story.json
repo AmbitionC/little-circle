@@ -1,0 +1,209 @@
+{
+  "output_name": "c03_colors",
+  "title_en": "Hazel's Colorful Spines",
+  "title_zh": "小刺猬的彩色背",
+  "series": {
+    "badge_text": "栗栗学英语 · 认知小绘本",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "clip": "kling01.mp4",
+    "max_seconds": 5,
+    "headline": "颜色总记混？跟小刺猬滚一圈就会",
+    "subline": "3岁英语启蒙 · 中英字幕",
+    "say": {
+      "speaker": "narrator",
+      "en": "Hazel rolls in the leaves!",
+      "at": 0.6
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.4
+      }
+    ]
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Look! A red leaf on me!",
+          "zh": "看！我身上有一片红叶子！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Red, red. It's red!",
+          "zh": "红色，红色。是红色！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/leaves.mp3",
+          "at": 0.0,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Look! A yellow leaf on me!",
+          "zh": "看！还有一片黄叶子！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Yellow, yellow. It's yellow!",
+          "zh": "黄色，黄色。是黄色！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.8,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "right",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Look! A green leaf on me!",
+          "zh": "看！一片绿叶子！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Green, green. It's green!",
+          "zh": "绿色，绿色。是绿色！"
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.38
+      ],
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Oh! A blue berry on me!",
+          "zh": "哦！一颗蓝色的莓果！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Blue, blue. It's blue!",
+          "zh": "蓝色，蓝色。是蓝色！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.3,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "up",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "A purple flower! So pretty!",
+          "zh": "一朵紫色的花！好漂亮！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Purple, purple. It's purple!",
+          "zh": "紫色，紫色。是紫色！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/sparkle.mp3",
+          "at": 0.4,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "out",
+      "hold": 0.8,
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Red, yellow, green, blue, purple!",
+          "zh": "红、黄、绿、蓝、紫！"
+        },
+        {
+          "speaker": "hazel",
+          "en": "What color do you like?",
+          "zh": "你喜欢什么颜色？"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.2,
+          "gain": 0.5
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "See you next time! 下集见！",
+    "subline": "收藏起来，和宝宝一起说",
+    "seconds": 3.5,
+    "feed_headline": "完整版在主页合集",
+    "feed_subline": "栗栗学英语 · 认知小绘本 第3集"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.25
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

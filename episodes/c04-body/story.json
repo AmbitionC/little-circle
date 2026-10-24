@@ -1,0 +1,222 @@
+{
+  "output_name": "c04_body",
+  "title_en": "Touch Your Nose!",
+  "title_zh": "栗栗摸一摸",
+  "series": {
+    "badge_text": "栗栗学英语 · 认知小绘本",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "clip": "kling01.mp4",
+    "max_seconds": 5,
+    "headline": "跟着摸一摸，身体部位英语全学会",
+    "subline": "边看边动 · 中英字幕",
+    "say": {
+      "speaker": "narrator",
+      "en": "Can you touch your nose?",
+      "at": 0.6
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.4
+      }
+    ]
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "This is my head.",
+          "zh": "这是我的头。"
+        },
+        {
+          "speaker": "nutty",
+          "en": "Touch your head! Touch, touch!",
+          "zh": "摸摸你的头！摸一摸！",
+          "gap": 1.0
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 1.0,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "This is my nose. Touch your nose!",
+          "zh": "这是我的鼻子。摸摸你的鼻子！",
+          "gap": 0.6
+        },
+        {
+          "speaker": "nutty",
+          "en": "Achoo! Oh, a big sneeze!",
+          "zh": "阿嚏！打了个大喷嚏！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 2.2,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "up",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "These are my ears. Long, long ears!",
+          "zh": "这是我的耳朵。长长的耳朵！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Touch your ears!",
+          "zh": "摸摸你的耳朵！",
+          "gap": 1.0
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.8,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "right",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "These are my hands. Clap, clap, clap!",
+          "zh": "这是我的手。拍拍手！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Clap your hands!",
+          "zh": "拍拍你的手！",
+          "gap": 1.0
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 1.5,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "These are my feet. Stomp, stomp!",
+          "zh": "这是我的脚。跺跺脚！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Stomp your feet!",
+          "zh": "跺跺你的脚！",
+          "gap": 1.0
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 0.9,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "out",
+      "hold": 0.8,
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Head, nose, ears, hands, feet!",
+          "zh": "头、鼻子、耳朵、手、脚！"
+        },
+        {
+          "speaker": "nutty",
+          "en": "You did it! Great job!",
+          "zh": "你做到啦！真棒！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/sparkle.mp3",
+          "at": 0.3,
+          "gain": 0.5
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "See you next time! 下集见！",
+    "subline": "收藏起来，和宝宝一起说",
+    "seconds": 3.5,
+    "feed_headline": "完整版在主页合集",
+    "feed_subline": "栗栗学英语 · 认知小绘本 第4集"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.25
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

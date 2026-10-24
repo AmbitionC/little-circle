@@ -15,3 +15,8 @@ tools/storybook-video/example/*.mp4
 # ElevenLabs 生成的音效和音乐只留在本机（仓库公开）
 assets/sfx/
 assets/bgm/
+
+# 剧集素材（图、可灵片段）只留在本机
+episodes/**/*.png
+episodes/**/*.jpg
+episodes/**/*.mp4

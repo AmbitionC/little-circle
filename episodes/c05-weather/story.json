@@ -1,0 +1,203 @@
+{
+  "output_name": "c05_weather",
+  "title_en": "What's the Weather?",
+  "title_zh": "今天什么天气",
+  "series": {
+    "badge_text": "栗栗学英语 · 认知小绘本",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "clip": "kling01.mp4",
+    "max_seconds": 5,
+    "headline": "出门前问一句：What's the weather?",
+    "subline": "3岁英语启蒙 · 中英字幕",
+    "say": {
+      "speaker": "narrator",
+      "en": "What's the weather today, Nutty?",
+      "at": 0.6
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.4
+      }
+    ]
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "up",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "What's the weather?",
+          "zh": "今天什么天气？",
+          "gap": 1.2
+        },
+        {
+          "speaker": "nutty",
+          "en": "It's sunny! Hello, sun!",
+          "zh": "是晴天！太阳你好！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/sparkle.mp3",
+          "at": 0.3,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "What's the weather?",
+          "zh": "今天什么天气？",
+          "gap": 1.2
+        },
+        {
+          "speaker": "nutty",
+          "en": "It's cloudy. Where is the sun?",
+          "zh": "是多云。太阳去哪啦？"
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.42
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "What's the weather?",
+          "zh": "今天什么天气？",
+          "gap": 1.2
+        },
+        {
+          "speaker": "nutty",
+          "en": "It's rainy! My tail is my umbrella!",
+          "zh": "下雨啦！我的尾巴就是雨伞！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 2.0,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "right",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "What's the weather?",
+          "zh": "今天什么天气？",
+          "gap": 1.2
+        },
+        {
+          "speaker": "nutty",
+          "en": "It's windy! Whoosh! My scarf!",
+          "zh": "刮风啦！呼——我的围巾！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 1.0,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "down",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "What's the weather?",
+          "zh": "今天什么天气？",
+          "gap": 1.2
+        },
+        {
+          "speaker": "nutty",
+          "en": "It's snowy! Look, white snow!",
+          "zh": "下雪啦！看，白白的雪！"
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "out",
+      "hold": 0.8,
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Sunny, cloudy, rainy, windy, snowy!",
+          "zh": "晴天、多云、下雨、刮风、下雪！"
+        },
+        {
+          "speaker": "nutty",
+          "en": "What's the weather today?",
+          "zh": "今天是什么天气呀？"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.2,
+          "gain": 0.5
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "See you next time! 下集见！",
+    "subline": "收藏起来，和宝宝一起说",
+    "seconds": 3.5,
+    "feed_headline": "完整版在主页合集",
+    "feed_subline": "栗栗学英语 · 认知小绘本 第5集"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.25
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

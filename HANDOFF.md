@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-24 晚（定了走 Starter，加了配音自检）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-24 晚（定了走 Starter，加了配音自检；首批 5 条认知短片已写好）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -25,7 +25,8 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 | 动态绘本出片工具 | [tools/storybook-video/](tools/storybook-video/)（`sbv.py`） |
 | ElevenLabs 一次性准备脚本 | `tools/storybook-video/el_prep.py` |
 | 程序化八音盒背景音乐 | `tools/storybook-video/make_bgm.py` |
-| 角色音色表（Voice ID 还没填） | [series/cast.json](series/cast.json) |
+| 角色音色表（Voice ID 还没填） | [series/cast.json](series/cast.json)；订阅前出样片用 `series/cast_kokoro.json` |
+| 首批 5 条认知短片剧本 + story.json | [episodes/](episodes/README.md) |
 | 数据记录 | `tracking/videos.csv`（第 1 集基线已填）、`tracking/sales.csv` |
 
 ## 3. ElevenLabs 现状
@@ -80,9 +81,9 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
    - 画面 1080×1920、30fps。
 
    字体：没装 Fredoka 时会自动换成 macOS 自带的 Arial Rounded；中文自动找苹方、冬青黑体、华文黑体。
-5. **写首批 5 条认知短片**的剧本和 story.json：Nutty 认水果、Bun 数胡萝卜、Hazel 认颜色、身体部位、天气。
-   - 按用户的系列技能 `kids-english-story-video` 加上 `docs/series-skill-addendum.md` 的混合方案来写。
-   - 每句 3–8 个英文单词；开头的大字标题写给家长看。
+5. ~~写首批 5 条认知短片的剧本和 story.json~~ ✅ 10-24 写好，见 [episodes/README.md](episodes/README.md)。
+   - 每集目录里的 `script.md` 有出图提示词（p01–p06 + 可灵首帧）和可灵提示词。**用户接下来要做的是出图**：每集 6 张图 + 1 个可灵钩子，先做 c01–c03。
+   - 订阅前可以用 `--cast ../../series/cast_kokoro.json` 出样片看节奏（c01 已用占位图试渲染，完整版 42.9 秒、精华版 25.2 秒，流程通）。
 6. 第 0 周剩下的事：
    - 建合集「认知小绘本」「森林故事」；
    - 确认本月预算：ElevenLabs Starter + 可灵 66 元 + 出图订阅，总共不超过 300 元。

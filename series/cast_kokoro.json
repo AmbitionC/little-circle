@@ -1,0 +1,7 @@
+{
+  "_说明": "订阅 ElevenLabs 之前出样片用的离线音色（Kokoro，可商用但音质一般，已决定不用于发布）。用法：python sbv.py <story.json> --out out/ --cast ../../series/cast_kokoro.json",
+  "narrator": {"provider": "kokoro", "voice": "af_heart", "speed": 0.86, "pitch": 1.0},
+  "nutty":    {"provider": "kokoro", "voice": "af_bella", "speed": 0.92, "pitch": 1.36},
+  "hazel":    {"provider": "kokoro", "voice": "af_sky",   "speed": 0.90, "pitch": 1.30},
+  "bun":      {"provider": "kokoro", "voice": "am_puck",  "speed": 0.88, "pitch": 1.25}
+}
