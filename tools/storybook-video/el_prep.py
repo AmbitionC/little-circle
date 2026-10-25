@@ -37,7 +37,7 @@ ROLES = {
     "narrator": {
         "name": "Lili Narrator",
         "description": "A warm, gentle female storyteller with a soft American accent, speaking slowly "
-                       "and clearly to a three-year-old at bedtime, smiling, calm and cozy.",
+                       "and clearly, smiling, calm and cozy, like reading a bedtime story.",
         "text": "Once upon a time, in a cozy little forest, Nutty the squirrel finds a big, big acorn. "
                 "Can he open it? Let's count together: one, two, three. Good night, little one.",
     },
@@ -181,6 +181,9 @@ def cmd_cast(roles):
                       {"voice_description": brief["description"], "text": brief["text"]})
         except ApiError as err:
             report(role, err)
+            if err.status == "blocked_generation":  # 只是这条描述被安全过滤拦了，别的角色照常出
+                print("    → 描述被安全过滤拦了：去掉跟小孩相关的字眼（child、three-year-old 等）再试。")
+                continue
             if err.code in (401, 402, 403):
                 break
             continue
