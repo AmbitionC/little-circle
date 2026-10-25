@@ -24,6 +24,8 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 | 系列技能的"混合方案"补充（开头 5 秒可灵 + 其余动态绘本） | [docs/series-skill-addendum.md](docs/series-skill-addendum.md) |
 | 动态绘本出片工具 | [tools/storybook-video/](tools/storybook-video/)（`sbv.py`） |
 | ElevenLabs 一次性准备脚本 | `tools/storybook-video/el_prep.py` |
+| Codex CLI 批量出图（读 script.md 提示词，带角色参考图，出 1080×1920） | `tools/storybook-video/codex_images.py`；用法和踩坑见 [docs/skill-kids-english-story-video.md](docs/skill-kids-english-story-video.md) 5.3 节。c01–c03 的图已在用户 Mac 上出好（本地，不提交） |
+| 系列 Skill 最新全文（待用户在卡片上保存） | [docs/skill-kids-english-story-video.md](docs/skill-kids-english-story-video.md) |
 | 程序化八音盒背景音乐 | `tools/storybook-video/make_bgm.py` |
 | 角色音色表（Voice ID 还没填） | [series/cast.json](series/cast.json)；订阅前出样片用 `series/cast_kokoro.json` |
 | 首批 5 条认知短片剧本 + story.json | [episodes/](episodes/README.md) |
