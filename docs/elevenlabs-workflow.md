@@ -69,7 +69,7 @@ python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2
 
 | 角色 | Voice Design 描述 | 试音句 |
 |---|---|---|
-| 旁白 narrator | A warm, gentle female storyteller with a soft American accent, speaking slowly and clearly to a three-year-old at bedtime, smiling, calm and cozy. | Nutty finds a big, big acorn. Can he open it? |
+| 旁白 narrator | A warm, gentle female storyteller with a soft American accent, speaking slowly and clearly, smiling, calm and cozy, like reading a bedtime story. | Nutty finds a big, big acorn. Can he open it? |
 | 栗栗 Nutty（小松鼠） | A cheerful, high-pitched cartoon squirrel character, playful and bouncy, curious and excited, very clear American English, like the sidekick in an animated preschool show. | Wow! Look at this big, big acorn! It's mine! |
 | Hazel（小刺猬） | A sweet, gentle, slightly shy cartoon hedgehog girl, soft and warm, high-pitched, kind and polite, clear American English. | I am so hungry. Can I have some, please? |
 | Bun（小兔子） | A soft, cuddly cartoon bunny boy, a little slow and shy, round gentle tone, clear pronunciation. | One, two, three! I have an orange carrot! |
@@ -78,6 +78,7 @@ python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2
 - **用手机外放听**，音量调到睡前那么小。孩子就是这样看视频的。
 - **三个角色的音高要拉开**，闭上眼睛也能分清谁在说话。
 - 如果描述里写"child"被拒绝，就改写成"cartoon character, high-pitched, playful"。
+- 实测（2026-10-25）：旁白原描述里有"to a three-year-old"，被接口以 `blocked_generation` 拒绝，删掉后才行。描述里不要出现小孩、年龄这类字眼。
 
 选定后，把四个 Voice ID 填进 [`series/cast.json`](../series/cast.json)。**整季不换音色**，每集的 story.json 只写 `"cast": "../../series/cast.json"`（相对路径）。
 
