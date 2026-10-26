@@ -1,7 +1,7 @@
 {
   "output_name": "c04_body",
-  "title_en": "Touch Your Nose!",
-  "title_zh": "栗栗摸一摸",
+  "title_en": "Achoo! Cover Your Mouth!",
+  "title_zh": "栗栗打喷嚏",
   "series": {
     "badge_text": "栗栗学英语 · 认知小绘本",
     "badge_alpha": 0.72
@@ -34,11 +34,11 @@
   "hook": {
     "clip": "kling01.mp4",
     "max_seconds": 5,
-    "headline": "跟着摸一摸，身体部位英语全学会",
-    "subline": "边看边动 · 中英字幕",
+    "headline": "打喷嚏不捂嘴？今晚讲这个",
+    "subline": "3岁英语启蒙 · 中英字幕",
     "say": {
       "speaker": "narrator",
-      "en": "Can you touch your nose?",
+      "en": "Uh-oh! Nutty's nose!",
       "at": 0.6
     },
     "sfx": [
@@ -55,102 +55,63 @@
       "motion": "in",
       "focus": [
         0.5,
-        0.4
+        0.45
       ],
       "lines": [
         {
           "speaker": "nutty",
-          "en": "This is my head.",
-          "zh": "这是我的头。"
-        },
-        {
-          "speaker": "nutty",
-          "en": "Touch your head! Touch, touch!",
-          "zh": "摸摸你的头！摸一摸！",
-          "gap": 1.0
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/boing.mp3",
-          "at": 1.0,
-          "gain": 0.5
+          "en": "Mmm! I like flowers!",
+          "zh": "嗯！我喜欢花！"
         }
       ]
     },
     {
       "image": "p02.png",
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.4
-      ],
-      "cut": true,
+      "motion": "right",
       "lines": [
         {
           "speaker": "nutty",
-          "en": "This is my nose. Touch your nose!",
-          "zh": "这是我的鼻子。摸摸你的鼻子！",
-          "gap": 0.6
-        },
-        {
-          "speaker": "nutty",
-          "en": "Achoo! Oh, a big sneeze!",
-          "zh": "阿嚏！打了个大喷嚏！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/pop.mp3",
-          "at": 2.2,
-          "gain": 0.5
+          "en": "My nose is itchy!",
+          "zh": "我的鼻子好痒！"
         }
       ]
     },
     {
       "image": "p03.png",
-      "motion": "up",
+      "motion": "out",
       "lines": [
         {
-          "speaker": "bun",
-          "en": "These are my ears. Long, long ears!",
-          "zh": "这是我的耳朵。长长的耳朵！"
+          "speaker": "nutty",
+          "en": "Ah... ah... ah...",
+          "zh": "啊……啊……啊……"
         },
         {
           "speaker": "narrator",
-          "en": "Touch your ears!",
-          "zh": "摸摸你的耳朵！",
-          "gap": 1.0
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/boing.mp3",
-          "at": 0.8,
-          "gain": 0.5
+          "en": "Oh no! A big sneeze!",
+          "zh": "糟糕！大喷嚏要来了！"
         }
       ]
     },
     {
       "image": "p04.png",
-      "motion": "right",
+      "motion": "in",
+      "cut": true,
       "lines": [
         {
-          "speaker": "hazel",
-          "en": "These are my hands. Clap, clap, clap!",
-          "zh": "这是我的手。拍拍手！"
-        },
-        {
-          "speaker": "narrator",
-          "en": "Clap your hands!",
-          "zh": "拍拍你的手！",
-          "gap": 1.0
+          "speaker": "nutty",
+          "en": "ACHOO! Oops! Sorry!",
+          "zh": "阿嚏！哎呀！对不起！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/ding.mp3",
-          "at": 1.5,
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.0,
+          "gain": 0.7
+        },
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.5,
           "gain": 0.5
         }
       ]
@@ -160,44 +121,66 @@
       "motion": "left",
       "lines": [
         {
-          "speaker": "nutty",
-          "en": "These are my feet. Stomp, stomp!",
-          "zh": "这是我的脚。跺跺脚！"
-        },
-        {
-          "speaker": "narrator",
-          "en": "Stomp your feet!",
-          "zh": "跺跺你的脚！",
-          "gap": 1.0
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/bonk.mp3",
-          "at": 0.9,
-          "gain": 0.5
+          "speaker": "bun",
+          "en": "Cover your mouth, Nutty!",
+          "zh": "栗栗，要捂住嘴！"
         }
       ]
     },
     {
       "image": "p06.png",
-      "motion": "out",
-      "hold": 0.8,
+      "motion": "in",
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "Head, nose, ears, hands, feet!",
-          "zh": "头、鼻子、耳朵、手、脚！"
+          "speaker": "nutty",
+          "en": "Ah... ah... ah...",
+          "zh": "啊……啊……啊……"
         },
         {
+          "speaker": "narrator",
+          "en": "Cover your mouth!",
+          "zh": "捂住嘴巴！",
+          "gap": 1.5
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "out",
+      "lines": [
+        {
           "speaker": "nutty",
-          "en": "You did it! Great job!",
-          "zh": "你做到啦！真棒！"
+          "en": "Achoo! Excuse me!",
+          "zh": "嚏！不好意思！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/sparkle.mp3",
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.1,
+          "gain": 0.3
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "motion": "in",
+      "hold": 0.8,
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Sneeze? Cover your mouth!",
+          "zh": "打喷嚏？捂住嘴巴！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
           "at": 0.3,
           "gain": 0.5
         }
@@ -206,10 +189,10 @@
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
-    "subline": "收藏起来，和宝宝一起说",
+    "subline": "宝宝学会打喷嚏捂嘴了吗？",
     "seconds": 3.5,
-    "feed_headline": "完整版在主页合集",
-    "feed_subline": "栗栗学英语 · 认知小绘本 第4集"
+    "feed_headline": "大喷嚏把朋友吹飞了，下次怎么办？",
+    "feed_subline": "完整版在主页合集 · 认知小绘本 第4集"
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",

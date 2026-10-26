@@ -300,9 +300,7 @@ Let's share! 我们一起分享吧！
 | 编号 | 合集 | 英文名 | 中文名 | 主题 | 今日单词 | 核心句 | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
-| c01 | 认知小绘本 | Nutty's Fruit Basket | 栗栗的水果篮 | 水果 | apple, banana, orange | Look! What is this? / It's a/an … | 2026-10-24 剧本好了，Codex 出图中 |
-| c02–c03 | 认知小绘本 | c02-carrots Bun 数胡萝卜、c03-colors Hazel 认颜色 | | | 以各目录 script.md 为准 | | 2026-10-24 剧本好了，Codex 出图中 |
-| c04–c05 | 认知小绘本 | c04-body 身体部位、c05-weather 天气 | | | 以各目录 script.md 为准 | | 2026-10-24 剧本好了，还没出图 |
+| c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
 | s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-26 剧本好了，等确认后出图 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。

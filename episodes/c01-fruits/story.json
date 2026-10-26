@@ -1,7 +1,7 @@
 {
   "output_name": "c01_fruits",
-  "title_en": "Nutty's Fruit Basket",
-  "title_zh": "栗栗的水果篮",
+  "title_en": "Nutty Is Hungry",
+  "title_zh": "栗栗好饿呀",
   "series": {
     "badge_text": "栗栗学英语 · 认知小绘本",
     "badge_alpha": 0.72
@@ -34,11 +34,11 @@
   "hook": {
     "clip": "kling01.mp4",
     "max_seconds": 5,
-    "headline": "宝宝爱吃的水果，英语会说吗？",
-    "subline": "3岁英语启蒙 · 中英字幕",
+    "headline": "宝宝吃饭不知道饱？",
+    "subline": "3岁英语启蒙 · 学会说 I am full",
     "say": {
       "speaker": "narrator",
-      "en": "What is in Nutty's basket?",
+      "en": "Listen! Nutty's tummy!",
       "at": 0.6
     },
     "sfx": [
@@ -59,22 +59,16 @@
       ],
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "Look! What is this?",
-          "zh": "看！这是什么？",
-          "gap": 1.2
-        },
-        {
           "speaker": "nutty",
-          "en": "It's an apple. A red apple!",
-          "zh": "是苹果！红红的苹果！"
+          "en": "I am so hungry!",
+          "zh": "我好饿呀！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/pop.mp3",
-          "at": 1.0,
-          "gain": 0.5
+          "file": "../../assets/sfx/tummy.mp3",
+          "at": 0.2,
+          "gain": 0.6
         }
       ]
     },
@@ -83,21 +77,15 @@
       "motion": "left",
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "What is this? It's so long!",
-          "zh": "这是什么？好长呀！",
-          "gap": 1.2
-        },
-        {
           "speaker": "nutty",
-          "en": "It's a banana. A yellow banana!",
-          "zh": "是香蕉！黄黄的香蕉！"
+          "en": "One red apple! Yum!",
+          "zh": "一个红苹果！好吃！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/boing.mp3",
-          "at": 1.6,
+          "file": "../../assets/sfx/chomp.mp3",
+          "at": 1.2,
           "gain": 0.5
         }
       ]
@@ -107,89 +95,127 @@
       "motion": "right",
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "Look! What is this?",
-          "zh": "看！这是什么？",
-          "gap": 1.2
-        },
-        {
           "speaker": "nutty",
-          "en": "It's a pear. A green pear!",
-          "zh": "是梨！绿绿的梨！"
-        }
-      ]
-    },
-    {
-      "image": "p04.png",
-      "motion": "out",
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "Oh! What is this? It's round!",
-          "zh": "哦！这是什么？圆圆的！",
-          "gap": 1.2
-        },
-        {
-          "speaker": "nutty",
-          "en": "It's an orange. Round and orange!",
-          "zh": "是橙子！圆圆的、橙色的！"
+          "en": "Still hungry! Two bananas!",
+          "zh": "还饿！两根香蕉！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/whoosh.mp3",
-          "at": 1.4,
+          "file": "../../assets/sfx/tummy.mp3",
+          "at": 0.1,
+          "gain": 0.5
+        },
+        {
+          "file": "../../assets/sfx/chomp.mp3",
+          "at": 1.8,
           "gain": 0.5
         }
       ]
     },
     {
-      "image": "p05.png",
+      "image": "p04.png",
       "motion": "in",
-      "focus": [
-        0.5,
-        0.42
-      ],
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "Look! What is this?",
-          "zh": "看！这是什么？",
-          "gap": 1.2
-        },
-        {
           "speaker": "nutty",
-          "en": "It's a strawberry. Yum, yum!",
-          "zh": "是草莓！好吃好吃！"
+          "en": "Three oranges! Yum, yum!",
+          "zh": "三个橙子！好吃好吃！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/chomp.mp3",
-          "at": 2.6,
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.4,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "out",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Oh! My big tummy!",
+          "zh": "哎呀！我的大肚子！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Is Nutty full now?",
+          "zh": "栗栗吃饱了吗？",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.8,
           "gain": 0.5
         }
       ]
     },
     {
       "image": "p06.png",
+      "motion": "down",
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Roll, roll, roll!",
+          "zh": "滚呀，滚呀，滚！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.2,
+          "gain": 0.6
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Burp! I am full!",
+          "zh": "嗝！我吃饱啦！"
+        },
+        {
+          "speaker": "bun",
+          "en": "Hee hee! Full Nutty!",
+          "zh": "嘻嘻！吃饱的栗栗！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 0.1,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
       "motion": "out",
       "hold": 0.8,
       "lines": [
         {
           "speaker": "nutty",
-          "en": "Apple, banana, pear! Yum, yum!",
-          "zh": "苹果、香蕉、梨！真好吃！"
+          "en": "I am full! No more!",
+          "zh": "我吃饱啦！不吃啦！"
         },
         {
-          "speaker": "nutty",
-          "en": "Which fruit do you like?",
-          "zh": "你喜欢哪种水果？"
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！"
         }
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/sparkle.mp3",
+          "file": "../../assets/sfx/ding.mp3",
           "at": 0.3,
           "gain": 0.5
         }
@@ -198,10 +224,10 @@
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
-    "subline": "收藏起来，和宝宝一起说",
+    "subline": "宝宝吃饱了会说 I am full 吗？",
     "seconds": 3.5,
-    "feed_headline": "完整版在主页合集",
-    "feed_subline": "栗栗学英语 · 认知小绘本 第1集"
+    "feed_headline": "栗栗还要吃？会发生什么？",
+    "feed_subline": "完整版在主页合集 · 认知小绘本 第1集"
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",
