@@ -181,18 +181,23 @@
     {
       "image": "p06.png",
       "motion": "out",
-      "hold": 0.8,
+      "hold": 0.6,
       "lines": [
         {
           "speaker": "hazel",
-          "en": "Moo, quack, baa! Hello, friends!",
-          "zh": "哞、嘎、咩！你们好呀！"
+          "en": "Look! Moo, moo, moo!",
+          "zh": "看！哞，哞，哞！"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Oh no! Is it moo?",
+          "zh": "哎呀！是哞哞叫吗？",
+          "gap": 1.5
         },
         {
           "speaker": "hazel",
-          "en": "Can you say moo?",
-          "zh": "你会哞哞叫吗？",
-          "gap": 1.5
+          "en": "Oops! It's a duck! Quack, quack!",
+          "zh": "哎呀！是鸭子！嘎，嘎！"
         },
         {
           "speaker": "narrator",
@@ -202,8 +207,13 @@
       ],
       "sfx": [
         {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 1.8,
+          "gain": 0.5
+        },
+        {
           "file": "../../assets/sfx/ding.mp3",
-          "at": 0.3,
+          "at": 5.6,
           "gain": 0.5
         }
       ]
@@ -211,7 +221,7 @@
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
-    "subline": "宝宝学会了哪个？评论区告诉 Hazel",
+    "subline": "Hazel 叫错了，宝宝发现了吗？",
     "seconds": 3.5,
     "feed_headline": "完整版在主页合集",
     "feed_subline": "栗栗学英语 · 认知小绘本 第6集"
