@@ -38,7 +38,7 @@
     "subline": "3岁英语启蒙 · 中英字幕",
     "say": {
       "speaker": "narrator",
-      "en": "Shh! Who is behind the fence?",
+      "en": "Shh! Who is there?",
       "at": 0.6
     },
     "sfx": [
@@ -60,14 +60,14 @@
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Listen! Who says moo?",
-          "zh": "听！谁在哞哞叫？",
+          "en": "Who says moo?",
+          "zh": "谁在哞哞叫？",
           "gap": 1.2
         },
         {
           "speaker": "hazel",
-          "en": "It's a cow! Moo, moo, moo!",
-          "zh": "是奶牛！哞，哞，哞！"
+          "en": "It's a cow! Moo, moo!",
+          "zh": "是奶牛！哞，哞！"
         }
       ],
       "sfx": [
@@ -84,14 +84,14 @@
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Listen! Who says quack?",
-          "zh": "听！谁在嘎嘎叫？",
+          "en": "Who says quack?",
+          "zh": "谁在嘎嘎叫？",
           "gap": 1.2
         },
         {
           "speaker": "hazel",
-          "en": "It's a duck! Quack, quack, quack!",
-          "zh": "是鸭子！嘎，嘎，嘎！"
+          "en": "It's a duck! Quack, quack!",
+          "zh": "是鸭子！嘎，嘎！"
         }
       ],
       "sfx": [
@@ -108,14 +108,14 @@
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Listen! Who says baa?",
-          "zh": "听！谁在咩咩叫？",
+          "en": "Who says baa?",
+          "zh": "谁在咩咩叫？",
           "gap": 1.2
         },
         {
           "speaker": "hazel",
-          "en": "It's a sheep! Baa, baa, baa!",
-          "zh": "是绵羊！咩，咩，咩！"
+          "en": "It's a sheep! Baa, baa!",
+          "zh": "是绵羊！咩，咩！"
         }
       ],
       "sfx": [
@@ -132,14 +132,14 @@
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Oh! Who says oink?",
-          "zh": "哦！谁在哼哼叫？",
+          "en": "Who says oink?",
+          "zh": "谁在哼哼叫？",
           "gap": 1.2
         },
         {
           "speaker": "hazel",
-          "en": "It's a pig! Oink, oink, oink!",
-          "zh": "是小猪！哼，哼，哼！"
+          "en": "It's a pig! Oink, oink!",
+          "zh": "是小猪！哼，哼！"
         }
       ],
       "sfx": [
@@ -160,14 +160,14 @@
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Listen! Who says woof?",
-          "zh": "听！谁在汪汪叫？",
+          "en": "Who says woof?",
+          "zh": "谁在汪汪叫？",
           "gap": 1.2
         },
         {
           "speaker": "hazel",
-          "en": "It's a dog! Woof, woof, woof!",
-          "zh": "是小狗！汪，汪，汪！"
+          "en": "It's a dog! Woof, woof!",
+          "zh": "是小狗！汪，汪！"
         }
       ],
       "sfx": [
@@ -181,28 +181,23 @@
     {
       "image": "p06.png",
       "motion": "out",
-      "hold": 0.6,
+      "hold": 1.0,
       "lines": [
         {
           "speaker": "hazel",
-          "en": "Look! Moo, moo, moo!",
-          "zh": "看！哞，哞，哞！"
+          "en": "Moo, moo, moo!",
+          "zh": "哞，哞，哞！"
         },
         {
           "speaker": "narrator",
-          "en": "Oh no! Is it moo?",
-          "zh": "哎呀！是哞哞叫吗？",
+          "en": "Is it moo?",
+          "zh": "是哞哞吗？",
           "gap": 1.5
         },
         {
           "speaker": "hazel",
-          "en": "Oops! It's a duck! Quack, quack!",
-          "zh": "哎呀！是鸭子！嘎，嘎！"
-        },
-        {
-          "speaker": "narrator",
-          "en": "The end. Bye-bye!",
-          "zh": "讲完啦，拜拜！"
+          "en": "Oops! Quack, quack!",
+          "zh": "哎呀！嘎，嘎！"
         }
       ],
       "sfx": [
@@ -213,7 +208,7 @@
         },
         {
           "file": "../../assets/sfx/ding.mp3",
-          "at": 5.6,
+          "at": 4.0,
           "gain": 0.5
         }
       ]

@@ -8,7 +8,8 @@
 
 - **今日单词**（封面、置顶评论用）：cow 奶牛 · duck 鸭子 · sheep 绵羊
 - **本集全部词**：cow 奶牛 · duck 鸭子 · sheep 绵羊 · pig 小猪 · dog 小狗；叫声 moo · quack · baa · oink · woof
-- **重复句型**：`Listen! Who says …?` / `It's a …!`
+- **重复句型**：`Who says …?` / `It's a …!`
+- **台词量**（面向 2–3 岁）：全片 14 句，每句 3–5 个词，动物叫声都只叫两声；每页最多两句，只有最后一页三句。
 - **互动**：提问后停 1 秒多，留给宝宝抢答（宝宝光会学叫也算答对）；结尾 Hazel 故意叫错，旁白问 “Is it moo?”，停 1.5 秒让宝宝纠正（3 岁最爱抓大人的错），评论区引导宝宝用 “It's a …” 回答或者直接学叫。
 
 **为什么选这个**：首月排期第 6 条（11-07）本来就是"动物叫声"，做完 c01–c06 正好凑齐 9.9 元付费包要的 18 个词。动物叫声是 3 岁最爱模仿的东西，也是"磨耳朵"音频的好素材，能直接放进"每天放什么"的计划表（见第 8 节）。Hazel 改成刺猬小男孩后还没当过主角，这集让他主演，顺便试 6 号音色。
@@ -18,7 +19,7 @@
 - **大字标题（给家长看，第 1 帧就出现）**：宝宝爱学动物叫，英语版来了
 - **小字**：3岁英语启蒙 · 中英字幕
 - **备选标题**（测"开头钩子"时用）：哞哞、嘎嘎，英语怎么叫？
-- **旁白**（0.6 秒进）：`Shh! Who is behind the fence?` 嘘！篱笆后面是谁？
+- **旁白**（0.6 秒进）：`Shh! Who is there?` 嘘！是谁呀？
 - **可灵首帧出图提示词**：
   ```
   a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, peeking shyly from behind a low wooden farm fence, a big friendly black-and-white cow nose poking over the fence right next to him, little farm at the edge of a sunny forest, close-up, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16
@@ -32,12 +33,12 @@
 
 | 页 | 画面 | 台词 | 音效 | 运镜 |
 |---|---|---|---|---|
-| p01 | 笑点：奶牛舔了 Hazel 一口，他背上的刺被舔成一撮翘起来的"发型" | **旁白**：Listen! Who says moo?<br>听！谁在哞哞叫？（停 1 秒等抢答）<br>**Hazel**：It's a cow! Moo, moo, moo!<br>是奶牛！哞，哞，哞！ | pop | 缓推 |
-| p02 | 笑点：一排小黄鸭跟在 Hazel 屁股后面走，他一回头，小鸭子也一起回头。**从这页起三只小鸭子一路跟着他** | **旁白**：Listen! Who says quack?<br>听！谁在嘎嘎叫？（停 1 秒等抢答）<br>**Hazel**：It's a duck! Quack, quack, quack!<br>是鸭子！嘎，嘎，嘎！ | boing | 左移 |
-| p03 | 笑点：Hazel 抱了一下绵羊，背上的刺粘满了白羊毛，变成一只"小绵羊"，小鸭子在他脚边歪头看 | **旁白**：Listen! Who says baa?<br>听！谁在咩咩叫？（停 1 秒等抢答）<br>**Hazel**：It's a sheep! Baa, baa, baa!<br>是绵羊！咩，咩，咩！ | sparkle | 右移 |
-| p04 | 笑点：小猪在泥坑里一跳，泥点溅了 Hazel 一脸，他眨巴眼睛，身后三只小鸭子也一脸泥点 | **旁白**：Oh! Who says oink?<br>哦！谁在哼哼叫？（停 1 秒等抢答）<br>**Hazel**：It's a pig! Oink, oink, oink!<br>是小猪！哼，哼，哼！ | whoosh | 缓拉 |
-| p05 | 笑点：小狗一叫，Hazel 吓得缩成一个刺球，小狗歪着头闻这个球，三只小鸭子也把头埋进翅膀里 | **旁白**：Listen! Who says woof?<br>听！谁在汪汪叫？（停 1 秒等抢答）<br>**Hazel**：It's a dog! Woof, woof, woof!<br>是小狗！汪，汪，汪！ | bonk（缩成球那一下） | 缓推 |
-| p06 | 反转：五个动物排排站，Hazel 指着鸭子妈妈大声学奶牛叫，鸭子妈妈叉着翅膀瞪他，奶牛和其他动物在旁边偷笑，小鸭子们在他脚边 | **Hazel**：Look! Moo, moo, moo!<br>看！哞，哞，哞！<br>**旁白**：Oh no! Is it moo?<br>哎呀！是哞哞叫吗？（停 1.5 秒等宝宝纠正）<br>**Hazel**：Oops! It's a duck! Quack, quack!<br>哎呀！是鸭子！嘎，嘎！<br>**旁白**：The end. Bye-bye!<br>讲完啦，拜拜！ | boing（叫错那下）+ ding | 缓拉 |
+| p01 | 笑点：奶牛舔了 Hazel 一口，他背上的刺被舔成一撮翘起来的"发型" | **旁白**：Who says moo?<br>谁在哞哞叫？（停 1 秒等抢答）<br>**Hazel**：It's a cow! Moo, moo!<br>是奶牛！哞，哞！ | pop | 缓推 |
+| p02 | 笑点：一排小黄鸭跟在 Hazel 屁股后面走，他一回头，小鸭子也一起回头。**从这页起三只小鸭子一路跟着他** | **旁白**：Who says quack?<br>谁在嘎嘎叫？（停 1 秒等抢答）<br>**Hazel**：It's a duck! Quack, quack!<br>是鸭子！嘎，嘎！ | boing | 左移 |
+| p03 | 笑点：Hazel 抱了一下绵羊，背上的刺粘满了白羊毛，变成一只"小绵羊"，小鸭子在他脚边歪头看 | **旁白**：Who says baa?<br>谁在咩咩叫？（停 1 秒等抢答）<br>**Hazel**：It's a sheep! Baa, baa!<br>是绵羊！咩，咩！ | sparkle | 右移 |
+| p04 | 笑点：小猪在泥坑里一跳，泥点溅了 Hazel 一脸，他眨巴眼睛，身后三只小鸭子也一脸泥点 | **旁白**：Who says oink?<br>谁在哼哼叫？（停 1 秒等抢答）<br>**Hazel**：It's a pig! Oink, oink!<br>是小猪！哼，哼！ | whoosh | 缓拉 |
+| p05 | 笑点：小狗一叫，Hazel 吓得缩成一个刺球，小狗歪着头闻这个球，三只小鸭子也把头埋进翅膀里 | **旁白**：Who says woof?<br>谁在汪汪叫？（停 1 秒等抢答）<br>**Hazel**：It's a dog! Woof, woof!<br>是小狗！汪，汪！ | bonk（缩成球那一下） | 缓推 |
+| p06 | 反转：五个动物排排站，Hazel 指着鸭子妈妈大声学奶牛叫，鸭子妈妈叉着翅膀瞪他，奶牛和其他动物在旁边偷笑，小鸭子们在他脚边 | **Hazel**：Moo, moo, moo!<br>哞，哞，哞！<br>**旁白**：Is it moo?<br>是哞哞吗？（停 1.5 秒等宝宝纠正）<br>**Hazel**：Oops! Quack, quack!<br>哎呀！嘎，嘎！ | boing（叫错那下）+ ding | 缓拉 |
 
 精华版（`--max-pages 3`）到 p03 绵羊为止，奶牛、鸭子、绵羊正好是今日单词。
 
@@ -82,21 +83,20 @@ a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny ye
 
 | 文件 | 角色 | 台词 | 语气 | 中文 |
 |---|---|---|---|---|
-| v_hook_narrator | 旁白 | Shh! Who is behind the fence? | 小声、神秘 | 嘘！篱笆后面是谁？ |
-| v_p01a_narrator | 旁白 | Listen! Who says moo? | 好奇提问，放慢 | 听！谁在哞哞叫？ |
-| v_p01b_hazel | Hazel | It's a cow! Moo, moo, moo! | 开心、有点害羞 | 是奶牛！哞，哞，哞！ |
-| v_p02a_narrator | 旁白 | Listen! Who says quack? | 好奇提问，放慢 | 听！谁在嘎嘎叫？ |
-| v_p02b_hazel | Hazel | It's a duck! Quack, quack, quack! | 惊喜 | 是鸭子！嘎，嘎，嘎！ |
-| v_p03a_narrator | 旁白 | Listen! Who says baa? | 好奇提问，放慢 | 听！谁在咩咩叫？ |
-| v_p03b_hazel | Hazel | It's a sheep! Baa, baa, baa! | 软软的、开心 | 是绵羊！咩，咩，咩！ |
-| v_p04a_narrator | 旁白 | Oh! Who says oink? | 惊讶 | 哦！谁在哼哼叫？ |
-| v_p04b_hazel | Hazel | It's a pig! Oink, oink, oink! | 被溅到、憋笑 | 是小猪！哼，哼，哼！ |
-| v_p05a_narrator | 旁白 | Listen! Who says woof? | 好奇提问，放慢 | 听！谁在汪汪叫？ |
-| v_p05b_hazel | Hazel | It's a dog! Woof, woof, woof! | 先怯后笑 | 是小狗！汪，汪，汪！ |
-| v_p06a_hazel | Hazel | Look! Moo, moo, moo! | 很得意、很大声 | 看！哞，哞，哞！ |
-| v_p06b_narrator | 旁白 | Oh no! Is it moo? | 憋着笑，故意放慢 | 哎呀！是哞哞叫吗？ |
-| v_p06c_hazel | Hazel | Oops! It's a duck! Quack, quack! | 不好意思、笑场 | 哎呀！是鸭子！嘎，嘎！ |
-| v_p06d_narrator | 旁白 | The end. Bye-bye! | 温柔 | 讲完啦，拜拜！ |
+| v_hook_narrator | 旁白 | Shh! Who is there? | 小声、神秘 | 嘘！是谁呀？ |
+| v_p01a_narrator | 旁白 | Who says moo? | 好奇提问，放慢 | 谁在哞哞叫？ |
+| v_p01b_hazel | Hazel | It's a cow! Moo, moo! | 开心、有点害羞 | 是奶牛！哞，哞！ |
+| v_p02a_narrator | 旁白 | Who says quack? | 好奇提问，放慢 | 谁在嘎嘎叫？ |
+| v_p02b_hazel | Hazel | It's a duck! Quack, quack! | 惊喜 | 是鸭子！嘎，嘎！ |
+| v_p03a_narrator | 旁白 | Who says baa? | 好奇提问，放慢 | 谁在咩咩叫？ |
+| v_p03b_hazel | Hazel | It's a sheep! Baa, baa! | 软软的、开心 | 是绵羊！咩，咩！ |
+| v_p04a_narrator | 旁白 | Who says oink? | 惊讶 | 谁在哼哼叫？ |
+| v_p04b_hazel | Hazel | It's a pig! Oink, oink! | 被溅到、憋笑 | 是小猪！哼，哼！ |
+| v_p05a_narrator | 旁白 | Who says woof? | 好奇提问，放慢 | 谁在汪汪叫？ |
+| v_p05b_hazel | Hazel | It's a dog! Woof, woof! | 先怯后笑 | 是小狗！汪，汪！ |
+| v_p06a_hazel | Hazel | Moo, moo, moo! | 很得意、很大声 | 哞，哞，哞！ |
+| v_p06b_narrator | 旁白 | Is it moo? | 憋着笑，故意放慢 | 是哞哞吗？ |
+| v_p06c_hazel | Hazel | Oops! Quack, quack! | 不好意思、笑场 | 哎呀！嘎，嘎！ |
 
 ## 6. 素材清单
 
@@ -114,8 +114,8 @@ a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny ye
 📖 今日单词：cow 奶牛｜duck 鸭子｜sheep 绵羊
 🗣 跟读句子：
 Who says moo? 谁在哞哞叫？
-It's a cow! Moo, moo, moo! 是奶牛！哞，哞，哞！
-It's a duck! Quack, quack, quack! 是鸭子！嘎，嘎，嘎！
+It's a cow! Moo, moo! 是奶牛！哞，哞！
+It's a duck! Quack, quack! 是鸭子！嘎，嘎！
 
 💡 亲子小互动：结尾 Hazel 叫错了，看宝宝能不能抢先喊出 "Quack!"。看完再问 "Who says moo?"，让宝宝用 "It's a …" 回答。
 
