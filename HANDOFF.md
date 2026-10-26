@@ -86,7 +86,7 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 5. ~~写首批 5 条认知短片的剧本和 story.json~~ ✅ 10-24 写好，见 [episodes/README.md](episodes/README.md)。
    - 每集目录里的 `script.md` 有出图提示词（p01–p06 + 可灵首帧）和可灵提示词。**用户接下来要做的是出图**：每集 6 张图 + 1 个可灵钩子，先做 c01–c03。
    - 订阅前可以用 `--cast ../../series/cast_kokoro.json` 出样片看节奏（c01 已用占位图试渲染，完整版 42.9 秒、精华版 25.2 秒，流程通）。
-5.1 **s02《Help! Hazel's Red Ball 小刺猬的红皮球》**（10-26，Hazel 主演，用 help 一个词讲"遇到困难要开口"）剧本和 story.json 写好，拿来试跑全流程。用户 10-26 定了新要求：每集要有一个主题（一个词串成故事，或讲一个道理），不做纯问答；台词按 2–3 岁写，全片约 13 句、每句 3–5 词。对标依据见 `docs/benchmark-story-2026-10.md`。Hazel 选了 6 号音色，要先跑 `python3 tools/storybook-video/el_prep.py pick hazel=6` 写进 `series/cast.json`。10-26 用户已确认，开始在 Mac 上出图。同一天 c01–c05 也按新标准重写好了（见 episodes/README.md），还没出图。
+5.1 **s02《Help! Hazel's Red Ball 小刺猬的红皮球》**（10-26，Hazel 主演，用 help 一个词讲"遇到困难要开口"）剧本和 story.json 写好，拿来试跑全流程。用户 10-26 定了新要求：每集要有一个主题（一个词串成故事，或讲一个道理），不做纯问答；台词按 2–3 岁写，全片约 13 句、每句 3–5 词。对标依据见 `docs/benchmark-story-2026-10.md`。Hazel 选了 6 号音色，要先跑 `python3 tools/storybook-video/el_prep.py pick hazel=6` 写进 `series/cast.json`。10-26 用户已确认，开始在 Mac 上出图。10-27 进展：hazel 已写进 cast.json（RAD8sK2svw3uV2PEGgol）；10 张图全部出好并自查合格（总览 episodes/s02-help/contact_sheet.jpg，不提交）；没有可灵钩子的样片已渲染到 out/s02/s02_help.mp4（35 秒，1080×1920 30fps，-16.7 LUFS），等用户听配音、看效果。可灵 kling01.mp4 还要用户自己做，做好后用 story.json 正式出片。注意：Mac 系统 PATH 里没有 ffmpeg，出片前先 `export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH`（这份 ffmpeg 没有 rubberband，只影响 kokoro 变调）。同一天 c01–c05 也按新标准重写好了（见 episodes/README.md），还没出图。
 6. 第 0 周剩下的事：
    - 建合集「认知小绘本」「森林故事」；
    - 确认本月预算：ElevenLabs Starter + 可灵 66 元 + 出图订阅，总共不超过 300 元。
