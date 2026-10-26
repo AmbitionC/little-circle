@@ -23,7 +23,7 @@ STYLE = ("watercolor and gouache children's picture book illustration, hand-pain
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
 CHARACTERS = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
-    "hazel": "a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron",
+    "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
     "bun": "a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
 }
 REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "

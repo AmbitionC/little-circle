@@ -19,10 +19,10 @@
 - **旁白**（0.6 秒进）：`Hazel rolls in the leaves!` Hazel 在树叶里打滚！
 - **可灵首帧出图提示词**：
   ```
-  a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, curled up into a ball rolling down a gentle slope covered in colorful autumn leaves, leaves flying, close-up, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16
+  a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, curled up into a ball rolling down a gentle slope covered in colorful autumn leaves, leaves flying, close-up, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16
   ```
 - **可灵尾帧**：直接用 p01.png。
-- **可灵提示词**：小刺猬 Hazel 缩成一个球，从铺满落叶的小坡上慢慢滚下来，彩色的叶子跟着飞起，最后她停下来舒展身体，背上粘着一片红叶。水彩绘本插画风格，保持角色外形和颜色不变，动作轻柔、幅度小。
+- **可灵提示词**：小刺猬 Hazel 缩成一个球，从铺满落叶的小坡上慢慢滚下来，彩色的叶子跟着飞起，最后他停下来舒展身体，背上粘着一片红叶。水彩绘本插画风格，保持角色外形和颜色不变，动作轻柔、幅度小。
 - **负面提示词**：变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印
 - **参数**：图生视频，5 秒，9:16，1080p，不开原生音频，导出为 `kling01.mp4`。
 
@@ -43,27 +43,27 @@
 
 **p01.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, looking over her shoulder at one bright red maple leaf stuck on her spines, surprised, autumn forest floor, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, looking over his shoulder at one bright red maple leaf stuck on his spines, surprised, autumn forest floor, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 **p02.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, with a red leaf and a big yellow leaf stuck on her spines, spinning around to see them, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, with a red leaf and a big yellow leaf stuck on his spines, spinning around to see them, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 **p03.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, with red, yellow and green leaves stuck on her spines, giggling, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, with red, yellow and green leaves stuck on his spines, giggling, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 **p04.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, a round blue blueberry stuck on the tip of one spine like a hat, cross-eyed looking up at it, funny face, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, a round blue blueberry stuck on the tip of one spine like a hat, cross-eyed looking up at it, funny face, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 **p05.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, a little purple flower stuck on her head spines, posing shyly and proudly, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, a little purple flower stuck on his head spines, posing shyly and proudly, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 **p06.png**
 ```
-a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron, her back covered in red, yellow and green leaves, a blueberry and a purple flower, looking at the viewer with a big smile, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
+a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, his back covered in red, yellow and green leaves, a blueberry and a purple flower, looking at the viewer with a big smile, autumn forest, watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16, keep the bottom quarter of the image simple and free of faces
 ```
 
 **封面关键画面**（发布页手动上传当封面）：用 p06 同一场景再出一张，主角在下半部分，上方 40% 是天空或树冠，留给标题。

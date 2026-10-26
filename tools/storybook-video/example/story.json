@@ -37,7 +37,7 @@
       {"speaker": "nutty", "en": "It's mine! Mine, mine, mine!", "zh": "它是我的！我的，我的，我的！"}
     ]},
     {"image": "p3.png", "motion": "out", "lines": [
-      {"speaker": "narrator", "en": "Here comes Hazel. She is hungry.", "zh": "小刺猬 Hazel 来了，她饿了。"},
+      {"speaker": "narrator", "en": "Here comes Hazel. He is hungry.", "zh": "小刺猬 Hazel 来了，他饿了。"},
       {"speaker": "hazel", "en": "I am so, so hungry!", "zh": "我好饿好饿呀！"}
     ]},
     {"image": "p4.png", "motion": "right", "lines": [

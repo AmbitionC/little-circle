@@ -35,7 +35,7 @@ description: Make one episode of the 栗栗学英语 (Forest Friends) toddler En
 | --- | --- |
 | 账号名 | **栗栗学英语**（三个平台统一） |
 | 系列名 | 森林小伙伴；合集分「认知小绘本」「森林故事」 |
-| 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小围裙，温柔害羞）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
+| 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（2026-10-24 用 Codex 出的全身设定图）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
 | 画风 | 水彩 + 水粉绘本插画，手绘笔触，纸纹，暖光，复古童书感 |
@@ -121,7 +121,7 @@ watercolor and gouache children's picture book illustration, hand-painted brush 
 ### 5.2 角色固定描述（出现角色名时原文替换，一个字都别改）
 
 - Nutty: `a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf`
-- Hazel: `a round little hedgehog girl with soft brown spines, rosy cheeks, wearing a tiny yellow apron`
+- Hazel: `a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls`
 - Bun: `a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest`
 
 **出图脚本靠这几句原文认角色**：提示词里出现哪句，就自动把 `series/refs/` 里对应的参考图一起发给 Codex，锁住长相。改了一个字就认不出来，参考图也就不会带上。
