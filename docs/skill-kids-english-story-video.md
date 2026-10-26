@@ -1,13 +1,13 @@
 ---
 name: kids-english-story-video
-description: Make one episode of the 栗栗学英语 (Forest Friends) toddler English video, cognition short or story, from script and story.json to Codex CLI images, Kling hook, ElevenLabs voices, sbv.py render, checks, publishing copy and tracking, in the fixed series style.
+description: Make one publish-ready episode of the 栗栗学英语 (Forest Friends) toddler English video — themed script, Codex CLI images, Kling CLI hook, ElevenLabs voices, sbv.py render, covers and publishing pack — with a quality gate and self-fix at every stage, in the fixed series style.
 ---
 
 # 栗栗学英语 · 森林小伙伴 · 幼儿英语启蒙动态绘本
 
 用户（Haoo）在做面向 3–6 岁（主打 3 岁左右）的原创英语启蒙绘本短视频，竖版发抖音（主）、小红书（辅）、视频号。商业路线是：短视频 → 粉丝群 → 卖电子绘本 / 打印包。
 
-这份 skill 记录每一集从剧本到发布的固定做法。第 1 集《Nutty's Big Acorn》（2026-10-21，全程可灵）2 秒跳出率 66.7%、完播率 1.6%，所以从 2026-10-22 起改成**混合方案**：开头 5 秒可灵钩子 + 其余页面用 `sbv.py` 做动态绘本。下文以混合方案为准。
+这份 skill 记录每一集从剧本到发布的固定做法。**最终产物是能直接发布的成品包**（第 8 节），不是样片或半成品：用户确认剧本之后，Claude 一路做完，每一步过质检关口（第 9 节），不合格自己修，只把成品和极少数只有用户能做的事交给用户。第 1 集《Nutty's Big Acorn》（2026-10-21，全程可灵）2 秒跳出率 66.7%、完播率 1.6%，所以从 2026-10-22 起改成**混合方案**：开头 5 秒可灵钩子 + 其余页面用 `sbv.py` 做动态绘本。下文以混合方案为准。
 
 全程用简体中文跟用户沟通，说大白话，给能直接复制的命令，一次只给要做的那几步。
 
@@ -40,7 +40,7 @@ description: Make one episode of the 栗栗学英语 (Forest Friends) toddler En
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
 | 画风 | 水彩 + 水粉绘本插画，手绘笔触，纸纹，暖光，复古童书感 |
 | 结构 | [可选 0.4 秒静止封面] → 可灵钩子 5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 → 片尾卡 3.5 秒（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒） |
-| 每集两版 | 推荐流精华版：`--max-pages 3`，约 20–40 秒，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
+| 每集两版 | 推荐流精华版：`--max-pages 4`，约 20–35 秒，停在悬念上，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
 | 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。旁白慢速温暖，角色音高拉开 |
 | 字幕 | 中英双语，奶油色圆角底板。英文在上 70px、按角色上色；中文在下 42px、棕灰色；当前词浅橙高亮底 #FFDD9E。中心 y=1640，被抖音底部文案挡住就上调到约 1450（`style.subtitle_center`） |
 | 字体 | 英文 Fredoka SemiBold；中文 Noto Sans CJK SC（ttc index 2）。Mac 上没装时 sbv.py 自动换 Arial Rounded / 苹方 |
@@ -55,38 +55,37 @@ description: Make one episode of the 栗栗学英语 (Forest Friends) toddler En
 
 系列徽章的文字以 `docs/brand.md` 为准。仓库示例里还是旧名 "Forest Friends English · 森林小伙伴英语"；用户还没定新徽章文字前，照旧用它，并在交付时提醒一句。
 
-## 3. 两种片型
+## 3. 每集都要有一个主题（2026-10-26 用户定的硬要求）
 
-### 3.1 认知小绘本（M1 主力，依据：对标账号最火的是"切蔬菜"这类认知内容）
+用户原话："你做的是视频，要有一个主题，不是纯互动，要么教一个词和派生词，串成一个剧本，要么就是教一个道理。" 所以**不再做"一页一问一答"的认知卡片**。两个合集都按同一种写法，区别只在主题：
 
-- 一个主题一集：水果、数数、颜色、身体部位、天气、动物、食物……
-- 可灵钩子 5 秒 + 6 页（`p01.png`…`p06.png`），每页一个词，一张图一个主角动作。完整版约 40 秒，`--max-pages 3` 精华版约 20 秒。
-- 固定页序：
-  1. 钩子（可灵 5 秒）：最抓眼的画面，比如栗栗咬一口超大苹果。旁白一句问题："What does Nutty have?"
-  2. 第 1–5 页，每页三拍：**旁白提问 → 停约 1 秒等宝宝抢答（在提问句上加 `"gap": 1.2`，`gap` 是这句说完后的停顿）→ 角色回答**。同一个句型重复，例如 `What is it?` → `It's a red apple! I like apples!`。颜色、数数穿插进去。
-  3. 第 6 页复习：几样东西同框一起念一遍，再向屏幕前的宝宝提问（比如 `What do you like?`），最后旁白 `The end. Bye-bye!`
-- 每集 3 个"今日单词"（封面、评论区置顶、发布文案都用这 3 个）；如果一集超过 3 个词，挑最重要的 3 个当今日单词。
+- **认知小绘本**：一个主线词或一组词（水果、数数、颜色、天气……）放进一件小事里。例：c01 栗栗越吃越饿 → 吃成球滚下山（hungry / full）；c03 Hazel 滚进落叶堆变成彩色"树叶怪"（颜色）。
+- **森林故事**：一个道理（求助、分享、打喷嚏捂嘴、排队……），用一个主线词讲出来。例：s02 用 help 讲"遇到困难要开口"。
+- 最好两者合一：一个道理，靠一个主线词讲出来；主线词全片出现 5 次以上，带上它的变化（help me / I can help / helper）。
 
-### 3.2 森林故事（剧情片，对照组）
+**固定结构**：可灵钩子 5 秒 → 8 页动态绘本（`p01.png`…`p08.png`）→ 片尾 3.5 秒。完整版约 40–55 秒；`--max-pages 4` 出 20–35 秒的推荐流精华版，**停在悬念上**（例："Hazel 喊出 Help，谁会来帮他？"）。
 
-- 起承转合四段，8–12 页（混合方案下不再做 17–19 个镜头），每页 4–6 秒。
-  - 起：认识主角，出现想要的东西或遇到问题。
-  - 承：主角做了不太对的选择（独占、害怕、偷懒），连续吃瘪。
-  - 转：看到朋友或明白道理，改变主意。
-  - 合：大家一起解决，温暖收尾。最后一句由主角对镜头说寓意，再接旁白 `The end. Bye-bye!`。
-- 需要角色真的动起来的高潮页，可以再出一个 5 秒可灵片段（kling02），每集最多两个。**sbv.py 目前还不支持把视频片段当某一页插入**，要用的话先补这个功能，或者把高潮动作直接放进钩子。
+- 起（p01–p02）：主角遇到问题或想要一样东西。
+- 承（p02–p04）：自己搞不定、出糗，笑点最密。
+- 转（p04–p06）：换个做法，或朋友来了。
+- 合（p06–p08）：解决，大家一起笑；最后一页主角对镜头说一句寓意，再接旁白 `The end. Bye-bye!`。
+
+每集 3 个"今日单词"（封面、评论区置顶、发布文案都用这 3 个）。对标依据见仓库 `docs/benchmark-story-2026-10.md`（小猪佩奇 Muddy Puddles、Little Blue Truck、Dear Zoo、鸽子系列、嘟嘟英语绘本馆）。
+
+需要角色真的动起来的高潮页，可以再出一个 5 秒可灵片段（kling02），每集最多两个。**sbv.py 目前还不支持把视频片段当某一页插入**，要用的话先补这个功能，或者把高潮动作直接放进钩子。
 
 ## 4. 写剧本
 
-**英文台词**（用户明确要求，最重要）：
+**英文台词**（用户明确要求，最重要；观众按 **2–3 岁** 写）：
 
-- 每句都是**简单完整的英文短句，3–8 个词**。不要只有一两个词的碎片（"Mine!" "Ouch!" 太简单），也不要长句。
-- 只用幼儿高频词。每集重复 2–3 个句型，比如 It's… / I have… / I like… / Let's… / I can…。
-- 穿插颜色（red berries, orange carrot）、数数（One, two, three!）和拟声词。
-- 核心句至少出现两次。
-- 例子：`Wow! Look at this big, big acorn!` `It's mine! Mine, mine, mine!` `Ouch! It's too hard for my teeth!` `Come in, friends! Let's share!` `I have an orange carrot!` `Sharing is fun! Let's share with friends!`
+- 全片 **11–13 句**，每句 **3–5 个词**，每页最多两句。宁可少，不要多。
+- 是简单完整的短句，不要一两个词的碎片（"Mine!" 太单薄），也不要长句。
+- 只用幼儿高频词。每集重复 1–2 个句型，比如 `Help me, please!` / `I can help!`。叫声、数数这种重复的词只重复两三遍。
+- 例子：`My red ball! It's stuck!` `Help! Help me, please!` `I can help, too!` `One, two, three... push!` `I am full! No more!`
 
-**童趣**：每 10 秒左右一个看画面就懂的小笑点：摔进落叶堆、东西大得藏不住、卡门口 POP 一声挤进去、咬到牙、肚子咕噜叫、吓得躲起来、吃撑睡着打呼噜。不要靠语言理解的梗，三岁孩子听不懂。
+**互动长在剧情里**：每集一处让宝宝喊出来、找出来、做出来的时刻，比如替害羞的 Hazel 喊 "Help!"、在画里找偷胡萝卜的栗栗、一起捂嘴。在旁白那句加 `"gap": 1.5` 留出时间。不要单独做"旁白提问 → 等抢答 → 回答"的循环。
+
+**童趣**（用户每集都会问）：每 2–3 页一个**看画面就懂**的笑点，最好一集有一个能让孩子笑出声的反转。好用的：摔进泥里 / 落叶堆、东西大得抱不住、吃成球滚下山、刺"嘭"地全炸开、喷嚏把朋友吹飞、耳朵当伞被风吹走、角色故意说错让宝宝纠正。不要靠语言理解的梗。写完在 script.md 概要里单列一行"童趣"，逐条写出来。
 
 **钩子大字标题**（写给家长看，不是给孩子）：一句话说清"孩子能得到什么"或戳中家长场景，12 字以内。例："3岁宝宝认水果，跟栗栗说英文""孩子不肯分享？今晚讲这个"。副标题固定类似"3岁英语启蒙 · 中英字幕"。每 5 集一批，只改一个变量时，钩子标题就是最常改的那个。
 
@@ -139,7 +138,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 ```
 
 - 已有的图跳过；某张图的提示词在 script.md 里改了，再跑一遍会**只重出那一张**。`--force` 全部重出。
-- 一张约 1.5–3 分钟。24 张 3 并行约 15–20 分钟，放后台跑，跑完再汇报。
+- 网络好时一张约 1.5–3 分钟；用户家里连 OpenAI 常断（Broken pipe），实测 10 张要 1 小时以上。按这个估时间，放后台跑，跑完再汇报。
 - 日志在集目录的 `.codex_images.log`。
 - 出完抽几张缩小拼图看一遍（角色像不像参考图、下方四分之一有没有脸、有没有乱入文字），不行的用 `--only … --force` 重出，再把结果拼图发给用户挑。
 
@@ -149,6 +148,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - `-i` 后面能跟多个文件，会把提示词也吞掉，导致报 "No prompt provided"。脚本已改成提示词从 stdin 传（参数写 `-`）。
 - 网络抖动时 Codex 出完图还会一直重连、不退出。脚本已改成看到图落盘就结束进程。
 - 用户 `~/.codex/config.toml` 里的 MCP 服务会报 403 / AuthRequired，是噪音，不影响出图。
+- （2026-10-26）多角色图连续失败：三张 2.6MB 参考图一起上传，网络一抖就断。脚本已改成先缩成 768px JPEG 再传。第一轮失败的图用 `-j 2` 重跑。
 
 ### 5.4 可灵钩子
 
@@ -156,7 +156,8 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
 - 提示词用中文，末尾统一加"水彩绘本插画风格，保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
-- 可灵目前还是用户手动做：把每集的 `kling_first.png`、`p01.png` 和 script.md 里的可灵提示词交给用户，导出的视频命名 `kling01.mp4` 放回集目录。用户想让 Claude 直接调可灵，只能在 claude.ai 把可灵的远程 MCP 加成自定义连接器（Customize > Connectors > "+ Add" > "Add custom connector"）。
+- **2026-10-26 起用户 Mac 上装了可灵 CLI**，由 Claude 直接调，不再让用户手动做。用法以 CLI 的 `--help` 为准；跑通后把实际命令补进这里。用户已登录就直接用，没登录就停下告诉用户，**不读、不打印 key**。
+- 每集最多生成 3 次（约 120–360 灵感值）。超过 3 次还不合格，停下来跟用户说。
 - **sbv.py 在 `hook.clip` 文件不存在时会报错停下**。可灵还没做好又想先看样片，就临时把 story.json 的 `hook` 删掉。
 
 ## 6. 写 story.json
@@ -197,7 +198,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 可选：`cover`（钩子前 0.4 秒静止封面帧，可以直接用脚本出的 `cover.png`）、`cut`、`hold`、`zoom`、`parallax`（2.5D 视差，需深度模型）、`fx`（glow / snow / motes，坐标按图标注）。
 - 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）。
 - 背景音乐没有时（音乐接口要付费档）：`python3 tools/storybook-video/make_bgm.py assets/bgm/bgm_play.wav 60` 先顶上。
-- 写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验，再数一遍每句英文是 3–8 个词。
+- 写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验，再数一遍每句英文是 3–5 个词、全片 11–13 句。
 
 ## 7. 配音与渲染（在用户 Mac 上跑）
 
@@ -212,9 +213,10 @@ python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --cast ..
 每集出片：
 
 ```bash
-cd ~/code/little-circle/tools/storybook-video && source .venv/bin/activate
+cd ~/code/little-circle/tools/storybook-video && source .venv/bin/activate   # .venv 用 /usr/bin/python3（3.9）建；终端里的 python3 是 Anaconda 3.7，太旧
+export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH        # 这台 Intel Mac 上 brew 装不了 ffmpeg，用 conda 环境里的（带 loudnorm，不带 rubberband）
 python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01               # 完整版
-python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --max-pages 3 # 推荐流精华版
+python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --max-pages 4 # 推荐流精华版
 open ../../out/c01
 ```
 
@@ -223,25 +225,44 @@ open ../../out/c01
 - 渲染耗时约等于片长 2 倍。长任务开始前说一句在做什么，完成后再汇报，不刷屏。
 - `sbv.py` 的 ElevenLabs 代码在 HANDOFF 里标着"还没用真实 key 跑过"时，先用 `example/voice_test.json` 跑一句验证，报错先修脚本。
 
-## 8. 确认后自动跑完（用户的目标）
+## 8. 确认剧本后一路做到成品（用户的目标）
 
-用户确认了剧本和提示词，就由 Claude 在用户 Mac 上一口气跑完，中间不再找用户，只在两处停：**可灵钩子**（用户手动做）和**交付前手机终检**。
+用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**。确认之前只改文字，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
 
-1. 确认关口：用户说"剧本 / 提示词确认"之前，只改文字，不出图、不渲染。
-2. 出图：`python3 codex_images.py ../../episodes/<集> [<集>…] -j 3`，放后台。跑完拼一张缩略图自检，不合格的单张重出。
-3. 把缩略拼图发给用户看一眼，同时把每集的 `kling_first.png`、`p01.png`、可灵提示词交给用户做 `kling01.mp4`。
-4. 用户说图可以、`kling01.mp4` 放进目录后，渲染完整版和精华版（第 7 节），跑第 9 节的检查。
-5. 交付：mp4 + 发布文案 + 封面图，记 `tracking/videos.csv`，更新 `HANDOFF.md` 和第 11 节剧集表，提交推送（图片可以提交，音频和 `out/` 不提交）。
+1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。
+2. 可灵钩子：用可灵 CLI 出 `kling01.mp4`（第 5.4 节）。
+3. 渲染：完整版和精华版，用正式的 `story.json`。
+4. 封面：用附录 A 的 `make_cover` 出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章文字用"栗栗学英语"。
+5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
+6. 收尾：脚本修复提交推送；`tracking/videos.csv` 加一行（状态"待发布"、工时、现金成本）；更新 `HANDOFF.md` 和第 11 节剧集表；`open out/<集>`。
 
-## 9. 交付前检查（每集必做）
+**成品包（交付清单）**，都在 `out/<集>/`：
 
-1. 格式：`ffprobe -v error -show_entries stream=width,height,r_frame_rate -of compact out/c01/xxx.mp4` → 1080×1920、30fps。
-2. 响度：`ffmpeg -nostats -i out/c01/xxx.mp4 -af ebur128=peak=true -f null - 2>&1 | grep -E "I:|Peak:"` → I ≈ -16，Peak ≤ -1.5。
-3. 第 1 帧：必须是带完整大字标题的钩子画面（或封面帧），不能是黑场。
-4. 抽帧看一遍：字幕没盖住角色的脸，大字没挡住主体，没有黑边。
-5. 逐句听（对照 `docs/elevenlabs-workflow.md` 第 3 节）：四个角色分得清、没读错、旁白够慢、高亮和发音对得上（抽查 3 句）。
-6. **手机终检**（请用户做）：前 2 秒、字幕有没有被抖音底部的作者名和文案挡住、睡前小音量下能不能听清。
-7. 交付时说清 3–5 个要点（素材是哪来的、配音用的哪档、可以替换的地方），不逐步复述过程。
+| 文件 | 用途 |
+|---|---|
+| `<name>.mp4` | 完整版，进合集 |
+| `<name>_feed.mp4`（或 sbv 的精华版命名） | 推荐流精华版 |
+| `cover_9x16.jpg`、`cover_3x4.jpg` | 抖音封面、小红书封面 |
+| `publish.txt` | 标题、正文、话题、置顶评论 |
+| `xhs/` | 小红书图文 6–9 页 |
+| `<name>.srt`、`<name>_print.pdf` | 字幕、打印小绘本（付费包素材） |
+| `qc/` | 每一步的质检总览图和报告 |
+
+交付时只讲：成品在哪、每项质检结果、自己修了什么、花了多少（可灵次数、配音字符）、还剩什么只有用户能做（手机终检、点发布）。
+
+## 9. 每个环节的质量把控（不合格自己修，修完重检）
+
+| 环节 | 检查什么 | 合格线 | 不合格怎么修 |
+|---|---|---|---|
+| 剧本 | 主题、结构、台词、童趣、互动 | 有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
+| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下方四分之一没有脸；没有文字和水印；没有多余肢体 | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
+| 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
+| 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
+| 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
+| 封面 | 两张封面图 | 标题不压脸；今日单词三个都在；徽章是"栗栗学英语" | 换 key_art 裁切位置，或重出 `cover.png` |
+| 发布包 | publish.txt | 没有微信号、二维码、网址（谐音也不行）；带 AI 声明；话题里有"英语启蒙""英文绘本" | 改文案 |
+
+**只有用户能做的**：手机终检（前 2 秒、字幕有没有被抖音底部文案挡住、睡前小音量能不能听清），以及点发布、勾 AI 声明。
 
 ## 10. 发布与数据
 
@@ -301,7 +322,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-26 剧本好了，等确认后出图 |
+| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-26 图和样片好了，正在按第 8 节做成品（第一次用可灵 CLI） |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
