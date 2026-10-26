@@ -14,6 +14,6 @@
   },
   "bun": {
     "provider": "elevenlabs", "voice": "Pjk17S5HHrvLvoCHM2lJ", "model": "eleven_multilingual_v2",
-    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.9}
+    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.8}
   }
 }

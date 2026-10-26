@@ -80,6 +80,9 @@ curl -L -o fonts/Fredoka.ttf "https://raw.githubusercontent.com/google/fonts/mai
 - 每句的 `audio`：直接用你录好的音频（比如 ElevenLabs 导出的），不走合成。
 - 每句的 `say`：给配音用的文本，可以带 v3 语气标签，例如 `[excited] Wow!`；字幕仍然显示 `en`。
 - 每句的 `take`：想重录某一句时改成 2、3……，只重新生成这一句。
+- 每句的 `gain`：这句配音的音量倍数（默认 1.0），"小声说""说悄悄话"写 0.4。
+- 成片质检：`python qa.py <story.json> <mp4> --dur 40 55 [--max-pages N]`，查格式、响度、第 0 帧、每页总览图、Whisper 发音对照、角色基频语速、字幕对齐、时长（要先 `pip install faster-whisper`）。
+- 封面：`python brand.py <story.json> --ep 2 --words help=帮忙 push=推 ball=球 --out <目录>`，出 9:16 和 3:4 两张。
 - `cast` 可以写成路径字符串，例如 `"cast": "../../series/cast.json"`，整个系列共用一份角色音色表。
 - 命令行 `--cast <路径>` 可以临时换一份角色表，比如订阅 ElevenLabs 之前用 `--cast ../../series/cast_kokoro.json` 出样片。
 

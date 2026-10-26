@@ -90,13 +90,14 @@
         {
           "speaker": "hazel",
           "en": "Help... help me, please.",
-          "zh": "帮帮……帮帮我吧。"
+          "zh": "帮帮……帮帮我吧。",
+          "gain": 0.4
         },
         {
           "speaker": "narrator",
           "en": "Louder, Hazel! Say help!",
           "zh": "大声点，Hazel！喊 help！",
-          "gap": 1.5
+          "gap": 2.0
         }
       ]
     },
@@ -123,7 +124,7 @@
         },
         {
           "file": "../../assets/sfx/leaves.mp3",
-          "at": 0.4,
+          "at": 1.8,
           "gain": 0.4
         }
       ]
@@ -189,7 +190,7 @@
     {
       "image": "p08.png",
       "motion": "out",
-      "hold": 0.8,
+      "hold": 1.3,
       "lines": [
         {
           "speaker": "hazel",

@@ -59,8 +59,9 @@ DEFAULT_STYLE = {
 FONT_FALLBACKS = {
     "en": ["/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf",
            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"],
-    "zh": ["/System/Library/Fonts/PingFang.ttc",
-           "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    # (路径, ttc 索引)：冬青黑体 index 0 是最细的 W3，大字标题要用 index 2 的 W6
+    "zh": [("/System/Library/Fonts/PingFang.ttc", 0),
+           ("/System/Library/Fonts/Hiragino Sans GB.ttc", 2),
            "/System/Library/Fonts/STHeiti Medium.ttc",
            "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"],
 }
@@ -113,8 +114,9 @@ class Fonts:
             cands.append(p if os.path.isabs(p) else os.path.join(self.base, p))
             cands.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), p))
         for path in cands + FONT_FALLBACKS[kind]:
+            path, fb_index = path if isinstance(path, tuple) else (path, 0)
             if os.path.exists(path):
-                f = ImageFont.truetype(path, size, index=s.get("index", 0) if path in cands else 0)
+                f = ImageFont.truetype(path, size, index=s.get("index", 0) if path in cands else fb_index)
                 v = variation or s.get("variation")
                 if v and path in cands:
                     try:
@@ -865,7 +867,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         seg = PageSeg(page, i, lines, ctx, base)
         add(seg)
         for ln in lines:
-            placements.append((ln["wav"], seg.start + ln["start"], 1.0))
+            # gain：单句音量，比如"小声说"的句子写 0.4
+            placements.append((ln["wav"], seg.start + ln["start"], ln.get("gain", 1.0)))
             srt.append((seg.start + ln["start"] - 0.1, seg.start + ln["end"] + 0.4, ln["en"], ln.get("zh", "")))
         for sx in page.get("sfx", []):
             placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
@@ -905,13 +908,21 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
 
     # 画面：逐帧渲染，管道送给 ffmpeg；音频做 -16 LUFS 响度标准化
     loud = cfg.get("loudness", {"I": -16, "TP": -1.5})
+    # 两遍 loudnorm：先测混音的实际响度，再按实测值线性校正；单遍动态模式实测会低 1 LU 左右
+    meas = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af",
+                           f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11:print_format=json",
+                           "-f", "null", "-"], check=True, capture_output=True, text=True).stderr
+    m = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
+    af = (f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11:measured_I={m['input_i']}:"
+          f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
+          f"offset={m['target_offset']}:linear=true,aresample={SR}")
     name = cfg.get("output_name", "storybook") + ("_feed" if truncated else "")
     mp4 = os.path.join(out_dir, f"{name}.mp4")
     enc = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-i", wav, "-map", "0:v", "-map", "1:a",
          "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-         "-af", f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11,aresample={SR}",
+         "-af", af,
          "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-shortest", "-movflags", "+faststart", mp4],
         stdin=subprocess.PIPE)
     n_frames = int(round(total * FPS))

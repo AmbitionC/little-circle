@@ -53,7 +53,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 更新 | 每周二、四、六 19:00 |
 | 成本 | 单条现金 ≤20 元（可灵每集约 120 灵感值，最多 2 个片段）；出图走用户 ChatGPT 订阅额度，不另花钱；第 3 周起单条制作 ≤3 小时；当月总现金 ≤300 元 |
 
-系列徽章的文字以 `docs/brand.md` 为准。仓库示例里还是旧名 "Forest Friends English · 森林小伙伴英语"；用户还没定新徽章文字前，照旧用它，并在交付时提醒一句。
+系列徽章文字用 **「栗栗学英语」**（2026-10-27 定）：视频角标写 `"badge_text": "栗栗学英语 · 森林故事"`（或 `· 认知小绘本`），封面徽章由 `brand.py` 画。仓库示例里的旧名 "Forest Friends English · 森林小伙伴英语" 不再用。
 
 ## 3. 每集都要有一个主题（2026-10-26 用户定的硬要求）
 
@@ -157,8 +157,12 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 提示词用中文，末尾统一加"水彩绘本插画风格，保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
 - **2026-10-26 起用户 Mac 上装了可灵 CLI**，由 Claude 直接调，不再让用户手动做。用法以 CLI 的 `--help` 为准；跑通后把实际命令补进这里。用户已登录就直接用，没登录就停下告诉用户，**不读、不打印 key**。
+  - 找法：`which`，再查 nvm 各版本的全局 npm 包、pnpm、`pipx list`、`uv tool list`、`brew list`、conda 环境、`~/.local/bin`，以及登录 shell 的 PATH（`zsh -lic`）。2026-10-27 这些都查过，**没找到**，只在 Edge Beta 里登录过网页版。找不到就停在这一步告诉用户，其他环节照做。
 - 每集最多生成 3 次（约 120–360 灵感值）。超过 3 次还不合格，停下来跟用户说。
-- **sbv.py 在 `hook.clip` 文件不存在时会报错停下**。可灵还没做好又想先看样片，就临时把 story.json 的 `hook` 删掉。
+- **sbv.py 在 `hook.clip` 文件不存在时会报错停下**。可灵还没做好时，用首帧图做一个 5 秒占位（`kling_first.png` 缓推 4 秒 + 叠化到 `p01.png` 1 秒），另存一份临时 story.json 把 `hook.clip` 指过去，先把其余质检做完；`kling01.mp4` 一到，用正式 story.json 重渲、重跑 `qa.py`。占位版不能发布。
+  ```bash
+  ffmpeg -y -loop 1 -t 5 -i kling_first.png -loop 1 -t 5 -i p01.png -filter_complex "[0]scale=2160:3840,zoompan=z='1+0.08*on/150':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=150:s=1080x1920:fps=30[a];[1]scale=1080:1920,fps=30[b];[a][b]xfade=transition=fade:duration=1:offset=4,format=yuv420p" -t 5 hook_placeholder.mp4
+  ```
 
 ## 6. 写 story.json
 
@@ -168,7 +172,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 {
   "output_name": "c01_fruits",
   "title_en": "Yummy Fruits", "title_zh": "好吃的水果",
-  "series": {"badge_text": "Forest Friends English · 森林小伙伴英语", "badge_alpha": 0.72},
+  "series": {"badge_text": "栗栗学英语 · 认知小绘本", "badge_alpha": 0.72},
   "style": {"speaker_colors": {"narrator": [74,52,38], "nutty": [178,78,22], "hazel": [160,104,0], "bun": [172,56,44]}},
   "cast": "../../series/cast.json",
   "hook": {"clip": "kling01.mp4", "max_seconds": 5,
@@ -195,6 +199,8 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - `say` 是送去配音的文本，字幕只显示 `en`。**sbv.py 会把 `say` 原样发给配音引擎，不会剥掉方括号标签。** 所以 `[excited]` 这类语气标签只能用在 `cast.json` 里 `model` 是 `eleven_v3` 的角色上；现在 cast.json 是 `eleven_multilingual_v2`，Kokoro 样片也一样，加了标签会被念出来或读怪。没用 v3 时，语气靠标点（! ? …）和 `cast.json` 的 stability / style 调。用 v3 时如果不返回时间戳，脚本会退回普通接口、高亮按能量估算。
 - `gap` 是这句之后的停顿（默认 0.4 秒），`hold` 是整页说完后多停几秒。
 - 某句要重录：加 `"take": 2`，其他句子不动。
+- 某句要小声（害羞、说悄悄话）：加 `"gain": 0.4`，只降这句的音量。multilingual_v2 不认语气标签，光靠标点做不出"小声"（s02 第 3 页实测和大喊一样响）。
+- 音效别和台词第一个词撞在一起：页面 `lead` 默认 0.5 秒开口，音效放在 0.3 秒前结束，或放到这句说完之后（s02 第 4 页树叶声原来盖住了 "Help!"）。
 - 可选：`cover`（钩子前 0.4 秒静止封面帧，可以直接用脚本出的 `cover.png`）、`cut`、`hold`、`zoom`、`parallax`（2.5D 视差，需深度模型）、`fx`（glow / snow / motes，坐标按图标注）。
 - 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）。
 - 背景音乐没有时（音乐接口要付费档）：`python3 tools/storybook-video/make_bgm.py assets/bgm/bgm_play.wav 60` 先顶上。
@@ -232,7 +238,7 @@ open ../../out/c01
 1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。
 2. 可灵钩子：用可灵 CLI 出 `kling01.mp4`（第 5.4 节）。
 3. 渲染：完整版和精华版，用正式的 `story.json`。
-4. 封面：用附录 A 的 `make_cover` 出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章文字用"栗栗学英语"。
+4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
 6. 收尾：脚本修复提交推送；`tracking/videos.csv` 加一行（状态"待发布"、工时、现金成本）；更新 `HANDOFF.md` 和第 11 节剧集表；`open out/<集>`。
 
@@ -242,11 +248,11 @@ open ../../out/c01
 |---|---|
 | `<name>.mp4` | 完整版，进合集 |
 | `<name>_feed.mp4`（或 sbv 的精华版命名） | 推荐流精华版 |
-| `cover_9x16.jpg`、`cover_3x4.jpg` | 抖音封面、小红书封面 |
+| `<name>_cover_9x16.jpg`、`<name>_cover_3x4.jpg` | 抖音封面、小红书封面 |
 | `publish.txt` | 标题、正文、话题、置顶评论 |
 | `xhs/` | 小红书图文 6–9 页 |
 | `<name>.srt`、`<name>_print.pdf` | 字幕、打印小绘本（付费包素材） |
-| `qc/` | 每一步的质检总览图和报告 |
+| `<name>_sheet.jpg`、`<name>_frame0.jpg` | 质检留底：每页 2 帧总览、第 0 帧（`qa.py` 生成） |
 
 交付时只讲：成品在哪、每项质检结果、自己修了什么、花了多少（可灵次数、配音字符）、还剩什么只有用户能做（手机终检、点发布）。
 
@@ -261,6 +267,15 @@ open ../../out/c01
 | 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
 | 封面 | 两张封面图 | 标题不压脸；今日单词三个都在；徽章是"栗栗学英语" | 换 key_art 裁切位置，或重出 `cover.png` |
 | 发布包 | publish.txt | 没有微信号、二维码、网址（谐音也不行）；带 AI 声明；话题里有"英语启蒙""英文绘本" | 改文案 |
+
+配音和渲染两关用一条命令跑完（在 `tools/storybook-video` 下，ffmpeg 要在 PATH 里，第一次先 `.venv/bin/pip install faster-whisper`）：
+
+```bash
+.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>.mp4 --dur 40 55
+.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>_feed.mp4 --dur 20 35 --max-pages 4
+```
+
+最后一行写"全部通过"才算过。它查格式、响度、第 0 帧不黑、黑边、Whisper 逐句对照（相似度 ≥0.75）、字幕 0.6 秒内有人声、Hazel 和 Bun 的基频语速、时长；总览图和第 0 帧还要用眼睛看一遍（挡脸只能人看）。另外要听的：剧本里写了"小声""大喊"的句子，音量真的有差别。
 
 **只有用户能做的**：手机终检（前 2 秒、字幕有没有被抖音底部文案挡住、睡前小音量能不能听清），以及点发布、勾 AI 声明。
 
@@ -322,11 +337,13 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-26 图和样片好了，正在按第 8 节做成品（第一次用可灵 CLI） |
+| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子（本机没找到可灵 CLI）；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
 ## 附录 A：brand.py（封面图和片尾卡图的独立绘制代码）
+
+> 2026-10-27：封面已做成可直接跑的 `tools/storybook-video/brand.py`（徽章改成「栗栗学英语」，字体自动找本机的），优先用它。下面的旧代码只留作参考，徽章还是旧名。
 
 sbv.py 已内置字幕卡、角标和片尾卡。下面这份用于另外出**封面图**（9:16 视频封面 + 3:4 小红书封面 1080×1440，`make_cover(key_art, ep, title_en, title_zh, words, size)`，`key_art` 用集目录里的 `cover.png`）和带角色合影的**片尾卡图**（`make_end_card`，出图后填进 story.json 的 `ending.image`）。字体路径按本机改。
 
