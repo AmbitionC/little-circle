@@ -27,7 +27,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 - 发布时勾选"内容由 AI 生成"声明。孩子不出镜。
 - **ElevenLabs 免费档生成的音频不能商用。** 要发布的配音、音效、音乐必须在付费订阅期间生成；订阅后先删 `out/.cache`，音效、音乐用 `el_prep.py sfx --force`、`bgm --force` 重做。
 - 订阅、付款、充值灵感值都由用户自己操作。批量花积分前先跟用户确认。
-- 能力边界：**绘本页图片由 Claude 在用户 Mac 上调本机 Codex CLI 出**（第 5 节），不用再让用户手动出图；可灵钩子视频还是用户在可灵里做（除非接了可灵 MCP）。
+- 能力边界：**绘本页图片由 Claude 在用户 Mac 上调本机 Codex CLI 出**（第 5 节），可灵钩子由 Claude 调可灵 CLI 出（第 5.4 节），都不用用户手动做。可灵 CLI 找不到或没登录时，停在这一步告诉用户，其余环节照做。
 
 ## 2. 系列规范（每集不变）
 
