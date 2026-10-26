@@ -259,7 +259,7 @@ def synthesize(text, voice, cache_dir):
     a, b = max(0.0, s0 - 0.05), s1 + 0.12
     run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-ss", f"{a:.3f}", "-to", f"{b:.3f}", wav])
     os.remove(raw)
-    words = [{"w": x["w"], "s": x["s"] - a, "e": x["e"] - a} for x in words]
+    words = [{"w": x["w"], "s": max(0.0, x["s"] - a), "e": max(0.0, x["e"] - a)} for x in words]
     with open(meta, "w") as f:
         json.dump(words, f)
     return wav, words
