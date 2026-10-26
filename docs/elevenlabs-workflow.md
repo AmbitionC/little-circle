@@ -71,7 +71,7 @@ python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2
 |---|---|---|
 | 旁白 narrator | A warm, gentle female storyteller with a soft American accent, speaking slowly and clearly, smiling, calm and cozy, like reading a bedtime story. | Nutty finds a big, big acorn. Can he open it? |
 | 栗栗 Nutty（小松鼠） | A cheerful, high-pitched cartoon squirrel character, playful and bouncy, curious and excited, very clear American English, like the sidekick in an animated preschool show. | Wow! Look at this big, big acorn! It's mine! |
-| Hazel（小刺猬） | A sweet, gentle, slightly shy cartoon hedgehog girl, soft and warm, high-pitched, kind and polite, clear American English. | I am so hungry. Can I have some, please? |
+| Hazel（小刺猬） | A cute, honest cartoon hedgehog boy character, earnest and sincere, a little shy, soft warm tone, slightly high-pitched, kind and polite, clear American English. | I am so hungry. Can I have some, please? |
 | Bun（小兔子） | A soft, cuddly cartoon bunny boy, a little slow and shy, round gentle tone, clear pronunciation. | One, two, three! I have an orange carrot! |
 
 挑选时注意：

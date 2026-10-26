@@ -51,8 +51,8 @@ ROLES = {
     },
     "hazel": {
         "name": "Lili Hazel",
-        "description": "A sweet, gentle, slightly shy cartoon hedgehog girl, soft and warm, high-pitched, "
-                       "kind and polite, clear American English.",
+        "description": "A cute, honest cartoon hedgehog boy character, earnest and sincere, a little shy, "
+                       "soft warm tone, slightly high-pitched, kind and polite, clear American English.",
         "text": "Hello, I'm Hazel. I am so hungry. Can I have some, please? Thank you, Nutty! "
                 "You are so kind. Let's share it together, okay?",
     },
