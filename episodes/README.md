@@ -12,6 +12,7 @@
 | [c03](c03-colors/script.md) | Hazel's Colorful Spines 小刺猬的彩色背 | 认颜色 | red, yellow, blue | 第 1 周发 |
 | [c04](c04-body/script.md) | Touch Your Nose! 栗栗摸一摸 | 身体部位 | head, nose, hands | 第 2 周 |
 | [c05](c05-weather/script.md) | What's the Weather? 今天什么天气 | 天气 | sunny, rainy, windy | 第 2 周 |
+| [c06](c06-animals/script.md) | Who Says Moo? 谁在哞哞叫 | 动物和叫声（Hazel 主演） | cow, duck, sheep | 第 2 周（11-07）；10-26 写好，先拿它试跑全流程 |
 
 **统一格式**：可灵钩子 5 秒（第 1 帧就有给家长看的大字标题）→ 6 页动态绘本 → 片尾 3.5 秒。
 前 5 页每页一个词：旁白提问，停 1 秒多让宝宝抢答，角色再说答案；第 6 页复习，并向屏幕前的宝宝提一个问题，方便评论区互动。
