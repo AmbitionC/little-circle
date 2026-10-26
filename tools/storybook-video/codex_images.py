@@ -8,7 +8,7 @@
 已有的图跳过；script.md 里某张图的提示词改了，会自动重出那一张。--force 全部重出，--only p02,p05 只出这几张。
 图会裁成 1080×1920 存进集目录，原图路径和提示词指纹记在 images.json。
 """
-import argparse, glob, hashlib, json, os, re, subprocess, sys, threading, time
+import argparse, glob, hashlib, json, os, re, subprocess, sys, tempfile, threading, time
 from concurrent.futures import ThreadPoolExecutor
 from PIL import Image, ImageFilter
 
@@ -53,6 +53,18 @@ def fingerprint(prompt, refs):
     return h.hexdigest()[:12]
 
 
+def small_ref(path):
+    """参考图缩成 768px 的 JPEG 再上传：三张 2.6MB 的 PNG 一起传，网络一抖就断（Broken pipe）。"""
+    dst = os.path.join(tempfile.gettempdir(), "codex_refs",
+                       f"{os.path.splitext(os.path.basename(path))[0]}_{int(os.path.getmtime(path))}.jpg")
+    if not os.path.exists(dst):
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        img = Image.open(path).convert("RGB")
+        img.thumbnail((768, 768), Image.LANCZOS)
+        img.save(dst, quality=88)
+    return dst
+
+
 def codex_generate(prompt, refs, log):
     """跑一次 codex exec，返回生成的原图路径。"""
     ask = ("Use your built-in image_gen tool exactly once to generate ONE vertical portrait image "
@@ -65,7 +77,7 @@ def codex_generate(prompt, refs, log):
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
     for r in refs:
-        cmd += ["-i", r]
+        cmd += ["-i", small_ref(r)]
     cmd.append("-")  # 提示词走 stdin：-i 会吞掉后面的位置参数
     # 图一落盘就收工：网络抖动时 codex 会在出图后继续重连很久
     with open(log, "a", encoding="utf-8") as f:
