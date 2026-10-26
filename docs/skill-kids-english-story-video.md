@@ -303,7 +303,7 @@ Let's share! 我们一起分享吧！
 | c01 | 认知小绘本 | Nutty's Fruit Basket | 栗栗的水果篮 | 水果 | apple, banana, orange | Look! What is this? / It's a/an … | 2026-10-24 剧本好了，Codex 出图中 |
 | c02–c03 | 认知小绘本 | c02-carrots Bun 数胡萝卜、c03-colors Hazel 认颜色 | | | 以各目录 script.md 为准 | | 2026-10-24 剧本好了，Codex 出图中 |
 | c04–c05 | 认知小绘本 | c04-body 身体部位、c05-weather 天气 | | | 以各目录 script.md 为准 | | 2026-10-24 剧本好了，还没出图 |
-| c06 | 认知小绘本 | Who Says Moo? | 谁在哞哞叫 | 动物和叫声（Hazel 主演） | cow, duck, sheep | Listen! Who says …? / It's a …! | 2026-10-26 剧本好了，等确认后出图 |
+| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-26 剧本好了，等确认后出图 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
