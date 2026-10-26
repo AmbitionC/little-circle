@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-24 晚（定了走 Starter，加了配音自检；首批 5 条认知短片已写好）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-26（Starter 已订阅，四个角色音色定了，配音验证通过；Hazel 改成刺猬小男孩）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -8,9 +8,11 @@
 M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-22。
 
 - 三个平台已统一改名「栗栗学英语」。
-- ElevenLabs 已注册（**目前是免费档**），API key 已配到用户 Mac 的 `~/.zshrc`。
-- 音效库已生成，但用的是免费档，不能商用，订阅后要重做。
-- **选角和背景音乐卡在付费档**，等用户订阅 Starter。
+- ElevenLabs **已订阅 Starter**（10-25），API key 在用户 Mac 的 `~/.zshrc`。记得把 key 的额度上限改成 20000。
+- 音效 14 个、背景音乐 3 首都已用付费档重做（10-25），可以商用，在用户 Mac 的 `assets/` 下。音乐接口在 Starter 下能用。
+- 四个角色的音色都定了，已写进 `series/cast.json`（10-26）：旁白、Nutty、Bun 用的是 3 号候选，Hazel 用的是男孩声音那轮的 6 号。
+- **Hazel 改成了老实可爱的刺猬小男孩**（10-26，用户定的）：穿黄色小背带裤，剧本里用 he/his。参考图 `series/refs/hazel.png` 和 c03 的 8 张图已经重出；c04 还没出图，提示词已经改好。
+- 配音验证通过（10-26，`example/voice_test.json`）：响度 −15.8 LUFS，真峰值 −4.4 dBFS，1080×1920、30fps，逐词高亮能对上。
 
 ## 2. 已完成的东西在哪
 
@@ -50,42 +52,17 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 
 ## 4. 下一步（按顺序）
 
-1. **用户订阅 Starter**（约 5 美元/月）。付款由用户自己操作。2026-10-24 已定：旁白和角色配音走 ElevenLabs Starter，不换别的 TTS。
-   - 理由：免费档生成的音频一律不能商用，换成免费档默认音色也一样，绕开付费档只会多返工一遍。
-   - 备胎：Azure 语音免费档（每月 50 万字符、可商用、带逐词时间戳），但音色就是 edge-tts 那套，只在 ElevenLabs 用不了时再接。
-2. 订阅后，先在仓库根目录跑配音自检（用默认音色配一句，测通带时间戳的接口，花不到 100 字符）：
-   ```bash
-   python3 tools/storybook-video/el_prep.py tts
-   ```
-   看到「时间戳正常」再执行：
-   ```bash
-   python3 tools/storybook-video/el_prep.py all --force
-   ```
-   这一条会做三件事：重做可商用的音效；四个角色各生成 3 个候选音色，存到 `out/casting/`；生成 3 首背景音乐，存到 `assets/bgm/`。
-   如果 Starter 下音乐仍然报档位不够，先用 `make_bgm.py` 顶上，并记进文档。
-3. 用户执行 `open out/casting`，用小音量试听，再报编号。然后执行：
-   ```bash
-   python3 tools/storybook-video/el_prep.py pick narrator=? nutty=? hazel=? bun=?
-   ```
-   这一步会把 Voice ID 写进 `series/cast.json`，然后**提交推送**。
-   - 某个角色不满意：执行 `cast <角色>`，再出 3 个。
-   - 保存时提示自定义音色满了：用网页上默认音色的 ID，写成 `pick narrator=<ID>`。
-4. **配音验证**：先确认 `ffmpeg` 已装（`brew install ffmpeg`）。在 `tools/storybook-video` 目录下：
-   ```bash
-   python3 -m venv .venv && source .venv/bin/activate && pip install pillow numpy
-   python3 example/make_demo_assets.py        # 生成 example/p1.png 等演示图
-   python sbv.py example/voice_test.json --out out/
-   ```
-   对照 `docs/elevenlabs-workflow.md` 第 3 节检查：
-   - 四个角色的声音能分清；
-   - 字幕高亮和发音对得上（确认走的是带时间戳的接口）；
-   - 响度 -16 LUFS，峰值不超过 -1.5 dBFS；
-   - 画面 1080×1920、30fps。
-
-   字体：没装 Fredoka 时会自动换成 macOS 自带的 Arial Rounded；中文自动找苹方、冬青黑体、华文黑体。
+1. ~~订阅 Starter、选角、音效音乐、配音验证~~ ✅ 10-25～10-26 做完，见第 1 节。过程中踩过的坑：
+   - 选角描述里不能出现小孩、年龄这类字眼（例如 "to a three-year-old"），否则接口会返回 `blocked_generation`。
+   - 用户的 Mac 是 Intel 芯片、macOS 15，`brew install ffmpeg` 没有现成安装包。ffmpeg 6.0 已经用 conda-forge 装进 Anaconda 的单独环境 `sbv-ffmpeg`（带 libx264 和 loudnorm，不带 rubberband，ElevenLabs 这条路用不到）。跑 sbv.py 时，在命令前面加上：
+     ```bash
+     PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH
+     ```
+   - 终端里的 `python3` 是 Anaconda 的 3.7，版本太旧。`tools/storybook-video/.venv` 是用 `/usr/bin/python3`（3.9）建的，跑脚本要用 `.venv/bin/python`。
+   - 某个角色不满意时，执行 `el_prep.py cast <角色>` 再出 3 个，然后执行 `pick <角色>=<编号>`。只在换季的时候换音色。
 5. ~~写首批 5 条认知短片的剧本和 story.json~~ ✅ 10-24 写好，见 [episodes/README.md](episodes/README.md)。
    - 每集目录里的 `script.md` 有出图提示词（p01–p06 + 可灵首帧）和可灵提示词。**用户接下来要做的是出图**：每集 6 张图 + 1 个可灵钩子，先做 c01–c03。
-   - 订阅前可以用 `--cast ../../series/cast_kokoro.json` 出样片看节奏（c01 已用占位图试渲染，完整版 42.9 秒、精华版 25.2 秒，流程通）。
+   - 配音直接用 `series/cast.json`，也就是 ElevenLabs 那四个音色。
 6. 第 0 周剩下的事：
    - 建合集「认知小绘本」「森林故事」；
    - 确认本月预算：ElevenLabs Starter + 可灵 66 元 + 出图订阅，总共不超过 300 元。
