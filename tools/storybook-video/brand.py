@@ -126,10 +126,10 @@ def word_chip(en, zh_txt, scale=1.0):
     return im
 
 
-def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920)):
+def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y=0.55):
     cw, ch = size; k = max(cw/key_art.width, ch/key_art.height)
     art = key_art.convert('RGBA').resize((int(key_art.width*k), int(key_art.height*k)), Image.LANCZOS)
-    oy, ox = int((art.height-ch)*0.55), (art.width-cw)//2
+    oy, ox = int((art.height-ch)*crop_y), (art.width-cw)//2
     cv = art.crop((ox, oy, ox+cw, oy+ch)); s = cw/1080; tall = ch > cw*1.5
     top = int(ch*(0.40 if tall else 0.47))
     cv.alpha_composite(gradient(size, 235, 0, BRAND['cream'], int(top*0.45), top))
@@ -160,6 +160,7 @@ def main():
     ap.add_argument("--ep", type=int, required=True, help="集数（封面上的 EP.xx）")
     ap.add_argument("--words", nargs="+", required=True, help="今日单词，写成 help=帮忙")
     ap.add_argument("--key-art", help="默认用 story.json 同目录的 cover.png")
+    ap.add_argument("--crop-3x4", type=float, default=0.55, help="3:4 封面从原图哪里裁（0=顶部，1=底部），标题压脸时调")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     base = os.path.dirname(os.path.abspath(a.story))
@@ -169,9 +170,9 @@ def main():
     words = [w.split("=", 1) for w in a.words]
     os.makedirs(a.out, exist_ok=True)
     name = cfg.get("output_name", "storybook")
-    for size, tag in (((1080, 1920), "9x16"), ((1080, 1440), "3x4")):
+    for size, tag, crop_y in (((1080, 1920), "9x16", 0.55), ((1080, 1440), "3x4", a.crop_3x4)):
         p = os.path.join(a.out, f"{name}_cover_{tag}.jpg")
-        make_cover(art, a.ep, cfg["title_en"], cfg["title_zh"], words, size).save(p, quality=93)
+        make_cover(art, a.ep, cfg["title_en"], cfg["title_zh"], words, size, crop_y).save(p, quality=93)
         print(p)
 
 

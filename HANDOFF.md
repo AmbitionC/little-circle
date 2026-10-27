@@ -91,7 +91,9 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
    - `s02_help.mp4` 完整版 40.5 秒、`s02_help_feed.mp4` 精华版 22.2 秒：1080×1920 30fps，-16.4 / -16.5 LUFS，峰值 -4.4；Whisper 逐句对照 12 句全对；字幕出现 0.6 秒内都有人声。**现在的钩子是占位版**（kling_first.png 缓推 + 叠化到 p01），不能发布。
    - `s02_help_cover_9x16.jpg`、`s02_help_cover_3x4.jpg`（`brand.py`，徽章「栗栗学英语」）；`publish.txt`；`xhs/`（3:4 封面 + p01–p08）；质检留底 `*_sheet.jpg`、`*_frame0.jpg`。
    - 这次修的：sbv.py 中文字体回退到冬青黑体最细的 W3 → 改用 W6；单遍 loudnorm 实测 -17.1 → 改两遍线性校正；新增逐句 `gain`；story.json 第 3 页小声求助 `gain 0.4`、互动停顿 2 秒、第 4 页树叶音效挪到喊完之后（原来盖住了 "Help!"）、末页 hold 1.3；cast.json Bun 的 speed 0.9 → 0.8（原来和 Hazel 基频只差 17 Hz，Bun 还比 Hazel 说得快，改后差 41 Hz）。
-   - **还差可灵钩子**：本机没找到可灵 CLI（PATH、npm/pnpm/pipx/uv/brew/conda 都查过）。CLI 装好或网页做好 `episodes/s02-help/kling01.mp4` 后，在 `tools/storybook-video` 下（先 `export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH`）：
+   - **10-27 晚按新画风（`series/style/` 样张，精致数字绘本插画）全部重出**：`series/refs/` 三张角色参考图重出并提交；s02 的 10 张图重出，自查一次过（总览 `out/s02/qc/images.jpg`），旧图备份在 `out/s02_old_style/`。占位开头重渲，两版 qa 都“全部通过”；3:4 封面标题压到栗栗的脸，`brand.py` 加了 `--crop-3x4`，s02 用 0.2。
+   - **可灵**：国内站 CLI 已装好并登录（`kling` 0.2.3，`@klingai/cli-cn`；skill 在 `~/.agents/skills/kling-cli`），黄金会员，10-27 余额 60 灵感值。可灵 2.6 / 3.0 / 4.0 都支持首尾帧 + 1080p + 不出音频。生成前要用户确认花灵感值。
+   - **还差可灵钩子**：做好 `episodes/s02-help/kling01.mp4` 后，在 `tools/storybook-video` 下（先 `export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH`）：
      ```bash
      .venv/bin/python sbv.py ../../episodes/s02-help/story.json --out ../../out/s02
      .venv/bin/python sbv.py ../../episodes/s02-help/story.json --out ../../out/s02 --max-pages 4
