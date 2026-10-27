@@ -1,6 +1,6 @@
 ---
 name: kids-english-story-video
-description: Make one publish-ready episode of the 栗栗学英语 (Forest Friends) toddler English video — themed script, Codex CLI images, Kling CLI hook, ElevenLabs voices, sbv.py render, covers and publishing pack — with a quality gate and self-fix at every stage, in the fixed series style.
+description: Make one publish-ready episode of the 栗栗学英语 (Forest Friends) toddler English video — themed script, Codex CLI images, Kling hook, ElevenLabs voices, sbv.py render, covers and publishing pack — with a quality gate and self-fix at every stage, in the fixed series style.
 ---
 
 # 栗栗学英语 · 森林小伙伴 · 幼儿英语启蒙动态绘本
@@ -27,7 +27,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 - 发布时勾选"内容由 AI 生成"声明。孩子不出镜。
 - **ElevenLabs 免费档生成的音频不能商用。** 要发布的配音、音效、音乐必须在付费订阅期间生成；订阅后先删 `out/.cache`，音效、音乐用 `el_prep.py sfx --force`、`bgm --force` 重做。
 - 订阅、付款、充值灵感值都由用户自己操作。批量花积分前先跟用户确认。
-- 能力边界：**绘本页图片由 Claude 在用户 Mac 上调本机 Codex CLI 出**（第 5 节），可灵钩子由 Claude 调可灵 CLI 出（第 5.4 节），都不用用户手动做。可灵 CLI 找不到或没登录时，停在这一步告诉用户，其余环节照做。
+- 能力边界：**绘本页图片由 Claude 在用户 Mac 上调本机 Codex CLI 出**（第 5 节），可灵钩子见第 5.4 节：能自动就自动，不能就给用户一份可直接照填的网页操作单。其余环节照做，不等它。
 
 ## 2. 系列规范（每集不变）
 
@@ -158,7 +158,9 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
 - 提示词用中文，末尾统一加"精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
-- **2026-10-26 起用户 Mac 上装了可灵 CLI**，由 Claude 直接调，不再让用户手动做。用法以 CLI 的 `--help` 为准；跑通后把实际命令补进这里。用户已登录就直接用，没登录就停下告诉用户，**不读、不打印 key**。
+- **可灵没有 CLI。** 官方接法是远程 MCP `kling-ai`（`https://kling.ai/mcp/plugin`，OAuth）。它连的是**国际版** kling.ai，跟国内版的账号和灵感值不通用。2026-10-27 实测：国际版余额为 0；不开会员只能出 720p；可灵 4.0 支持首尾帧，不出原生音频；负面提示词没有单独参数，要写进提示词里。
+- 所以现在的做法是：用户在**国内版网页**上手动生成，Claude 给一份操作单（首帧、尾帧路径，5 秒，9:16，1080p，关音频，提示词和负面提示词原文），文件存成 `episodes/<集>/kling01.mp4`。用户以后会试着用国内账号登录 MCP，登不上就改走国内开放平台 API：key 放在 `~/.zshrc`，脚本只从环境变量读。**不读、不打印 key。**
+- 先用占位开头把其余部分做成成品；kling01.mp4 到位后，抽帧质检，再重渲。
   - 找法：`which`，再查 nvm 各版本的全局 npm 包、pnpm、`pipx list`、`uv tool list`、`brew list`、conda 环境、`~/.local/bin`，以及登录 shell 的 PATH（`zsh -lic`）。2026-10-27 这些都查过，**没找到**，只在 Edge Beta 里登录过网页版。找不到就停在这一步告诉用户，其他环节照做。
 - 每集最多生成 3 次（约 120–360 灵感值）。超过 3 次还不合格，停下来跟用户说。
 - **sbv.py 在 `hook.clip` 文件不存在时会报错停下**。可灵还没做好时，用首帧图做一个 5 秒占位（`kling_first.png` 缓推 4 秒 + 叠化到 `p01.png` 1 秒），另存一份临时 story.json 把 `hook.clip` 指过去，先把其余质检做完；`kling01.mp4` 一到，用正式 story.json 重渲、重跑 `qa.py`。占位版不能发布。
@@ -238,7 +240,7 @@ open ../../out/c01
 用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**。确认之前只改文字，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
 
 1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。
-2. 可灵钩子：用可灵 CLI 出 `kling01.mp4`（第 5.4 节）。
+2. 可灵钩子：按第 5.4 节出 `kling01.mp4`，没到位就先用占位开头。
 3. 渲染：完整版和精华版，用正式的 `story.json`。
 4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
@@ -339,7 +341,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子（本机没找到可灵 CLI）；待发布 |
+| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-27 画风改成精致数字绘本插画，重画中；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
