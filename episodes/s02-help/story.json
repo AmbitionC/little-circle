@@ -36,16 +36,27 @@
     "max_seconds": 5,
     "headline": "孩子遇到困难不敢开口？",
     "subline": "3岁英语启蒙 · 学会说 Help",
+    "headline_y": 220,
     "say": {
       "speaker": "narrator",
       "en": "Oh no! Hazel's ball!",
-      "at": 0.6
+      "at": 0.95
     },
     "sfx": [
       {
         "file": "../../assets/sfx/jingle_in.mp3",
         "at": 0.0,
-        "gain": 0.4
+        "gain": 0.35
+      },
+      {
+        "file": "../../assets/sfx/bonk.mp3",
+        "at": 0.64,
+        "gain": 0.6
+      },
+      {
+        "file": "../../assets/sfx/pop.mp3",
+        "at": 0.72,
+        "gain": 0.45
       }
     ]
   },

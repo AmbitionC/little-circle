@@ -31,15 +31,16 @@
 - **大字标题（给家长看，第 1 帧就出现）**：孩子遇到困难不敢开口？
 - **小字**：3岁英语启蒙 · 学会说 Help
 - **备选标题**：教孩子开口求助，英语就一句话
-- **旁白**（0.6 秒进）：`Oh no! Hazel's ball!` 哎呀！Hazel 的球！
+- **旁白**（0.95 秒进，落泥之后）：`Oh no! Hazel's ball!` 哎呀！Hazel 的球！
 - **可灵首帧出图提示词**：
   ```
-  a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, running after a shiny red ball that is bouncing toward a big brown mud puddle on a forest path after the rain, worried face, wet leaves and small puddles, close-up, polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, lush sunlit forest with moss, ferns, little wildflowers and red-capped mushrooms, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark, vertical 9:16
+  a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, running after a shiny red ball, action in progress: the ball is in mid-air in the lower foreground close to the camera, about to drop into a big brown mud puddle right in front of it, the hedgehog is a few steps behind in the middle of the frame with arms reaching out and a worried face, little mud drops flying, low camera angle near the ground on a forest path after the rain, wet leaves and small puddles, polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, lush sunlit forest with moss, ferns, little wildflowers and red-capped mushrooms, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark, vertical 9:16
   ```
 - **可灵尾帧**：直接用 p01.png。
-- **可灵提示词**：雨后的森林小路上，红皮球一路弹跳滚向大泥坑，刺猬小男孩 Hazel 迈着小短腿在后面追，球"噗"地陷进泥坑停住了，Hazel 停下来张大嘴。镜头跟着球移动。精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变，动作轻柔、幅度小。
-- **负面提示词**：变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印
-- **参数**：图生视频，5 秒，9:16，1080p，不开原生音频，导出为 `kling01.mp4`。
+- **可灵提示词**（10-27 第 2 次，采用）：动作从第一帧立刻开始。0到1.5秒：前景半空中的红皮球往下一砸，啪地扎进泥坑，溅起一大片泥花，泥点朝镜头飞过来，球陷进泥里只露出一半。1.5到3.5秒：刺猬小男孩 Hazel（棕色软刺、黄色背带裤）小短腿跑过来，在泥坑边急刹停住，背上的刺嘭地微微竖起，张大嘴，伸手去够球。3.5到5秒：球卡在泥里不动，Hazel 伸着手够不着，画面平稳定格成最后一帧的构图。低机位，镜头基本固定，只轻微平移，不推拉、不转场、不切镜头。皮球和泥花动作可以大，Hazel 的身体和脸动作轻柔、幅度小，衣服和身体不要融化变形。精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变。不要出现：变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印。
+- **负面提示词**：可灵 2.6 没有单独参数，已写进上面提示词末尾。
+- **实际效果**：0.70 秒球砸进泥坑、0.83 秒泥花最大；2 秒后 Hazel 跑到坑边；5 秒落在 p01 构图。音效：bonk 0.64（0.70 出声）+ pop 0.72，旁白挪到 0.95。第 1 次（旧首帧、镜头推近）2.1–2.4 秒背带裤融化变形，作废。
+- **参数**：国内站 `kling` CLI，`kling-video-v2_6`，首帧 kling_first.png、尾帧 p01.png，5 秒，1080p，`--enable_audio false`（9:16 跟首帧），每次 25 灵感值，导出为 `kling01.mp4`。
 
 ## 4. 分镜
 

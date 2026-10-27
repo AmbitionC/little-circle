@@ -158,10 +158,23 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
 - 提示词用中文，末尾统一加"精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
-- **可灵没有 CLI。** 官方接法是远程 MCP `kling-ai`（`https://kling.ai/mcp/plugin`，OAuth）。它连的是**国际版** kling.ai，跟国内版的账号和灵感值不通用。2026-10-27 实测：国际版余额为 0；不开会员只能出 720p；可灵 4.0 支持首尾帧，不出原生音频；负面提示词没有单独参数，要写进提示词里。
-- 所以现在的做法是：用户在**国内版网页**上手动生成，Claude 给一份操作单（首帧、尾帧路径，5 秒，9:16，1080p，关音频，提示词和负面提示词原文），文件存成 `episodes/<集>/kling01.mp4`。用户以后会试着用国内账号登录 MCP，登不上就改走国内开放平台 API：key 放在 `~/.zshrc`，脚本只从环境变量读。**不读、不打印 key。**
+- **怎么调可灵（2026-10-27 起）**：用国内站官方 CLI `kling`（`npm i -g @klingai/cli-cn --registry=https://registry.npmjs.org`，`kling login` 浏览器授权；skill 在 `~/.agents/skills/kling-cli`）。`kling account` 查余额，`kling who_am_i` 查模型参数。实测命令（在集目录下跑，本地图会自动上传）：
+  ```bash
+  kling image_to_video --model kling-video-v2_6 --image kling_first.png --tailImage p01.png \
+    --duration 5 --resolution 1080p --enable_audio false --prompt "…" --poll 900 > kling.json
+  ```
+  结果在 `body.generations[0].result.works[0].urlWithoutWatermark`，下载存成 `kling01.mp4`（1080×1920，24fps，5.08 秒）。**价格：可灵 2.6、1080p、5 秒、不开音频 = 25 灵感值/次**，约 80–120 秒出片。可灵 2.6 没有负面提示词参数，写进提示词末尾。可灵 2.6 / 3.0 / 4.0 都支持首尾帧 + 1080p，其他模型的价格还没实测。
+  国际版远程 MCP `kling-ai`（kling.ai）跟国内账号、灵感值不通用，不要用。
+- **5 秒钩子设计原则**（这 5 秒是全片唯一真动的画面、完整版和精华版共用，s01 2 秒跳出率 66.7%，杠杆最大）：
+  1. **首帧就在动作中间**：`kling_first.png` 不要摆拍，要“正在发生”——道具在半空、靠近镜头，低机位贴地，角色在后面追、表情着急；和 p01 同一地点、同样的光。重出首帧是免费的（Codex），先把首帧做对再花灵感值。
+  2. **2 秒内出第一个“哇”**：提示词按秒写节拍（0–1.5 秒大动作 / 1.5–3.5 秒角色反应 / 3.5–5 秒定格成尾帧构图）。道具和水花动作可以大，角色动作要轻、幅度小。
+  3. **镜头基本固定**：写明“低机位、只轻微平移，不推拉、不转场、不切镜头”。s02 第 1 次让镜头推近，2 秒处角色衣服融化变形，作废。
+  4. **尾帧 = p01**，钩子直接接第 1 页。
+  5. **声音是免费的杠杆**：可灵不出音频，逐帧找落点时间，在 `hook.sfx` 里配音效（bonk 起音约 0.06 秒、pop 几乎立刻出声，`at` 要减掉起音）；旁白 `hook.say.at` 放在冲击之后约 0.2 秒，别盖住音效。
+  6. 大字在 y=330 左右，首帧里角色的脸要在 y>520，出片后看第 0 帧。
+- 生成后在 0、0.5、1、1.5、2、3、4、4.9 秒抽帧拼图检查，2 秒前后再逐帧看一遍（变形常出在中段）。
 - 先用占位开头把其余部分做成成品；kling01.mp4 到位后，抽帧质检，再重渲。
-- 每集最多生成 3 次（约 120–360 灵感值）。超过 3 次还不合格，停下来跟用户说。
+- 每集最多生成 3 次（可灵 2.6 1080p 约 75 灵感值）。超过 3 次还不合格，停下来跟用户说。
 - **sbv.py 在 `hook.clip` 文件不存在时会报错停下**。可灵还没做好时，用首帧图做一个 5 秒占位（`kling_first.png` 缓推 4 秒 + 叠化到 `p01.png` 1 秒），另存一份临时 story.json 把 `hook.clip` 指过去，先把其余质检做完；`kling01.mp4` 一到，用正式 story.json 重渲、重跑 `qa.py`。占位版不能发布。
   ```bash
   ffmpeg -y -loop 1 -t 5 -i kling_first.png -loop 1 -t 5 -i p01.png -filter_complex "[0]scale=2160:3840,zoompan=z='1+0.08*on/150':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=150:s=1080x1920:fps=30[a];[1]scale=1080:1920,fps=30[b];[a][b]xfade=transition=fade:duration=1:offset=4,format=yuv420p" -t 5 hook_placeholder.mp4
