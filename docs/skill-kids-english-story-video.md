@@ -38,7 +38,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（2026-10-24 用 Codex 出的全身设定图）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
-| 画风 | 水彩 + 水粉绘本插画，手绘笔触，纸纹，暖光，复古童书感 |
+| 画风 | 精致数字绘本插画（2026-10-27 起，替换原来的水彩手绘）：毛发细腻蓬松，大而亮的圆眼睛带高光，圆滚滚的萌系比例，表情开心夸张；阳光明媚的森林，苔藓、蕨类、小野花、红顶蘑菇，暖金色阳光加柔和光斑；颜色明亮饱和，边缘干净，细节丰富。不要水彩纸纹、不要粗笔触 |
 | 结构 | [可选 0.4 秒静止封面] → 可灵钩子 5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 → 片尾卡 3.5 秒（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒） |
 | 每集两版 | 推荐流精华版：`--max-pages 4`，约 20–35 秒，停在悬念上，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
 | 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。旁白慢速温暖，角色音高拉开 |
@@ -112,8 +112,10 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 ### 5.1 统一风格词（每条提示词末尾都加）
 
 ```
-watercolor and gouache children's picture book illustration, hand-painted brush strokes, visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark, vertical 9:16
+polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, lush sunlit forest with moss, ferns, little wildflowers and red-capped mushrooms, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark, vertical 9:16
 ```
+
+**画风样张**：用户给的样张放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
 页面图再加 `keep the bottom quarter of the image simple and free of faces`（下方四分之一留给字幕，脸放在 y<1450）。
 
@@ -154,7 +156,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 
 - 只做 `kling01.mp4`：图生视频，**5 秒、9:16、1080p、不开原生音频**（原生音频贵 50%，配音由脚本做）。
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
-- 提示词用中文，末尾统一加"水彩绘本插画风格，保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
+- 提示词用中文，末尾统一加"精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
 - **2026-10-26 起用户 Mac 上装了可灵 CLI**，由 Claude 直接调，不再让用户手动做。用法以 CLI 的 `--help` 为准；跑通后把实际命令补进这里。用户已登录就直接用，没登录就停下告诉用户，**不读、不打印 key**。
   - 找法：`which`，再查 nvm 各版本的全局 npm 包、pnpm、`pipx list`、`uv tool list`、`brew list`、conda 环境、`~/.local/bin`，以及登录 shell 的 PATH（`zsh -lic`）。2026-10-27 这些都查过，**没找到**，只在 Edge Beta 里登录过网页版。找不到就停在这一步告诉用户，其他环节照做。
@@ -261,7 +263,7 @@ open ../../out/c01
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
 | 剧本 | 主题、结构、台词、童趣、互动 | 有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
-| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下方四分之一没有脸；没有文字和水印；没有多余肢体 | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
+| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下方四分之一没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（毛发细腻、大眼高光、暖色阳光，不能是水彩纸纹的手绘感） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
 | 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
 | 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |

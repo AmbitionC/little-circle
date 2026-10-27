@@ -18,8 +18,9 @@ REFS = os.path.join(ROOT, "series", "refs")
 CODEX_HOME = os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex"))
 W, H = 1080, 1920
 
-STYLE = ("watercolor and gouache children's picture book illustration, hand-painted brush strokes, "
-         "visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark")
+STYLE = ("polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark")
+# 画风参考图（用户给的样张，只留在本机，不进仓库）：每张图都带上，锁住画风
+STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
 CHARACTERS = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
@@ -46,9 +47,13 @@ def parse_script(path):
     return jobs
 
 
+def style_refs():
+    return sorted(glob.glob(os.path.join(STYLE_DIR, "*.png")) + glob.glob(os.path.join(STYLE_DIR, "*.jpg")))
+
+
 def fingerprint(prompt, refs):
     h = hashlib.sha1(prompt.encode())
-    for r in refs:
+    for r in style_refs() + refs:
         h.update(str(os.path.getmtime(r)).encode())
     return h.hexdigest()[:12]
 
@@ -69,14 +74,19 @@ def codex_generate(prompt, refs, log):
     """跑一次 codex exec，返回生成的原图路径。"""
     ask = ("Use your built-in image_gen tool exactly once to generate ONE vertical portrait image "
            "(9:16, the tallest portrait size available). Use this prompt verbatim:\n\n" + prompt + "\n\n")
+    styles = style_refs()
+    if styles:
+        ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
+                "style closely: rendering, fur texture, eye style, lighting, color palette and level of detail. "
+                "Do not copy their characters, poses, composition or scene.\n\n")
     if refs:
-        ask += ("The attached image(s) are the character reference sheets for this series. Keep each character's "
-                "face, body shape, colors and clothing exactly like the reference, but use the pose, scene and "
-                "composition from the prompt, not the reference's.\n\n")
+        ask += ("The " + ("other " if styles else "") + "attached image(s) are the character reference sheets for this "
+                "series. Keep each character's face, body shape, colors and clothing exactly like the reference, "
+                "but use the pose, scene and composition from the prompt, not the reference's.\n\n")
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
-    for r in refs:
+    for r in styles + refs:
         cmd += ["-i", small_ref(r)]
     cmd.append("-")  # 提示词走 stdin：-i 会吞掉后面的位置参数
     # 图一落盘就收工：网络抖动时 codex 会在出图后继续重连很久

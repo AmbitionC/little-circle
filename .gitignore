@@ -24,3 +24,6 @@ episodes/**/*.mp4
 # Codex 出图的日志和本机记录
 episodes/**/.codex_images.log
 episodes/**/images.json
+
+# 用户给的画风样张，只留在本机
+series/style/
