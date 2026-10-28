@@ -27,3 +27,5 @@ episodes/**/images.json
 
 # 用户给的画风样张，只留在本机
 series/style/
+
+series/style_old/
