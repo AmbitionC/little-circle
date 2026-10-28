@@ -32,8 +32,7 @@
   },
   "cast": "../../series/cast.json",
   "hook": {
-    "clip": "kling01.mp4",
-    "max_seconds": 5,
+    "max_seconds": 4.6,
     "headline": "孩子遇到困难不敢开口？",
     "subline": "3岁英语启蒙 · 学会说 Help",
     "headline_y": 220,
@@ -59,7 +58,29 @@
         "at": 0.72,
         "gain": 0.45
       }
-    ]
+    ],
+    "clip_kling": "kling01.mp4",
+    "frames": [
+      {
+        "image": "kling_first.png",
+        "at": 0
+      },
+      {
+        "image": "h02.png",
+        "at": 0.6,
+        "shake": true
+      },
+      {
+        "image": "h03.png",
+        "at": 1.8
+      },
+      {
+        "image": "h04.png",
+        "at": 3.2
+      }
+    ],
+    "motion": "in",
+    "zoom": 1.06
   },
   "pages": [
     {

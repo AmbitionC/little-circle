@@ -37,6 +37,24 @@
   a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, running after a shiny red ball, action in progress: the ball is in mid-air in the lower foreground close to the camera, about to drop into a big brown mud puddle right in front of it, the hedgehog is a few steps behind in the middle of the frame with arms reaching out and a worried face, little mud drops flying, low camera angle near the ground on a forest path after the rain, wet leaves and small puddles, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16
   ```
 - **可灵尾帧**：直接用 p01.png。
+- **关键帧钩子**（2026-10-28 起，不用可灵）：首帧加 3 张关键帧，story.json 里用 `hook.frames` 到点切换。
+  - 0.6 秒，砸泥（bonk + pop）：`h02.png`
+  - 1.8 秒：`h03.png`
+  - 3.2 秒：`h04.png`，然后叠化进 p01
+
+**h02.png** ← kling_first.png
+```
+the red ball has just smacked down into the middle of the mud puddle with a huge brown mud splash flying up toward the camera, the hedgehog skids to a stop a few steps behind with arms flung out and a shocked open mouth
+```
+**h03.png** ← kling_first.png
+```
+the mud splash has settled, the red ball is stuck halfway in the mud puddle, the hedgehog stands at the edge of the puddle with his soft brown spines popped straight up in surprise and both paws on his cheeks
+```
+**h04.png** ← kling_first.png
+```
+the red ball is stuck halfway in the mud puddle, the hedgehog leans over the edge reaching out with one short arm toward the ball, worried pleading face, a few mud drops on his overalls
+```
+
 - **可灵提示词**（10-27 第 2 次，采用）：动作从第一帧立刻开始。0到1.5秒：前景半空中的红皮球往下一砸，啪地扎进泥坑，溅起一大片泥花，泥点朝镜头飞过来，球陷进泥里只露出一半。1.5到3.5秒：刺猬小男孩 Hazel（棕色软刺、黄色背带裤）小短腿跑过来，在泥坑边急刹停住，背上的刺嘭地微微竖起，张大嘴，伸手去够球。3.5到5秒：球卡在泥里不动，Hazel 伸着手够不着，画面平稳定格成最后一帧的构图。低机位，镜头基本固定，只轻微平移，不推拉、不转场、不切镜头。皮球和泥花动作可以大，Hazel 的身体和脸动作轻柔、幅度小，衣服和身体不要融化变形。日系手绘动画风格（赛璐璐角色、柔和描边、手绘背景、通透暖光），保持角色外形和颜色不变。不要出现：变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印。
 - **负面提示词**：可灵 2.6 没有单独参数，已写进上面提示词末尾。
 - **实际效果**：0.70 秒球砸进泥坑、0.83 秒泥花最大；2 秒后 Hazel 跑到坑边；5 秒落在 p01 构图。音效：bonk 0.64（0.70 出声）+ pop 0.72，旁白挪到 0.95。第 1 次（旧首帧、镜头推近）2.1–2.4 秒背带裤融化变形，作废。
