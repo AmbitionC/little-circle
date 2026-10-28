@@ -98,25 +98,56 @@ def small_ref(path, size=768):
     return dst
 
 
+MAX_IMAGES = 5
+
+
+def lineup(refs, h=640):
+    """把几张角色参考图按同样高度横着拼成一张阵容图（顺序和 CHARACTERS 一致）。"""
+    order = {f"{k}.png": i for i, k in enumerate(CHARACTERS)}
+    refs = sorted(refs, key=lambda r: order.get(os.path.basename(r), 99))
+    ims = [Image.open(r).convert("RGB") for r in refs]
+    ims = [im.resize((round(im.width * h / im.height), h), Image.LANCZOS) for im in ims]
+    gap = 24
+    out = Image.new("RGB", (sum(i.width for i in ims) + gap * (len(ims) - 1), h), (255, 255, 255))
+    x = 0
+    for im in ims:
+        out.paste(im, (x, 0))
+        x += im.width + gap
+    dst = os.path.join(tempfile.gettempdir(), "codex_refs",
+                       "lineup_" + "_".join(os.path.splitext(os.path.basename(r))[0] + str(int(os.path.getmtime(r))) for r in refs) + ".jpg")
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    out.save(dst, quality=88)
+    return dst
+
+
 def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical portrait image (9:16, the tallest portrait size available)"):
     """跑一次 codex exec，返回生成的原图路径。use_style=False 时不带画风样张（做画风对比用）。
     base：关键帧的底图，排第一张，只改提示词里说的动作（底图本身就带画风和角色，不再带样张）。"""
     ask = (f"Use your built-in image_gen tool exactly once to generate ONE {shape}. "
            "Use this prompt verbatim:\n\n" + prompt + "\n\n")
     styles = style_refs() if use_style and not base else []
+    # Codex 一次最多收 5 张附图：样张最多 2 张；角色多时拼成一张从左到右的阵容图
+    styles = styles[:2]
+    room = MAX_IMAGES - len(styles) - (1 if base else 0)
+    lineup_note = ""
+    if len(refs) > room:
+        names = [k for k, _ in CHARACTERS.items() if any(os.path.basename(r) == f"{k}.png" for r in refs)]
+        refs = [lineup(refs)]
+        lineup_note = ("They are combined into ONE lineup image; from left to right it shows: "
+                       + "; ".join(CHARACTERS[n] for n in names) + ". ")
     if styles:
         ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
                 "style closely: rendering, line work, cel shading, eye style, lighting, color palette and background painting. "
                 "Do not copy their characters, poses, composition or scene.\n\n")
     if refs:
         ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "
-                "series. Keep each character's face, body shape, colors and clothing exactly like the reference, "
+                "series. " + lineup_note + "Keep each character's face, body shape, colors and clothing exactly like the reference, "
                 "but use the pose, scene and composition from the prompt, not the reference's.\n\n")
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
     for r in ([base] if base else []) + styles + refs:
-        cmd += ["-i", small_ref(r, 1280 if base else 768)]
+        cmd += ["-i", small_ref(r, 1280 if base or os.path.basename(r).startswith("lineup_") else 768)]
     cmd.append("-")  # 提示词走 stdin：-i 会吞掉后面的位置参数
     # 图一落盘就收工：网络抖动时 codex 会在出图后继续重连很久
     with open(log, "a", encoding="utf-8") as f:
