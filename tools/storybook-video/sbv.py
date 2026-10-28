@@ -311,11 +311,11 @@ def drop_tags(words):
     out, inside = [], False
     for w in words:
         t = w["w"]
-        if t.startswith("["):
+        if t.startswith(("[", "{")):   # {…} 是儿歌作曲计划里的演唱提示
             inside = True
         if not inside:
             out.append(w)
-        if t.endswith("]"):
+        if t.endswith(("]", "}")):
             inside = False
     return out
 

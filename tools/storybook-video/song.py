@@ -111,7 +111,16 @@ def find_words(obj):
             for v in x:
                 walk(v)
     walk(obj)
-    return best
+    # 作曲计划里 {…} 写的演唱提示也会混进时间戳（起止相同、不出声），去掉
+    out, inside = [], False
+    for w in best:
+        if w["w"].startswith("{"):
+            inside = True
+        if not inside and w["e"] > w["s"]:
+            out.append(w)
+        if w["w"].endswith("}"):
+            inside = False
+    return out
 
 
 def song_dir(ep):
@@ -140,7 +149,7 @@ def generate(ep, story, n, model):
 
 
 def norm(s):
-    return re.sub(r"[^a-z ]", "", s.lower()).split()
+    return re.sub(r"[^a-z ]", "", s.lower().replace("-", " ")).split()   # Bye-bye 听写出来是 bye bye
 
 
 def whisper_words(mp3):
@@ -164,6 +173,8 @@ def check(ep, story):
         heard = whisper_words(mp3)
         if heard is None:
             sys.exit("要先装 faster-whisper：.venv/bin/pip install faster-whisper")
+        if info.get("meta"):               # 旧文件可能混着 {…} 提示词，重新清一遍
+            info["words"] = find_words(info["meta"]) or info.get("words", [])
         if not info.get("words"):          # 接口没给时间戳，就用 Whisper 的词时间
             info["words"], info["words_from"] = heard, "whisper"
             json.dump(info, open(info_path, "w"), ensure_ascii=False, indent=1)
