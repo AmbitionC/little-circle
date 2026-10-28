@@ -158,7 +158,7 @@ def comic_jobs(script):
     shots = parse_script(script)
     order = [k for k in ["kling_first.png"] + [f"p{i:02d}.png" for i in range(1, 13)] if k in shots]
     def scene(k):
-        x = shots[k].split(", Japanese hand-painted")[0]
+        x = re.split(r", (?:Japanese hand-painted|polished digital children's)", shots[k])[0]
         return x.split(", keep every face")[0]
     jobs = {}
     for n in range(0, len(order), 3):
