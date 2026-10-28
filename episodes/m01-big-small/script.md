@@ -111,7 +111,7 @@ the squirrel leans back with the giant acorn lifted a little off the ground, his
 
 **p02.png**
 ```
-a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf, standing on a sunny forest meadow with one tiny acorn the size of a pea balanced on the tip of his nose, going cross-eyed to look at it, a little surprised smile, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf, standing on a sunny forest meadow with one tiny acorn the size of a pea balanced on the tip of his nose, both of his eyes comically crossed toward the acorn on his nose tip (funny cross-eyed look), a little surprised smile, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
 ```
 
 **p02b.png** ← p02.png
