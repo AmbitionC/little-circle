@@ -441,6 +441,78 @@ def kb_box(motion, u, iw, ih, rw, rh, focus, zoom=1.12, z0=1.0):
     return (cx - vw / 2, cy - vh / 2, cx + vw / 2, cy + vh / 2)
 
 
+def keyframes(page, lines, base, img0):
+    """关键帧动画：同一镜头按原图改出来的几张连续画，到点硬切（像日系动画的"一拍三"），不靠视频模型。
+
+    frames：[{"image": "p02b.png", "line": 0, "offset": 0.3, "shake": true}]，到这一刻换成这张，
+            时间写 "at"（秒，从本页开始算）或 "line" + "offset"（相对那句开口）；shake 换图时震一下屏。
+    cycle： {"images": ["p02.png", "p02b.png"], "step": 0.25, "line": 0}，那句台词说话期间轮流切（嚼东西、晃身子）；
+            不写 line 就整页一直轮。
+    """
+    def when(fr):
+        if "line" in fr and fr["line"] < len(lines):
+            return lines[fr["line"]]["start"] + fr.get("offset", 0)
+        return fr.get("at", 0)
+
+    def load(name):
+        im = Image.open(os.path.join(base, name)).convert("RGB")
+        return im if im.size == img0.size else im.resize(img0.size, Image.LANCZOS)
+
+    keys = [(0.0, img0, False)] + sorted(((when(fr), load(fr["image"]), fr.get("shake", False))
+                                         for fr in page.get("frames", [])), key=lambda k: k[0])
+    cyc = None
+    c = page.get("cycle")
+    if c:
+        if "line" in c and c["line"] < len(lines):
+            a, b = lines[c["line"]]["start"], lines[c["line"]]["end"]
+        else:
+            a, b = c.get("from", 0), c.get("to", 1e9)
+        cyc = (a, b, c.get("step", 0.25), [load(x) for x in c["images"]])
+    return keys, cyc
+
+
+def pick_key(keys, cyc, t):
+    """返回 (这一刻显示的图, 距离最近一次带 shake 的换图过去了几秒)。"""
+    img, kick = keys[0][1], None
+    for at, im, sh in keys:
+        if t >= at:
+            img = im
+            kick = t - at if sh else None
+    if cyc and cyc[0] <= t < cyc[1]:
+        a, _, step, ims = cyc
+        img = ims[int((t - a) / step) % len(ims)]
+    return img, kick
+
+
+def shake_box(box, kick, iw, amp=0.012, dur=0.3):
+    """换图那一下震屏：取景框左右上下抖几下、0.3 秒内衰减到 0（移的是取景框，不露黑边）。"""
+    if kick is None or kick >= dur:
+        return box
+    k = (1 - kick / dur) ** 2 * amp * iw
+    dx, dy = k * math.sin(kick * 90), k * 0.6 * math.cos(kick * 70)
+    x0, y0, x1, y1 = box
+    return (x0 + dx, y0 + dy, x1 + dx, y1 + dy)
+
+
+def render_flipbook(hook, base, out_dir):
+    """没有可灵视频时，用几张关键帧做钩子：hook.frames 到点硬切 + 缓推 + 换图震屏，输出成 h_####.jpg。"""
+    dur = hook.get("max_seconds", 5)
+    first = Image.open(os.path.join(base, hook["frames"][0]["image"])).convert("RGB")
+    first = cover_crop(first) if first.size != (W, H) else first
+    page = {"frames": hook["frames"][1:]}
+    keys, cyc = keyframes(page, [], base, first)
+    iw, ih = first.size
+    n = int(round(dur * FPS))
+    for i in range(n):
+        t = i / FPS
+        img, kick = pick_key(keys, cyc, t)
+        box = kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
+                     hook.get("zoom", 1.08))
+        img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw)).save(
+            os.path.join(out_dir, f"h_{i + 1:04d}.jpg"), quality=92)
+    return n
+
+
 class Ctx:
     def __init__(self, style, fonts, sparkles, badge, cache_dir):
         self.st, self.fonts, self.sparkles, self.badge = style, fonts, sparkles, badge
@@ -621,6 +693,7 @@ class PageSeg:
             self.region = (0, max(200, 760 - rh // 2), W, rh)
             self.bg = ImageEnhance.Brightness(cover_crop(self.img).filter(ImageFilter.GaussianBlur(40))).enhance(0.6)
         self.cache = {}
+        self.keys, self.cyc = keyframes(page, lines, base, self.img)
         # 可选：画面特效（烛光 / 飘雪 / 光尘）和按深度的 2.5D 视差运镜
         src = np.asarray(self.img).astype(np.float32)
         self.fx = []
@@ -761,15 +834,19 @@ class PageSeg:
             frame.paste(self.bg, (0, 0))
         rx, ry, rw, rh = self.region
         iw, ih = self.img.size
-        box = kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from)
+        img, kick = pick_key(self.keys, self.cyc, t)
+        box = shake_box(kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from), kick, iw)
         if self.fx or self.par:
+            if img is not self.img:
+                self.src = np.asarray(img).astype(np.float32)
+                self.img = img
             src = self.src.copy() if self.fx else self.src
             for fx in self.fx:
                 fx.apply(src, t)
             src = np.clip(src, 0, 255).astype(np.uint8)
             region = self.warp(src, box, t) if self.par else Image.fromarray(src).resize((rw, rh), Image.BICUBIC, box=box)
         else:
-            region = self.img.resize((rw, rh), Image.BICUBIC, box=box)
+            region = img.resize((rw, rh), Image.BICUBIC, box=box)
         frame.paste(region, (rx, ry))
         if self.ctx.sparkles:
             self.ctx.sparkles.draw(frame, gt)
@@ -892,21 +969,24 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         add(StillSeg(os.path.join(base, cfg["cover"]["image"]), cfg["cover"].get("seconds", 0.4)))
 
     hook = cfg.get("hook")
-    if hook and hook.get("clip"):
-        clip = os.path.join(base, hook["clip"])
+    if hook and (hook.get("clip") or hook.get("frames")):
+        clip = os.path.join(base, hook["clip"]) if hook.get("clip") else None
         hdir = os.path.join(work, "hook")
         os.makedirs(hdir)
-        run(["ffmpeg", "-v", "error", "-i", clip, "-t", str(hook.get("max_seconds", 5)),
-             "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
-             "-q:v", "2", os.path.join(hdir, "h_%04d.jpg")])
-        n = len([x for x in os.listdir(hdir) if x.endswith(".jpg")])
+        if clip:
+            run(["ffmpeg", "-v", "error", "-i", clip, "-t", str(hook.get("max_seconds", 5)),
+                 "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
+                 "-q:v", "2", os.path.join(hdir, "h_%04d.jpg")])
+            n = len([x for x in os.listdir(hdir) if x.endswith(".jpg")])
+        else:   # 关键帧钩子：不花可灵灵感值
+            n = render_flipbook(hook, base, hdir)
         seg = HookSeg(hook, hdir, n, ctx)
         add(seg)
         if hook.get("say"):
             say = hook["say"]
             wav, _ = synthesize(say.get("say", say["en"]), cast[say.get("speaker", "narrator")], cache)
             placements.append((wav, seg.start + say.get("at", 0.4), 1.0))
-        if hook.get("keep_clip_audio"):
+        if clip and hook.get("keep_clip_audio"):
             placements.append((clip, seg.start, hook.get("clip_gain", 1.0)))
         for sx in hook.get("sfx", []):
             placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))

@@ -107,6 +107,25 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 用户的习惯：剧本改动时只发更新后的文件；**没让渲染就不要重新渲染**。
 
+**写剧本前先读 `docs/story-psychology-reference.md`**（选题、情节、情绪的方法）：先给选题打分，≥14 分才写；动笔前写出三句话，即 logline、家长钩子和孩子会学的一句英文；然后按 8 页节拍（谷在 p03，反转在 p04，峰在 p07，p08 暖收）排情节，写完按它第 9 节自检。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s03-sleepy/script.md`。
+
+### 4.1 漫画剧本：剧本确认前的固定一步（2026-10-28 用户要求）
+
+用户原话："每次和我确认之前，能不能在剧本和分镜的基础上再走一步，生成个漫画剧本，这样我可以更清晰地理解这个故事、角色、细节、分镜和台词。"
+
+所以剧本、分镜和 story.json 写完后，**先出漫画剧本，再找用户确认**：
+
+```bash
+cd ~/code/little-circle/tools/storybook-video
+python3 codex_images.py ../../episodes/<集> --comic -j 2   # 钩子 + 8 页，每三格一张横版漫画 → episodes/<集>/comic/sheet1-3.png
+python3 comic_page.py ../../episodes/<集>                  # 切成单格，配上段落、画面、台词（中英）、音效和运镜 → out/<集号>/comic.html
+```
+
+- 漫画只用来看懂故事，是草图，不当成片素材；三格一起画，角色和画风前后对得上。
+- 先自己看一遍：每格的动作和剧本对得上，角色认得出，没有字。不对的用 `--comic --only sheet2 --force` 重出。
+- 把 `comic.html` 发布成 Artifact（网页），和 script.md 一起交给用户，在消息里写上三句话和选题打分。
+- 用户确认之前不出正式的图。用户改了剧本，就重出受影响的那张漫画。
+
 ## 5. 出图（Codex CLI，Claude 在用户 Mac 上直接跑）
 
 ### 5.1 统一风格词（每条提示词末尾都加）
@@ -114,6 +133,8 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 ```
 Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16
 ```
+
+夜景集把风格词里的 `bright blue sky with fluffy clouds` 换成 `deep blue night sky with a big round moon and soft stars`，`clear bright colors` 换成 `soft glowing colors`；画面要暖月光、萤火虫、小灯，不能暗、不能吓人（见 s03）。
 
 **画风样张**：用户挑定的样图放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
@@ -152,7 +173,20 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 用户 `~/.codex/config.toml` 里的 MCP 服务会报 403 / AuthRequired，是噪音，不影响出图。
 - （2026-10-26）多角色图连续失败：三张 2.6MB 参考图一起上传，网络一抖就断。脚本已改成先缩成 768px JPEG 再传。第一轮失败的图用 `-j 2` 重跑。
 
-### 5.4 可灵钩子
+### 5.3.1 关键帧动画（2026-10-28 起默认，不花可灵灵感值）
+
+用户的可灵会员额度用完了，Codex 额度很充足，所以动作都改用 Codex 出关键帧来做，类似日系动画的有限动画（一拍三）：
+
+- **script.md 写法**：主图照旧写 `**p04.png**`；关键帧写 `**p04b.png** ← p04.png`，代码块里只写改哪里（动作、表情、位置），其他都不动。`codex_images.py` 先出主图，再把主图当第一张参考图，让 Codex 只改动作、画出同一镜头的下一张。
+- **每页 1–2 张关键帧**，放在最有戏的动作上：张嘴喊、跳起来、被砸、倒下。倒下、鼓起这类动作，一张比一张幅度大（p04b 倒 30°，p04c 倒 60°）。
+- **钩子**：首帧 `kling_first.png` 加 3 张关键帧（`h02.png` 起，都以首帧为底），在 story.json 里写 `hook.frames`，不写 `clip`。sbv.py 会做成 4–5 秒的翻页动画：到点硬切、缓推，换图时可以震一下屏。
+- **story.json**：
+  - `frames`：`[{"image": "p04b.png", "line": 0, "offset": 1.2, "shake": true}]`，在第几句开口后多少秒换成这张，也可以写 `"at"`（秒）。
+  - `cycle`：`{"images": ["p02.png", "p02b.png"], "step": 0.25, "line": 0}`，那句台词说话期间来回切，适合嚼东西、晃身子。
+  - 换图配一个音效（boing / pop / bonk），落点和换图对齐。
+- **质检**：关键帧和主图的背景、光线、角色位置要对得上，只有动作变了；对不上就 `--only p04b --force` 重出。抽帧看换图那一下有没有跳画风。
+
+### 5.4 可灵钩子（可选，有灵感值时再用）
 
 - 只做 `kling01.mp4`：图生视频，**5 秒、9:16、1080p、不开原生音频**（原生音频贵 50%，配音由脚本做）。
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
@@ -269,10 +303,10 @@ open ../../out/c01
 
 ## 8. 确认剧本后一路做到成品（用户的目标）
 
-用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**。确认之前只改文字，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
+用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**。确认时交给用户的是剧本加漫画剧本网页（第 4.1 节）。确认之前除了漫画草图，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
 
-1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。
-2. 可灵钩子：按第 5.4 节出 `kling01.mp4`，没到位就先用占位开头。
+1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。主图出完会自动接着出关键帧（第 5.3.1 节）。
+2. 钩子：默认用关键帧翻页钩子（`hook.frames`）；有可灵灵感值、用户也同意花时，才按第 5.4 节出 `kling01.mp4`。
 3. 渲染：完整版和精华版，用正式的 `story.json`。
 4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
@@ -297,7 +331,7 @@ open ../../out/c01
 
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
-| 剧本 | 主题、结构、台词、童趣、互动 | 有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
+| 剧本 | 主题、结构、台词、童趣、互动 | 选题打分 ≥14、三句话写得出来、情绪曲线谷在 p03 峰在 p07（`docs/story-psychology-reference.md` 第 9 节自检）；漫画剧本网页做好、每格和剧本对得上；有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
 | 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
 | 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
@@ -374,6 +408,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
+| s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 剧本 + 漫画剧本等用户确认；第一集全用关键帧动画、不用可灵 |
 | s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
