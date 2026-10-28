@@ -40,7 +40,8 @@
     "say": {
       "speaker": "narrator",
       "en": "Oh no! Hazel's ball!",
-      "at": 0.95
+      "at": 0.95,
+      "say": "[gasps] Oh no! Hazel's ball!"
     },
     "sfx": [
       {
@@ -72,7 +73,8 @@
         {
           "speaker": "hazel",
           "en": "My red ball! It's stuck!",
-          "zh": "我的红皮球！卡住了！"
+          "zh": "我的红皮球！卡住了！",
+          "say": "[surprised] My red ball! [worried] It's stuck!"
         }
       ]
     },
@@ -83,7 +85,8 @@
         {
           "speaker": "hazel",
           "en": "Push, push... Oh no!",
-          "zh": "推，推……哎呀！"
+          "zh": "推，推……哎呀！",
+          "say": "[straining] Push... push... [gasps] Oh no!"
         }
       ],
       "sfx": [
@@ -102,13 +105,15 @@
           "speaker": "hazel",
           "en": "Help... help me, please.",
           "zh": "帮帮……帮帮我吧。",
-          "gain": 0.4
+          "gain": 0.6,
+          "say": "[whispers] Help... help me, please."
         },
         {
           "speaker": "narrator",
           "en": "Louder, Hazel! Say help!",
           "zh": "大声点，Hazel！喊 help！",
-          "gap": 2.0
+          "gap": 2.0,
+          "say": "[excited] Louder, Hazel! Say help!"
         }
       ]
     },
@@ -124,7 +129,8 @@
         {
           "speaker": "hazel",
           "en": "Help! Help me, please!",
-          "zh": "帮帮我！帮帮我吧！"
+          "zh": "帮帮我！帮帮我吧！",
+          "say": "[shouting] Help! Help me, please!"
         }
       ],
       "sfx": [
@@ -147,12 +153,14 @@
         {
           "speaker": "nutty",
           "en": "I can help!",
-          "zh": "我来帮你！"
+          "zh": "我来帮你！",
+          "say": "[excited] I can help!"
         },
         {
           "speaker": "bun",
           "en": "I can help, too!",
-          "zh": "我也来帮你！"
+          "zh": "我也来帮你！",
+          "say": "[cheerfully] I can help, too!"
         }
       ],
       "sfx": [
@@ -170,12 +178,14 @@
         {
           "speaker": "narrator",
           "en": "One, two, three... push!",
-          "zh": "一、二、三……推！"
+          "zh": "一、二、三……推！",
+          "say": "[excited] One, two, three... [shouting] push!"
         },
         {
           "speaker": "hazel",
           "en": "Push, push, push!",
-          "zh": "推，推，推！"
+          "zh": "推，推，推！",
+          "say": "[straining] Push, push, push!"
         }
       ]
     },
@@ -187,7 +197,8 @@
         {
           "speaker": "hazel",
           "en": "My ball! Thank you, friends!",
-          "zh": "我的球！谢谢你们！"
+          "zh": "我的球！谢谢你们！",
+          "say": "[laughs] My ball! [happily] Thank you, friends!"
         }
       ],
       "sfx": [
@@ -206,12 +217,14 @@
         {
           "speaker": "hazel",
           "en": "Need help? Say help!",
-          "zh": "需要帮忙？就说 help！"
+          "zh": "需要帮忙？就说 help！",
+          "say": "[playfully] Need help? Say help!"
         },
         {
           "speaker": "narrator",
           "en": "The end. Bye-bye!",
-          "zh": "讲完啦，拜拜！"
+          "zh": "讲完啦，拜拜！",
+          "say": "[warmly] The end. Bye-bye!"
         }
       ],
       "sfx": [

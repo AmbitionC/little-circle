@@ -38,8 +38,15 @@ DEFAULT_STYLE = {
         "zh": {"path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc", "index": 2},
     },
     "en_size": 70,
-    "zh_size": 42,
-    "subtitle_center": 1640,
+    "zh_size": 46,
+    # 字幕默认无底板、描边字，放在画面 2/3 高度：避开抖音底部的标题、简介和右侧按钮（2026-10-28 用户要求）
+    "subtitle_mode": "outline",
+    "subtitle_center": 1320,
+    "subtitle_x": 510,
+    "subtitle_max_w": 820,
+    "sub_fill": [255, 255, 255],
+    "sub_highlight": [255, 214, 64],
+    "sub_stroke_w": 9,
     "card_fill": [255, 249, 236, 238],
     "card_outline": [232, 214, 186],
     "zh_color": [110, 84, 62],
@@ -294,9 +301,24 @@ def estimate_spans(tokens, s0, s1):
     return spans
 
 
+def drop_tags(words):
+    """去掉 v3 语气标签（[excited]、[happy gasp] 这类）对应的"词"，它们不出声、也不在字幕里。"""
+    out, inside = [], False
+    for w in words:
+        t = w["w"]
+        if t.startswith("["):
+            inside = True
+        if not inside:
+            out.append(w)
+        if t.endswith("]"):
+            inside = False
+    return out
+
+
 def align_tokens(tokens, words, path):
     """把配音的词时间戳对到字幕词（字幕词带标点）；对不上或没有时间戳的按能量 + 字长估算。"""
     s0, s1 = speech_bounds(path)
+    words = drop_tags(words or [])
     if not words:
         return estimate_spans(tokens, s0, s1)
     spans, j = [None] * len(tokens), 0
@@ -650,6 +672,43 @@ class PageSeg:
                 return li, -1
         return None, None
 
+    def outline_card(self, ln, wi, color, fe, fz):
+        """无底板字幕：英文白字、角色色粗描边，当前词黄字；中文白字深描边；整体带柔和投影，亮背景上也看得清。"""
+        st = self.ctx.st
+        maxw = st.get("subtitle_max_w", 820)
+        sw = st.get("sub_stroke_w", 9)
+        tokens = ln["tokens"]
+        lines = wrap_tokens(tokens, fe, maxw)
+        zh_lines = wrap_zh(ln.get("zh", ""), fz, maxw) if ln.get("zh") else []
+        le, lz = int(fe.size * 1.2), int(fz.size * 1.45)
+        space = fe.getlength(" ")
+        widths = [sum(fe.getlength(tokens[i]) for i in l) + space * (len(l) - 1) for l in lines]
+        pad = sw * 2 + 16
+        pw = int(max(widths + [fz.getlength(z) for z in zh_lines])) + pad * 2
+        ph = le * len(lines) + lz * len(zh_lines) + pad * 2
+        im = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        dark = tuple(int(c * 0.55) for c in color)
+        y = pad
+        for l, lw in zip(lines, widths):
+            x = (pw - lw) / 2
+            for i in l:
+                fill = rgb(st["sub_highlight"]) if i == wi else rgb(st["sub_fill"])
+                d.text((x, y + le / 2), tokens[i], font=fe, fill=fill, anchor="lm",
+                       stroke_width=sw, stroke_fill=dark)
+                x += fe.getlength(tokens[i]) + space
+            y += le
+        for z in zh_lines:
+            d.text((pw / 2, y + lz / 2), z, font=fz, fill=rgb(st["sub_fill"]), anchor="mm",
+                   stroke_width=max(5, sw - 3), stroke_fill=(60, 40, 25))
+            y += lz
+        shadow = Image.new("RGBA", im.size, (20, 12, 5, 0))
+        shadow.putalpha(im.getchannel("A").filter(ImageFilter.GaussianBlur(8)).point(lambda v: int(v * 0.5)))
+        out = Image.new("RGBA", im.size, (0, 0, 0, 0))
+        out.alpha_composite(shadow, (0, 4))
+        out.alpha_composite(im)
+        return out
+
     def card(self, li, wi):
         key = (li, wi)
         if key in self.cache:
@@ -658,6 +717,10 @@ class PageSeg:
         ln = self.lines[li]
         color = rgb(st["speaker_colors"].get(ln["speaker"], st["speaker_colors"]["narrator"]))
         fe, fz = f.get("en", st["en_size"]), f.get("zh", st["zh_size"], "Medium")
+        if st.get("subtitle_mode", "outline") == "outline":
+            im = self.outline_card(ln, wi, color, fe, fz)
+            self.cache[key] = im
+            return im
         maxw = W - 160
         tokens = ln["tokens"]
         lines = wrap_tokens(tokens, fe, maxw)
@@ -713,7 +776,8 @@ class PageSeg:
         li, wi = self.state(t)
         if li is not None and self.ctx.st.get("subtitles", True):
             c = self.card(li, wi)
-            frame.alpha_composite(c, ((W - c.width) // 2, int(self.ctx.st["subtitle_center"] - c.height / 2)))
+            cx = self.ctx.st.get("subtitle_x", W // 2) if self.ctx.st.get("subtitle_mode", "outline") == "outline" else W // 2
+            frame.alpha_composite(c, (int(cx - c.width / 2), int(self.ctx.st["subtitle_center"] - c.height / 2)))
         if self.ctx.badge is not None:
             frame.alpha_composite(self.ctx.badge, tuple(self.ctx.st["badge_pos"]))
         return frame.convert("RGB")
@@ -840,7 +904,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         add(seg)
         if hook.get("say"):
             say = hook["say"]
-            wav, _ = synthesize(say["en"], cast[say.get("speaker", "narrator")], cache)
+            wav, _ = synthesize(say.get("say", say["en"]), cast[say.get("speaker", "narrator")], cache)
             placements.append((wav, seg.start + say.get("at", 0.4), 1.0))
         if hook.get("keep_clip_audio"):
             placements.append((clip, seg.start, hook.get("clip_gain", 1.0)))

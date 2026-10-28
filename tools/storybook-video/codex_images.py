@@ -2,6 +2,7 @@
 """用本机 Codex CLI（ChatGPT 登录，内置 image_gen）按 script.md 的出图提示词批量出图。
 
   python3 codex_images.py refs                         # 先出三个角色的参考图 → series/refs/
+  python3 codex_images.py styles                       # 画风对比：series/style_tests.json → out/style_test/
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
 
@@ -42,7 +43,7 @@ def parse_script(path):
         jobs["kling_first.png"] = " ".join(m.group(1).split())
     last = sorted(k for k in jobs if k.startswith("p"))
     if last and "封面关键画面" in text:
-        base = jobs[last[-1]].replace(", keep the bottom quarter of the image simple and free of faces", "")
+        base = jobs[last[-1]].replace(", keep every face in the upper 55% of the image and the lower 40% simple open ground", "")
         jobs["cover.png"] = base + ", the characters and props sit in the lower half, the top 40% is clean open sky and soft tree canopy with empty space for a title"
     return jobs
 
@@ -70,11 +71,11 @@ def small_ref(path):
     return dst
 
 
-def codex_generate(prompt, refs, log):
-    """跑一次 codex exec，返回生成的原图路径。"""
+def codex_generate(prompt, refs, log, use_style=True):
+    """跑一次 codex exec，返回生成的原图路径。use_style=False 时不带画风样张（做画风对比用）。"""
     ask = ("Use your built-in image_gen tool exactly once to generate ONE vertical portrait image "
            "(9:16, the tallest portrait size available). Use this prompt verbatim:\n\n" + prompt + "\n\n")
-    styles = style_refs()
+    styles = style_refs() if use_style else []
     if styles:
         ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
                 "style closely: rendering, fur texture, eye style, lighting, color palette and level of detail. "
@@ -123,7 +124,7 @@ def to_frame(src, dst):
     img.save(dst)
 
 
-def run_jobs(outdir, jobs, args, frame=True):
+def run_jobs(outdir, jobs, args, frame=True, use_style=True):
     lock_path = os.path.join(outdir, "images.json")
     lock = json.load(open(lock_path)) if os.path.exists(lock_path) else {}
     log = os.path.join(outdir, ".codex_images.log")
@@ -145,7 +146,7 @@ def run_jobs(outdir, jobs, args, frame=True):
         t = time.time()
         for attempt in (1, 2):
             try:
-                src = codex_generate(prompt, refs, log)
+                src = codex_generate(prompt, refs, log, use_style)
                 break
             except Exception as e:  # 失败重试一次
                 if attempt == 2:
@@ -165,7 +166,7 @@ def run_jobs(outdir, jobs, args, frame=True):
 
 def main():
     ap = argparse.ArgumentParser(description="用 Codex CLI 按 script.md 出图")
-    ap.add_argument("targets", nargs="+", help="refs，或集目录（里面有 script.md）")
+    ap.add_argument("targets", nargs="+", help="refs、styles，或集目录（里面有 script.md）")
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
@@ -173,6 +174,15 @@ def main():
 
     failed = 0
     for t in args.targets:
+        if t == "styles":
+            # 画风对比：series/style_tests.json 里每种画风 × 每个场景各出一张，放 out/style_test/
+            cfg = json.load(open(os.path.join(ROOT, "series", "style_tests.json"), encoding="utf-8"))
+            outdir = os.path.join(ROOT, "out", "style_test")
+            os.makedirs(outdir, exist_ok=True)
+            jobs = {f"{k}_{sc}.png": (f"{prompt}, {v['style']}", [])
+                    for k, v in cfg["styles"].items() for sc, prompt in cfg["scenes"].items()}
+            failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
             jobs = {f"{k}.png": (REF_PROMPT.format(desc=d), []) for k, d in CHARACTERS.items()}

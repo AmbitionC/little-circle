@@ -38,11 +38,11 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（Codex 出的全身设定图；2026-10-27 按新画风重出）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
-| 画风 | 精致数字绘本插画（2026-10-27 起，替换原来的水彩手绘）：毛发细腻蓬松，大而亮的圆眼睛带高光，圆滚滚的萌系比例，表情开心夸张；阳光明媚的森林，苔藓、蕨类、小野花、红顶蘑菇，暖金色阳光加柔和光斑；颜色明亮饱和，边缘干净，细节丰富。不要水彩纸纹、不要粗笔触 |
+| 画风 | **2026-10-28 用户说改了等于没改，正在重选**：5 组候选样图见第 5.5 节，用户挑定前不出新集的图。挑定后把这一格、5.1 风格词和 `series/style/` 样张一起换掉。当前写的是 10-27 版——精致数字绘本插画：毛发细腻蓬松，大而亮的圆眼睛带高光，圆滚滚的萌系比例，表情开心夸张；阳光明媚的森林，苔藓、蕨类、小野花、红顶蘑菇，暖金色阳光加柔和光斑；颜色明亮饱和，边缘干净，细节丰富。不要水彩纸纹、不要粗笔触 |
 | 结构 | [可选 0.4 秒静止封面] → 可灵钩子 5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 → 片尾卡 3.5 秒（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒） |
 | 每集两版 | 推荐流精华版：`--max-pages 4`，约 20–35 秒，停在悬念上，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
-| 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。旁白慢速温暖，角色音高拉开 |
-| 字幕 | 中英双语，奶油色圆角底板。英文在上 70px、按角色上色；中文在下 42px、棕灰色；当前词浅橙高亮底 #FFDD9E。中心 y=1640，被抖音底部文案挡住就上调到约 1450（`style.subtitle_center`） |
+| 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。**模型用 `eleven_v3`，每句都写语气标签**（第 6.1 节）：要有起伏，不能平铺直叙（2026-10-28 用户反馈）。旁白像给孩子讲故事一样有抑扬顿挫，角色音高拉开 |
+| 字幕 | 中英双语，**不要底板**（2026-10-28 用户要求：底部会被抖音标题和简介挡住）。`subtitle_mode: outline`：白字加粗描边（英文描边是角色色压暗、中文描边深棕）加柔和阴影，当前词变黄 #FFD640。英文 70px 在上，中文 46px 在下。**中心 y=1320、x=510**（略偏左，躲开抖音右侧点赞栏），最宽 820px。旧的奶油底板还能用 `subtitle_mode: card` 切回 |
 | 字体 | 英文 Fredoka SemiBold；中文 Noto Sans CJK SC（ttc index 2）。Mac 上没装时 sbv.py 自动换 Arial Rounded / 苹方 |
 | 色板 | 奶油 #FFF8E8、棕 #5C3418、浅棕 #6E543E、橙 #E8892B、叶绿 #7A9A4A |
 | 角色字幕色 | 旁白 #4A3426 (74,52,38)、Nutty #B24E16 (178,78,22)、Hazel #A06800 (160,104,0)、Bun #AC382C (172,56,44) |
@@ -117,7 +117,7 @@ polished digital children's picture book illustration, richly detailed soft fluf
 
 **画风样张**：用户给的样张放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
-页面图再加 `keep the bottom quarter of the image simple and free of faces`（下方四分之一留给字幕，脸放在 y<1450）。
+页面图再加 `keep every face in the upper 55% of the image and the lower 40% simple open ground`（字幕中心在 y≈1320，下面还有抖音标题和简介，所以脸都放在上半部分，下 40% 只留地面、草地这类简单背景）。
 
 ### 5.2 角色固定描述（出现角色名时原文替换，一个字都别改）
 
@@ -180,6 +180,17 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
   ffmpeg -y -loop 1 -t 5 -i kling_first.png -loop 1 -t 5 -i p01.png -filter_complex "[0]scale=2160:3840,zoompan=z='1+0.08*on/150':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=150:s=1080x1920:fps=30[a];[1]scale=1080:1920,fps=30[b];[a][b]xfade=transition=fade:duration=1:offset=4,format=yuv420p" -t 5 hook_placeholder.mp4
   ```
 
+### 5.5 换画风的流程（2026-10-28 起）
+
+用户说画风不对时，不要只改风格词就重出整集（10-27 那次改了词，用户看着"完全没有变化"）。先出样图让用户挑：
+
+1. 候选写在 `series/style_tests.json`：每组有名字、风格词、为什么适合 2–3 岁英语启蒙；场景用两张（三个角色同框站一排、本集第 1 页）。
+2. `python3 codex_images.py styles -j 2`，出到 `out/style_test/<风格>_<场景>.png`。这一步**不带**样张和旧的角色参考图，否则会被拉回旧画风。
+3. 自己先看一遍（角色认得出、没文字、没多余肢体），再做一个对比网页（Artifact）：每组两张图并排，写上名字和理由，让用户挑。
+4. 用户挑定后：把这组的风格词写进 5.1 和 `codex_images.py` 的 `STYLE`，选中的那张放进 `series/style/` 当样张，跑 `refs --force` 重出角色参考图，再出本集的图。
+
+2026-10-28 这一轮的五组：水彩绘本（用户点名要的）、3D 软萌动画、扁平粗线卡通、毛毡黏土手作、日系手绘动画（接近用户发的「一只狐尼克」截图）。
+
 ## 6. 写 story.json
 
 放在 `episodes/<编号>-<slug>/story.json`（认知短片 c01、c02…，剧情片 s01…；例如 `episodes/c01-fruits/`），图和 `kling01.mp4` 放同目录。字段全集见 `tools/storybook-video/README.md`，常用骨架：
@@ -212,15 +223,24 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 要点：
 
 - `motion` 每页轮换（in / out / left / right / up / down），`focus` 对准角色或道具（占原图宽高的比例）。图出好后看一眼主体位置再调 `focus`。
-- `say` 是送去配音的文本，字幕只显示 `en`。**sbv.py 会把 `say` 原样发给配音引擎，不会剥掉方括号标签。** 所以 `[excited]` 这类语气标签只能用在 `cast.json` 里 `model` 是 `eleven_v3` 的角色上；现在 cast.json 是 `eleven_multilingual_v2`，Kokoro 样片也一样，加了标签会被念出来或读怪。没用 v3 时，语气靠标点（! ? …）和 `cast.json` 的 stability / style 调。用 v3 时如果不返回时间戳，脚本会退回普通接口、高亮按能量估算。
+- `say` 是送去配音的文本，字幕只显示 `en`。每句都要写 `say`，带语气标签（第 6.1 节）。`sbv.py` 对齐字幕时会去掉 `[...]` 标签。标签只在 `eleven_v3` 下有用；退回 `cast_v2.json`（multilingual_v2）或 Kokoro 样片时标签会被念出来，要先把 `say` 删掉。v3 不返回时间戳时，脚本会退回普通接口，高亮按能量估算。
 - `gap` 是这句之后的停顿（默认 0.4 秒），`hold` 是整页说完后多停几秒。
 - 某句要重录：加 `"take": 2`，其他句子不动。
-- 某句要小声（害羞、说悄悄话）：加 `"gain": 0.4`，只降这句的音量。multilingual_v2 不认语气标签，光靠标点做不出"小声"（s02 第 3 页实测和大喊一样响）。
+- 某句要小声（害羞、说悄悄话）：`say` 里写 `[whispers]`，再加 `"gain": 0.6` 兜底，只降这句的音量（s02 第 3 页用 multilingual_v2 时，小声和大喊一样响）。
 - 音效别和台词第一个词撞在一起：页面 `lead` 默认 0.5 秒开口，音效放在 0.3 秒前结束，或放到这句说完之后（s02 第 4 页树叶声原来盖住了 "Help!"）。
 - 可选：`cover`（钩子前 0.4 秒静止封面帧，可以直接用脚本出的 `cover.png`）、`cut`、`hold`、`zoom`、`parallax`（2.5D 视差，需深度模型）、`fx`（glow / snow / motes，坐标按图标注）。
 - 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）。
 - 背景音乐没有时（音乐接口要付费档）：`python3 tools/storybook-video/make_bgm.py assets/bgm/bgm_play.wav 60` 先顶上。
 - 写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验，再数一遍每句英文是 3–5 个词、全片 11–13 句。
+
+### 6.1 配音要有情绪起伏（2026-10-28 用户反馈"没有张力，平铺直叙"）
+
+- `cast.json` 四个角色都用 `eleven_v3`。v3 的 stability 只能是 0.0、0.5、1.0：旁白 0.5（稳、但有起伏），三个角色 0.0（最有表现力）。v3 报错或 Hazel 和 Bun 分不清时，退回 `series/cast_v2.json`（multilingual_v2，stability 压到 0.25–0.35，style 拉到 0.55–0.7），同时去掉 `say` 里的标签。
+- **每句都写语气标签**，写在 `say` 开头或句中：`[excited]` `[gasps]` `[whispers]` `[shouting]` `[laughs]` `[giggles]` `[sighs]` `[happily]` `[sadly]` `[curious]` `[warmly]`。
+- 一集里要有**对比**：至少一处"小声 → 大喊"（如 s02 第 3 页 `[whispers] Help... help me, please.` 接第 4 页 `[shouting] Help! Help me, please!`），一处数数或蓄力（`[excited] One, two, three... [shouting] push!`），结尾 `[laughs]` 或 `[warmly]` 落下来。
+- 旁白不是播音腔，是讲故事：钩子用 `[gasps]` 起，转折处放慢加省略号，高潮提速提音量。
+- 标点也算数：`...` 拉长停顿，`!` 提音量，`?` 上扬；`en` 里不用写标签，字幕保持干净。
+- 质检要听：钩子第一句有没有"抓人"；小声和大喊音量差 ≥6 dB；整集听下来有没有两句以上读成一个调。
 
 ## 7. 配音与渲染（在用户 Mac 上跑）
 
@@ -256,7 +276,8 @@ open ../../out/c01
 3. 渲染：完整版和精华版，用正式的 `story.json`。
 4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
-6. 收尾：脚本修复提交推送；`tracking/videos.csv` 加一行（状态"待发布"、工时、现金成本）；更新 `HANDOFF.md` 和第 11 节剧集表；`open out/<集>`。
+6. **同步 OSS，出最终网页**（2026-10-28 用户要求：以后只给一个网页）：`.venv/bin/python oss_publish.py ../../out/<集>`，链接写进 `out/<集>/oss.json`；再发布一个预览网页（Artifact），里面有完整版和精华版播放、封面、每个文件的下载按钮（视频直接用 OSS 链接）、按平台分好的标题/正文/话题/置顶评论和一键复制。交付只发这个网页链接，不发本地路径、不让用户自己去文件夹找。OSS key 只从环境变量 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET` 读（在用户 `~/.zshrc` 里），读不到就先用 Artifact 自带的素材存储顶上，并在汇报里说一句。
+7. 收尾：脚本修复提交推送；`tracking/videos.csv` 加一行（状态"待发布"、工时、现金成本）；更新 `HANDOFF.md` 和第 11 节剧集表；`open out/<集>`。
 
 **成品包（交付清单）**，都在 `out/<集>/`：
 
@@ -270,14 +291,14 @@ open ../../out/c01
 | `<name>.srt`、`<name>_print.pdf` | 字幕、打印小绘本（付费包素材） |
 | `<name>_sheet.jpg`、`<name>_frame0.jpg` | 质检留底：每页 2 帧总览、第 0 帧（`qa.py` 生成） |
 
-交付时只讲：成品在哪、每项质检结果、自己修了什么、花了多少（可灵次数、配音字符）、还剩什么只有用户能做（手机终检、点发布）。
+交付时只讲：最终网页链接、每项质检结果、自己修了什么、花了多少（可灵次数、配音字符）、还剩什么只有用户能做（手机终检、点发布）。
 
 ## 9. 每个环节的质量把控（不合格自己修，修完重检）
 
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
 | 剧本 | 主题、结构、台词、童趣、互动 | 有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
-| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下方四分之一没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（毛发细腻、大眼高光、暖色阳光，不能是水彩纸纹的手绘感） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
+| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（毛发细腻、大眼高光、暖色阳光，不能是水彩纸纹的手绘感） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
 | 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
 | 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
@@ -293,7 +314,7 @@ open ../../out/c01
 
 最后一行写"全部通过"才算过。它查格式、响度、第 0 帧不黑、黑边、Whisper 逐句对照（相似度 ≥0.75）、字幕 0.6 秒内有人声、Hazel 和 Bun 的基频语速、时长；总览图和第 0 帧还要用眼睛看一遍（挡脸只能人看）。另外要听的：剧本里写了"小声""大喊"的句子，音量真的有差别。
 
-**只有用户能做的**：手机终检（前 2 秒、字幕有没有被抖音底部文案挡住、睡前小音量能不能听清），以及点发布、勾 AI 声明。
+**只有用户能做的**：手机终检（前 2 秒、字幕有没有被抖音标题简介或右侧按钮挡住、睡前小音量能不能听清），以及点发布、勾 AI 声明。
 
 ## 10. 发布与数据
 
