@@ -14,7 +14,7 @@
     "voice": "FxhIL9WJO2rPlM8h61S3",
     "model": "eleven_v3",
     "settings": {
-      "stability": 0.0,
+      "stability": 0.5,
       "similarity_boost": 0.75
     }
   },
