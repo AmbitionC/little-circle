@@ -26,7 +26,7 @@
 
 - pip: `a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt`
 - bruno: `a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief`
-- fern: `a slim orange fox with a fluffy white-tipped tail and pointy ears, a red maple leaf tucked behind one ear`
+- fern: `a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear`
 - ruby: `a tiny round fluffy baby robin with an orange-red chest and stubby little wings`
 - ollie: `a small round brown owl with big amber eyes and tiny round glasses`
 - rocky: `a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves`
