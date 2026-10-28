@@ -484,13 +484,22 @@ def pick_key(keys, cyc, t):
     return img, kick
 
 
-def shake_box(box, kick, iw, amp=0.012, dur=0.3):
-    """换图那一下震屏：取景框左右上下抖几下、0.3 秒内衰减到 0（移的是取景框，不露黑边）。"""
+def shake_box(box, kick, iw, ih, amp=0.012, dur=0.3):
+    """换图那一下震屏：取景框左右上下抖几下、0.3 秒内衰减到 0。
+    取景框贴着原图边时先往里收一圈，再把位移夹在原图范围内，不会出界、不露黑边。"""
     if kick is None or kick >= dur:
         return box
     k = (1 - kick / dur) ** 2 * amp * iw
     dx, dy = k * math.sin(kick * 90), k * 0.6 * math.cos(kick * 70)
     x0, y0, x1, y1 = box
+    m = abs(k) * 1.1           # 收边量跟着震幅一起衰减，震完平滑回到原取景，不会突然一跳
+    sx, sy = max(0, m - min(x0, iw - x1)), max(0, m * 0.6 - min(y0, ih - y1))
+    if sx or sy:   # 收边保持宽高比
+        r = max(sx / max(x1 - x0, 1), sy / max(y1 - y0, 1))
+        cx, cy, hw, hh = (x0 + x1) / 2, (y0 + y1) / 2, (x1 - x0) / 2 * (1 - 2 * r), (y1 - y0) / 2 * (1 - 2 * r)
+        x0, x1, y0, y1 = cx - hw, cx + hw, cy - hh, cy + hh
+    dx = min(max(dx, -x0), iw - x1)
+    dy = min(max(dy, -y0), ih - y1)
     return (x0 + dx, y0 + dy, x1 + dx, y1 + dy)
 
 
@@ -508,7 +517,7 @@ def render_flipbook(hook, base, out_dir):
         img, kick = pick_key(keys, cyc, t)
         box = kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
                      hook.get("zoom", 1.08))
-        img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw)).save(
+        img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw, ih)).save(
             os.path.join(out_dir, f"h_{i + 1:04d}.jpg"), quality=92)
     return n
 
@@ -835,7 +844,7 @@ class PageSeg:
         rx, ry, rw, rh = self.region
         iw, ih = self.img.size
         img, kick = pick_key(self.keys, self.cyc, t)
-        box = shake_box(kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from), kick, iw)
+        box = shake_box(kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from), kick, iw, ih)
         if self.fx or self.par:
             if img is not self.img:
                 self.src = np.asarray(img).astype(np.float32)
