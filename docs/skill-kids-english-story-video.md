@@ -142,7 +142,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 - 已有的图跳过；某张图的提示词在 script.md 里改了，再跑一遍会**只重出那一张**。`--force` 全部重出。
 - 网络好时一张约 1.5–3 分钟；用户家里连 OpenAI 常断（Broken pipe），实测 10 张要 1 小时以上。按这个估时间，放后台跑，跑完再汇报。
 - 日志在集目录的 `.codex_images.log`。
-- 出完抽几张缩小拼图看一遍（角色像不像参考图、下方四分之一有没有脸、有没有乱入文字），不行的用 `--only … --force` 重出，再把结果拼图发给用户挑。
+- 出完抽几张缩小拼图看一遍（角色像不像参考图、下 40% 有没有脸、有没有乱入文字），不行的用 `--only … --force` 重出，再把结果拼图发给用户挑。
 
 **踩过的坑**（2026-10-24）：
 
@@ -374,7 +374,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-27 画风改成精致数字绘本插画，重画中；待发布 |
+| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 用户反馈配音平、字幕被挡、画风没变：已换 v3 语气配音、字幕上移去底板，画风五选一待挑；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
