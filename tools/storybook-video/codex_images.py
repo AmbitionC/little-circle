@@ -31,6 +31,16 @@ CHARACTERS = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
     "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
     "bun": "a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
+    # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
+    "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
+    "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
+    "fern": "a slim orange fox with a fluffy white-tipped tail and pointy ears, a red maple leaf tucked behind one ear",
+    "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
+    "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
+    "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
+    "dot": "a gentle little fawn with white spots on her back and big soft ears, wearing a small pink flower behind one ear",
+    "bo": "a little badger with a black-and-white striped face, holding a small leaf book",
+    "wiggles": "a little brown otter with a sleek shiny coat and long whiskers, balancing a small round pebble on his head",
 }
 REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "
               "friendly smile, plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
@@ -99,7 +109,7 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
                 "style closely: rendering, line work, cel shading, eye style, lighting, color palette and background painting. "
                 "Do not copy their characters, poses, composition or scene.\n\n")
     if refs:
-        ask += ("The " + ("other " if styles else "") + "attached image(s) are the character reference sheets for this "
+        ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "
                 "series. Keep each character's face, body shape, colors and clothing exactly like the reference, "
                 "but use the pose, scene and composition from the prompt, not the reference's.\n\n")
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
@@ -250,10 +260,18 @@ def main():
             jobs[name] = (prompt, refs)
         failed += run_jobs(os.path.abspath(t), jobs, args)
         # 第二轮：关键帧（底图要先出好）
-        keys = {name: (KEY_ASK.format(change=change), [], os.path.join(os.path.abspath(t), src))
+        # 改动说明里点名了新角色（如 h03 镜头下移、露出树下的朋友），就把他们的参考图也带上
+        keys = {name: (KEY_ASK.format(change=change),
+                       [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
+                        if d in change and os.path.exists(os.path.join(REFS, f"{k}.png"))],
+                       os.path.join(os.path.abspath(t), src))
                 for name, (src, change) in parse_keys(script).items()}
-        if keys:
-            failed += run_jobs(os.path.abspath(t), keys, args)
+        for _ in range(3):   # 关键帧也可以以关键帧为底（h04 ← h03），一轮出不全就再跑一轮
+            if not keys:
+                break
+            k_failed = run_jobs(os.path.abspath(t), keys, args)
+            keys = {n: j for n, j in keys.items() if not os.path.exists(os.path.join(os.path.abspath(t), n))}
+        failed += len(keys) and k_failed
     sys.exit(1 if failed else 0)
 
 

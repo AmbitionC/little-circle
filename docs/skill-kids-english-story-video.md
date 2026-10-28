@@ -35,6 +35,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | --- | --- |
 | 账号名 | **栗栗学英语**（三个平台统一） |
 | 系列名 | 森林小伙伴；合集分「认知小绘本」「森林故事」 |
+| 其他角色 | 狐狸、小熊、小老鼠、知更鸟、猫头鹰、浣熊、小鹿、獾、水獭……各有一个鲜明性格和一个小标志，轮流当主角（2026-10-28 用户要求不只三个），**设定和出图原文见 `series/characters.md`**；新角色第一次出场前跑 `codex_images.py refs --only <id>` |
 | 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（Codex 出的全身设定图；2026-10-28 按日系手绘画风重出）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
@@ -106,6 +107,8 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 - 有"封面关键画面"这一段时，脚本会用最后一页的提示词自动出一张上方留空的 `cover.png`。
 
 用户的习惯：剧本改动时只发更新后的文件；**没让渲染就不要重新渲染**。
+
+**张力第一**（2026-10-28 用户否掉 s03："一点波澜都没有"）：困境要让人揪心，不能只是"困了""饿了"这种小不适。要有利害（谁有危险、会失去什么）、有阻碍升级（前两次尝试更糟）、有最弱的人被推到台前、有一下"要完了"的惊险，然后马上安全解决。写完问自己：家长看到第 3 页会不会想知道"然后呢"。
 
 **写剧本前先读 `docs/story-psychology-reference.md`**（选题、情节、情绪的方法）：先给选题打分，≥14 分才写；动笔前写出三句话，即 logline、家长钩子和孩子会学的一句英文；然后按 8 页节拍（谷在 p03，反转在 p04，峰在 p07，p08 暖收）排情节，写完按它第 9 节自检。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s03-sleepy/script.md`。
 
@@ -408,7 +411,8 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 剧本 + 漫画剧本等用户确认；第一集全用关键帧动画、不用可灵 |
+| s04 | 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-28 剧本 + 漫画剧本等用户确认；新角色 Pip、Bruno、Fern、Ruby |
+| s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
 | s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。

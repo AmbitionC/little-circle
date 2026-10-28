@@ -12,7 +12,8 @@ from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-NAMES = {"narrator": "旁白", "nutty": "栗栗", "hazel": "Hazel", "bun": "Bun"}
+NAMES = {"narrator": "旁白", "nutty": "栗栗", "hazel": "Hazel", "bun": "Bun", "pip": "皮皮", "bruno": "Bruno",
+         "fern": "Fern", "ruby": "Ruby", "ollie": "Ollie", "rocky": "Rocky", "dot": "Dot", "bo": "Bo", "wiggles": "Wiggles"}
 
 
 def split_panels(path, n):
