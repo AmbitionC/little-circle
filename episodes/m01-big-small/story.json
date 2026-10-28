@@ -1,0 +1,403 @@
+{
+  "output_name": "m01_big_small",
+  "title_en": "Big and Small!",
+  "title_zh": "大大小小，唱起来！",
+  "series": {
+    "badge_text": "栗栗学英语 · 儿歌",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "song": [
+        178,
+        78,
+        22
+      ]
+    }
+  },
+  "song": {
+    "_说明": "song.py 按这里生成歌（ElevenLabs Music），sbv.py 按歌的词时间戳切卡、做逐词高亮。file/words 由 song.py pick 写进来。",
+    "model": "music_v2_5",
+    "bpm": 120,
+    "variants": 3,
+    "styles": [
+      "cheerful preschool sing-along song",
+      "bright gentle female lead vocal",
+      "a small group of happy kids singing along on the chorus",
+      "ukulele, xylophone, hand claps and light drums",
+      "120 BPM",
+      "C major",
+      "very simple catchy melody",
+      "slow, clear English pronunciation, every word easy to hear"
+    ],
+    "negative": [
+      "rap",
+      "distortion",
+      "heavy drums",
+      "electronic dance",
+      "long instrumental solo",
+      "adult love song",
+      "heavy autotune"
+    ],
+    "sections": [
+      {
+        "name": "Intro",
+        "seconds": 4,
+        "lines": [],
+        "direction": "instrumental intro, ukulele and xylophone, kids shout Hey! on beat 3 of bar 2"
+      },
+      {
+        "name": "Verse 1",
+        "seconds": 8,
+        "pages": [
+          "p01",
+          "p02"
+        ],
+        "direction": "bouncy, one line per bar"
+      },
+      {
+        "name": "Verse 2",
+        "seconds": 8,
+        "pages": [
+          "p03",
+          "p04"
+        ],
+        "direction": "bouncy, one line per bar"
+      },
+      {
+        "name": "Verse 3",
+        "seconds": 8,
+        "pages": [
+          "p05",
+          "p06"
+        ],
+        "direction": "sing the fast lines quickly and excitedly, then sing the slow lines very slowly and sleepily"
+      },
+      {
+        "name": "Bridge",
+        "seconds": 4,
+        "pages": [
+          "p07"
+        ],
+        "direction": "rising, getting higher on each up"
+      },
+      {
+        "name": "Chorus",
+        "seconds": 8,
+        "pages": [
+          "p08"
+        ],
+        "direction": "everyone sings together, big and joyful, kids shout Hooray!"
+      },
+      {
+        "name": "Outro",
+        "seconds": 4,
+        "lines": [
+          "Bye-bye!"
+        ],
+        "direction": "sing Bye-bye! once, then the music ends with a xylophone ding"
+      }
+    ]
+  },
+  "hook": {
+    "frames": [
+      {
+        "image": "kling_first.png",
+        "at": 0
+      },
+      {
+        "image": "h02.png",
+        "at": 2.0,
+        "shake": true
+      },
+      {
+        "image": "h03.png",
+        "at": 3.0
+      }
+    ],
+    "motion": "in",
+    "zoom": 1.06,
+    "focus": [
+      0.5,
+      0.45
+    ],
+    "headline": "唱一遍就会的反义词儿歌",
+    "subline": "3岁英语启蒙 · 边唱边做动作"
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "word": {
+        "en": "big",
+        "zh": "大"
+      },
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p01.png",
+          "p01b.png"
+        ],
+        "step": 1.0
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Big, big, big!",
+          "zh": "大，大，大！"
+        },
+        {
+          "speaker": "song",
+          "en": "It's a big acorn!",
+          "zh": "好大的橡果！"
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "word": {
+        "en": "small",
+        "zh": "小"
+      },
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p02.png",
+          "p02b.png"
+        ],
+        "step": 1.0
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Small, small, small!",
+          "zh": "小，小，小！"
+        },
+        {
+          "speaker": "song",
+          "en": "It's a small acorn!",
+          "zh": "小小的橡果！"
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "word": {
+        "en": "tall",
+        "zh": "高"
+      },
+      "motion": "up",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p03.png",
+          "p03b.png"
+        ],
+        "step": 1.0
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Tall, tall, tall!",
+          "zh": "高，高，高！"
+        },
+        {
+          "speaker": "song",
+          "en": "Bun is so tall!",
+          "zh": "Bun 好高呀！"
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "word": {
+        "en": "short",
+        "zh": "矮"
+      },
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p04.png",
+          "p04b.png"
+        ],
+        "step": 0.5
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Short, short, short!",
+          "zh": "矮，矮，矮！"
+        },
+        {
+          "speaker": "song",
+          "en": "Hazel is short!",
+          "zh": "Hazel 矮矮的！"
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "word": {
+        "en": "fast",
+        "zh": "快"
+      },
+      "motion": "left",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p05.png",
+          "p05b.png"
+        ],
+        "step": 0.5
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Fast, fast, fast!",
+          "zh": "快，快，快！"
+        },
+        {
+          "speaker": "song",
+          "en": "Nutty is fast!",
+          "zh": "栗栗跑得快！"
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "word": {
+        "en": "slow",
+        "zh": "慢"
+      },
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p06.png",
+          "p06b.png"
+        ],
+        "step": 2.0
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Slow, slow, slow...",
+          "zh": "慢，慢，慢……"
+        },
+        {
+          "speaker": "song",
+          "en": "Snail is slow.",
+          "zh": "蜗牛慢吞吞。"
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "word": {
+        "en": "tall",
+        "zh": "高"
+      },
+      "motion": "up",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p07.png",
+          "p07b.png"
+        ],
+        "step": 1.0
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Up, up, up!",
+          "zh": "上，上，上！"
+        },
+        {
+          "speaker": "song",
+          "en": "Now Hazel is tall!",
+          "zh": "现在 Hazel 最高啦！"
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "word": {
+        "en": "big & small",
+        "zh": "大和小"
+      },
+      "motion": "out",
+      "focus": [
+        0.5,
+        0.42
+      ],
+      "zoom": 1.06,
+      "cycle": {
+        "images": [
+          "p08.png",
+          "p08b.png"
+        ],
+        "step": 0.5
+      },
+      "lines": [
+        {
+          "speaker": "song",
+          "en": "Big and small!",
+          "zh": "大和小！"
+        },
+        {
+          "speaker": "song",
+          "en": "Short and tall!",
+          "zh": "矮和高！"
+        },
+        {
+          "speaker": "song",
+          "en": "We are friends!",
+          "zh": "我们是好朋友！"
+        },
+        {
+          "speaker": "song",
+          "en": "Hooray!",
+          "zh": "好耶！"
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "Bye-bye! 下次再唱！",
+    "subline": "收藏起来，和宝宝边唱边做动作"
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}
