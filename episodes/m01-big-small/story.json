@@ -21,13 +21,14 @@
     "bpm": 120,
     "variants": 3,
     "styles": [
-      "cheerful preschool sing-along song",
-      "bright gentle female lead vocal",
-      "a small group of happy kids singing along on the chorus",
+      "joyful preschool sing-along song",
+      "warm, smiling, expressive female lead vocal that sounds like she is singing to a toddler and having fun",
+      "a small group of happy kids singing along and shouting on the chorus",
+      "lots of dynamics: big and loud on big words, soft and tiny on small words",
       "ukulele, xylophone, hand claps and light drums",
       "120 BPM",
       "C major",
-      "very simple catchy melody",
+      "very simple catchy melody that rises and falls",
       "slow, clear English pronunciation, every word easy to hear"
     ],
     "negative": [
@@ -37,7 +38,10 @@
       "electronic dance",
       "long instrumental solo",
       "adult love song",
-      "heavy autotune"
+      "heavy autotune",
+      "flat monotone vocal",
+      "robotic voice",
+      "spoken word"
     ],
     "sections": [
       {
@@ -53,7 +57,7 @@
           "p01",
           "p02"
         ],
-        "direction": "bouncy, one line per bar"
+        "direction": "sing Big, big, big! big, loud and wide with a happy grin; sing Small, small, small! soft, tiny and high like a whisper"
       },
       {
         "name": "Verse 2",
@@ -62,7 +66,7 @@
           "p03",
           "p04"
         ],
-        "direction": "bouncy, one line per bar"
+        "direction": "sing Tall, tall, tall! stretching the notes up high; sing Short, short, short! in short bouncy staccato notes"
       },
       {
         "name": "Verse 3",
@@ -71,7 +75,7 @@
           "p05",
           "p06"
         ],
-        "direction": "sing the fast lines quickly and excitedly, then sing the slow lines very slowly and sleepily"
+        "direction": "sing Fast, fast, fast! quickly and excitedly; then slow down and sing Slow, slow, slow... very slowly, drawn out and sleepy, with a little yawn"
       },
       {
         "name": "Bridge",
@@ -79,7 +83,7 @@
         "pages": [
           "p07"
         ],
-        "direction": "rising, getting higher on each up"
+        "direction": "rising excitement, each Up! one step higher in pitch, then a proud happy line"
       },
       {
         "name": "Chorus",
@@ -87,7 +91,7 @@
         "pages": [
           "p08"
         ],
-        "direction": "everyone sings together, big and joyful, kids shout Hooray!"
+        "direction": "everyone sings together, big and joyful, kids shout Hooray! with a cheer"
       },
       {
         "name": "Outro",
@@ -95,7 +99,7 @@
         "lines": [
           "Bye-bye!"
         ],
-        "direction": "sing Bye-bye! once, then the music ends with a xylophone ding"
+        "direction": "sing a warm, waving Bye-bye! once, then the music ends with a xylophone ding"
       }
     ]
   },
