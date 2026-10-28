@@ -55,7 +55,8 @@ def table_rows(script):
             if len(cells) >= 5:
                 rows[m.group(1)] = {"段落": cells[0], "画面": cells[1], "音效": cells[3], "运镜": cells[4]}
     beats = re.search(r"\*\*画面节拍\*\*.*?\n((?:\s*- .*\n)+)", text)
-    hook = re.sub(r"（.*?）|`[^`]*`", "", beats.group(1)).strip() if beats else ""
+    hook = "\n".join(l for l in beats.group(1).splitlines() if "秒" in l) if beats else ""
+    hook = re.sub(r"（.*?）|`[^`]*`", "", hook).strip()
     return rows, hook
 
 
@@ -96,7 +97,7 @@ def main():
             say = h.get("say", {})
             title, seg = "开头钩子 · 5 秒", "钩子"
             scene = md(hook_beats).replace("\n", "<br>")
-            lines = [("旁白", say.get("en", ""), "")] if say else []
+            lines = [("旁白", say.get("en", ""), say.get("zh", ""))] if say else []
             extra = f"<p class=big>第 0 帧大字：<b>{html.escape(h.get('headline', ''))}</b><br><span>{html.escape(h.get('subline', ''))}</span></p>"
             meta = ""
         else:
@@ -121,7 +122,7 @@ def main():
 
     page = f"""<!doctype html><html lang=zh-CN><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>{html.escape(story.get('title_zh', ''))} 漫画剧本</title>
+<title>{html.escape(re.sub(r"[！!？?。，,]", "", story.get('title_zh', '')))} 漫画剧本</title>
 <style>
 :root{{--bg:#FFF8E8;--card:#fff;--ink:#3b2a1d;--soft:#6E543E;--accent:#E8892B;--line:#ecdcc2;--bubble:#FFF3DA}}
 @media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:#1d1813;--card:#2a221b;--ink:#f3e7d6;--soft:#c9b49b;--accent:#f0a252;--line:#3d3228;--bubble:#352a20}}}}
