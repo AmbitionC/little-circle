@@ -23,7 +23,7 @@ REFS = os.path.join(ROOT, "series", "refs")
 CODEX_HOME = os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex"))
 W, H = 1080, 1920
 
-STYLE = ("polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark")
+STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, gentle warm nostalgic light, clear bright colors, no text, no watermark")
 # 画风参考图（用户给的样张，只留在本机，不进仓库）：每张图都带上，锁住画风
 STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
@@ -106,7 +106,7 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
     styles = style_refs() if use_style and not base else []
     if styles:
         ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
-                "style closely: rendering, fur texture, eye style, lighting, color palette and level of detail. "
+                "style closely: rendering, line work, cel shading, eye style, lighting, color palette and background painting. "
                 "Do not copy their characters, poses, composition or scene.\n\n")
     if refs:
         ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "

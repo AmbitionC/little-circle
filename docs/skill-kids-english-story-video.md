@@ -39,7 +39,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（Codex 出的全身设定图；2026-10-28 按日系手绘画风重出）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
-| 画风 | **精致数字绘本插画**（2026-10-28 晚用户发来森林伙伴群像图，说「动画风格本身没问题，就用这个」，从 s04 起用它；s02、s03 是日系手绘版，旧的日系角色参考图在 `series/refs_anime/`）：毛发细腻蓬松，大而亮的圆眼睛带高光，圆滚滚的萌系比例，表情开心夸张；阳光森林，苔藓、蕨类、小野花、红顶蘑菇，暖金色阳光加柔和光斑；颜色明亮饱和，细节丰富。不要水彩纸纹 |
+| 画风 | **日系手绘动画**（2026-10-28 用户从 5 组样图里挑定，替换 10-27 的精致数字插画）：干净的赛璐璐上色角色，柔和描边，大而有神的眼睛，圆润可爱的比例；背景是细腻的手绘森林，蓝天白云，光线温暖通透，带点怀旧电影感，颜色清爽明亮。不要 3D 渲染感、不要水彩纸纹、不要厚涂毛发 |
 | 结构 | [可选 0.4 秒静止封面] → 可灵钩子 5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 → 片尾卡 3.5 秒（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒） |
 | 每集两版 | 推荐流精华版：`--max-pages 4`，约 20–35 秒，停在悬念上，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
 | 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。**模型用 `eleven_v3`，每句都写语气标签**（第 6.1 节）：要有起伏，不能平铺直叙（2026-10-28 用户反馈）。旁白像给孩子讲故事一样有抑扬顿挫，角色音高拉开 |
@@ -134,10 +134,10 @@ python3 comic_page.py ../../episodes/<集>                  # 切成单格，配
 ### 5.1 统一风格词（每条提示词末尾都加）
 
 ```
-polished digital children's picture book illustration, richly detailed soft fluffy fur with fine strands, big glossy round eyes with bright catchlights, chubby cute proportions, joyful expressive faces, lush sunlit forest with moss, ferns, little wildflowers and red-capped mushrooms, warm golden sunlight with soft bokeh, bright saturated warm colors, crisp clean edges, high detail, no text, no watermark, vertical 9:16
+Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16
 ```
 
-夜景集把风格词里的 `lush sunlit forest ... warm golden sunlight with soft bokeh` 换成 `moonlit forest, deep blue night sky with a big round moon and soft stars, warm lantern glow`；画面要暖月光、萤火虫、小灯，不能暗、不能吓人（见 s03）。
+夜景集把风格词里的 `bright blue sky with fluffy clouds` 换成 `deep blue night sky with a big round moon and soft stars`，`clear bright colors` 换成 `soft glowing colors`；画面要暖月光、萤火虫、小灯，不能暗、不能吓人（见 s03）。
 
 **画风样张**：用户挑定的样图放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
@@ -193,7 +193,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 
 - 只做 `kling01.mp4`：图生视频，**5 秒、9:16、1080p、不开原生音频**（原生音频贵 50%，配音由脚本做）。
 - 首帧用脚本出的 `kling_first.png`，**尾帧用 `p01.png`**，钩子结束正好落在第 1 页，衔接最顺。
-- 提示词用中文，末尾统一加"精致数字绘本插画风格（毛发细腻、大眼睛、暖色阳光），保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
+- 提示词用中文，末尾统一加"日系手绘动画风格（赛璐璐角色、柔和描边、手绘背景、通透暖光），保持角色外形和颜色不变，动作轻柔、幅度小"；负面提示词"变形，多余肢体，脸部扭曲，画面闪烁，写实风格，文字，水印"。
 - 首帧图不带字幕和大字，大字由 sbv.py 叠。
 - **怎么调可灵（2026-10-27 起）**：用国内站官方 CLI `kling`（`npm i -g @klingai/cli-cn --registry=https://registry.npmjs.org`，`kling login` 浏览器授权；skill 在 `~/.agents/skills/kling-cli`）。`kling account` 查余额，`kling who_am_i` 查模型参数。实测命令（在集目录下跑，本地图会自动上传）：
   ```bash
@@ -335,7 +335,7 @@ open ../../out/c01
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
 | 剧本 | 主题、结构、台词、童趣、互动 | 选题打分 ≥14、三句话写得出来、情绪曲线谷在 p03 峰在 p07（`docs/story-psychology-reference.md` 第 9 节自检）；漫画剧本网页做好、每格和剧本对得上；有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
-| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（毛发细腻、大眼高光、暖色阳光、细节丰富；不能是水彩纸纹） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
+| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
 | 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
 | 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
