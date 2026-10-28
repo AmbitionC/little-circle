@@ -171,7 +171,7 @@ def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
     for name, job in jobs.items():
         prompt, refs = job[0], job[1]
         base = job[2] if len(job) > 2 else None
-        if args.only and os.path.splitext(name)[0] not in args.only:
+        if args.only and not {os.path.splitext(name)[0], os.path.splitext(os.path.basename(name))[0]} & set(args.only):
             continue
         if base and not os.path.exists(base):
             print(f"  ✗ {name}：底图 {os.path.basename(base)} 还没出")
