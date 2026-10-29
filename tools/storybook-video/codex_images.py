@@ -23,7 +23,9 @@ REFS = os.path.join(ROOT, "series", "refs")
 CODEX_HOME = os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex"))
 W, H = 1080, 1920
 
-STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, gentle warm nostalgic light, clear bright colors, no text, no watermark")
+STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, "
+         "simple calm background painted with a few big soft shapes, plenty of open empty space, no small scattered details, "
+         "a limited harmonious palette, the characters brighter and sharper than the background, one clear focal point, no text, no watermark")
 # 画风参考图（用户给的样张，只留在本机，不进仓库）：每张图都带上，锁住画风
 STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图

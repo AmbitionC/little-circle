@@ -134,10 +134,18 @@ python3 comic_page.py ../../episodes/<集>                  # 切成单格，配
 ### 5.1 统一风格词（每条提示词末尾都加）
 
 ```
-Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16
+Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16
 ```
 
-夜景集把风格词里的 `bright blue sky with fluffy clouds` 换成 `deep blue night sky with a big round moon and soft stars`，`clear bright colors` 换成 `soft glowing colors`；画面要暖月光、萤火虫、小灯，不能暗、不能吓人（见 s03）。
+**画面要简洁（2026-10-29 用户定的硬标准，每集都按这个来）**：用户看 s04 原版觉得"视觉元素太多、细节太多，应接不暇"，在简洁版 / 极简版 / 原版三选一里选了**简洁版**。所以：
+
+- 背景只用几块大的柔和色块（树、草地、天空），留大片空白；远山、小镇、满地小花、蘑菇、石子、飘落的叶子这类碎细节都不画，除非剧情要用。
+- 色彩收住：柔和的绿、暖棕、奶油色为主，角色比背景亮、比背景清楚，背景对比度低。
+- 一张图只有一个视觉焦点；只画提示词点名的角色，不加路人动物。写剧本时一页同框角色尽量 ≤3 个（主角团客串也算），不需要的配角别塞进来。
+- 出图后质检多一条：缩到手机大小看，一眼能不能找到主角；找不到就删提示词里的东西再出。
+- 对照样张：`out/s04/variant_simple/`（用户选中的那组）已放进 `series/style/` 当画风样张。
+
+夜景集把风格词里的 `big soft shapes of trees, grass and sky` 换成 `big soft shapes of trees and a deep blue night sky with a big round moon and a few soft stars`，`soft greens, warm browns and cream` 换成 `soft night blues, warm lamp yellow and cream`；画面要暖月光、萤火虫、小灯，不能暗、不能吓人（见 s03）。
 
 **画风样张**：用户挑定的样图放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
@@ -187,6 +195,12 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
   - `frames`：`[{"image": "p04b.png", "line": 0, "offset": 1.2, "shake": true}]`，在第几句开口后多少秒换成这张，也可以写 `"at"`（秒）。
   - `cycle`：`{"images": ["p02.png", "p02b.png"], "step": 0.25, "line": 0}`，那句台词说话期间来回切，适合嚼东西、晃身子。
   - 换图配一个音效（boing / pop / bonk），落点和换图对齐。
+- **连贯（2026-10-29 用户反馈"视频不连贯"后定的）**：
+  - sbv.py 会把每张关键帧先对齐到本页底图（背景不跳），换图时用光流补 0.1–0.3 秒中间帧（`tween`，style 里默认 0.22 秒、带 shake 的 0.12 秒）。
+  - 光流只适合**小动作**（张嘴、转头、抬手、表情变化）。**大动作**（掉下来、落地、接住、冲出去）补帧会出两张图叠在一起的重影：这种换图写 `"tween": 0` 硬切加震屏，**并且在两张之间多画一张过渡关键帧**（例如 p02b 裂开 → p02d 滑到一半 → p02c 坐地上），一个大动作至少拆成"预备—过程—结果"三张。
+  - 说话：主角说重要台词的那张图加一张张嘴帧 `**p04_talk.png** ← p04.png`（"opens his mouth wide talking, nothing else changes"），story.json 写 `"talk": {"p04.png": "p04_talk.png"}`，开口说词时只换嘴那一块来回开合。
+  - 运镜：默认统一缓推（`in`），只有剧情动作需要时才用 up / down（爬树、掉下来）；不要每页换方向。
+  - 质检：逐帧看每一处换图，有重影就改硬切或加过渡关键帧。
 - **质检**：关键帧和主图的背景、光线、角色位置要对得上，只有动作变了；对不上就 `--only p04b --force` 重出。抽帧看换图那一下有没有跳画风。
 
 ### 5.4 可灵钩子（可选，有灵感值时再用）
@@ -310,7 +324,7 @@ open ../../out/c01
 
 1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。主图出完会自动接着出关键帧（第 5.3.1 节）。
 2. 钩子：默认用关键帧翻页钩子（`hook.frames`）；有可灵灵感值、用户也同意花时，才按第 5.4 节出 `kling01.mp4`。
-3. 渲染：完整版和精华版，用正式的 `story.json`。
+3. 渲染：**只出完整版**，用正式的 `story.json`（2026-10-29 用户：片子本来就三四十秒，精华版没必要）。
 4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
 6. **同步 OSS，出最终网页**（2026-10-28 用户要求：以后只给一个网页）：`.venv/bin/python oss_publish.py ../../out/<集>`，链接写进 `out/<集>/oss.json`；再发布一个预览网页（Artifact），里面有完整版和精华版播放、封面、每个文件的下载按钮（视频直接用 OSS 链接）、按平台分好的标题/正文/话题/置顶评论和一键复制。交付只发这个网页链接，不发本地路径、不让用户自己去文件夹找。OSS key 只从环境变量 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET` 读（在用户 `~/.zshrc` 里），读不到就先用 Artifact 自带的素材存储顶上，并在汇报里说一句。
@@ -321,7 +335,6 @@ open ../../out/c01
 | 文件 | 用途 |
 |---|---|
 | `<name>.mp4` | 完整版，进合集 |
-| `<name>_feed.mp4`（或 sbv 的精华版命名） | 推荐流精华版 |
 | `<name>_cover_9x16.jpg`、`<name>_cover_3x4.jpg` | 抖音封面、小红书封面 |
 | `publish.txt` | 标题、正文、话题、置顶评论 |
 | `xhs/` | 小红书图文 6–9 页 |
