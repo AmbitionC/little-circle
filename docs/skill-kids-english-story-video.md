@@ -440,7 +440,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| m01 | 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-28 剧本+漫画确认；歌出 3 版淘汰 1 版、两版等用户试听挑选；20 张图已出 |
+| m01 | 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过，待发布；用户选了歌的 A 版（v2） |
 | s04 | 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-29 成品完成、两版 qa 全部通过，待发布；全程 Codex 关键帧动画（钩子 4 帧 + 11 张关键帧），没花可灵；新角色 Pip、Bruno、Fern、Ruby 音色已定 |
 | s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
 | s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
