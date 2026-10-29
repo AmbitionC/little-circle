@@ -1056,7 +1056,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         mix[-fade:] *= np.linspace(1, 0, fade)
     wav = os.path.join(work, "mix.wav")
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1",
-                          "-i", "-", wav], stdin=subprocess.PIPE)
+                          "-i", "-", "-c:a", "pcm_f32le", wav], stdin=subprocess.PIPE)  # 浮点存，大喊加 gain 超过 0 dB 也不削波
     p.communicate(mix.astype(np.float32).tobytes())
 
     # 画面：逐帧渲染，管道送给 ffmpeg；音频做 -16 LUFS 响度标准化

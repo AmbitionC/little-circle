@@ -51,7 +51,7 @@
   - 3.6 秒（pop）：所有人同时伸出手，皮皮捂住眼睛。（`h04.png`，然后切到 p01）
 - **钩子首帧出图提示词**：
   ```
-  a tiny round fluffy baby robin with an orange-red chest and stubby little wings wobbling at the very tip of a thin bending branch high up in a tall old tree, beak wide open chirping for help, a worried mother robin with an orange-red chest flapping her wings beside the branch, dramatic low angle looking up the tall tree trunk, sunny forest with leaves and light beams, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+  a tiny round fluffy baby robin with an orange-red chest and stubby little wings wobbling at the very tip of a thin bending branch high up in a tall old tree, beak wide open chirping for help, a worried mother robin with an orange-red chest flapping her wings beside the branch, dramatic low angle looking up the tall tree trunk, both robins in the middle of the picture with their faces between 32% and 50% of the image height, the top 28% only leaves and sky with no faces (a big title goes there), sunny forest with leaves and light beams, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
   ```
 
 **h02.png** ← kling_first.png
@@ -60,7 +60,7 @@ the thin branch dips down sharply, the baby robin slips and one tiny foot dangle
 ```
 **h03.png** ← kling_first.png
 ```
-the camera now looks further down the same tall tree: at the bottom a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf stare up with open mouths, a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt peeks out from behind the bear's foot, only his big ears and eyes showing; the baby robin still small and wobbling high above
+the camera now looks further down the same tall tree: at the bottom a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf stare up with open mouths, a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt peeks out from behind the bear's foot, only his big ears and eyes showing; the friends stand on a big raised mossy tree root so all their faces sit in the middle of the picture, around 45–58% of the image height, the lower 40% only tree roots, moss and grass; the baby robin still small and wobbling high above
 ```
 **h04.png** ← h03.png
 ```
@@ -77,7 +77,7 @@ the bear, the fox and the squirrel all reach their arms up toward the baby robin
 | p04 | 转 + 反转 | 皮皮深吸一口气，胸口一挺，眼神变得坚定 → p04b："嗖"地冲上树干，身后拖着一溜烟，大家目瞪口呆 | **皮皮**：`[shouting] I can be brave!`<br>我可以勇敢！ | whoosh | 硬切，上移跟拍 |
 | p05 | 转 + 揪心 | 皮皮在细树枝上一步一步挪，树枝越压越弯，他不往下看；下面的朋友都在挥手加油 → p05b：他离 Ruby 只差一点点，伸出小爪子 | **Bruno 和 Fern**：`[shouting] Be brave, Pip!`<br>勇敢点，皮皮！<br>**皮皮**：`[nervously] Step... step... step...`<br>一步……一步……又一步…… | 树枝吱呀声；音乐渐弱 | 缓推，镜头微微晃 |
 | p06 | 合 −− 惊险一下 | 皮皮一把抱住 Ruby → p06b：树枝"咔嚓"断了，两个一起往下掉（掉得不高，正下方就是 Bruno） | **旁白**：`[gasps] Oh no! The branch!`<br>哎呀！树枝断了！ | crack（大）；音乐停 | 硬切，下移 |
-| p07 | 合 +++ 峰 | "嘭"！两个落在 Bruno 软乎乎的大肚子上 → p07b：弹到半空，Ruby 被抛回鸟妈妈怀里 → p07c：皮皮落在 Bruno 的鼻子尖上，两个对眼，大家哈哈大笑 | **Bruno**：`[laughs] Boing! Boing! Got you!`<br>嘭！嘭！接住啦！<br>**Ruby**：`[happily] Brave Pip! Thank you!`<br>勇敢的皮皮！谢谢你！ | boing ×3；音乐回来，欢快 | 硬切，缓拉 |
+| p07 | 合 +++ 峰 | "嘭"！两个落在 Bruno 软乎乎的大肚子上 → p07b：弹到半空，Ruby 被抛回鸟妈妈怀里 → p07c：皮皮落在 Bruno 的鼻子尖上，两个对眼，大家哈哈大笑 | **Bruno**：`[excited] Boing! Boing! Got you! [laughs]`<br>嘭！嘭！接住啦！<br>**Ruby**：`[happily] Brave Pip! Thank you!`<br>勇敢的皮皮！谢谢你！ | boing ×3；音乐回来，欢快 | 硬切，缓拉 |
 | p08 | 寓意 + 暖 | 鸟妈妈给皮皮挂上一片小树叶勋章，大家围着他欢呼，皮皮挺起小胸脯对着镜头 → p08b：他害羞又骄傲地笑，挥手 | **皮皮**：`[proudly] I am scared, but I am brave!`<br>我会害怕，但我很勇敢！<br>**旁白**：`[warmly] The end. Bye-bye!`<br>讲完啦，拜拜！ | ding, 欢呼 | 缓拉 |
 
 精华版（`--max-pages 4`）停在 p04 皮皮冲上树干，片尾大字是"小老鼠能救下小鸟吗？"。
@@ -100,7 +100,7 @@ the baby robin opens her beak wide calling down for help, eyes squeezed, a tiny 
 
 **p02.png**
 ```
-a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief hugging a tall tree trunk and climbing up with a confident grin, the thin branch with a tiny baby robin high above him, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt watching from the ground, sunny forest, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief hugging a tall tree trunk and climbing up with a confident grin, the thin branch with a tiny baby robin high above him, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt standing on top of a big mossy rock beside the fox so his face is level with the fox's chest, watching, sunny forest, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p02b.png** ← p02.png
 ```
@@ -108,7 +108,7 @@ a loud crack: a big split appears in the trunk bark right under the bear's paws,
 ```
 **p02c.png** ← p02.png
 ```
-the bear has slid all the way down and sits on his bottom on the ground at the foot of the tree, dazed with little cartoon stars circling his head, hugging the trunk, his friends wincing
+the bear has slid down and sits on his bottom on a big mossy root at the foot of the tree, his face still in the middle of the picture, dazed with little cartoon stars circling his head, hugging the trunk, his friends wincing
 ```
 
 **p03.png**
@@ -117,7 +117,7 @@ a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smo
 ```
 **p03b.png** ← p03.png
 ```
-the fox has landed head-first deep in the pile of leaves, only her fluffy white-tipped tail sticking out and wagging, leaves flying; the bear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf slowly turn to look at a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt who hugs his own tail and trembles with scared eyes
+the fox has landed head-first deep in the pile of leaves, only her fluffy white-tipped tail sticking out and wagging, leaves flying; the bear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf slowly turn to look at a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt who stands on a small tree stump in the middle of the picture, hugs his own tail and trembles with scared eyes
 ```
 
 **p04.png**
@@ -131,7 +131,7 @@ the mouse has zoomed halfway up the tree trunk like a little gray streak, a puff
 
 **p05.png**
 ```
-a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt carefully tiptoeing along a thin bending branch high in a tall tree, arms out for balance, eyes fixed forward, a tiny round fluffy baby robin with an orange-red chest and stubby little wings at the tip of the branch ahead of him, the branch bowing down under them, sunny forest with light beams, friends far below waving, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt carefully tiptoeing along a thin bending branch high in a tall tree, arms out for balance, eyes fixed forward, a tiny round fluffy baby robin with an orange-red chest and stubby little wings at the tip of the branch ahead of him, the branch bowing down under them, sunny forest with light beams, only the mouse and the baby robin in the picture, far below just leafy treetops and a sunny valley, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p05b.png** ← p05.png
 ```
@@ -162,7 +162,7 @@ the mouse has landed standing on the tip of the bear's nose, the two of them loo
 
 **p08.png**
 ```
-a mother robin with an orange-red chest placing a little green leaf medal around the neck of a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt who stands proudly with chest puffed out facing the viewer, a tiny round fluffy baby robin with an orange-red chest and stubby little wings snuggling him, a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf cheering around him, sunny forest clearing, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a mother robin with an orange-red chest placing a little green leaf medal around the neck of a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt who stands proudly on a little tree stump in the middle of the picture with chest puffed out facing the viewer, a tiny round fluffy baby robin with an orange-red chest and stubby little wings snuggling him, a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear and a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf cheering around him, sunny forest clearing, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, lush richly painted forest backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light, clear bright colors, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p08b.png** ← p08.png
 ```
@@ -197,12 +197,12 @@ the mouse smiles shyly but proudly and waves one tiny paw at the viewer, the fri
 | p05a | Bruno + Fern | `[shouting] Be brave, Pip!` | 齐声加油 | 勇敢点，皮皮！ |
 | p05b | 皮皮 | `[nervously] Step... step... step...` | 紧张、小声 | 一步……一步……又一步…… |
 | p06 | 旁白 | `[gasps] Oh no! The branch!` | 惊呼 | 哎呀！树枝断了！ |
-| p07a | Bruno | `[laughs] Boing! Boing! Got you!` | 开怀大笑 | 嘭！嘭！接住啦！ |
+| p07a | Bruno | `[excited] Boing! Boing! Got you! [laughs]` | 开怀大笑 | 嘭！嘭！接住啦！ |
 | p07b | Ruby | `[happily] Brave Pip! Thank you!` | 开心 | 勇敢的皮皮！谢谢你！ |
 | p08a | 皮皮 | `[proudly] I am scared, but I am brave!` | 骄傲、对镜头 | 我会害怕，但我很勇敢！ |
 | p08b | 旁白 | `[warmly] The end. Bye-bye!` | 温柔 | 讲完啦，拜拜！ |
 
-音量对比：p03a 小声（`"gain": 0.3`），p04 大喊（`"gain": 1.3`），两句差 6 dB 以上。
+音量对比：p03a 小声（`"gain": 0.7`，v3 的 [whispers] 本身就轻，实测再压到 0.3 就听不见了），p04 大喊（`"gain": 1.3`），两句差 6 dB 以上。
 
 ## 6. 发布文案
 

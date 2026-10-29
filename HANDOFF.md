@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-27（s02 除可灵钩子外全部做成成品并过质检；新增 qa.py 一键质检、brand.py 封面；skill 改成交付成品 + 每环节质量关口）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-29（s04《小老鼠皮皮好勇敢》成品做完，两版 qa 全部通过，待发布；新角色 Pip、Bruno、Ruby、Fern 音色写进 cast.json）。上一次：2026-10-27（s02 成品；新增 qa.py、brand.py）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -98,6 +98,14 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
    - 建合集「认知小绘本」「森林故事」；
    - 确认本月预算：ElevenLabs Starter + 可灵 66 元 + 出图订阅，总共不超过 300 元。
 7. 可选：执行 `npx skills add elevenlabs/skills`，安装官方技能包；或者接官方 MCP。
+
+5.2 **s04《Brave Little Pip! 小老鼠皮皮好勇敢！》10-29 成品完成，待发布**（用户 10-29 确认剧本后一口气做完）：
+   - 出图：Codex 出 23 张（主图 8 + 钩子首帧 + h02–h04 + 关键帧 11 + 封面），全程没花可灵灵感值。第一轮问题：p05 树下画成了 Nutty/Hazel/Bun；h03、p02、p03b、p08 的脸落在下 40%（字幕区）；首帧鸟妈妈的脸在大字下面。改提示词（站上石头、树根、树桩，脸放画面中段）后重出，都已合格。
+   - 配音：pip=An3xqcxpNpOHGJcOShlR、bruno=cyDOS9zMDnV6BWZW4i4j、ruby=H3183Z9ZcjE80HwRu4PY、fern=tinYNLscXdfZpc4m5ue7（eleven_v3，stability 0.0）。Bruno 第一轮设计出来不够低沉，描述改成 "very deep bass adult male voice" 重出才选到。实测基频 Ruby 466 / Pip 384 / Bruno 225 Hz。p03 小声那句 gain 从 0.3 改 0.7（v3 的 [whispers] 本身就轻，0.3 听不见），和 p04 大喊差 11.7 dB；树枝断那一下比前一秒响 17 dB。p07 Bruno 的 [laughs] 放句首会先笑 1 秒、字幕对不上，挪到句尾。
+   - 运镜：p03 改成 in、focus [0.6, 0.8]、zoom 1.25，p08 focus [0.5, 0.7]，让皮皮的脸在字幕上面。
+   - 成品在 `out/s04/`（不提交）：完整版 48.8 秒、精华版 26.3 秒，-16.3 / -16.1 LUFS；封面 3:4 用 `--crop-3x4 0.35`。最终网页 https://claude.ai/artifact/KMrSWqF3kokb8QL1QgNNfg （视频是 720p 压缩版；OSS 环境变量没配，用 Artifact 素材存储顶上）。
+   - 剩下只有用户能做的：手机终检、点发布、勾 AI 声明。
+   - 脚本修复：`codex_images.py` 关键帧以关键帧为底（h04 ← h03）时等底图先出；`sbv.py` 混音存 float，大喊加 gain 不削波；`qa.py` 本集所有角色两两比基频；`el_prep.py` 加了四个新角色的选角描述。
 
 ## 5. 等用户确认或补充
 

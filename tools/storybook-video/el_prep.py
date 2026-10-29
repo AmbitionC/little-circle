@@ -63,6 +63,35 @@ ROLES = {
         "text": "Hi, I'm Bun. One, two, three! I have an orange carrot! Crunch, crunch. Yummy! "
                 "Do you want one too? Here you go, my friend.",
     },
+    # s04 新角色（2026-10-29）
+    "pip": {
+        "name": "Lili Pip",
+        "description": "A tiny, timid cartoon mouse character, thin squeaky high-pitched voice, shy and "
+                       "a little shaky when scared, but able to shout bravely, clear American English.",
+        "text": "Me? I am... scared. The tree is so tall, and I am so small. But wait. I can do it. "
+                "I can be brave! Step, step, step. I am scared, but I am brave!",
+    },
+    "bruno": {
+        "name": "Lili Bruno",
+        "description": "A huge, gentle giant of a brown bear, very deep bass adult male voice, low and "
+                       "rumbling, slow and goofy, warm and friendly, a little clumsy, clear American English.",
+        "text": "Hello! I am Bruno. I am big! I can do it! Oops. Oh no, the tree is too small for me. "
+                "Be brave, Pip! Boing, boing! Got you! Ha ha ha!",
+    },
+    "ruby": {
+        "name": "Lili Ruby",
+        "description": "A very small, sweet cartoon baby robin bird, soft babyish high voice, cute and "
+                       "chirpy, a bit whiny when sad, happy and giggly when safe.",
+        "text": "Peep! Peep! Help me, please! I am up so high, and I can't fly yet. Peep! Oh, thank "
+                "you! Brave Pip! Thank you, thank you! Peep peep!",
+    },
+    "fern": {
+        "name": "Lili Fern",
+        "description": "A quick, clever cartoon fox girl, bright confident voice, playful and a bit "
+                       "show-off, fast and nimble, clear American English.",
+        "text": "Look at me! I am Fern, and I am the fastest fox in the forest! Jump, jump, jump! "
+                "See? Easy! Hmm, that branch is too thin for me. Who can go up?",
+    },
 }
 
 # 音效库：文件名 → (描述, 时长秒)；与 docs/elevenlabs-workflow.md 1.3 节一致

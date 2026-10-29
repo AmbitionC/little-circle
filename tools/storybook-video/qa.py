@@ -190,10 +190,14 @@ def main():
     for spk, st in stats.items():
         summary[spk] = (float(np.nanmedian(st["f0"])), float(np.mean(st["wps"])))
         print(f"  {spk:8s} 基频 {summary[spk][0]:5.0f} Hz  语速 {summary[spk][1]:.2f} 词/秒（{len(st['f0'])} 句）")
-    if "hazel" in summary and "bun" in summary:
-        df = abs(summary["hazel"][0] - summary["bun"][0])
-        dr = abs(summary["hazel"][1] - summary["bun"][1]) / summary["hazel"][1]
-        check(not (df < 30 and dr < 0.1), f"Hazel 和 Bun 基频差 {df:.0f} Hz，语速差 {dr:.0%}")
+    # 本集出场的角色两两比（旁白除外）：基频差 <30Hz 且语速差 <10% 就算分不清
+    roles = [s for s in summary if s != "narrator"]
+    for i, a1 in enumerate(roles):
+        for a2 in roles[i + 1:]:
+            df = abs(summary[a1][0] - summary[a2][0])
+            dr = abs(summary[a1][1] - summary[a2][1]) / summary[a1][1]
+            check(not (df < 30 and dr < 0.1),
+                  f"{a1.title()} 和 {a2.title()} 基频差 {df:.0f} Hz，语速差 {dr:.0%}")
 
     print("\n结论：" + ("全部通过" if not fails else "有问题：\n  - " + "\n  - ".join(fails)))
     return 1 if fails else 0

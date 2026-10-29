@@ -172,7 +172,7 @@
     },
     {
       "image": "p03.png",
-      "motion": "right",
+      "motion": "in",
       "frames": [
         {
           "image": "p03b.png",
@@ -186,7 +186,7 @@
           "en": "Me? I am... scared.",
           "zh": "我？我……好害怕。",
           "say": "[whispers] Me? I am... scared.",
-          "gain": 0.3
+          "gain": 0.7
         },
         {
           "speaker": "narrator",
@@ -207,7 +207,12 @@
           "at": 0.9,
           "gain": 0.5
         }
-      ]
+      ],
+      "focus": [
+        0.6,
+        0.8
+      ],
+      "zoom": 1.25
     },
     {
       "image": "p04.png",
@@ -320,7 +325,7 @@
           "speaker": "bruno",
           "en": "Boing! Boing! Got you!",
           "zh": "嘭！嘭！接住啦！",
-          "say": "[laughs] Boing! Boing! Got you!"
+          "say": "[excited] Boing! Boing! Got you! [laughs]"
         },
         {
           "speaker": "ruby",
@@ -378,6 +383,10 @@
           "at": 0.3,
           "gain": 0.4
         }
+      ],
+      "focus": [
+        0.5,
+        0.7
       ]
     }
   ],

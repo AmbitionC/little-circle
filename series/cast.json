@@ -35,5 +35,41 @@
       "stability": 0.0,
       "similarity_boost": 0.75
     }
+  },
+  "pip": {
+    "provider": "elevenlabs",
+    "voice": "An3xqcxpNpOHGJcOShlR",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "bruno": {
+    "provider": "elevenlabs",
+    "voice": "cyDOS9zMDnV6BWZW4i4j",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "ruby": {
+    "provider": "elevenlabs",
+    "voice": "H3183Z9ZcjE80HwRu4PY",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "fern": {
+    "provider": "elevenlabs",
+    "voice": "tinYNLscXdfZpc4m5ue7",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
   }
 }

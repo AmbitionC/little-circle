@@ -304,12 +304,14 @@ def main():
                         if d in change and os.path.exists(os.path.join(REFS, f"{k}.png"))],
                        os.path.join(os.path.abspath(t), src))
                 for name, (src, change) in parse_keys(script).items()}
-        for _ in range(3):   # 关键帧也可以以关键帧为底（h04 ← h03），一轮出不全就再跑一轮
-            if not keys:
-                break
-            k_failed = run_jobs(os.path.abspath(t), keys, args)
-            keys = {n: j for n, j in keys.items() if not os.path.exists(os.path.join(os.path.abspath(t), n))}
-        failed += len(keys) and k_failed
+        # 关键帧也可以以关键帧为底（h04 ← h03）：底图还在待出列表里的，等下一轮再出，
+        # 否则 --force 时会和底图同一轮并行，拿旧底图去改（s04 的 h04 就这样配错了）
+        k_failed = 0
+        while keys:
+            ready = {n: j for n, j in keys.items() if os.path.basename(j[2]) not in keys} or keys
+            k_failed += run_jobs(os.path.abspath(t), ready, args)
+            keys = {n: j for n, j in keys.items() if n not in ready}
+        failed += k_failed
     sys.exit(1 if failed else 0)
 
 
