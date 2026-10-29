@@ -64,7 +64,8 @@
       },
       {
         "image": "h03.png",
-        "at": 2.2
+        "at": 2.2,
+        "tween": 0
       },
       {
         "image": "h04.png",
@@ -145,7 +146,8 @@
           "image": "p02c.png",
           "line": 0,
           "offset": 2.9,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -177,7 +179,8 @@
         {
           "image": "p03b.png",
           "at": 0.9,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -255,7 +258,8 @@
         {
           "image": "p05b.png",
           "line": 1,
-          "offset": 0.8
+          "offset": 0.8,
+          "tween": 0
         }
       ],
       "lines": [
@@ -285,7 +289,8 @@
           "image": "p06b.png",
           "line": 0,
           "offset": 0.0,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -313,13 +318,15 @@
         {
           "image": "p07b.png",
           "line": 0,
-          "offset": 1.0
+          "offset": 1.0,
+          "tween": 0.1
         },
         {
           "image": "p07c.png",
           "line": 1,
           "offset": 0.0,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
