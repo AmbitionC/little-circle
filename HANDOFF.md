@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-30（s04 按简洁画面标准整集重做，只出完整版，qa 全部通过；Bruno 配音还在挑，暂用 Little Dude II）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-30（s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -110,6 +110,8 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
      - 连贯：新关键帧 p02d、p03c、p04c、p06c、p07d 排进 frames；张嘴帧 p02/p04/p08_talk；去掉各页的 motion（统一缓推）。逐帧看过：大动作一律 tween 0 硬切 + shake（光流补帧在大动作上会出两张图叠影），只有小动作（p01b、p02b、p05b、p06c、p08b、h02、h04）留补帧，没有重影。
      - 修了 `sbv.py` talk 帧的一个 bug（`for *_, nm in keys` 里 im 未定义）。
      - Bruno 暂用 Little Dude II（音色库 fBD19tfE58bkETeiwUoC，eleven_v3，stability 0.5），实测约 262 Hz。用户说第一批三个（Little Dude II / Berty / Teddy Twinkle）都不好；第二批 6 个候选页 https://claude.ai/artifact/9j7AYUVBqbGkJ3qLzXPRLr ，推荐 Sarah（emSmWzY0c0xtx5IFMCVv）和 Paula Paw（iukn3a1vSSNFmdi5NZS4），等用户挑。试过 multilingual_v2：两个声音都被抬到 330–440 Hz 和皮皮撞，Bruno 继续用 v3。
+     - **10-30 谁在说话 + Bruno 第三轮**：角色头像 `series/refs/avatars/` 7 张（已提交）。每句角色台词给屏幕上那张图出张嘴帧（pXX_<角色>.png），挂在 story.json 那一句的 talk 上。用 talk_paste 算出的嘴位置逐张核对：p01b_ruby、p04c_pip、p07c_ruby 两轮都改错了角色（鸟妈妈、背景、熊），删掉，改用 "where"；p07_bruno 第二次对了。关掉声音逐句看，头像 + 镜头靠过去都能指出是谁说的，没露边。
+     - Bruno 第三轮只找男孩声（18 个，eleven_v3、stability 0.5、speed 0.9、台词加 [slowly, proudly] 等标签）。Voice Design 只要写孩子气、小熊宝宝就被拦（ElevenLabs 不让生成儿童声音），只能用音色库。整集实测：Teddy Twinkle 377 Hz 和皮皮撞；Nobita 口音重，"Boing" 怎么写都念错；暂用 Chintu（aPE0uHZbwrQVPMm3ihPH，约 300 Hz，印度配音演员），"Be brave, Pip!" 用 take 2 才过 qa。候选页 https://claude.ai/artifact/9j7AYUVBqbGkJ3qLzXPRLr （每个放进 p02 画面里听），等用户挑。
      - 完整版 48.7 秒，-16.4 LUFS，qa 全部通过；封面 3:4 用 `--crop-3x4 0.0`（0.35 时中文标题压住熊的眼睛）。精华版和 9:16 封面不再做。最终网页同上链接（Version 4）。
    - 脚本修复：`codex_images.py` 关键帧以关键帧为底（h04 ← h03）时等底图先出；`sbv.py` 混音存 float，大喊加 gain 不削波；`qa.py` 本集所有角色两两比基频；`el_prep.py` 加了四个新角色的选角描述。
 

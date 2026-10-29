@@ -114,7 +114,7 @@ the bear is sliding down the trunk on his tummy, still hugging it, halfway down 
 ```
 the bear has slid down and sits on his bottom on a big mossy root at the foot of the tree, his face still in the middle of the picture, dazed with little cartoon stars circling his head, hugging the trunk, his friends wincing
 ```
-**p02_talk.png** ← p02.png
+**p02_bruno.png** ← p02.png
 ```
 the bear opens his mouth wide as if talking proudly, nothing else changes
 ```
@@ -136,7 +136,7 @@ the fox has landed head-first deep in the pile of leaves, only her fluffy white-
 ```
 a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt standing at the foot of a tall tree taking a deep breath, chest puffed out, fists clenched, eyes turning brave and determined, a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief and a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear watching him, sunny forest, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
-**p04_talk.png** ← p04.png
+**p04_pip.png** ← p04.png
 ```
 the mouse opens his mouth wide shouting, nothing else changes
 ```
@@ -192,7 +192,7 @@ the mouse has landed standing on the tip of the bear's nose, the two of them loo
 ```
 a mother robin with an orange-red chest placing a little green leaf medal around the neck of a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt who stands proudly on a little tree stump in the middle of the picture with chest puffed out facing the viewer, a tiny round fluffy baby robin with an orange-red chest and stubby little wings snuggling him, a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief, a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear cheering around him, sunny forest clearing, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
-**p08_talk.png** ← p08.png
+**p08_pip.png** ← p08.png
 ```
 the mouse opens his mouth wide talking happily, nothing else changes
 ```
@@ -257,3 +257,40 @@ I am scared, but I am brave! 我会害怕，但我很勇敢！
 ```
 - **置顶评论**：今日单词 brave 勇敢｜scared 害怕｜help 帮忙。宝宝不敢试新东西的时候，一起说 "I am scared, but I am brave!"
 - 发布时勾选"内容由 AI 生成"。
+
+### 张嘴帧（谁在说话，10-30 补齐每一句）
+
+**p02b_bruno.png** ← p02b.png
+```
+only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p02d_bruno.png** ← p02d.png
+```
+only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p03b_pip.png** ← p03b.png
+```
+only the mouse opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p05_pip.png** ← p05.png
+```
+only the mouse opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p05b_pip.png** ← p05b.png
+```
+only the mouse opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p07_bruno.png** ← p07.png
+```
+only the big brown bear lying on his back opens his mouth wide laughing and talking, the fox keeps her mouth closed, the mouse and the robin unchanged, nothing else changes
+```
+**p07b_bruno.png** ← p07b.png
+```
+only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+**p07d_bruno.png** ← p07d.png
+```
+only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes
+```
+
+（p01b_ruby、p04c_pip、p07c_ruby 试过两轮，Codex 都把张嘴改到了别的角色身上（鸟妈妈、背景、熊），已删掉，这三句在 story.json 里用 "where" 指位置。）

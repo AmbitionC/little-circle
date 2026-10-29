@@ -126,7 +126,11 @@
           "speaker": "ruby",
           "en": "Peep! Help me, please!",
           "zh": "啾！救救我！",
-          "say": "[crying] Peep! Help me, please!"
+          "say": "[crying] Peep! Help me, please!",
+          "where": [
+            0.67,
+            0.31
+          ]
         }
       ]
     },
@@ -159,7 +163,12 @@
           "speaker": "bruno",
           "en": "I am big! I can do it!",
           "zh": "我个子大！我能行！",
-          "say": "[confident] I am big! I can do it!"
+          "say": "[slowly, proudly] I am big! I can do it!",
+          "talk": {
+            "p02.png": "p02_bruno.png",
+            "p02b.png": "p02b_bruno.png",
+            "p02d.png": "p02d_bruno.png"
+          }
         }
       ],
       "hold": 0.6,
@@ -174,10 +183,7 @@
           "at": 3.4,
           "gain": 0.55
         }
-      ],
-      "talk": {
-        "p02.png": "p02_talk.png"
-      }
+      ]
     },
     {
       "image": "p03.png",
@@ -201,7 +207,10 @@
           "en": "Me? I am... scared.",
           "zh": "我？我……好害怕。",
           "say": "[whispers] Me? I am... scared.",
-          "gain": 0.7
+          "gain": 0.7,
+          "talk": {
+            "p03b.png": "p03b_pip.png"
+          }
         },
         {
           "speaker": "narrator",
@@ -253,7 +262,10 @@
           "en": "I can be brave!",
           "zh": "我可以勇敢！",
           "say": "[shouting] I can be brave!",
-          "gain": 1.3
+          "gain": 1.3,
+          "talk": {
+            "p04.png": "p04_pip.png"
+          }
         }
       ],
       "hold": 0.4,
@@ -263,10 +275,7 @@
           "at": 1.65,
           "gain": 0.6
         }
-      ],
-      "talk": {
-        "p04.png": "p04_talk.png"
-      }
+      ]
     },
     {
       "image": "p05.png",
@@ -286,16 +295,20 @@
           "speaker": "bruno",
           "en": "Be brave, Pip!",
           "zh": "勇敢点，皮皮！",
-          "say": "[shouting] Be brave, Pip!",
-          "take": 2,
-          "gap": 0.8
+          "say": "[excited] Be brave, Pip!",
+          "gap": 0.8,
+          "take": 2
         },
         {
           "speaker": "pip",
           "en": "Step... step... step...",
           "zh": "一步……一步……又一步……",
           "say": "[nervously] Step... step... step...",
-          "gain": 0.6
+          "gain": 0.6,
+          "talk": {
+            "p05.png": "p05_pip.png",
+            "p05b.png": "p05b_pip.png"
+          }
         }
       ]
     },
@@ -363,13 +376,22 @@
           "speaker": "bruno",
           "en": "Boing! Boing! Got you!",
           "zh": "嘭！嘭！接住啦！",
-          "say": "[excited] Boing! Boing! Got you!"
+          "say": "[happy, goofy] Boing! Boing! Got you!",
+          "talk": {
+            "p07.png": "p07_bruno.png",
+            "p07b.png": "p07b_bruno.png",
+            "p07d.png": "p07d_bruno.png"
+          }
         },
         {
           "speaker": "ruby",
           "en": "Brave Pip! Thank you!",
           "zh": "勇敢的皮皮！谢谢你！",
-          "say": "[happily] Brave Pip! Thank you!"
+          "say": "[happily] Brave Pip! Thank you!",
+          "where": [
+            0.57,
+            0.2
+          ]
         }
       ],
       "sfx": [
@@ -400,7 +422,10 @@
           "speaker": "pip",
           "en": "I am scared, but I am brave!",
           "zh": "我会害怕，但我很勇敢！",
-          "say": "[proudly] I am scared, but I am brave!"
+          "say": "[proudly] I am scared, but I am brave!",
+          "talk": {
+            "p08.png": "p08_pip.png"
+          }
         },
         {
           "speaker": "narrator",
@@ -419,10 +444,7 @@
       "focus": [
         0.5,
         0.7
-      ],
-      "talk": {
-        "p08.png": "p08_talk.png"
-      }
+      ]
     }
   ],
   "ending": {
