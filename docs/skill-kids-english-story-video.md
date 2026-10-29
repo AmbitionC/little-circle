@@ -75,6 +75,34 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 需要角色真的动起来的高潮页，可以再出一个 5 秒可灵片段（kling02），每集最多两个。**sbv.py 目前还不支持把视频片段当某一页插入**，要用的话先补这个功能，或者把高潮动作直接放进钩子。
 
+
+### 3.2 儿歌集「栗栗唱儿歌」（2026-10-28 起，第一集 m01）
+
+**形式**：参考抖音「英文儿歌合集」类账号（录屏拆解见项目调研文档：一首 AI 儿歌 + 一组单词卡，按小节硬切，没有口型）。我们的版本：竖屏、用自家角色、日系手绘，每张卡 **2 小节（120 BPM 下 4 秒）**，给 2–3 岁孩子跟唱、跟做动作的时间。编号 `m01`、`m02`…，目录 `episodes/m01-big-small/`。
+
+**和故事集一样的**：主题（一组词或一个道理）、选题打分 ≥14、三句话、角色原文描述、出图和关键帧（第 5 节）、漫画剧本确认（第 4.1 节）、质检（第 9 节）、交付网页（第 8 节）。**确认前只出漫画，不生成歌、不出正式图。**
+
+**不一样的**：
+
+- **结构**：前奏 4 秒（关键帧钩子 + 大字标题）→ 8 张歌词卡 → 尾奏片尾 4 秒，全片 40–55 秒。**只出一个完整版**，不出精华版（歌要听完整）。
+- **歌词**：每个词连唱三遍（`Big, big, big!`）再接一句 3–4 词短句（`It's a big acorn!`）；最后一张是副歌，把前面的词串起来。每个词配一个孩子能做的动作（big 张开手、small 捏一点点、tall 踮脚……），这就是互动。卡片之间串一个看画面就懂的小反转（m01：最矮的 Hazel 爬上 Bun 头顶变最高）。
+- **构图**：上方 18% 留天空放大字单词，脸在 22%–58% 高度，下 38% 留地面放字幕。提示词末尾的构图句照 `episodes/m01-big-small/script.md` 写。
+- **没有配音、背景音乐、音效**：歌就是全部声音。lines 的 `speaker` 写 `song`，每页加 `"word": {"en": "big", "zh": "大"}`（sbv.py 画在上方，开头 0.2 秒弹出）。
+- **动作**：每页一张 b 关键帧，用 `cycle` 跟拍子来回切：一般 `step: 1.0`（2 拍换一次），热闹的段落 0.5，慢的段落 2.0。
+
+**歌怎么做（`tools/storybook-video/song.py`，ElevenLabs Music，Starter 档就能用）**：
+
+1. story.json 写 `song` 段：`model: music_v2_5`、`styles`、`negative`、`sections`（每段 `name`、`seconds`、`pages` 或 `lines`、`direction`）。有 `pages` 的段，歌词自动取那几页的 `en`；段时长就是卡片时长，v2.5 会严格照着来。
+2. **不能唱得没感情、像机器人**（2026-10-28 用户原话）：`styles` 写"笑着唱的温暖女声、像唱给宝宝听、副歌一群小朋友跟唱和喊、强弱对比大"；`negative` 写 `flat monotone vocal`、`robotic voice`、`spoken word`；**每段 `direction` 写清怎么唱**（big 唱得大、small 唱得轻、fast 唱快、slow 拖长犯困、Up 一声比一声高）。不写现有歌名、频道名、歌手名。
+3. 在用户 Mac 上：`source ~/.zshrc && python3 song.py ../../episodes/<集>` 出 3 版到 `out/<集号>/song/v1–v3`（每版扣 ElevenLabs 额度；Starter 每月音乐下载上限 30 分钟）。
+4. `.venv/bin/python song.py ../../episodes/<集> --check`（PATH 里要有 ffprobe，用 sbv-ffmpeg 环境）：每段听写相似度、开口时间。每段 ≥0.6、平均 ≥0.75 才算过，听错词的直接淘汰（m01 v1 把 "Up, up, up" 唱成 "top top"）。
+5. **剩下最好的两版做成试听网页（Artifact，mp3 内嵌）给用户用耳朵挑**，情绪只能人听。两版都平就改 `styles`/`direction` 重出，最多两轮。
+6. 用户选定后 `python3 song.py ../../episodes/<集> --pick N`：写出 `song.mp3` + `song_words.json`，路径写回 story.json。之后 `sbv.py` 照常渲染：卡片按分段时长硬切，字幕按词时间戳逐词变黄，钩子时长自动等于前奏，片尾放到歌结束。
+
+**时间戳的坑**：`with_timestamps` 返回 `meta.words_timestamps`（`word`、`start_ms`、`end_ms`），里面会混进 `{…}` 写的演唱提示（起止相同、不出声），`song.py` 和 `sbv.py` 都会滤掉。拿不到时间戳时 `--check` 会用 Whisper 的词时间补上；都没有就按分段时长均分。
+
+**Mac 上的工作区**：`~/code/little-circle` 常有别的会话在用，儿歌的集目录和产物放在 `~/code/little-circle-songs`（用 `git archive` 取分支文件，只读不改主工作区）。出图仍用主工作区的 `codex_images.py`（要带 `series/refs`、`series/style`）。
+
 ## 4. 写剧本
 
 **英文台词**（用户明确要求，最重要；观众按 **2–3 岁** 写）：
@@ -334,6 +362,7 @@ open ../../out/c01
 
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
+| 歌（儿歌集） | `song.py --check` 听写 + 用户试听 | 每段相似度 ≥0.6、平均 ≥0.75，时长差 ≤1 秒；用户听过、选定一版；没有机器人腔 | 淘汰听错的版本；改 `styles`/`direction` 重出，最多两轮 |
 | 剧本 | 主题、结构、台词、童趣、互动 | 选题打分 ≥14、三句话写得出来、情绪曲线谷在 p03 峰在 p07（`docs/story-psychology-reference.md` 第 9 节自检）；漫画剧本网页做好、每格和剧本对得上；有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
 | 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
@@ -411,6 +440,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
+| m01 | 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过，待发布；用户选了歌的 A 版（v2） |
 | s04 | 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-29 成品完成、两版 qa 全部通过，待发布；全程 Codex 关键帧动画（钩子 4 帧 + 11 张关键帧），没花可灵；新角色 Pip、Bruno、Fern、Ruby 音色已定 |
 | s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
 | s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |

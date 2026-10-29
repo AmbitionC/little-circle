@@ -13,7 +13,7 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 NAMES = {"narrator": "旁白", "nutty": "栗栗", "hazel": "Hazel", "bun": "Bun", "pip": "皮皮", "bruno": "Bruno",
-         "fern": "Fern", "ruby": "Ruby", "ollie": "Ollie", "rocky": "Rocky", "dot": "Dot", "bo": "Bo", "wiggles": "Wiggles"}
+         "fern": "Fern", "ruby": "Ruby", "ollie": "Ollie", "rocky": "Rocky", "dot": "Dot", "bo": "Bo", "wiggles": "Wiggles", "song": "唱"}
 
 
 def split_panels(path, n):
@@ -96,7 +96,9 @@ def main():
         if k == "hook":
             h = story.get("hook", {})
             say = h.get("say", {})
-            title, seg = "开头钩子 · 5 秒", "钩子"
+            intro = next((x["seconds"] for x in story.get("song", {}).get("sections", []) if not x.get("pages")), None)
+            secs = h.get("max_seconds") or intro or 5
+            title, seg = f"开头钩子 · {secs:g} 秒", "前奏" if story.get("song") else "钩子"
             scene = md(hook_beats).replace("\n", "<br>")
             lines = [("旁白", say.get("en", ""), say.get("zh", ""))] if say else []
             extra = f"<p class=big>第 0 帧大字：<b>{html.escape(h.get('headline', ''))}</b><br><span>{html.escape(h.get('subline', ''))}</span></p>"
@@ -105,6 +107,8 @@ def main():
             page = story["pages"][int(k[1:]) - 1]
             r = rows.get(k, {})
             title, seg = f"第 {int(k[1:])} 页", r.get("段落", "")
+            if page.get("word"):   # 儿歌：这张卡的大字单词
+                title += f" · {page['word']['en']} {page['word'].get('zh', '')}"
             scene = md(r.get("画面", ""))
             lines = [(NAMES.get(l.get("speaker", "narrator"), l.get("speaker")), l["en"], l.get("zh", "")) for l in page["lines"]]
             extra = ""

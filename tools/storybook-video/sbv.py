@@ -62,6 +62,11 @@ DEFAULT_STYLE = {
     "tail": 1.0,
     "sparkles": True,
     "badge_pos": [24, 40],
+    # 儿歌卡片：上方大字单词（英文大字 + 中文小字）的中心高度和字号
+    "word_y": 250,
+    "word_size": 170,
+    "word_zh_size": 64,
+    "word_color": [255, 246, 222],
 }
 FONT_FALLBACKS = {
     "en": ["/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf",
@@ -306,11 +311,11 @@ def drop_tags(words):
     out, inside = [], False
     for w in words:
         t = w["w"]
-        if t.startswith("["):
+        if t.startswith(("[", "{")):   # {…} 是儿歌作曲计划里的演唱提示
             inside = True
         if not inside:
             out.append(w)
-        if t.endswith("]"):
+        if t.endswith(("]", "}")):
             inside = False
     return out
 
@@ -688,7 +693,10 @@ class PageSeg:
         st = ctx.st
         self.ctx, self.page, self.lines = ctx, page, lines   # lines: [{speaker,en,zh,start,end,tokens,spans}]
         self.cut = page.get("cut", False)
-        self.dur = lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines else page.get("seconds", 3)
+        if "dur" in page:     # 儿歌：卡片时长由歌的分段定，到点硬切
+            self.dur = page["dur"]
+        else:
+            self.dur = lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines else page.get("seconds", 3)
         self.img = Image.open(os.path.join(base, page["image"])).convert("RGB")
         self.motion = page.get("motion", ["in", "left", "out", "right"][idx % 4])
         self.focus = page.get("focus", [0.5, 0.42])
@@ -702,6 +710,7 @@ class PageSeg:
             self.region = (0, max(200, 760 - rh // 2), W, rh)
             self.bg = ImageEnhance.Brightness(cover_crop(self.img).filter(ImageFilter.GaussianBlur(40))).enhance(0.6)
         self.cache = {}
+        self.word = word_overlay(page.get("word"), ctx)
         self.keys, self.cyc = keyframes(page, lines, base, self.img)
         # 可选：画面特效（烛光 / 飘雪 / 光尘）和按深度的 2.5D 视差运镜
         src = np.asarray(self.img).astype(np.float32)
@@ -859,6 +868,14 @@ class PageSeg:
         frame.paste(region, (rx, ry))
         if self.ctx.sparkles:
             self.ctx.sparkles.draw(frame, gt)
+        if self.word is not None:   # 儿歌卡片的大字单词：开头 0.2 秒弹出来
+            k = ease(t / 0.2)
+            if k < 1:
+                sz = (max(1, int(W * (0.7 + 0.3 * k))), max(1, int(self.word.height * (0.7 + 0.3 * k))))
+                wimg = self.word.resize(sz, Image.BICUBIC)
+                frame.alpha_composite(wimg, ((W - sz[0]) // 2, int(self.ctx.st["word_y"] - sz[1] / 2)))
+            else:
+                frame.alpha_composite(self.word, (0, int(self.ctx.st["word_y"] - self.word.height / 2)))
         li, wi = self.state(t)
         if li is not None and self.ctx.st.get("subtitles", True):
             c = self.card(li, wi)
@@ -927,6 +944,94 @@ def badge_image(series, fonts, base):
 
 # ---------- 主流程 ----------
 
+def word_overlay(word, ctx):
+    """儿歌卡片的大字单词：英文奶白粗字 + 深棕描边，下面一行中文。整张宽 W 的透明图，按 word_y 居中贴。"""
+    if not word:
+        return None
+    st, f = ctx.st, ctx.fonts
+    size = st["word_size"]
+    fe = f.get("en", size, "Bold")
+    while fe.getlength(word["en"]) > W - 160 and size > 80:   # 长词组（big & small）缩到放得下
+        size -= 10
+        fe = f.get("en", size, "Bold")
+    fz = f.get("zh", st["word_zh_size"])
+    h = int(st["word_size"] * 1.25 + st["word_zh_size"] * 1.5)
+    im = Image.new("RGBA", (W, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    color = rgb(word.get("color", st["word_color"]))
+    d.text((W // 2, int(st["word_size"] * 0.6)), word["en"], font=fe, fill=color, anchor="mm",
+           stroke_width=14, stroke_fill=rgb(st["stroke"]))
+    if word.get("zh"):
+        d.text((W // 2, int(st["word_size"] * 1.25 + st["word_zh_size"] * 0.6)), word["zh"], font=fz,
+               fill=(255, 255, 255), anchor="mm", stroke_width=8, stroke_fill=rgb(st["stroke"]))
+    shadow = Image.new("RGBA", im.size, (20, 12, 5, 0))
+    shadow.putalpha(im.getchannel("A").filter(ImageFilter.GaussianBlur(10)).point(lambda v: int(v * 0.45)))
+    out = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    out.alpha_composite(shadow, (0, 6))
+    out.alpha_composite(im)
+    return out
+
+
+def song_timeline(cfg, base):
+    """儿歌：每张卡的起止时间按 song.sections 的分段时长排（一段几页就平分），
+    每句歌词的起止和逐词高亮按歌的词时间戳对；没有时间戳就在卡片里平均分。时间都从歌的第 0 秒算。"""
+    song = cfg["song"]
+    words = []
+    if song.get("words") and os.path.exists(os.path.join(base, song["words"])):
+        with open(os.path.join(base, song["words"])) as f:
+            words = drop_tags(json.load(f))
+    pages = {os.path.splitext(p["image"])[0]: p for p in cfg["pages"]}
+    slots, t = [], 0.0
+    for sec in song["sections"]:
+        ks = sec.get("pages") or []
+        for i, k in enumerate(ks):
+            d = sec["seconds"] / len(ks)
+            slots.append((k, t + i * d, t + (i + 1) * d))
+        if not ks:
+            slots.append((None, t, t + sec["seconds"]))
+        t += sec["seconds"]
+    intro = next((a for k, a, b in slots if k), 0.0)
+    out, j = [], 0
+    for k, a, b in slots:
+        if not k:
+            continue
+        page = pages[k]
+        lines = []
+        for li, ln in enumerate(page_lines(page)):
+            tokens = ln["en"].split()
+            spans, j0 = [], j
+            for tok in tokens:   # 在这张卡的时间窗里按顺序找这个词
+                nt = norm(tok)
+                for m in range(j, len(words)):
+                    if words[m]["s"] > b + 0.5:
+                        break
+                    nw = norm(words[m]["w"])
+                    if nw and nt and words[m]["s"] >= a - 0.6 and (nw == nt or nw.startswith(nt) or nt.startswith(nw)):
+                        spans.append((words[m]["s"], words[m]["e"]))
+                        j = m + 1
+                        break
+                else:
+                    spans.append(None)
+            n = len(page_lines(page))
+            ls, le = a + (b - a) * li / n, a + (b - a) * (li + 1) / n
+            got = [x for x in spans if x]
+            if len(got) < max(1, len(tokens) // 2):    # 对不上：在这一句的时间段里按字长估
+                j = j0
+                s0, s1 = (got[0][0], got[-1][1]) if got else (ls + 0.05, le - 0.15)
+                spans = estimate_spans(tokens, s0, s1)
+            else:                                   # 个别词没对上：夹在前后两个词中间
+                for x in range(len(spans)):
+                    if spans[x] is None:
+                        prv = next((spans[y][1] for y in range(x - 1, -1, -1) if spans[y]), ls)
+                        nxt = next((spans[y][0] for y in range(x + 1, len(spans)) if spans[y]), le)
+                        spans[x] = (prv, max(prv + 0.05, nxt - 0.02))
+            start, end = spans[0][0], spans[-1][1]
+            lines.append(dict(ln, speaker=ln.get("speaker", "song"), start=start - a, end=end - a, tokens=tokens,
+                              spans=[(s - start, e - start) for s, e in spans]))
+        out.append((page, a, b, lines))
+    return intro, t, out
+
+
 def page_lines(page):
     if "lines" in page:
         return page["lines"]
@@ -974,10 +1079,21 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         seg.start = t
         segs.append(seg)
 
-    if cfg.get("cover", {}).get("image"):
+    # 儿歌：story.json 有 song.file（song.py --pick 写进来的）就按歌排时间轴，不配音
+    song = cfg["song"] if (cfg.get("song") or {}).get("file") else None
+    if song:
+        intro, _, timeline = song_timeline(cfg, base)
+        song_path = os.path.join(base, song["file"])
+        song_len = probe_duration(song_path)
+
+    if cfg.get("cover", {}).get("image") and not song:
         add(StillSeg(os.path.join(base, cfg["cover"]["image"]), cfg["cover"].get("seconds", 0.4)))
 
     hook = cfg.get("hook")
+    if song and hook:   # 钩子就是前奏：时长等于第一张卡开唱前的那段
+        hook = dict(hook, max_seconds=intro, cut=True)
+    elif song and intro > 0:
+        add(StillSeg(os.path.join(base, cfg["pages"][0]["image"]), intro))
     if hook and (hook.get("clip") or hook.get("frames")):
         clip = os.path.join(base, hook["clip"]) if hook.get("clip") else None
         hdir = os.path.join(work, "hook")
@@ -1000,7 +1116,18 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         for sx in hook.get("sfx", []):
             placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
 
-    for i, page in enumerate(pages):
+    for i, (page, a, b, lines) in enumerate(timeline if song else []):
+        seg = PageSeg(dict(page, cut=True, dur=b - a), i, lines, ctx, base)
+        add(seg)
+        for ln in lines:
+            srt.append((seg.start + ln["start"] - 0.1, seg.start + ln["end"] + 0.3, ln["en"], ln.get("zh", "")))
+        for sx in page.get("sfx", []):
+            placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
+    if song:
+        song_t0 = segs[0].start if segs else 0.0
+        placements.append((song_path, song_t0, song.get("gain", 1.0)))
+
+    for i, page in enumerate([] if song else pages):
         lines, cur = [], st["lead"]
         for ln in page_lines(page):
             if ln.get("audio"):
@@ -1032,7 +1159,11 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
             ending.pop("image", None)
             ending["headline"] = ending.get("feed_headline", "完整版在主页合集")
             ending["subline"] = ending.get("feed_subline", "")
-        add(EndSeg(ending, os.path.join(base, pages[-1]["image"]), ctx, base))
+        if song:   # 尾奏：片尾卡一直放到歌结束
+            ending["seconds"] = max(2.5, song_t0 + song_len - (segs[-1].start + segs[-1].dur))
+        end = EndSeg(ending, os.path.join(base, pages[-1]["image"]), ctx, base)
+        end.cut = end.cut or bool(song)
+        add(end)
     total = segs[-1].start + segs[-1].dur
 
     # 音频：人声按时间轴放置；背景音乐在有人说话时压到一半；最后统一响度
