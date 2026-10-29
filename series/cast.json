@@ -47,7 +47,7 @@
   },
   "bruno": {
     "provider": "elevenlabs",
-    "voice": "cyDOS9zMDnV6BWZW4i4j",
+    "voice": "LjHEEZYE6jkpMf6w5IJV",
     "model": "eleven_v3",
     "settings": {
       "stability": 0.0,

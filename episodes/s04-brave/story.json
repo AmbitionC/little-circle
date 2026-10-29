@@ -263,7 +263,9 @@
           "speaker": "bruno",
           "en": "Be brave, Pip!",
           "zh": "勇敢点，皮皮！",
-          "say": "[shouting] Be brave, Pip!"
+          "say": "[shouting] Be brave, Pip!",
+          "take": 2,
+          "gap": 0.8
         },
         {
           "speaker": "pip",
@@ -325,7 +327,7 @@
           "speaker": "bruno",
           "en": "Boing! Boing! Got you!",
           "zh": "嘭！嘭！接住啦！",
-          "say": "[excited] Boing! Boing! Got you! [laughs]"
+          "say": "[excited] Boing! Boing! Got you!"
         },
         {
           "speaker": "ruby",
@@ -342,13 +344,8 @@
         },
         {
           "file": "../../assets/sfx/boing.mp3",
-          "at": 0.6,
-          "gain": 0.5
-        },
-        {
-          "file": "../../assets/sfx/boing.mp3",
-          "at": 1.1,
-          "gain": 0.45
+          "at": 0.28,
+          "gain": 0.4
         }
       ]
     },

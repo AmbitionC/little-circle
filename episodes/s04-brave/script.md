@@ -77,7 +77,7 @@ the bear, the fox and the squirrel all reach their arms up toward the baby robin
 | p04 | 转 + 反转 | 皮皮深吸一口气，胸口一挺，眼神变得坚定 → p04b："嗖"地冲上树干，身后拖着一溜烟，大家目瞪口呆 | **皮皮**：`[shouting] I can be brave!`<br>我可以勇敢！ | whoosh | 硬切，上移跟拍 |
 | p05 | 转 + 揪心 | 皮皮在细树枝上一步一步挪，树枝越压越弯，他不往下看；下面的朋友都在挥手加油 → p05b：他离 Ruby 只差一点点，伸出小爪子 | **Bruno 和 Fern**：`[shouting] Be brave, Pip!`<br>勇敢点，皮皮！<br>**皮皮**：`[nervously] Step... step... step...`<br>一步……一步……又一步…… | 树枝吱呀声；音乐渐弱 | 缓推，镜头微微晃 |
 | p06 | 合 −− 惊险一下 | 皮皮一把抱住 Ruby → p06b：树枝"咔嚓"断了，两个一起往下掉（掉得不高，正下方就是 Bruno） | **旁白**：`[gasps] Oh no! The branch!`<br>哎呀！树枝断了！ | crack（大）；音乐停 | 硬切，下移 |
-| p07 | 合 +++ 峰 | "嘭"！两个落在 Bruno 软乎乎的大肚子上 → p07b：弹到半空，Ruby 被抛回鸟妈妈怀里 → p07c：皮皮落在 Bruno 的鼻子尖上，两个对眼，大家哈哈大笑 | **Bruno**：`[excited] Boing! Boing! Got you! [laughs]`<br>嘭！嘭！接住啦！<br>**Ruby**：`[happily] Brave Pip! Thank you!`<br>勇敢的皮皮！谢谢你！ | boing ×3；音乐回来，欢快 | 硬切，缓拉 |
+| p07 | 合 +++ 峰 | "嘭"！两个落在 Bruno 软乎乎的大肚子上 → p07b：弹到半空，Ruby 被抛回鸟妈妈怀里 → p07c：皮皮落在 Bruno 的鼻子尖上，两个对眼，大家哈哈大笑 | **Bruno**：`[excited] Boing! Boing! Got you!`<br>嘭！嘭！接住啦！<br>**Ruby**：`[happily] Brave Pip! Thank you!`<br>勇敢的皮皮！谢谢你！ | boing ×3；音乐回来，欢快 | 硬切，缓拉 |
 | p08 | 寓意 + 暖 | 鸟妈妈给皮皮挂上一片小树叶勋章，大家围着他欢呼，皮皮挺起小胸脯对着镜头 → p08b：他害羞又骄傲地笑，挥手 | **皮皮**：`[proudly] I am scared, but I am brave!`<br>我会害怕，但我很勇敢！<br>**旁白**：`[warmly] The end. Bye-bye!`<br>讲完啦，拜拜！ | ding, 欢呼 | 缓拉 |
 
 精华版（`--max-pages 4`）停在 p04 皮皮冲上树干，片尾大字是"小老鼠能救下小鸟吗？"。
@@ -197,7 +197,7 @@ the mouse smiles shyly but proudly and waves one tiny paw at the viewer, the fri
 | p05a | Bruno + Fern | `[shouting] Be brave, Pip!` | 齐声加油 | 勇敢点，皮皮！ |
 | p05b | 皮皮 | `[nervously] Step... step... step...` | 紧张、小声 | 一步……一步……又一步…… |
 | p06 | 旁白 | `[gasps] Oh no! The branch!` | 惊呼 | 哎呀！树枝断了！ |
-| p07a | Bruno | `[excited] Boing! Boing! Got you! [laughs]` | 开怀大笑 | 嘭！嘭！接住啦！ |
+| p07a | Bruno | `[excited] Boing! Boing! Got you!` | 开怀大笑 | 嘭！嘭！接住啦！ |
 | p07b | Ruby | `[happily] Brave Pip! Thank you!` | 开心 | 勇敢的皮皮！谢谢你！ |
 | p08a | 皮皮 | `[proudly] I am scared, but I am brave!` | 骄傲、对镜头 | 我会害怕，但我很勇敢！ |
 | p08b | 旁白 | `[warmly] The end. Bye-bye!` | 温柔 | 讲完啦，拜拜！ |

@@ -101,7 +101,7 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
 
 5.2 **s04《Brave Little Pip! 小老鼠皮皮好勇敢！》10-29 成品完成，待发布**（用户 10-29 确认剧本后一口气做完）：
    - 出图：Codex 出 23 张（主图 8 + 钩子首帧 + h02–h04 + 关键帧 11 + 封面），全程没花可灵灵感值。第一轮问题：p05 树下画成了 Nutty/Hazel/Bun；h03、p02、p03b、p08 的脸落在下 40%（字幕区）；首帧鸟妈妈的脸在大字下面。改提示词（站上石头、树根、树桩，脸放画面中段）后重出，都已合格。
-   - 配音：pip=An3xqcxpNpOHGJcOShlR、bruno=cyDOS9zMDnV6BWZW4i4j、ruby=H3183Z9ZcjE80HwRu4PY、fern=tinYNLscXdfZpc4m5ue7（eleven_v3，stability 0.0）。Bruno 第一轮设计出来不够低沉，描述改成 "very deep bass adult male voice" 重出才选到。实测基频 Ruby 466 / Pip 384 / Bruno 225 Hz。p03 小声那句 gain 从 0.3 改 0.7（v3 的 [whispers] 本身就轻，0.3 听不见），和 p04 大喊差 11.7 dB；树枝断那一下比前一秒响 17 dB。p07 Bruno 的 [laughs] 放句首会先笑 1 秒、字幕对不上，挪到句尾。
+   - 配音：pip=An3xqcxpNpOHGJcOShlR、bruno=LjHEEZYE6jkpMf6w5IJV（10-29 用户说原来的"像个大人"，改成小熊宝宝声，基频约 290 Hz；旧的成年低音 cyDOS9zMDnV6BWZW4i4j 作废）、ruby=H3183Z9ZcjE80HwRu4PY、fern=tinYNLscXdfZpc4m5ue7（eleven_v3，stability 0.0）。教训：Bruno 是熊宝宝，别为了"低"做成成年男声；描述里写 boy、preschool、young 会被安全过滤拦，写 "cartoon teddy bear character, medium-high voice" 能过。实测基频 Ruby 466 / Pip 384 / Bruno 286 Hz。p07 boing 音效挪到开口前（0 和 0.28 秒），原来压住了 Bruno 说的 "Boing"。p03 小声那句 gain 从 0.3 改 0.7（v3 的 [whispers] 本身就轻，0.3 听不见），和 p04 大喊差 11.7 dB；树枝断那一下比前一秒响 17 dB。p07 Bruno 的 [laughs] 放句首会先笑 1 秒、字幕对不上，挪到句尾。
    - 运镜：p03 改成 in、focus [0.6, 0.8]、zoom 1.25，p08 focus [0.5, 0.7]，让皮皮的脸在字幕上面。
    - 成品在 `out/s04/`（不提交）：完整版 48.8 秒、精华版 26.3 秒，-16.3 / -16.1 LUFS；封面 3:4 用 `--crop-3x4 0.35`。最终网页 https://claude.ai/artifact/KMrSWqF3kokb8QL1QgNNfg （视频是 720p 压缩版；OSS 环境变量没配，用 Artifact 素材存储顶上）。
    - 剩下只有用户能做的：手机终检、点发布、勾 AI 声明。

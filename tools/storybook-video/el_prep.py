@@ -73,8 +73,9 @@ ROLES = {
     },
     "bruno": {
         "name": "Lili Bruno",
-        "description": "A huge, gentle giant of a brown bear, very deep bass adult male voice, low and "
-                       "rumbling, slow and goofy, warm and friendly, a little clumsy, clear American English.",
+        "description": "A chubby cartoon teddy bear character, soft round medium-high voice, cute and goofy, "
+                       "slow, a little proud, warm and friendly, like a cuddly toy bear in an animated show, "
+                       "clear American English.",
         "text": "Hello! I am Bruno. I am big! I can do it! Oops. Oh no, the tree is too small for me. "
                 "Be brave, Pip! Boing, boing! Got you! Ha ha ha!",
     },
