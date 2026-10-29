@@ -3,6 +3,15 @@
 > 最近更新：2026-10-29（s04《小老鼠皮皮好勇敢》成品做完，两版 qa 全部通过，待发布；新角色 Pip、Bruno、Ruby、Fern 音色写进 cast.json）。上一次：2026-10-27（s02 成品；新增 qa.py、brand.py）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
+## 0. 最新：儿歌集上线第一首（2026-10-29）
+
+- 新合集「栗栗唱儿歌」，第一首是 m01《Big and Small!》，44 秒，成片已过质检。集目录在 `episodes/m01-big-small/`，做法写在 skill 第 3.2 节。
+- 工具：`tools/storybook-video/song.py`（ElevenLabs Music 生成、听写质检、选定）；`sbv.py` 和 `qa.py` 都加了儿歌模式。
+- 成品在用户 Mac 的 `~/code/little-circle-songs/out/m01/`（这一首在单独目录里做，没放进主工作区）。
+- 用户要做的两件事：
+  - 在 `~/.zshrc` 里加上 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET`，否则 `oss_publish.py` 跑不了。
+  - 把 Fredoka.ttf 放进 `tools/storybook-video/fonts/`；现在英文字用的是系统里的 Arial Rounded。
+
 ## 1. 现在在哪
 
 M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-22。
