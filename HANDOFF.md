@@ -6,9 +6,8 @@
 ## 0. 最新：剧本写法升级（2026-10-29）
 
 - 拆了 Bluey、Peppa Pig、Gruffalo、Mo Willems、Eric Carle、Super Simple、CoComelon、Blue's Clues、Pocoyo、Hey Duggee、Ms Rachel 的剧本方法，写成 [docs/script-craft-global-hits.md](docs/script-craft-global-hits.md)：12 条规则、写剧本的顺序、检查清单，带来源。
-- skill 第 3、4、9 节已改：先定"能输的规则"、先写结尾再埋伏笔、三次阶梯 + 副歌、出糗的是大个子、全片不同的词 ≤30、今日单词配固定动作、树叶勋章固定结尾、静音走查。
+- 用户定：这些是 reference，不是硬性要求，每集按选题挑 2–4 条最合适的。skill 第 4 节只引用它，概要写一行"用了哪些手法"。
 - `docs/story-psychology-reference.md` 之前只在 j34bgd 分支上，这次一起带进来了（skill 里早就引用它）。
-- 下一集剧本按新顺序写，写完在 script.md 概要里加"写法自检"一行。
 
 ## 0. 最新：儿歌集上线第一首（2026-10-29）
 
