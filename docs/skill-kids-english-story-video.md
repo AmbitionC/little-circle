@@ -201,6 +201,11 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
   - 说话：主角说重要台词的那张图加一张张嘴帧 `**p04_talk.png** ← p04.png`（"opens his mouth wide talking, nothing else changes"），story.json 写 `"talk": {"p04.png": "p04_talk.png"}`，开口说词时只换嘴那一块来回开合。
   - 运镜：默认统一缓推（`in`），只有剧情动作需要时才用 up / down（爬树、掉下来）；不要每页换方向。
   - 质检：逐帧看每一处换图，有重影就改硬切或加过渡关键帧。
+- **谁在说话要一眼看出来（2026-10-29 用户："我们这个严格意义上不算视频，多个角色在一个分镜的时候，谁知道谁在说话？"）**：
+  - **每一句角色台词都要有张嘴帧**，不止重要台词。给这句说话时屏幕上那张图出一张：`**p05_bruno.png** ← p05.png`，改动只写 `only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes`。story.json 写在那一句上：`"talk": "p05_bruno.png"`（说话期间换了关键帧，就写成 `{"p05.png": "p05_bruno.png", "p05b.png": "p05b_bruno.png"}`）。同一张图两个人轮流说，各出各的张嘴帧。
+  - sbv.py 拿张嘴帧算出嘴在哪，然后自动做三件事：镜头往说话的人那边轻轻靠（`speaker_pull`，默认 0.3）；说话人周围亮、远处最多暗 14%（`speaker_spotlight`）；字幕左上角弹出说话人的圆头像，圈是角色色（头像用 `codex_images.py avatars` 出到 `series/refs/avatars/`，新角色出参考图后顺手出头像）。算不出嘴的位置时，在那一句写 `"where": [x, y]`（比例坐标）。
+  - 分镜就要帮忙：两人对话时一左一右站，说话的那个更靠前、更大；需要的话说话前加一张"转向对方 / 抬手"的关键帧。
+  - 质检：关掉声音看一遍，每一句都能指出是谁在说；指不出来就补张嘴帧或调站位。
 - **质检**：关键帧和主图的背景、光线、角色位置要对得上，只有动作变了；对不上就 `--only p04b --force` 重出。抽帧看换图那一下有没有跳画风。
 
 ### 5.4 可灵钩子（可选，有灵感值时再用）

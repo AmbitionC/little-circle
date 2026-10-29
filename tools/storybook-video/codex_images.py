@@ -46,6 +46,9 @@ CHARACTERS = {
 }
 REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "
               "friendly smile, plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
+# 字幕旁的说话人小头像：只要头和一点肩膀，脸占满画面，缩到手机上 130 像素也认得出
+AVATAR_PROMPT = ("close-up head-and-shoulders portrait of {desc}, facing the viewer with a friendly smile, the face filling most "
+                 "of the square picture and centered, plain soft warm cream background, nothing else in the picture, " + STYLE + ", square 1:1")
 
 
 def parse_script(path):
@@ -261,7 +264,7 @@ def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
 
 def main():
     ap = argparse.ArgumentParser(description="用 Codex CLI 按 script.md 出图")
-    ap.add_argument("targets", nargs="+", help="refs、styles，或集目录（里面有 script.md）")
+    ap.add_argument("targets", nargs="+", help="refs、avatars、styles，或集目录（里面有 script.md）")
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
@@ -279,6 +282,14 @@ def main():
             jobs = {f"{k}_{sc}.png": (f"{prompt}, {v['style']}", [])
                     for k, v in cfg["styles"].items() for sc, prompt in cfg["scenes"].items()}
             failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
+        if t == "avatars":
+            # 说话人头像：以角色参考图为准，出到 series/refs/avatars/<角色>.png，sbv.py 字幕旁会用
+            outdir = os.path.join(REFS, "avatars")
+            os.makedirs(outdir, exist_ok=True)
+            jobs = {f"{k}.png": (AVATAR_PROMPT.format(desc=d), [os.path.join(REFS, f"{k}.png")])
+                    for k, d in CHARACTERS.items() if os.path.exists(os.path.join(REFS, f"{k}.png"))}
+            failed += run_jobs(outdir, jobs, args, frame=False, use_style=False, shape="square image (1:1)")
             continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
