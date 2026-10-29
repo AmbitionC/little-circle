@@ -191,7 +191,7 @@ the squirrel closes his eye and falls asleep with a peaceful smile, snuggling cl
 | p08a | 栗栗 | `[whispers] So sleepy... Good night!` | 对镜头小声、温柔 | 好困呀……晚安！ |
 | p08b | 旁白 | `[warmly] The end. Bye-bye!` | 温柔 | 讲完啦，拜拜！ |
 
-音量对比：p06 的 SNORE 那一下要比前面响 6 dB 以上。小声句写 `"gain": 0.3`，大喊句写 `"gain": 1.3`，见 skill 第 6.1 节。
+音量对比：p06 的 SNORE 那一下要比前面响 6 dB 以上。小声句写 `"gain": 0.3`，大喊句写 `"gain": 1.3`，见口语分册 docs/skill-type-talk.md 第 7 节。
 
 ## 6. 发布文案
 

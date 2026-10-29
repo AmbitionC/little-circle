@@ -1,6 +1,6 @@
 ---
 name: kids-english-story-video
-description: Make one publish-ready episode of the 栗栗学英语 (Forest Friends) toddler English video — themed script, Codex CLI images, Kling hook, ElevenLabs voices, sbv.py render, covers and publishing pack — with a quality gate and self-fix at every stage, in the fixed series style.
+description: Make one publish-ready episode of the 栗栗学英语 (Forest Friends) toddler English video — talk line (story / word / daily-phrase episodes with ElevenLabs voices) or song line (AI nursery song with word cards) — themed script, comic review, Codex CLI images and keyframes, sbv.py render, covers and publishing pack, with a quality gate and self-fix at every stage, in the fixed series style.
 ---
 
 # 栗栗学英语 · 森林小伙伴 · 幼儿英语启蒙动态绘本
@@ -9,13 +9,18 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 这份 skill 记录每一集从剧本到发布的固定做法。**最终产物是能直接发布的成品包**（第 8 节），不是样片或半成品：用户确认剧本之后，Claude 一路做完，每一步过质检关口（第 9 节），不合格自己修，只把成品和极少数只有用户能做的事交给用户。第 1 集《Nutty's Big Acorn》（2026-10-21，全程可灵）2 秒跳出率 66.7%、完播率 1.6%，所以从 2026-10-22 起改成**混合方案**：开头 5 秒可灵钩子 + 其余页面用 `sbv.py` 做动态绘本。下文以混合方案为准。
 
+**2026-10-29 起按视频类型分册**（用户要求把口语类和儿歌类拆开）：本文件只放各类型都一样的公共部分；类型不同的地方写在两个分册里，开工先看第 3 节选类型，再读对应分册：
+
+- 口语线（有配音的故事 / 认知 / 生活口语）→ [skill-type-talk.md](skill-type-talk.md)
+- 儿歌线（AI 儿歌 + 卡片）→ [skill-type-song.md](skill-type-song.md)
+
 全程用简体中文跟用户沟通，说大白话，给能直接复制的命令，一次只给要做的那几步。
 
 ## 0. 开工前必做
 
 1. 工作都在仓库 `AmbitionC/little-circle` 里做（用户本机是 `~/code/little-circle`）。**先读 `HANDOFF.md`**，看当前进度、ElevenLabs 档位、`series/cast.json` 里 Voice ID 填了没有。
 2. 需要时再读：`docs/brand.md`（账号、角色、简介、平台分工）、`docs/elevenlabs-workflow.md`（配音流程和交付标准）、`tools/storybook-video/README.md`（story.json 全部字段）、`milestones/M1-*.md`（本月判据和每周节奏）。仓库文档和本 skill 冲突时，**以仓库里更新日期更近的为准**，并在汇报里说一句。
-3. 看本文第 11 节的剧集表和 `tracking/videos.csv`，避免主题、单词、句型重复。
+3. 看本文第 11 节的剧集表和 `tracking/videos.csv`，避免主题、单词、句型重复。**按第 3 节定这一集是哪条线、哪个子类，读对应分册。**
 4. 做完一段工作，回去更新 `HANDOFF.md`。改动直接提交并推送到默认分支，不开分支、不走 PR。
 
 ## 1. 红线（每集都检查）
@@ -40,94 +45,55 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（Codex 出的全身设定图；2026-10-28 按日系手绘画风重出）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
 | 画风 | **日系手绘动画**（2026-10-28 用户从 5 组样图里挑定，替换 10-27 的精致数字插画）：干净的赛璐璐上色角色，柔和描边，大而有神的眼睛，圆润可爱的比例；背景是细腻的手绘森林，蓝天白云，光线温暖通透，带点怀旧电影感，颜色清爽明亮。不要 3D 渲染感、不要水彩纸纹、不要厚涂毛发 |
-| 结构 | [可选 0.4 秒静止封面] → 可灵钩子 5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 → 片尾卡 3.5 秒（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒） |
-| 每集两版 | 推荐流精华版：`--max-pages 4`，约 20–35 秒，停在悬念上，片尾写"完整版在主页合集"；完整版：进合集，供搜索和睡前跟读 |
-| 配音 | 全英文。只从 `series/cast.json` 读音色（ElevenLabs），整季不换。**模型用 `eleven_v3`，每句都写语气标签**（第 6.1 节）：要有起伏，不能平铺直叙（2026-10-28 用户反馈）。旁白像给孩子讲故事一样有抑扬顿挫，角色音高拉开 |
+| 结构 | [可选 0.4 秒静止封面] → 钩子 4–5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 / 歌词卡 → 片尾卡（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒）。各线的页数和时长见分册 |
+| 每集几版 | 口语线两版：推荐流精华版（`--max-pages 4`，20–35 秒，停在悬念上）+ 完整版进合集；儿歌线只出完整版（歌要听完整） |
+| 声音 | 全英文。口语线：只从 `series/cast.json` 读音色（ElevenLabs），整季不换，**模型用 `eleven_v3`，每句都写语气标签**（口语分册第 7 节），不能平铺直叙。儿歌线：ElevenLabs Music 作曲演唱，同样不能像机器人（儿歌分册第 4 节） |
 | 字幕 | 中英双语，**不要底板**（2026-10-28 用户要求：底部会被抖音标题和简介挡住）。`subtitle_mode: outline`：白字加粗描边（英文描边是角色色压暗、中文描边深棕）加柔和阴影，当前词变黄 #FFD640。英文 70px 在上，中文 46px 在下。**中心 y=1320、x=510**（略偏左，躲开抖音右侧点赞栏），最宽 820px。旧的奶油底板还能用 `subtitle_mode: card` 切回 |
 | 字体 | 英文 Fredoka SemiBold；中文 Noto Sans CJK SC（ttc index 2）。Mac 上没装时 sbv.py 自动换 Arial Rounded / 苹方 |
 | 色板 | 奶油 #FFF8E8、棕 #5C3418、浅棕 #6E543E、橙 #E8892B、叶绿 #7A9A4A |
 | 角色字幕色 | 旁白 #4A3426 (74,52,38)、Nutty #B24E16 (178,78,22)、Hazel #A06800 (160,104,0)、Bun #AC382C (172,56,44) |
 | 角标 | 故事段左上角 (24,40) 半透明系列徽章，72% 透明度；钩子和片尾不放 |
 | 转场 | 页间 0.35 秒叠化；冲击镜头用 `cut: true` 硬切 |
-| 背景音乐 | `assets/bgm/` 三首整季复用：bgm_play 俏皮 / bgm_calm 安静 / bgm_happy 庆祝；有人说话时自动压低一半 |
+| 背景音乐 | 口语线用 `assets/bgm/` 三首整季复用：bgm_play 俏皮 / bgm_calm 安静 / bgm_happy 庆祝；有人说话时自动压低一半。儿歌线不加 |
 | 响度 | -16 LUFS（±1），峰值不超过 -1.5 dBFS |
 | 更新 | 每周二、四、六 19:00 |
 | 成本 | 单条现金 ≤20 元（可灵每集约 120 灵感值，最多 2 个片段）；出图走用户 ChatGPT 订阅额度，不另花钱；第 3 周起单条制作 ≤3 小时；当月总现金 ≤300 元 |
 
 系列徽章文字用 **「栗栗学英语」**（2026-10-27 定）：视频角标写 `"badge_text": "栗栗学英语 · 森林故事"`（或 `· 认知小绘本`），封面徽章由 `brand.py` 画。仓库示例里的旧名 "Forest Friends English · 森林小伙伴英语" 不再用。
 
-## 3. 每集都要有一个主题（2026-10-26 用户定的硬要求）
+## 3. 视频类型：两条线、五个子类（2026-10-29）
 
-用户原话："你做的是视频，要有一个主题，不是纯互动，要么教一个词和派生词，串成一个剧本，要么就是教一个道理。" 所以**不再做"一页一问一答"的认知卡片**。两个合集都按同一种写法，区别只在主题：
+**怎么分**：按**声音怎么来**分成两条线，因为这决定了剧本格式、音频流程、时长、版本数和质检，分开写才不会互相干扰；线下面再按**一集教什么**分子类，子类只换选题来源和写法侧重，流程完全复用，不另立 skill。
 
-- **认知小绘本**：一个主线词或一组词（水果、数数、颜色、天气……）放进一件小事里。例：c01 栗栗越吃越饿 → 吃成球滚下山（hungry / full）；c03 Hazel 滚进落叶堆变成彩色"树叶怪"（颜色）。可以参考《好饿的毛毛虫》的"阶梯 + 后果 + 变身"骨架（`docs/script-craft-global-hits.md` 1.5），合适就用。
-- **森林故事**：一个道理（求助、分享、打喷嚏捂嘴、排队……），用一个主线词讲出来。例：s02 用 help 讲"遇到困难要开口"。
-- 最好两者合一：一个道理，靠一个主线词讲出来；主线词全片出现 5 次以上，带上它的变化（help me / I can help / helper）。
+| 线 | 子类 | 编号 · 合集 | 一集教什么 | 状态 |
+|---|---|---|---|---|
+| 口语线（[分册](skill-type-talk.md)）：角色说台词、旁白讲故事，ElevenLabs 配音 + 背景音乐 + 音效 | 森林故事 | `s` · 森林故事 | 一个道理（求助、勇敢、分享），靠一个主线词讲出来 | 在做：s02、s04 |
+| | 认知小绘本 | `c` · 认知小绘本 | 一组同类词（水果、颜色、身体、天气） | 剧本已写：c01–c05 |
+| | 生活口语 | `d` · 栗栗的一天（暂定） | 一句家长每天能对孩子说的话（洗手、穿鞋、收玩具） | 待试 1 集 |
+| 儿歌线（[分册](skill-type-song.md)）：一首 AI 儿歌就是全部声音，卡片按小节切 | 单词卡儿歌 | `m` · 栗栗唱儿歌 | 一组词，每张卡一个词 + 一个动作 | 在做：m01 |
+| | 动作儿歌 | `m` · 栗栗唱儿歌 | 一组身体动作或一段日常流程，跟着做 | 待试 1 首 |
 
-**固定结构**：可灵钩子 5 秒 → 8 页动态绘本（`p01.png`…`p08.png`）→ 片尾 3.5 秒。完整版约 40–55 秒；`--max-pages 4` 出 20–35 秒的推荐流精华版，**停在悬念上**（例："Hazel 喊出 Help，谁会来帮他？"）。
+**为什么只拆这两条线、不拆更细**〔分析〕：头部儿童英语频道（Super Simple、CoComelon、Pinkfong、Peppa、Bluey、嘟嘟英语绘本馆、托比和朋友）的内容基本落在"故事 / 认知 / 日常 / 儿歌 / 动作歌 / 字母拼读"几类里。前四类在制作上其实只有两种：有配音的和唱出来的；认知、日常和故事的差别在选题，不在流程。拆成五份 skill，公共部分要改五处，很快就会漂。
 
-- 起（p01–p02）：主角遇到问题或想要一样东西。
-- 承（p02–p04）：自己搞不定、出糗，笑点最密。
-- 转（p04–p06）：换个做法，或朋友来了。
-- 合（p06–p08）：解决，大家一起笑；最后一页主角对镜头说一句寓意，再接旁白 `The end. Bye-bye!`（结尾怎么收可以参考 `docs/script-craft-global-hits.md` 1.10 的勋章仪式，按选题挑）。
+**不做的类型**：
+- 字母和自然拼读：适合 4 岁以上，跟 2–3 岁定位不符。
+- 一页一问一答的纯单词卡：2026-10-26 用户否掉了（没有主线，留不住人）。
+- 朗读现成绘本：有版权，红线。
+- 真人出镜跟读：孩子不出镜，主播出镜成本高，也不是我们的强项。
 
-每集 3 个"今日单词"（封面、评论区置顶、发布文案都用这 3 个）。对标依据见仓库 `docs/benchmark-story-2026-10.md`（小猪佩奇 Muddy Puddles、Little Blue Truck、Dear Zoo、鸽子系列、嘟嘟英语绘本馆）。
+**新子类怎么上**：生活口语和动作儿歌各先做 1 集，和同线的老子类比 2 秒跳出率、完播率、收藏率（记 `tracking/videos.csv`，"本条改动的变量"写子类）。数据不比老子类差才继续，不行就从这张表删掉。
 
-需要角色真的动起来的高潮页，可以再出一个 5 秒可灵片段（kling02），每集最多两个。**sbv.py 目前还不支持把视频片段当某一页插入**，要用的话先补这个功能，或者把高潮动作直接放进钩子。
+**所有类型都要有一个主题**（2026-10-26 用户定的硬要求）。用户原话："你做的是视频，要有一个主题，不是纯互动，要么教一个词和派生词，串成一个剧本，要么就是教一个道理。" 最好两者合一：一个道理，靠一个主线词讲出来；主线词全片出现 5 次以上，带上它的变化（help me / I can help / helper）。
 
+## 4. 写剧本（公共部分；台词、结构、歌词等差异见分册）
 
-### 3.2 儿歌集「栗栗唱儿歌」（2026-10-28 起，第一集 m01）
+**写剧本前先读两份 reference**：`docs/story-psychology-reference.md`（为什么：选题打分、8 页情绪曲线、红线）和 `docs/script-craft-global-hits.md`（怎么写：Bluey、Peppa、Gruffalo、Mo Willems、Eric Carle 等 11 个爆款的写法和 12 条可选手法）。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s04-brave/script.md`（口语线）、`episodes/m01-big-small/script.md`（儿歌线）。
 
-**形式**：参考抖音「英文儿歌合集」类账号（录屏拆解见项目调研文档：一首 AI 儿歌 + 一组单词卡，按小节硬切，没有口型）。我们的版本：竖屏、用自家角色、日系手绘，每张卡 **2 小节（120 BPM 下 4 秒）**，给 2–3 岁孩子跟唱、跟做动作的时间。编号 `m01`、`m02`…，目录 `episodes/m01-big-small/`。
+`script-craft-global-hits.md` 是**工具箱，不是硬性要求**（2026-10-29 用户原话："并不是硬性要求，还是要和选题搭配，选最适合的"）。每集按选题挑 2–4 条最合适的手法用上（比如能输的规则、先写结尾埋伏笔、三次阶梯、出糗的是大个子），在概要里写一行"用了哪些手法"，不用逐条打勾。
 
-**和故事集一样的**：主题（一组词或一个道理）、选题打分 ≥14、三句话、角色原文描述、出图和关键帧（第 5 节）、漫画剧本确认（第 4.1 节）、质检（第 9 节）、交付网页（第 8 节）。**确认前只出漫画，不生成歌、不出正式图。**
-
-**不一样的**：
-
-- **结构**：前奏 4 秒（关键帧钩子 + 大字标题）→ 8 张歌词卡 → 尾奏片尾 4 秒，全片 40–55 秒。**只出一个完整版**，不出精华版（歌要听完整）。
-- **歌词**：每个词连唱三遍（`Big, big, big!`）再接一句 3–4 词短句（`It's a big acorn!`）；最后一张是副歌，把前面的词串起来。每个词配一个孩子能做的动作（big 张开手、small 捏一点点、tall 踮脚……），这就是互动。卡片之间串一个看画面就懂的小反转（m01：最矮的 Hazel 爬上 Bun 头顶变最高）。
-- **构图**：上方 18% 留天空放大字单词，脸在 22%–58% 高度，下 38% 留地面放字幕。提示词末尾的构图句照 `episodes/m01-big-small/script.md` 写。
-- **没有配音、背景音乐、音效**：歌就是全部声音。lines 的 `speaker` 写 `song`，每页加 `"word": {"en": "big", "zh": "大"}`（sbv.py 画在上方，开头 0.2 秒弹出）。
-- **动作**：每页一张 b 关键帧，用 `cycle` 跟拍子来回切：一般 `step: 1.0`（2 拍换一次），热闹的段落 0.5，慢的段落 2.0。
-
-**歌怎么做（`tools/storybook-video/song.py`，ElevenLabs Music，Starter 档就能用）**：
-
-1. story.json 写 `song` 段：`model: music_v2_5`、`styles`、`negative`、`sections`（每段 `name`、`seconds`、`pages` 或 `lines`、`direction`）。有 `pages` 的段，歌词自动取那几页的 `en`；段时长就是卡片时长，v2.5 会严格照着来。
-2. **不能唱得没感情、像机器人**（2026-10-28 用户原话）：`styles` 写"笑着唱的温暖女声、像唱给宝宝听、副歌一群小朋友跟唱和喊、强弱对比大"；`negative` 写 `flat monotone vocal`、`robotic voice`、`spoken word`；**每段 `direction` 写清怎么唱**（big 唱得大、small 唱得轻、fast 唱快、slow 拖长犯困、Up 一声比一声高）。不写现有歌名、频道名、歌手名。
-3. 在用户 Mac 上：`source ~/.zshrc && python3 song.py ../../episodes/<集>` 出 3 版到 `out/<集号>/song/v1–v3`（每版扣 ElevenLabs 额度；Starter 每月音乐下载上限 30 分钟）。
-4. `.venv/bin/python song.py ../../episodes/<集> --check`（PATH 里要有 ffprobe，用 sbv-ffmpeg 环境）：每段听写相似度、开口时间。每段 ≥0.6、平均 ≥0.75 才算过，听错词的直接淘汰（m01 v1 把 "Up, up, up" 唱成 "top top"）。
-5. **剩下最好的两版做成试听网页（Artifact，mp3 内嵌）给用户用耳朵挑**，情绪只能人听。两版都平就改 `styles`/`direction` 重出，最多两轮。
-6. 用户选定后 `python3 song.py ../../episodes/<集> --pick N`：写出 `song.mp3` + `song_words.json`，路径写回 story.json。之后 `sbv.py` 照常渲染：卡片按分段时长硬切，字幕按词时间戳逐词变黄，钩子时长自动等于前奏，片尾放到歌结束。
-
-**时间戳的坑**：`with_timestamps` 返回 `meta.words_timestamps`（`word`、`start_ms`、`end_ms`），里面会混进 `{…}` 写的演唱提示（起止相同、不出声），`song.py` 和 `sbv.py` 都会滤掉。拿不到时间戳时 `--check` 会用 Whisper 的词时间补上；都没有就按分段时长均分。
-
-**Mac 上的工作区**：`~/code/little-circle` 常有别的会话在用，儿歌的集目录和产物放在 `~/code/little-circle-songs`（用 `git archive` 取分支文件，只读不改主工作区）。出图仍用主工作区的 `codex_images.py`（要带 `series/refs`、`series/style`）。
-
-## 4. 写剧本
-
-**英文台词**（用户明确要求，最重要；观众按 **2–3 岁** 写）：
-
-- 全片 **11–13 句**，每句 **3–5 个词**，每页最多两句。宁可少，不要多。（参考：s02 全片 28 个不同的词、s04 30 个。）
-- 台词是写来让孩子喊、让角色演的：短、带感叹号、带角色性格（`I am big! I can do it!`），不要描述句（`The bear climbs the tree.`），画面会说的不用台词说。
-- 是简单完整的短句，不要一两个词的碎片（"Mine!" 太单薄），也不要长句。
-- 只用幼儿高频词。每集重复 1–2 个句型，比如 `Help me, please!` / `I can help!`。叫声、数数这种重复的词只重复两三遍。
-- 例子：`My red ball! It's stuck!` `Help! Help me, please!` `I can help, too!` `One, two, three... push!` `I am full! No more!`
-
-**互动长在剧情里**：每集一处让宝宝喊出来、找出来、做出来的时刻，比如替害羞的 Hazel 喊 "Help!"、在画里找偷胡萝卜的栗栗、一起捂嘴。在旁白那句加 `"gap": 1.5` 留出时间。不要单独做"旁白提问 → 等抢答 → 回答"的循环。
-
-**童趣**（用户每集都会问）：每 2–3 页一个**看画面就懂**的笑点，最好一集有一个能让孩子笑出声的反转。好用的：摔进泥里 / 落叶堆、东西大得抱不住、吃成球滚下山、刺"嘭"地全炸开、喷嚏把朋友吹飞、耳朵当伞被风吹走、角色故意说错让宝宝纠正。不要靠语言理解的梗。写完在 script.md 概要里单列一行"童趣"，逐条写出来。
+**童趣**（用户每集都会问，两条线都要）：每 2–3 页一个**看画面就懂**的笑点，最好一集有一个能让孩子笑出声的反转。好用的：摔进泥里 / 落叶堆、东西大得抱不住、吃成球滚下山、刺"嘭"地全炸开、喷嚏把朋友吹飞、耳朵当伞被风吹走、角色故意说错让宝宝纠正。不要靠语言理解的梗。写完在 script.md 概要里单列一行"童趣"，逐条写出来。
 
 **钩子大字标题**（写给家长看，不是给孩子）：一句话说清"孩子能得到什么"或戳中家长场景，12 字以内。例："3岁宝宝认水果，跟栗栗说英文""孩子不肯分享？今晚讲这个"。副标题固定类似"3岁英语启蒙 · 中英字幕"。每 5 集一批，只改一个变量时，钩子标题就是最常改的那个。
-
-**剧本 md 的固定章节**（`episodes/<编号>-<slug>/script.md`）：
-
-1. 标题 + 一行规格（片型、主题、观众、时长、页数、今日单词）
-2. 一句话剧情 + 出场角色 + 核心句型
-3. 钩子：大字标题、副标题、旁白问句、**可灵首帧出图提示词（放在代码块里）**、可灵尾帧、可灵提示词
-4. 分页表（页 | 画面 | 台词 `speaker: English / 中文` | 运镜 | 音效）
-5. 出图提示词（第 5 节）
-6. 配音清单
-7. 发布文案（第 10 节）
 
 **出图脚本靠格式读提示词，下面两条必须照写**，否则那张图出不来：
 
@@ -136,12 +102,6 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 - 有"封面关键画面"这一段时，脚本会用最后一页的提示词自动出一张上方留空的 `cover.png`。
 
 用户的习惯：剧本改动时只发更新后的文件；**没让渲染就不要重新渲染**。
-
-**张力第一**（2026-10-28 用户否掉 s03："一点波澜都没有"）：困境要让人揪心，不能只是"困了""饿了"这种小不适。要有利害（谁有危险、会失去什么）、有阻碍升级（前两次尝试更糟）、有最弱的人被推到台前、有一下"要完了"的惊险，然后马上安全解决。写完问自己：家长看到第 3 页会不会想知道"然后呢"。
-
-**写剧本前先读两份 reference**：`docs/story-psychology-reference.md`（为什么：选题打分、8 页情绪曲线、红线）和 `docs/script-craft-global-hits.md`（怎么写：Bluey、Peppa、Gruffalo、Mo Willems、Eric Carle 等 11 个爆款的写法和 12 条可选手法）。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s04-brave/script.md`。
-
-`script-craft-global-hits.md` 是**工具箱，不是硬性要求**（2026-10-29 用户原话："并不是硬性要求，还是要和选题搭配，选最适合的"）。每集按选题挑 2–4 条最合适的手法用上（比如能输的规则、先写结尾埋伏笔、三次阶梯、出糗的是大个子），在概要里写一行"用了哪些手法"，不用逐条打勾。
 
 ### 4.1 漫画剧本：剧本确认前的固定一步（2026-10-28 用户要求）
 
@@ -259,66 +219,15 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
 
 2026-10-28 这一轮的五组：水彩绘本（用户点名要的）、3D 软萌动画、扁平粗线卡通、毛毡黏土手作、日系手绘动画（接近用户发的「一只狐尼克」截图）。**用户选了日系手绘动画**，样图 `out/style_test/anime_*.png` 已放进 `series/style/` 当样张，旧样张移到 `series/style_old/`（同样不提交）。
 
-## 6. 写 story.json
+## 6. 写 story.json 和配音（按类型，见分册）
 
-放在 `episodes/<编号>-<slug>/story.json`（认知短片 c01、c02…，剧情片 s01…；例如 `episodes/c01-fruits/`），图和 `kling01.mp4` 放同目录。字段全集见 `tools/storybook-video/README.md`，常用骨架：
+- 口语线：story.json 骨架和字段要点、配音情绪（原 6.1 节）→ [skill-type-talk.md](skill-type-talk.md) 第 6、7 节。
+- 儿歌线：`song` 段、`word`、`cycle` → [skill-type-song.md](skill-type-song.md) 第 3、4 节。
+- 两条线通用：放在 `episodes/<编号>-<slug>/story.json`，字段全集见 `tools/storybook-video/README.md`；写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验。
 
-```jsonc
-{
-  "output_name": "c01_fruits",
-  "title_en": "Yummy Fruits", "title_zh": "好吃的水果",
-  "series": {"badge_text": "栗栗学英语 · 认知小绘本", "badge_alpha": 0.72},
-  "style": {"speaker_colors": {"narrator": [74,52,38], "nutty": [178,78,22], "hazel": [160,104,0], "bun": [172,56,44]}},
-  "cast": "../../series/cast.json",
-  "hook": {"clip": "kling01.mp4", "max_seconds": 5,
-           "headline": "3岁宝宝认水果，跟栗栗说英文", "subline": "3岁英语启蒙 · 中英字幕",
-           "say": {"speaker": "narrator", "en": "What does Nutty have?", "at": 0.6}},
-  "pages": [
-    {"image": "p01.png", "motion": "in", "focus": [0.5, 0.6], "lines": [
-      {"speaker": "narrator", "en": "Look! What is it?", "zh": "看！这是什么？", "gap": 1.2},
-      {"speaker": "nutty", "en": "It's a red apple!", "zh": "是红苹果！"},
-      {"speaker": "nutty", "en": "I like red apples!", "zh": "我喜欢红苹果！"}
-     ],
-     "sfx": [{"file": "../../assets/sfx/chomp.mp3", "at": 2.4, "gain": 0.55}]}
-  ],
-  "ending": {"headline": "See you next time! 下集见！", "subline": "收藏起来，今晚讲给宝贝听", "seconds": 3.5,
-             "feed_headline": "完整版在主页合集", "feed_subline": "认知小绘本 · 第1集"},
-  "bgm": {"file": "../../assets/bgm/bgm_play.mp3", "volume": 0.25},
-  "loudness": {"I": -16, "TP": -1.5}
-}
-```
+## 7. 渲染（在用户 Mac 上跑）
 
-要点：
-
-- `motion` 每页轮换（in / out / left / right / up / down），`focus` 对准角色或道具（占原图宽高的比例）。图出好后看一眼主体位置再调 `focus`。
-- `say` 是送去配音的文本，字幕只显示 `en`。每句都要写 `say`，带语气标签（第 6.1 节）。`sbv.py` 对齐字幕时会去掉 `[...]` 标签。标签只在 `eleven_v3` 下有用；退回 `cast_v2.json`（multilingual_v2）或 Kokoro 样片时标签会被念出来，要先把 `say` 删掉。v3 不返回时间戳时，脚本会退回普通接口，高亮按能量估算。
-- `gap` 是这句之后的停顿（默认 0.4 秒），`hold` 是整页说完后多停几秒。
-- 某句要重录：加 `"take": 2`，其他句子不动。
-- 某句要小声（害羞、说悄悄话）：`say` 里写 `[whispers]`，再加 `"gain": 0.6` 兜底，只降这句的音量（s02 第 3 页用 multilingual_v2 时，小声和大喊一样响）。
-- 音效别和台词第一个词撞在一起：页面 `lead` 默认 0.5 秒开口，音效放在 0.3 秒前结束，或放到这句说完之后（s02 第 4 页树叶声原来盖住了 "Help!"）。
-- 可选：`cover`（钩子前 0.4 秒静止封面帧，可以直接用脚本出的 `cover.png`）、`cut`、`hold`、`zoom`、`parallax`（2.5D 视差，需深度模型）、`fx`（glow / snow / motes，坐标按图标注）。
-- 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）。
-- 背景音乐没有时（音乐接口要付费档）：`python3 tools/storybook-video/make_bgm.py assets/bgm/bgm_play.wav 60` 先顶上。
-- 写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验，再数一遍每句英文是 3–5 个词、全片 11–13 句。
-
-### 6.1 配音要有情绪起伏（2026-10-28 用户反馈"没有张力，平铺直叙"）
-
-- `cast.json` 四个角色都用 `eleven_v3`。v3 的 stability 只能是 0.0、0.5、1.0：旁白 0.5（稳、但有起伏），三个角色 0.0（最有表现力）。v3 报错或 Hazel 和 Bun 分不清时，退回 `series/cast_v2.json`（multilingual_v2，stability 压到 0.25–0.35，style 拉到 0.55–0.7），同时去掉 `say` 里的标签。
-- **每句都写语气标签**，写在 `say` 开头或句中：`[excited]` `[gasps]` `[whispers]` `[shouting]` `[laughs]` `[giggles]` `[sighs]` `[happily]` `[sadly]` `[curious]` `[warmly]`。
-- 一集里要有**对比**：至少一处"小声 → 大喊"（如 s02 第 3 页 `[whispers] Help... help me, please.` 接第 4 页 `[shouting] Help! Help me, please!`），一处数数或蓄力（`[excited] One, two, three... [shouting] push!`），结尾 `[laughs]` 或 `[warmly]` 落下来。
-- 旁白不是播音腔，是讲故事：钩子用 `[gasps]` 起，转折处放慢加省略号，高潮提速提音量。
-- 标点也算数：`...` 拉长停顿，`!` 提音量，`?` 上扬；`en` 里不用写标签，字幕保持干净。
-- 质检要听：钩子第一句有没有"抓人"；小声和大喊音量差 ≥6 dB；整集听下来有没有两句以上读成一个调。
-
-## 7. 配音与渲染（在用户 Mac 上跑）
-
-一次性准备（ElevenLabs 选角、音效、音乐、cast.json）按 `docs/elevenlabs-workflow.md` 第 1 节和 `el_prep.py` 做，进度看 `HANDOFF.md`。`cast.json` 的 Voice ID 还是"填XXX"、或者还在免费档时，不能出发布版，只能出**样片**，并明说样片不能发布（Kokoro 变调后音质差，已否决用于发布；edge 是非官方接口）。出样片用 Kokoro 音色表，不改 story.json：
-
-```bash
-python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --cast ../../series/cast_kokoro.json
-```
-
-（`--cast` 参数和 `series/cast_kokoro.json` 是 2026-10-24 新加的；仓库里还没有的话，先看 `git log` 确认有没有推上来。）
+口语线的配音准备和样片规则见口语分册第 7 节；儿歌线先按儿歌分册第 4 节把歌定下来再渲染。
 
 每集出片：
 
@@ -326,22 +235,21 @@ python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --cast ..
 cd ~/code/little-circle/tools/storybook-video && source .venv/bin/activate   # .venv 用 /usr/bin/python3（3.9）建；终端里的 python3 是 Anaconda 3.7，太旧
 export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH        # 这台 Intel Mac 上 brew 装不了 ffmpeg，用 conda 环境里的（带 loudnorm，不带 rubberband）
 python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01               # 完整版
-python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --max-pages 4 # 推荐流精华版
+python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --max-pages 4 # 推荐流精华版（只口语线）
 open ../../out/c01
 ```
 
-- 配音按"文本 + 音色"缓存在 `out/.cache`，改剧本只重配改过的句子，不重复扣费。
 - 输出：mp4、srt、A4 打印版 PDF（以后做付费打印包用）。
 - 渲染耗时约等于片长 2 倍。长任务开始前说一句在做什么，完成后再汇报，不刷屏。
 - `sbv.py` 的 ElevenLabs 代码在 HANDOFF 里标着"还没用真实 key 跑过"时，先用 `example/voice_test.json` 跑一句验证，报错先修脚本。
 
 ## 8. 确认剧本后一路做到成品（用户的目标）
 
-用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**。确认时交给用户的是剧本加漫画剧本网页（第 4.1 节）。确认之前除了漫画草图，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
+用户原话："你自己检查下，有问题自己修复掉。我要的是成品。" 只有一个关口要等用户：**剧本确认**（儿歌线多一个：试听选歌）。确认时交给用户的是剧本加漫画剧本网页（第 4.1 节）。确认之前除了漫画草图，不出图、不渲染。确认之后，Claude 在用户 Mac 上一口气跑完（Remote Control 会话），每一步过第 9 节的质检，不合格自己修，最后只汇报一次。
 
 1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。主图出完会自动接着出关键帧（第 5.3.1 节）。
 2. 钩子：默认用关键帧翻页钩子（`hook.frames`）；有可灵灵感值、用户也同意花时，才按第 5.4 节出 `kling01.mp4`。
-3. 渲染：完整版和精华版，用正式的 `story.json`。
+3. 渲染：用正式的 `story.json`。口语线出完整版和精华版，儿歌线只出完整版。
 4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
 6. **同步 OSS，出最终网页**（2026-10-28 用户要求：以后只给一个网页）：`.venv/bin/python oss_publish.py ../../out/<集>`，链接写进 `out/<集>/oss.json`；再发布一个预览网页（Artifact），里面有完整版和精华版播放、封面、每个文件的下载按钮（视频直接用 OSS 链接）、按平台分好的标题/正文/话题/置顶评论和一键复制。交付只发这个网页链接，不发本地路径、不让用户自己去文件夹找。OSS key 只从环境变量 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET` 读（在用户 `~/.zshrc` 里），读不到就先用 Artifact 自带的素材存储顶上，并在汇报里说一句。
@@ -352,7 +260,7 @@ open ../../out/c01
 | 文件 | 用途 |
 |---|---|
 | `<name>.mp4` | 完整版，进合集 |
-| `<name>_feed.mp4`（或 sbv 的精华版命名） | 推荐流精华版 |
+| `<name>_feed.mp4`（或 sbv 的精华版命名） | 推荐流精华版（只口语线） |
 | `<name>_cover_9x16.jpg`、`<name>_cover_3x4.jpg` | 抖音封面、小红书封面 |
 | `publish.txt` | 标题、正文、话题、置顶评论 |
 | `xhs/` | 小红书图文 6–9 页 |
@@ -363,22 +271,20 @@ open ../../out/c01
 
 ## 9. 每个环节的质量把控（不合格自己修，修完重检）
 
+下表是两条线共用的几关。**剧本、配音、可灵**这几关看口语分册第 8 节，**歌、剧本**看儿歌分册第 6 节。
+
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
-| 歌（儿歌集） | `song.py --check` 听写 + 用户试听 | 每段相似度 ≥0.6、平均 ≥0.75，时长差 ≤1 秒；用户听过、选定一版；没有机器人腔 | 淘汰听错的版本；改 `styles`/`direction` 重出，最多两轮 |
-| 剧本 | 主题、结构、台词、童趣、互动 | 选题打分 ≥14、三句话写得出来、情绪曲线谷在 p03 峰在 p07（`docs/story-psychology-reference.md` 第 9 节自检）；概要里写了这一集从 `docs/script-craft-global-hits.md` 挑了哪些手法；漫画剧本网页做好、每格和剧本对得上；有一个主题；8 页起承转合；11–13 句、每句 3–5 词、每页 ≤2 句；每 2–3 页一个笑点；一处互动长在剧情里；角色原文描述一字不差；`codex_images.py` 能读出全部提示词；story.json 能解析 | 改文字，再交用户确认 |
 | 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
-| 可灵 | 抽第 0–4 秒每秒一帧 | 脸不变形、没有多余肢体、不闪、没有文字和水印、道具不凭空消失；结尾能接上 p01 | 改提示词重出，总共 ≤3 次 |
-| 配音 | 用 faster-whisper（base.en）把音轨转成文字，逐句对照 en；测每个角色的基频和语速 | 没有读错、漏词、多读；四个角色分得清（相近两个角色的基频差 ≥30Hz，或者语速明显不同）；旁白够慢 | 读错的句子加 `"take": 2` 重录；分不清就调 `cast.json` 的 speed / stability，重录那个角色的句子 |
-| 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
+| 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒，精华版 20–35 秒（只口语线） | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
 | 封面 | 两张封面图 | 标题不压脸；今日单词三个都在；徽章是"栗栗学英语" | 3:4 标题压脸就调 `brand.py --crop-3x4`（0=从顶部裁，默认 0.55；s02 用 0.2），或重出 `cover.png` |
 | 发布包 | publish.txt | 没有微信号、二维码、网址（谐音也不行）；带 AI 声明；话题里有"英语启蒙""英文绘本" | 改文案 |
 
-配音和渲染两关用一条命令跑完（在 `tools/storybook-video` 下，ffmpeg 要在 PATH 里，第一次先 `.venv/bin/pip install faster-whisper`）：
+配音（口语线）或听写（儿歌线）和渲染两关用一条命令跑完（在 `tools/storybook-video` 下，ffmpeg 要在 PATH 里，第一次先 `.venv/bin/pip install faster-whisper`）：
 
 ```bash
 .venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>.mp4 --dur 40 55
-.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>_feed.mp4 --dur 20 35 --max-pages 4
+.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>_feed.mp4 --dur 20 35 --max-pages 4   # 只口语线
 ```
 
 最后一行写"全部通过"才算过。它查格式、响度、第 0 帧不黑、黑边、Whisper 逐句对照（相似度 ≥0.75）、字幕 0.6 秒内有人声、Hazel 和 Bun 的基频语速、时长；总览图和第 0 帧还要用眼睛看一遍（挡脸只能人看）。另外要听的：剧本里写了"小声""大喊"的句子，音量真的有差别。
@@ -391,7 +297,7 @@ open ../../out/c01
 
 | 平台 | 发什么 |
 | --- | --- |
-| 抖音（主） | 精华版进推荐流；完整版进合集（认知小绘本 / 森林故事）；评论区置顶本集 3 个单词 |
+| 抖音（主） | 口语线：精华版进推荐流，完整版进合集（森林故事 / 认知小绘本 / 栗栗的一天）；儿歌线：完整版进「栗栗唱儿歌」。评论区置顶本集 3 个单词 |
 | 小红书（辅） | 图文为主：6–9 页绘本 + 一张单词卡，标题带"3岁英语启蒙""英文绘本"这类搜索词；视频顺手同步。绘本页直接用集目录里的 p01–p06，封面用 cover.png |
 | 视频号 | 和抖音同一条视频，勾选原创声明 |
 
@@ -439,14 +345,14 @@ Let's share! 我们一起分享吧！
 
 ## 11. 剧集表
 
-| 编号 | 合集 | 英文名 | 中文名 | 主题 | 今日单词 | 核心句 | 状态 |
+| 编号 | 线 · 合集 | 英文名 | 中文名 | 主题 | 今日单词 | 核心句 | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| s01 | 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
-| c01–c05 | 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| m01 | 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过，待发布；用户选了歌的 A 版（v2） |
-| s04 | 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-29 成品完成、两版 qa 全部通过，待发布；全程 Codex 关键帧动画（钩子 4 帧 + 11 张关键帧），没花可灵；新角色 Pip、Bruno、Fern、Ruby 音色已定 |
-| s03 | 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
-| s02 | 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
+| s01 | 口语 · 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
+| c01–c05 | 口语 · 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
+| m01 | 儿歌 · 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过，待发布；用户选了歌的 A 版（v2） |
+| s04 | 口语 · 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-29 成品完成、两版 qa 全部通过，待发布；全程 Codex 关键帧动画（钩子 4 帧 + 11 张关键帧），没花可灵；新角色 Pip、Bruno、Fern、Ruby 音色已定 |
+| s03 | 口语 · 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
+| s02 | 口语 · 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
 
 新的一集开始前先看这张表；做完一集就补进来（通过更新这个 skill），同时记进 `tracking/videos.csv`。
 
