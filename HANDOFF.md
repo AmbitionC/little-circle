@@ -1,7 +1,14 @@
 # 交接记录
 
-> 最近更新：2026-10-29（s04《小老鼠皮皮好勇敢》成品做完，两版 qa 全部通过，待发布；新角色 Pip、Bruno、Ruby、Fern 音色写进 cast.json）。上一次：2026-10-27（s02 成品；新增 qa.py、brand.py）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-29（剧本写法升级，见第 0 节；s04《小老鼠皮皮好勇敢》成品做完，两版 qa 全部通过，待发布；新角色 Pip、Bruno、Ruby、Fern 音色写进 cast.json）。上一次：2026-10-27（s02 成品；新增 qa.py、brand.py）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
+
+## 0. 最新：剧本写法升级（2026-10-29）
+
+- 拆了 Bluey、Peppa Pig、Gruffalo、Mo Willems、Eric Carle、Super Simple、CoComelon、Blue's Clues、Pocoyo、Hey Duggee、Ms Rachel 的剧本方法，写成 [docs/script-craft-global-hits.md](docs/script-craft-global-hits.md)：12 条规则、写剧本的顺序、检查清单，带来源。
+- skill 第 3、4、9 节已改：先定"能输的规则"、先写结尾再埋伏笔、三次阶梯 + 副歌、出糗的是大个子、全片不同的词 ≤30、今日单词配固定动作、树叶勋章固定结尾、静音走查。
+- `docs/story-psychology-reference.md` 之前只在 j34bgd 分支上，这次一起带进来了（skill 里早就引用它）。
+- 下一集剧本按新顺序写，写完在 script.md 概要里加"写法自检"一行。
 
 ## 0. 最新：儿歌集上线第一首（2026-10-29）
 
