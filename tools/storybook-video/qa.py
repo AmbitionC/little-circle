@@ -150,14 +150,15 @@ def main():
     segs, _ = model.transcribe(a.mp4, language="en", word_timestamps=True, beam_size=5,
                                initial_prompt="Hazel, Nutty, Bun. Help me, please! I can help!")
     words = [w for s in segs for w in s.words]
-    print("发音（Whisper base.en）")
+    song = (cfg.get("song") or {}).get("file")
+    print("发音（Whisper base.en）" + ("，儿歌：唱歌听写难一些，合格线 0.6" if song else ""))
     bad = []
     for i, (s, ln) in enumerate(zip(srt, lines)):
         got = [w for w in words if s["start"] - 0.15 <= (w.start + w.end) / 2 <= s["end"] + 0.15]
         heard = " ".join(w.word.strip() for w in got)
         want_n, got_n = norm_words(ln["en"]), norm_words(heard)
         ratio = difflib.SequenceMatcher(None, want_n, got_n).ratio()
-        ok = ratio >= 0.75
+        ok = ratio >= (0.6 if song else 0.75)
         print(f"  {'✅' if ok else '⚠️'} {i + 1:2d} [{ln.get('speaker', 'narrator'):8s}] {ln['en']!r} → {heard!r} ({ratio:.2f})")
         if not ok:
             bad.append(i + 1)
@@ -169,6 +170,10 @@ def main():
         fails.append(f"发音可疑的句子：{bad}")
     print("字幕对齐")
     check(not any(f.startswith("字幕") for f in fails), "每条字幕出现后 0.6 秒内都有人声")
+
+    if song:   # 儿歌没有配音，不查角色声音
+        print("\n结论：" + ("全部通过" if not fails else "有问题：\n  - " + "\n  - ".join(fails)))
+        return 1 if fails else 0
 
     # 7 角色基频和语速（用配音缓存里的干声）
     cast_path = os.path.join(base, cfg["cast"])
