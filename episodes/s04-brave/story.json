@@ -110,7 +110,6 @@
   "pages": [
     {
       "image": "p01.png",
-      "motion": "in",
       "focus": [
         0.5,
         0.3
@@ -133,7 +132,6 @@
     },
     {
       "image": "p02.png",
-      "motion": "up",
       "cut": true,
       "frames": [
         {
@@ -141,6 +139,12 @@
           "line": 0,
           "offset": 1.9,
           "shake": true
+        },
+        {
+          "image": "p02d.png",
+          "line": 0,
+          "offset": 2.4,
+          "tween": 0
         },
         {
           "image": "p02c.png",
@@ -170,15 +174,23 @@
           "at": 3.4,
           "gain": 0.55
         }
-      ]
+      ],
+      "talk": {
+        "p02.png": "p02_talk.png"
+      }
     },
     {
       "image": "p03.png",
-      "motion": "in",
       "frames": [
         {
+          "image": "p03c.png",
+          "at": 0.55,
+          "shake": true,
+          "tween": 0
+        },
+        {
           "image": "p03b.png",
-          "at": 0.9,
+          "at": 0.95,
           "shake": true,
           "tween": 0
         }
@@ -219,14 +231,20 @@
     },
     {
       "image": "p04.png",
-      "motion": "up",
       "cut": true,
       "frames": [
         {
-          "image": "p04b.png",
+          "image": "p04c.png",
           "line": 0,
           "offset": 1.2,
-          "shake": true
+          "shake": true,
+          "tween": 0
+        },
+        {
+          "image": "p04b.png",
+          "line": 0,
+          "offset": 1.65,
+          "tween": 0
         }
       ],
       "lines": [
@@ -245,11 +263,13 @@
           "at": 1.65,
           "gain": 0.6
         }
-      ]
+      ],
+      "talk": {
+        "p04.png": "p04_talk.png"
+      }
     },
     {
       "image": "p05.png",
-      "motion": "in",
       "focus": [
         0.5,
         0.35
@@ -258,8 +278,7 @@
         {
           "image": "p05b.png",
           "line": 1,
-          "offset": 0.8,
-          "tween": 0
+          "offset": 0.8
         }
       ],
       "lines": [
@@ -282,13 +301,18 @@
     },
     {
       "image": "p06.png",
-      "motion": "down",
       "cut": true,
       "frames": [
         {
-          "image": "p06b.png",
+          "image": "p06c.png",
           "line": 0,
           "offset": 0.0,
+          "shake": true
+        },
+        {
+          "image": "p06b.png",
+          "line": 0,
+          "offset": 0.5,
           "shake": true,
           "tween": 0
         }
@@ -312,14 +336,19 @@
     },
     {
       "image": "p07.png",
-      "motion": "out",
       "cut": true,
       "frames": [
         {
           "image": "p07b.png",
           "line": 0,
-          "offset": 1.0,
-          "tween": 0.1
+          "offset": 0.6,
+          "tween": 0
+        },
+        {
+          "image": "p07d.png",
+          "line": 0,
+          "offset": 1.5,
+          "tween": 0
         },
         {
           "image": "p07c.png",
@@ -358,7 +387,6 @@
     },
     {
       "image": "p08.png",
-      "motion": "out",
       "hold": 0.8,
       "frames": [
         {
@@ -391,15 +419,16 @@
       "focus": [
         0.5,
         0.7
-      ]
+      ],
+      "talk": {
+        "p08.png": "p08_talk.png"
+      }
     }
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
     "subline": "宝宝会说 I am brave 吗？",
-    "seconds": 3.5,
-    "feed_headline": "小老鼠能救下小鸟吗？",
-    "feed_subline": "完整版在主页合集 · 森林故事"
+    "seconds": 3.5
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",

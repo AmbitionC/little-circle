@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-29（s04《小老鼠皮皮好勇敢》成品做完，两版 qa 全部通过，待发布；新角色 Pip、Bruno、Ruby、Fern 音色写进 cast.json）。上一次：2026-10-27（s02 成品；新增 qa.py、brand.py）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-30（s04 按简洁画面标准整集重做，只出完整版，qa 全部通过；Bruno 配音还在挑，暂用 Little Dude II）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 1. 现在在哪
@@ -105,6 +105,12 @@ M1 第 0 周（准备周，10-24 ～ 10-25），M1 正式周期是 10-26 ～ 11-
    - 运镜：p03 改成 in、focus [0.6, 0.8]、zoom 1.25，p08 focus [0.5, 0.7]，让皮皮的脸在字幕上面。
    - 成品在 `out/s04/`（不提交）：完整版 48.8 秒、精华版 26.3 秒，-16.3 / -16.1 LUFS；封面 3:4 用 `--crop-3x4 0.35`。最终网页 https://claude.ai/artifact/KMrSWqF3kokb8QL1QgNNfg （视频是 720p 压缩版；OSS 环境变量没配，用 Artifact 素材存储顶上）。
    - 剩下只有用户能做的：手机终检、点发布、勾 AI 声明。
+   - **10-29 晚～10-30 整集重做**（用户反馈：不连贯、画面太满、不要精华版、封面只留 3:4、小熊配音怪）：
+     - 画面定为简洁版（以后每集的标准）。`series/style/` 换成简洁版样张 simple_p04/simple_p07，旧的细节风样张挪到 `series/style_detailed/`（不提交）。31 张图全部重出，自检只有 p07 没画出"被接住、弹起来"，改提示词（肚子压扁、两人高高在空中、弹跳弧线）后重出 p07 一串，合格。
+     - 连贯：新关键帧 p02d、p03c、p04c、p06c、p07d 排进 frames；张嘴帧 p02/p04/p08_talk；去掉各页的 motion（统一缓推）。逐帧看过：大动作一律 tween 0 硬切 + shake（光流补帧在大动作上会出两张图叠影），只有小动作（p01b、p02b、p05b、p06c、p08b、h02、h04）留补帧，没有重影。
+     - 修了 `sbv.py` talk 帧的一个 bug（`for *_, nm in keys` 里 im 未定义）。
+     - Bruno 暂用 Little Dude II（音色库 fBD19tfE58bkETeiwUoC，eleven_v3，stability 0.5），实测约 262 Hz。用户说第一批三个（Little Dude II / Berty / Teddy Twinkle）都不好；第二批 6 个候选页 https://claude.ai/artifact/9j7AYUVBqbGkJ3qLzXPRLr ，推荐 Sarah（emSmWzY0c0xtx5IFMCVv）和 Paula Paw（iukn3a1vSSNFmdi5NZS4），等用户挑。试过 multilingual_v2：两个声音都被抬到 330–440 Hz 和皮皮撞，Bruno 继续用 v3。
+     - 完整版 48.7 秒，-16.4 LUFS，qa 全部通过；封面 3:4 用 `--crop-3x4 0.0`（0.35 时中文标题压住熊的眼睛）。精华版和 9:16 封面不再做。最终网页同上链接（Version 4）。
    - 脚本修复：`codex_images.py` 关键帧以关键帧为底（h04 ← h03）时等底图先出；`sbv.py` 混音存 float，大喊加 gain 不削波；`qa.py` 本集所有角色两两比基频；`el_prep.py` 加了四个新角色的选角描述。
 
 ## 5. 等用户确认或补充

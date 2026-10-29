@@ -555,7 +555,8 @@ def keyframes(page, lines, base, img0, tween=None):
     talk = {}
     for k, v in (page.get("talk") or {}).items():
         if os.path.exists(os.path.join(base, v)):
-            src = next((im for *_, nm in keys if nm == k), None) or load(k)
+            src = next((key[1] for key in keys if key[4] == k), None)
+            src = load(k) if src is None else src
             talk[k] = talk_paste(src, load(v))
     spoken = [(ln["start"] + s, ln["start"] + e) for ln in lines for s, e in ln.get("spans", [])]
     return {"keys": keys, "cyc": cyc, "talk": talk, "spoken": spoken, "tweens": {}}
