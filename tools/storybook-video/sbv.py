@@ -441,14 +441,92 @@ def kb_box(motion, u, iw, ih, rw, rh, focus, zoom=1.12, z0=1.0):
     return (cx - vw / 2, cy - vh / 2, cx + vw / 2, cy + vh / 2)
 
 
-def keyframes(page, lines, base, img0):
-    """关键帧动画：同一镜头按原图改出来的几张连续画，到点硬切（像日系动画的"一拍三"），不靠视频模型。
+def align_to(ref, im):
+    """把 Codex 改出来的关键帧对齐到底图：Codex 每次重画，背景会整体挪几个像素、缩放一点点，
+    硬切时整个画面一跳，看着就"不连贯"。用 ORB 特征点 + RANSAC 只算背景的平移/缩放/小角度旋转，
+    位移太大（说明构图本来就改了）就不动。"""
+    import cv2
+    a = cv2.cvtColor(np.asarray(ref), cv2.COLOR_RGB2GRAY)
+    b = cv2.cvtColor(np.asarray(im), cv2.COLOR_RGB2GRAY)
+    orb = cv2.ORB_create(4000)
+    ka, da = orb.detectAndCompute(a, None)
+    kb, db = orb.detectAndCompute(b, None)
+    if da is None or db is None or len(ka) < 30 or len(kb) < 30:
+        return im
+    m = sorted(cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True).match(db, da), key=lambda x: x.distance)[:800]
+    if len(m) < 30:
+        return im
+    src = np.float32([kb[x.queryIdx].pt for x in m])
+    dst = np.float32([ka[x.trainIdx].pt for x in m])
+    M, inl = cv2.estimateAffinePartial2D(src, dst, method=cv2.RANSAC, ransacReprojThreshold=3.0)
+    if M is None or inl is None or inl.sum() < 25:
+        return im
+    sc = math.hypot(M[0, 0], M[1, 0])
+    rot = math.degrees(math.atan2(M[1, 0], M[0, 0]))
+    w, h = im.size
+    if abs(sc - 1) > 0.06 or abs(rot) > 3 or abs(M[0, 2]) > 0.06 * w or abs(M[1, 2]) > 0.06 * h:
+        return im
+    out = cv2.warpAffine(np.asarray(im), M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)
+    return Image.fromarray(out)
 
-    frames：[{"image": "p02b.png", "line": 0, "offset": 0.3, "shake": true}]，到这一刻换成这张，
+
+class Tween:
+    """两张关键帧之间补过渡帧：光流估计每个像素往哪动，中间帧把两张图各推一段再叠起来。
+    换图从"啪一下硬切"变成 0.1–0.3 秒的连续动作（像动画师画的中间张）。光流在半分辨率上算，够快。"""
+
+    def __init__(self, a, b):
+        import cv2
+        self.cv2 = cv2
+        self.a, self.b = np.asarray(a).astype(np.float32), np.asarray(b).astype(np.float32)
+        h, w = self.a.shape[:2]
+        s = 540 / w
+        ga = cv2.cvtColor(cv2.resize(np.asarray(a), None, fx=s, fy=s, interpolation=cv2.INTER_AREA), cv2.COLOR_RGB2GRAY)
+        gb = cv2.cvtColor(cv2.resize(np.asarray(b), None, fx=s, fy=s, interpolation=cv2.INTER_AREA), cv2.COLOR_RGB2GRAY)
+        dis = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
+        up = lambda f: cv2.resize(f, (w, h), interpolation=cv2.INTER_LINEAR) / s
+        self.fab, self.fba = up(dis.calc(ga, gb, None)), up(dis.calc(gb, ga, None))
+        self.gy, self.gx = np.mgrid[0:h, 0:w].astype(np.float32)
+
+    def at(self, u):
+        cv2 = self.cv2
+        u = min(max(u, 0.0), 1.0)
+        wa = cv2.remap(self.a, self.gx - u * self.fab[..., 0], self.gy - u * self.fab[..., 1], cv2.INTER_LINEAR,
+                       borderMode=cv2.BORDER_REFLECT)
+        wb = cv2.remap(self.b, self.gx - (1 - u) * self.fba[..., 0], self.gy - (1 - u) * self.fba[..., 1],
+                       cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+        return Image.fromarray(np.clip(wa * (1 - u) + wb * u, 0, 255).astype(np.uint8))
+
+
+def talk_paste(base_im, talk_im):
+    """说话帧只取嘴附近变了的那一小块贴回底图：Codex 改出来的整张图别处也会有细微差别，整张来回切会闪。"""
+    import cv2
+    a, b = np.asarray(base_im).astype(np.int16), np.asarray(talk_im).astype(np.int16)
+    d = (np.abs(a - b).max(axis=2) > 28).astype(np.uint8)
+    d = cv2.morphologyEx(d, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    n, lab, stats, _ = cv2.connectedComponentsWithStats(d)
+    if n <= 1:
+        return talk_im
+    big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+    mask = cv2.dilate((lab == big).astype(np.uint8), np.ones((25, 25), np.uint8)).astype(np.float32)
+    mask = cv2.GaussianBlur(mask, (0, 0), 6)[..., None]
+    out = a * (1 - mask) + b * mask
+    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
+
+
+def keyframes(page, lines, base, img0, tween=None):
+    """关键帧动画：同一镜头按原图改出来的几张连续画。
+
+    frames：[{"image": "p02b.png", "line": 0, "offset": 0.3, "shake": true, "tween": 0.2}]，到这一刻换成这张，
             时间写 "at"（秒，从本页开始算）或 "line" + "offset"（相对那句开口）；shake 换图时震一下屏。
+            tween：用多少秒从上一张"动"过去（光流补中间帧），默认取 style.tween（0.22 秒；带 shake 的 0.12 秒，
+            快动作要快）；写 0 就是硬切。
     cycle： {"images": ["p02.png", "p02b.png"], "step": 0.25, "line": 0}，那句台词说话期间轮流切（嚼东西、晃身子）；
             不写 line 就整页一直轮。
+    talk：  {"p02.png": "p02_talk.png"}，有人开口说词时，在这张图和它的"张嘴"版之间来回切（只换嘴那一块）。
+    换上来的每张图都会先对齐到本页底图，背景不跳。
     """
+    tween = 0.22 if tween is None else tween
+
     def when(fr):
         if "line" in fr and fr["line"] < len(lines):
             return lines[fr["line"]]["start"] + fr.get("offset", 0)
@@ -456,10 +534,16 @@ def keyframes(page, lines, base, img0):
 
     def load(name):
         im = Image.open(os.path.join(base, name)).convert("RGB")
-        return im if im.size == img0.size else im.resize(img0.size, Image.LANCZOS)
+        im = im if im.size == img0.size else im.resize(img0.size, Image.LANCZOS)
+        try:
+            return align_to(img0, im)
+        except ImportError:
+            return im
 
-    keys = [(0.0, img0, False)] + sorted(((when(fr), load(fr["image"]), fr.get("shake", False))
-                                         for fr in page.get("frames", [])), key=lambda k: k[0])
+    keys = [(0.0, img0, False, 0.0, page.get("image"))]
+    for fr in sorted(page.get("frames", []), key=when):
+        tw = fr.get("tween", tween * 0.55 if fr.get("shake") else tween)
+        keys.append((when(fr), load(fr["image"]), fr.get("shake", False), tw, fr["image"]))
     cyc = None
     c = page.get("cycle")
     if c:
@@ -468,19 +552,40 @@ def keyframes(page, lines, base, img0):
         else:
             a, b = c.get("from", 0), c.get("to", 1e9)
         cyc = (a, b, c.get("step", 0.25), [load(x) for x in c["images"]])
-    return keys, cyc
+    talk = {}
+    for k, v in (page.get("talk") or {}).items():
+        if os.path.exists(os.path.join(base, v)):
+            src = next((im for *_, nm in keys if nm == k), None) or load(k)
+            talk[k] = talk_paste(src, load(v))
+    spoken = [(ln["start"] + s, ln["start"] + e) for ln in lines for s, e in ln.get("spans", [])]
+    return {"keys": keys, "cyc": cyc, "talk": talk, "spoken": spoken, "tweens": {}}
 
 
-def pick_key(keys, cyc, t):
-    """返回 (这一刻显示的图, 距离最近一次带 shake 的换图过去了几秒)。"""
-    img, kick = keys[0][1], None
-    for at, im, sh in keys:
-        if t >= at:
-            img = im
-            kick = t - at if sh else None
+def pick_key(kf, t):
+    """返回 (这一刻显示的图, 距离最近一次带 shake 的换图过去了几秒)。换图后 tween 秒内显示光流补出来的中间帧。"""
+    keys = kf["keys"]
+    i = max(j for j, k in enumerate(keys) if t >= k[0])
+    at, img, sh, tw, name = keys[i]
+    kick = t - at if sh else None
+    if i > 0 and tw > 0 and t < at + tw:
+        tws = kf["tweens"]
+        if i not in tws:
+            try:
+                tws[i] = Tween(keys[i - 1][1], img)
+            except ImportError:
+                tws[i] = None
+        if tws[i] is not None:
+            return tws[i].at(ease((t - at) / tw)), kick
+    cyc = kf["cyc"]
     if cyc and cyc[0] <= t < cyc[1]:
         a, _, step, ims = cyc
-        img = ims[int((t - a) / step) % len(ims)]
+        return ims[int((t - a) / step) % len(ims)], kick
+    if name in kf["talk"]:
+        for s, e in kf["spoken"]:
+            if s <= t < e:   # 一个词里开合一次：前一半张嘴、后一半合上
+                if (t - s) % 0.24 < 0.12:
+                    return kf["talk"][name], kick
+                break
     return img, kick
 
 
@@ -509,12 +614,12 @@ def render_flipbook(hook, base, out_dir):
     first = Image.open(os.path.join(base, hook["frames"][0]["image"])).convert("RGB")
     first = cover_crop(first) if first.size != (W, H) else first
     page = {"frames": hook["frames"][1:]}
-    keys, cyc = keyframes(page, [], base, first)
+    kf = keyframes(page, [], base, first, hook.get("tween"))
     iw, ih = first.size
     n = int(round(dur * FPS))
     for i in range(n):
         t = i / FPS
-        img, kick = pick_key(keys, cyc, t)
+        img, kick = pick_key(kf, t)
         box = kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
                      hook.get("zoom", 1.08))
         img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw, ih)).save(
@@ -690,7 +795,7 @@ class PageSeg:
         self.cut = page.get("cut", False)
         self.dur = lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines else page.get("seconds", 3)
         self.img = Image.open(os.path.join(base, page["image"])).convert("RGB")
-        self.motion = page.get("motion", ["in", "left", "out", "right"][idx % 4])
+        self.motion = page.get("motion", "in")   # 默认统一缓推：每页换方向（左摇、右摇、拉远）会让镜头来回甩，不连贯
         self.focus = page.get("focus", [0.5, 0.42])
         self.zoom = page.get("zoom", 1.12)
         self.zoom_from = page.get("zoom_from", 1.05 if page.get("parallax") else 1.0)
@@ -702,7 +807,7 @@ class PageSeg:
             self.region = (0, max(200, 760 - rh // 2), W, rh)
             self.bg = ImageEnhance.Brightness(cover_crop(self.img).filter(ImageFilter.GaussianBlur(40))).enhance(0.6)
         self.cache = {}
-        self.keys, self.cyc = keyframes(page, lines, base, self.img)
+        self.kf = keyframes(page, lines, base, self.img, ctx.st.get("tween"))
         # 可选：画面特效（烛光 / 飘雪 / 光尘）和按深度的 2.5D 视差运镜
         src = np.asarray(self.img).astype(np.float32)
         self.fx = []
@@ -843,7 +948,7 @@ class PageSeg:
             frame.paste(self.bg, (0, 0))
         rx, ry, rw, rh = self.region
         iw, ih = self.img.size
-        img, kick = pick_key(self.keys, self.cyc, t)
+        img, kick = pick_key(self.kf, t)
         box = shake_box(kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from), kick, iw, ih)
         if self.fx or self.par:
             if img is not self.img:

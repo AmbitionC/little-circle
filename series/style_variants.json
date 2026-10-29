@@ -1,0 +1,21 @@
+{
+  "_说明": "同一集的画面换一种画法出对比图，不改 script.md。用法：python3 codex_images.py ../../episodes/s04-brave --variant simple --only p03,p07 → out/s04/variant_simple/。不带画风样张（样张本身细节多，会把画面拉回去），角色参考图照带。用户 10-29：画面视觉元素太多、细节太多，应接不暇。",
+  "simple": {
+    "name": "简洁版",
+    "why": "背景退后、留白多，主角最亮最清楚；还是日系手绘，只是少了小道具和碎细节",
+    "replace": [
+      ["lush richly painted forest backgrounds, bright blue sky with fluffy clouds", "simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them"],
+      ["gentle warm nostalgic light, clear bright colors", "gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast"]
+    ],
+    "append": "only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition"
+  },
+  "minimal": {
+    "name": "极简版",
+    "why": "接近低幼动画：背景几乎只有色块和一两样必要的东西，孩子的眼睛只落在角色身上；代价是少了森林的氛围",
+    "replace": [
+      ["lush richly painted forest backgrounds, bright blue sky with fluffy clouds", "very minimal background made of flat soft color fields with only the one or two objects the story needs (for example one tree trunk and one branch), large empty space, no texture noise"],
+      ["gentle warm nostalgic light, clear bright colors", "soft even light, a very limited palette of 3 to 4 soft colors plus the characters' own colors, characters clearly the brightest thing in the picture"]
+    ],
+    "append": "only the characters named in the prompt and no extra animals, one clear focal point, very simple shapes, toddler picture-book clarity"
+  }
+}

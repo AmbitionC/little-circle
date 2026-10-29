@@ -264,6 +264,7 @@ def main():
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
+    ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
 
     failed = 0
@@ -296,6 +297,17 @@ def main():
             refs = [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
                     if d in prompt and os.path.exists(os.path.join(REFS, f"{k}.png"))]
             jobs[name] = (prompt, refs)
+        if args.variant:
+            v = json.load(open(os.path.join(ROOT, "series", "style_variants.json"), encoding="utf-8"))[args.variant]
+            outdir = os.path.join(ROOT, "out", os.path.basename(os.path.abspath(t)).split("-")[0], f"variant_{args.variant}")
+            os.makedirs(outdir, exist_ok=True)
+            for name, (prompt, refs) in jobs.items():
+                for a, b in v["replace"]:
+                    prompt = prompt.replace(a, b)
+                prompt = prompt.replace(", no text, no watermark", ", " + v["append"] + ", no text, no watermark", 1)
+                jobs[name] = (prompt, refs)
+            failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
         failed += run_jobs(os.path.abspath(t), jobs, args)
         # 第二轮：关键帧（底图要先出好）
         # 改动说明里点名了新角色（如 h03 镜头下移、露出树下的朋友），就把他们的参考图也带上
