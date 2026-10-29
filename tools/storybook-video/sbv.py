@@ -38,8 +38,15 @@ DEFAULT_STYLE = {
         "zh": {"path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc", "index": 2},
     },
     "en_size": 70,
-    "zh_size": 42,
-    "subtitle_center": 1640,
+    "zh_size": 46,
+    # 字幕默认无底板、描边字，放在画面 2/3 高度：避开抖音底部的标题、简介和右侧按钮（2026-10-28 用户要求）
+    "subtitle_mode": "outline",
+    "subtitle_center": 1320,
+    "subtitle_x": 510,
+    "subtitle_max_w": 820,
+    "sub_fill": [255, 255, 255],
+    "sub_highlight": [255, 214, 64],
+    "sub_stroke_w": 9,
     "card_fill": [255, 249, 236, 238],
     "card_outline": [232, 214, 186],
     "zh_color": [110, 84, 62],
@@ -59,8 +66,9 @@ DEFAULT_STYLE = {
 FONT_FALLBACKS = {
     "en": ["/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf",
            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"],
-    "zh": ["/System/Library/Fonts/PingFang.ttc",
-           "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    # (路径, ttc 索引)：冬青黑体 index 0 是最细的 W3，大字标题要用 index 2 的 W6
+    "zh": [("/System/Library/Fonts/PingFang.ttc", 0),
+           ("/System/Library/Fonts/Hiragino Sans GB.ttc", 2),
            "/System/Library/Fonts/STHeiti Medium.ttc",
            "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"],
 }
@@ -113,8 +121,9 @@ class Fonts:
             cands.append(p if os.path.isabs(p) else os.path.join(self.base, p))
             cands.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), p))
         for path in cands + FONT_FALLBACKS[kind]:
+            path, fb_index = path if isinstance(path, tuple) else (path, 0)
             if os.path.exists(path):
-                f = ImageFont.truetype(path, size, index=s.get("index", 0) if path in cands else 0)
+                f = ImageFont.truetype(path, size, index=s.get("index", 0) if path in cands else fb_index)
                 v = variation or s.get("variation")
                 if v and path in cands:
                     try:
@@ -259,7 +268,7 @@ def synthesize(text, voice, cache_dir):
     a, b = max(0.0, s0 - 0.05), s1 + 0.12
     run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-ss", f"{a:.3f}", "-to", f"{b:.3f}", wav])
     os.remove(raw)
-    words = [{"w": x["w"], "s": x["s"] - a, "e": x["e"] - a} for x in words]
+    words = [{"w": x["w"], "s": max(0.0, x["s"] - a), "e": max(0.0, x["e"] - a)} for x in words]
     with open(meta, "w") as f:
         json.dump(words, f)
     return wav, words
@@ -292,9 +301,24 @@ def estimate_spans(tokens, s0, s1):
     return spans
 
 
+def drop_tags(words):
+    """去掉 v3 语气标签（[excited]、[happy gasp] 这类）对应的"词"，它们不出声、也不在字幕里。"""
+    out, inside = [], False
+    for w in words:
+        t = w["w"]
+        if t.startswith("["):
+            inside = True
+        if not inside:
+            out.append(w)
+        if t.endswith("]"):
+            inside = False
+    return out
+
+
 def align_tokens(tokens, words, path):
     """把配音的词时间戳对到字幕词（字幕词带标点）；对不上或没有时间戳的按能量 + 字长估算。"""
     s0, s1 = speech_bounds(path)
+    words = drop_tags(words or [])
     if not words:
         return estimate_spans(tokens, s0, s1)
     spans, j = [None] * len(tokens), 0
@@ -415,6 +439,87 @@ def kb_box(motion, u, iw, ih, rw, rh, focus, zoom=1.12, z0=1.0):
     cx = min(max(cx, vw / 2), iw - vw / 2)
     cy = min(max(cy, vh / 2), ih - vh / 2)
     return (cx - vw / 2, cy - vh / 2, cx + vw / 2, cy + vh / 2)
+
+
+def keyframes(page, lines, base, img0):
+    """关键帧动画：同一镜头按原图改出来的几张连续画，到点硬切（像日系动画的"一拍三"），不靠视频模型。
+
+    frames：[{"image": "p02b.png", "line": 0, "offset": 0.3, "shake": true}]，到这一刻换成这张，
+            时间写 "at"（秒，从本页开始算）或 "line" + "offset"（相对那句开口）；shake 换图时震一下屏。
+    cycle： {"images": ["p02.png", "p02b.png"], "step": 0.25, "line": 0}，那句台词说话期间轮流切（嚼东西、晃身子）；
+            不写 line 就整页一直轮。
+    """
+    def when(fr):
+        if "line" in fr and fr["line"] < len(lines):
+            return lines[fr["line"]]["start"] + fr.get("offset", 0)
+        return fr.get("at", 0)
+
+    def load(name):
+        im = Image.open(os.path.join(base, name)).convert("RGB")
+        return im if im.size == img0.size else im.resize(img0.size, Image.LANCZOS)
+
+    keys = [(0.0, img0, False)] + sorted(((when(fr), load(fr["image"]), fr.get("shake", False))
+                                         for fr in page.get("frames", [])), key=lambda k: k[0])
+    cyc = None
+    c = page.get("cycle")
+    if c:
+        if "line" in c and c["line"] < len(lines):
+            a, b = lines[c["line"]]["start"], lines[c["line"]]["end"]
+        else:
+            a, b = c.get("from", 0), c.get("to", 1e9)
+        cyc = (a, b, c.get("step", 0.25), [load(x) for x in c["images"]])
+    return keys, cyc
+
+
+def pick_key(keys, cyc, t):
+    """返回 (这一刻显示的图, 距离最近一次带 shake 的换图过去了几秒)。"""
+    img, kick = keys[0][1], None
+    for at, im, sh in keys:
+        if t >= at:
+            img = im
+            kick = t - at if sh else None
+    if cyc and cyc[0] <= t < cyc[1]:
+        a, _, step, ims = cyc
+        img = ims[int((t - a) / step) % len(ims)]
+    return img, kick
+
+
+def shake_box(box, kick, iw, ih, amp=0.012, dur=0.3):
+    """换图那一下震屏：取景框左右上下抖几下、0.3 秒内衰减到 0。
+    取景框贴着原图边时先往里收一圈，再把位移夹在原图范围内，不会出界、不露黑边。"""
+    if kick is None or kick >= dur:
+        return box
+    k = (1 - kick / dur) ** 2 * amp * iw
+    dx, dy = k * math.sin(kick * 90), k * 0.6 * math.cos(kick * 70)
+    x0, y0, x1, y1 = box
+    m = abs(k) * 1.1           # 收边量跟着震幅一起衰减，震完平滑回到原取景，不会突然一跳
+    sx, sy = max(0, m - min(x0, iw - x1)), max(0, m * 0.6 - min(y0, ih - y1))
+    if sx or sy:   # 收边保持宽高比
+        r = max(sx / max(x1 - x0, 1), sy / max(y1 - y0, 1))
+        cx, cy, hw, hh = (x0 + x1) / 2, (y0 + y1) / 2, (x1 - x0) / 2 * (1 - 2 * r), (y1 - y0) / 2 * (1 - 2 * r)
+        x0, x1, y0, y1 = cx - hw, cx + hw, cy - hh, cy + hh
+    dx = min(max(dx, -x0), iw - x1)
+    dy = min(max(dy, -y0), ih - y1)
+    return (x0 + dx, y0 + dy, x1 + dx, y1 + dy)
+
+
+def render_flipbook(hook, base, out_dir):
+    """没有可灵视频时，用几张关键帧做钩子：hook.frames 到点硬切 + 缓推 + 换图震屏，输出成 h_####.jpg。"""
+    dur = hook.get("max_seconds", 5)
+    first = Image.open(os.path.join(base, hook["frames"][0]["image"])).convert("RGB")
+    first = cover_crop(first) if first.size != (W, H) else first
+    page = {"frames": hook["frames"][1:]}
+    keys, cyc = keyframes(page, [], base, first)
+    iw, ih = first.size
+    n = int(round(dur * FPS))
+    for i in range(n):
+        t = i / FPS
+        img, kick = pick_key(keys, cyc, t)
+        box = kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
+                     hook.get("zoom", 1.08))
+        img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw, ih)).save(
+            os.path.join(out_dir, f"h_{i + 1:04d}.jpg"), quality=92)
+    return n
 
 
 class Ctx:
@@ -597,6 +702,7 @@ class PageSeg:
             self.region = (0, max(200, 760 - rh // 2), W, rh)
             self.bg = ImageEnhance.Brightness(cover_crop(self.img).filter(ImageFilter.GaussianBlur(40))).enhance(0.6)
         self.cache = {}
+        self.keys, self.cyc = keyframes(page, lines, base, self.img)
         # 可选：画面特效（烛光 / 飘雪 / 光尘）和按深度的 2.5D 视差运镜
         src = np.asarray(self.img).astype(np.float32)
         self.fx = []
@@ -648,6 +754,43 @@ class PageSeg:
                 return li, -1
         return None, None
 
+    def outline_card(self, ln, wi, color, fe, fz):
+        """无底板字幕：英文白字、角色色粗描边，当前词黄字；中文白字深描边；整体带柔和投影，亮背景上也看得清。"""
+        st = self.ctx.st
+        maxw = st.get("subtitle_max_w", 820)
+        sw = st.get("sub_stroke_w", 9)
+        tokens = ln["tokens"]
+        lines = wrap_tokens(tokens, fe, maxw)
+        zh_lines = wrap_zh(ln.get("zh", ""), fz, maxw) if ln.get("zh") else []
+        le, lz = int(fe.size * 1.2), int(fz.size * 1.45)
+        space = fe.getlength(" ")
+        widths = [sum(fe.getlength(tokens[i]) for i in l) + space * (len(l) - 1) for l in lines]
+        pad = sw * 2 + 16
+        pw = int(max(widths + [fz.getlength(z) for z in zh_lines])) + pad * 2
+        ph = le * len(lines) + lz * len(zh_lines) + pad * 2
+        im = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        dark = tuple(int(c * 0.55) for c in color)
+        y = pad
+        for l, lw in zip(lines, widths):
+            x = (pw - lw) / 2
+            for i in l:
+                fill = rgb(st["sub_highlight"]) if i == wi else rgb(st["sub_fill"])
+                d.text((x, y + le / 2), tokens[i], font=fe, fill=fill, anchor="lm",
+                       stroke_width=sw, stroke_fill=dark)
+                x += fe.getlength(tokens[i]) + space
+            y += le
+        for z in zh_lines:
+            d.text((pw / 2, y + lz / 2), z, font=fz, fill=rgb(st["sub_fill"]), anchor="mm",
+                   stroke_width=max(5, sw - 3), stroke_fill=(60, 40, 25))
+            y += lz
+        shadow = Image.new("RGBA", im.size, (20, 12, 5, 0))
+        shadow.putalpha(im.getchannel("A").filter(ImageFilter.GaussianBlur(8)).point(lambda v: int(v * 0.5)))
+        out = Image.new("RGBA", im.size, (0, 0, 0, 0))
+        out.alpha_composite(shadow, (0, 4))
+        out.alpha_composite(im)
+        return out
+
     def card(self, li, wi):
         key = (li, wi)
         if key in self.cache:
@@ -656,6 +799,10 @@ class PageSeg:
         ln = self.lines[li]
         color = rgb(st["speaker_colors"].get(ln["speaker"], st["speaker_colors"]["narrator"]))
         fe, fz = f.get("en", st["en_size"]), f.get("zh", st["zh_size"], "Medium")
+        if st.get("subtitle_mode", "outline") == "outline":
+            im = self.outline_card(ln, wi, color, fe, fz)
+            self.cache[key] = im
+            return im
         maxw = W - 160
         tokens = ln["tokens"]
         lines = wrap_tokens(tokens, fe, maxw)
@@ -696,22 +843,27 @@ class PageSeg:
             frame.paste(self.bg, (0, 0))
         rx, ry, rw, rh = self.region
         iw, ih = self.img.size
-        box = kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from)
+        img, kick = pick_key(self.keys, self.cyc, t)
+        box = shake_box(kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from), kick, iw, ih)
         if self.fx or self.par:
+            if img is not self.img:
+                self.src = np.asarray(img).astype(np.float32)
+                self.img = img
             src = self.src.copy() if self.fx else self.src
             for fx in self.fx:
                 fx.apply(src, t)
             src = np.clip(src, 0, 255).astype(np.uint8)
             region = self.warp(src, box, t) if self.par else Image.fromarray(src).resize((rw, rh), Image.BICUBIC, box=box)
         else:
-            region = self.img.resize((rw, rh), Image.BICUBIC, box=box)
+            region = img.resize((rw, rh), Image.BICUBIC, box=box)
         frame.paste(region, (rx, ry))
         if self.ctx.sparkles:
             self.ctx.sparkles.draw(frame, gt)
         li, wi = self.state(t)
         if li is not None and self.ctx.st.get("subtitles", True):
             c = self.card(li, wi)
-            frame.alpha_composite(c, ((W - c.width) // 2, int(self.ctx.st["subtitle_center"] - c.height / 2)))
+            cx = self.ctx.st.get("subtitle_x", W // 2) if self.ctx.st.get("subtitle_mode", "outline") == "outline" else W // 2
+            frame.alpha_composite(c, (int(cx - c.width / 2), int(self.ctx.st["subtitle_center"] - c.height / 2)))
         if self.ctx.badge is not None:
             frame.alpha_composite(self.ctx.badge, tuple(self.ctx.st["badge_pos"]))
         return frame.convert("RGB")
@@ -826,21 +978,24 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         add(StillSeg(os.path.join(base, cfg["cover"]["image"]), cfg["cover"].get("seconds", 0.4)))
 
     hook = cfg.get("hook")
-    if hook and hook.get("clip"):
-        clip = os.path.join(base, hook["clip"])
+    if hook and (hook.get("clip") or hook.get("frames")):
+        clip = os.path.join(base, hook["clip"]) if hook.get("clip") else None
         hdir = os.path.join(work, "hook")
         os.makedirs(hdir)
-        run(["ffmpeg", "-v", "error", "-i", clip, "-t", str(hook.get("max_seconds", 5)),
-             "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
-             "-q:v", "2", os.path.join(hdir, "h_%04d.jpg")])
-        n = len([x for x in os.listdir(hdir) if x.endswith(".jpg")])
+        if clip:
+            run(["ffmpeg", "-v", "error", "-i", clip, "-t", str(hook.get("max_seconds", 5)),
+                 "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
+                 "-q:v", "2", os.path.join(hdir, "h_%04d.jpg")])
+            n = len([x for x in os.listdir(hdir) if x.endswith(".jpg")])
+        else:   # 关键帧钩子：不花可灵灵感值
+            n = render_flipbook(hook, base, hdir)
         seg = HookSeg(hook, hdir, n, ctx)
         add(seg)
         if hook.get("say"):
             say = hook["say"]
-            wav, _ = synthesize(say["en"], cast[say.get("speaker", "narrator")], cache)
+            wav, _ = synthesize(say.get("say", say["en"]), cast[say.get("speaker", "narrator")], cache)
             placements.append((wav, seg.start + say.get("at", 0.4), 1.0))
-        if hook.get("keep_clip_audio"):
+        if clip and hook.get("keep_clip_audio"):
             placements.append((clip, seg.start, hook.get("clip_gain", 1.0)))
         for sx in hook.get("sfx", []):
             placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
@@ -865,7 +1020,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         seg = PageSeg(page, i, lines, ctx, base)
         add(seg)
         for ln in lines:
-            placements.append((ln["wav"], seg.start + ln["start"], 1.0))
+            # gain：单句音量，比如"小声说"的句子写 0.4
+            placements.append((ln["wav"], seg.start + ln["start"], ln.get("gain", 1.0)))
             srt.append((seg.start + ln["start"] - 0.1, seg.start + ln["end"] + 0.4, ln["en"], ln.get("zh", "")))
         for sx in page.get("sfx", []):
             placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
@@ -900,18 +1056,26 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         mix[-fade:] *= np.linspace(1, 0, fade)
     wav = os.path.join(work, "mix.wav")
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1",
-                          "-i", "-", wav], stdin=subprocess.PIPE)
+                          "-i", "-", "-c:a", "pcm_f32le", wav], stdin=subprocess.PIPE)  # 浮点存，大喊加 gain 超过 0 dB 也不削波
     p.communicate(mix.astype(np.float32).tobytes())
 
     # 画面：逐帧渲染，管道送给 ffmpeg；音频做 -16 LUFS 响度标准化
     loud = cfg.get("loudness", {"I": -16, "TP": -1.5})
+    # 两遍 loudnorm：先测混音的实际响度，再按实测值线性校正；单遍动态模式实测会低 1 LU 左右
+    meas = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af",
+                           f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11:print_format=json",
+                           "-f", "null", "-"], check=True, capture_output=True, text=True).stderr
+    m = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
+    af = (f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11:measured_I={m['input_i']}:"
+          f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
+          f"offset={m['target_offset']}:linear=true,aresample={SR}")
     name = cfg.get("output_name", "storybook") + ("_feed" if truncated else "")
     mp4 = os.path.join(out_dir, f"{name}.mp4")
     enc = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-i", wav, "-map", "0:v", "-map", "1:a",
          "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-         "-af", f"loudnorm=I={loud['I']}:TP={loud['TP']}:LRA=11,aresample={SR}",
+         "-af", af,
          "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-shortest", "-movflags", "+faststart", mp4],
         stdin=subprocess.PIPE)
     n_frames = int(round(total * FPS))

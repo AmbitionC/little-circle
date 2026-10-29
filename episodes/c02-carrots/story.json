@@ -1,6 +1,6 @@
 {
   "output_name": "c02_carrots",
-  "title_en": "Bun Counts Carrots",
+  "title_en": "Where Is My Carrot?",
   "title_zh": "小兔数胡萝卜",
   "series": {
     "badge_text": "栗栗学英语 · 认知小绘本",
@@ -34,11 +34,11 @@
   "hook": {
     "clip": "kling01.mp4",
     "max_seconds": 5,
-    "headline": "跟小兔子拔萝卜，英语数到 5",
-    "subline": "3岁英语启蒙 · 中英字幕",
+    "headline": "数到五，怎么少了一根？",
+    "subline": "3岁英语启蒙 · 跟 Bun 数数",
     "say": {
       "speaker": "narrator",
-      "en": "How many carrots can Bun find?",
+      "en": "Bun has five carrots!",
       "at": 0.6
     },
     "sfx": [
@@ -55,126 +55,27 @@
       "motion": "in",
       "focus": [
         0.5,
-        0.45
+        0.5
       ],
       "lines": [
         {
           "speaker": "bun",
-          "en": "Pop! I have one carrot!",
-          "zh": "噗！我有一根胡萝卜！"
-        },
-        {
-          "speaker": "narrator",
-          "en": "One orange carrot.",
-          "zh": "一根橙色的胡萝卜。"
+          "en": "I have five carrots!",
+          "zh": "我有五根胡萝卜！"
         }
       ],
       "sfx": [
         {
           "file": "../../assets/sfx/pop.mp3",
-          "at": 0.3,
-          "gain": 0.5
+          "at": 0.5,
+          "gain": 0.4
         }
       ]
     },
     {
       "image": "p02.png",
-      "motion": "left",
-      "lines": [
-        {
-          "speaker": "bun",
-          "en": "One, two! I have two carrots!",
-          "zh": "一、二！我有两根胡萝卜！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/pop.mp3",
-          "at": 0.3,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p03.png",
       "motion": "right",
       "lines": [
-        {
-          "speaker": "bun",
-          "en": "One, two, three! Three carrots!",
-          "zh": "一、二、三！三根胡萝卜！"
-        },
-        {
-          "speaker": "narrator",
-          "en": "Bun is so happy!",
-          "zh": "Bun 好开心！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/pop.mp3",
-          "at": 0.3,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p04.png",
-      "motion": "out",
-      "cut": true,
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "Oh no! Bun falls down!",
-          "zh": "哎呀！Bun 摔倒啦！"
-        },
-        {
-          "speaker": "bun",
-          "en": "One, two, three, four! Four carrots!",
-          "zh": "一、二、三、四！四根胡萝卜！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/bonk.mp3",
-          "at": 0.2,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p05.png",
-      "motion": "up",
-      "lines": [
-        {
-          "speaker": "bun",
-          "en": "Five carrots! Too many for me!",
-          "zh": "五根胡萝卜！太多啦！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/boing.mp3",
-          "at": 1.0,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p06.png",
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.42
-      ],
-      "hold": 0.8,
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "Can you count to five?",
-          "zh": "你能数到五吗？",
-          "gap": 1.2
-        },
         {
           "speaker": "bun",
           "en": "One, two, three, four, five!",
@@ -183,8 +84,120 @@
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/sparkle.mp3",
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 2.5,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Shh... who is that?",
+          "zh": "嘘……那是谁？"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/leaves.mp3",
           "at": 0.3,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "One, two, three, four... four?",
+          "zh": "一、二、三、四……四？"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 2.6,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "out",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Where is my carrot?",
+          "zh": "我的胡萝卜呢？"
+        },
+        {
+          "speaker": "narrator",
+          "en": "Can you see it?",
+          "zh": "你看到了吗？",
+          "gap": 1.5
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "in",
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Sorry! I was hungry.",
+          "zh": "对不起！我饿了。"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 0.1,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "right",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Ask first, please!",
+          "zh": "要先问一问哦！"
+        },
+        {
+          "speaker": "nutty",
+          "en": "Can I have one?",
+          "zh": "我可以吃一根吗？"
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "motion": "out",
+      "hold": 0.8,
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Yes! One for you!",
+          "zh": "可以！给你一根！"
+        },
+        {
+          "speaker": "nutty",
+          "en": "Ask first! Thank you!",
+          "zh": "先问一问！谢谢你！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/chomp.mp3",
+          "at": 2.0,
           "gain": 0.5
         }
       ]
@@ -192,10 +205,10 @@
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
-    "subline": "收藏起来，和宝宝一起说",
+    "subline": "想要别人的东西，先问 Can I have one?",
     "seconds": 3.5,
-    "feed_headline": "完整版在主页合集",
-    "feed_subline": "栗栗学英语 · 认知小绘本 第2集"
+    "feed_headline": "少了一根胡萝卜，是谁拿的？",
+    "feed_subline": "完整版在主页合集 · 认知小绘本 第2集"
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",

@@ -1,0 +1,381 @@
+{
+  "output_name": "s03_sleepy",
+  "title_en": "Nutty Is NOT Sleepy!",
+  "title_zh": "栗栗才不困呢！",
+  "series": {
+    "badge_text": "栗栗学英语 · 森林故事",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "frames": [
+      {
+        "image": "kling_first.png",
+        "at": 0
+      },
+      {
+        "image": "h02.png",
+        "at": 1.2,
+        "shake": true
+      },
+      {
+        "image": "h03.png",
+        "at": 2.2
+      },
+      {
+        "image": "h04.png",
+        "at": 3.4,
+        "shake": true
+      }
+    ],
+    "max_seconds": 4.6,
+    "motion": "in",
+    "zoom": 1.06,
+    "focus": [
+      0.5,
+      0.42
+    ],
+    "headline": "孩子不肯睡？今晚讲这个",
+    "subline": "3岁英语启蒙 · 学会说 Good night",
+    "say": {
+      "speaker": "narrator",
+      "en": "Shh... who is awake?",
+      "say": "[whispers] Shh... who is awake?",
+      "at": 0.3,
+      "gain": 0.8,
+      "zh": "嘘……谁还没睡？"
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.3
+      },
+      {
+        "file": "../../assets/sfx/boing.mp3",
+        "at": 1.15,
+        "gain": 0.5
+      },
+      {
+        "file": "../../assets/sfx/pop.mp3",
+        "at": 3.38,
+        "gain": 0.45
+      }
+    ]
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.45,
+        0.4
+      ],
+      "hold": 0.3,
+      "frames": [
+        {
+          "image": "p01b.png",
+          "line": 1,
+          "offset": 0.0,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "It is night time.",
+          "zh": "天黑啦，该睡觉啦。",
+          "say": "[softly] It is night time."
+        },
+        {
+          "speaker": "nutty",
+          "en": "I am not sleepy!",
+          "zh": "我才不困呢！",
+          "say": "[excited] I am not sleepy!"
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "left",
+      "hold": 0.3,
+      "frames": [
+        {
+          "image": "p02b.png",
+          "line": 0,
+          "offset": 1.6,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Not sleepy... not sleepy!",
+          "zh": "不困……不困！",
+          "say": "[yawning] Not sleepy... not sleepy!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 2.05,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.38
+      ],
+      "zoom": 1.18,
+      "hold": 0.3,
+      "frames": [
+        {
+          "image": "p03b.png",
+          "line": 1,
+          "offset": -0.4
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Is Nutty sleepy?",
+          "zh": "栗栗困了吗？",
+          "say": "[curious] Is Nutty sleepy?",
+          "gap": 1.5
+        },
+        {
+          "speaker": "nutty",
+          "en": "No... no... no...",
+          "zh": "不……不……不困……",
+          "say": "[sleepily] No... no... no..."
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 4.0,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "down",
+      "cut": true,
+      "hold": 0.6,
+      "frames": [
+        {
+          "image": "p04b.png",
+          "line": 0,
+          "offset": 1.2
+        },
+        {
+          "image": "p04c.png",
+          "line": 0,
+          "offset": 1.9,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Not sleepy... Zzz...",
+          "zh": "不困……呼……",
+          "say": "[mumbling] Not sleepy... [snoring] Zzz..."
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 2.3,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "out",
+      "hold": 0.3,
+      "frames": [
+        {
+          "image": "p05b.png",
+          "line": 0,
+          "offset": 1.4
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Sleepy Nutty! Shh...",
+          "zh": "犯困的栗栗！嘘……",
+          "say": "[giggles] Sleepy Nutty! Shh..."
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.15,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "hold": 0.2,
+      "frames": [
+        {
+          "image": "p06b.png",
+          "line": 0,
+          "offset": 0.9
+        },
+        {
+          "image": "p06c.png",
+          "line": 0,
+          "offset": 1.9,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Snore... snore... SNORE!",
+          "zh": "呼……呼……呼噜！",
+          "say": "[whispers] Snore... snore... [shouting] SNORE!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/snore.mp3",
+          "at": 0.3,
+          "gain": 0.3
+        },
+        {
+          "file": "../../assets/sfx/snore.mp3",
+          "at": 1.3,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "out",
+      "cut": true,
+      "hold": 0.3,
+      "frames": [
+        {
+          "image": "p07b.png",
+          "line": 1,
+          "offset": 0.0
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Now I am sleepy!",
+          "zh": "这下我也困啦！",
+          "say": "[laughs] Now I am sleepy!"
+        },
+        {
+          "speaker": "hazel",
+          "en": "I am sleepy, too.",
+          "zh": "我也困了。",
+          "say": "[yawns] I am sleepy, too."
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.0,
+          "gain": 0.6
+        },
+        {
+          "file": "../../assets/sfx/leaves.mp3",
+          "at": 0.1,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "motion": "out",
+      "hold": 0.8,
+      "frames": [
+        {
+          "image": "p08b.png",
+          "line": 1,
+          "offset": 0.0
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "So sleepy... Good night!",
+          "zh": "好困呀……晚安！",
+          "say": "[whispers] So sleepy... Good night!",
+          "gain": 0.8
+        },
+        {
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！",
+          "say": "[warmly] The end. Bye-bye!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.3,
+          "gain": 0.4
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "Good night! 晚安！",
+    "subline": "宝宝困了会说 Good night 吗？",
+    "seconds": 3.5,
+    "feed_headline": "栗栗倒在谁身上了？",
+    "feed_subline": "完整版在主页合集 · 森林故事"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_calm.mp3",
+    "volume": 0.22
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

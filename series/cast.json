@@ -1,19 +1,75 @@
 {
-  "_说明": "系列统一角色表。voice 填 ElevenLabs 的 Voice ID；定下后整季不换。story.json 里写 \"cast\": \"相对路径/series/cast.json\" 即可引用。",
+  "_说明": "系列统一角色表。voice 填 ElevenLabs 的 Voice ID，定下后整季不换。2026-10-28 起改用 eleven_v3：台词的 say 字段写语气标签（[excited] [whispers] [shouting] [gasps] [giggles] 等）来做情绪起伏。v3 的 stability 只接受 0.0（Creative，起伏最大）、0.5（Natural）、1.0（Robust）。",
   "narrator": {
-    "provider": "elevenlabs", "voice": "eIu3yWnYwRobofvvNUiW", "model": "eleven_multilingual_v2",
-    "settings": {"stability": 0.55, "similarity_boost": 0.75, "style": 0.2, "use_speaker_boost": true, "speed": 0.88}
+    "provider": "elevenlabs",
+    "voice": "eIu3yWnYwRobofvvNUiW",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
   },
   "nutty": {
-    "provider": "elevenlabs", "voice": "FxhIL9WJO2rPlM8h61S3", "model": "eleven_multilingual_v2",
-    "settings": {"stability": 0.4, "similarity_boost": 0.75, "style": 0.4, "use_speaker_boost": true, "speed": 0.95}
+    "provider": "elevenlabs",
+    "voice": "FxhIL9WJO2rPlM8h61S3",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
   },
   "hazel": {
-    "provider": "elevenlabs", "voice": "RAD8sK2svw3uV2PEGgol", "model": "eleven_multilingual_v2",
-    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.92}
+    "provider": "elevenlabs",
+    "voice": "RAD8sK2svw3uV2PEGgol",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
   },
   "bun": {
-    "provider": "elevenlabs", "voice": "Pjk17S5HHrvLvoCHM2lJ", "model": "eleven_multilingual_v2",
-    "settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true, "speed": 0.9}
+    "provider": "elevenlabs",
+    "voice": "Pjk17S5HHrvLvoCHM2lJ",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "pip": {
+    "provider": "elevenlabs",
+    "voice": "An3xqcxpNpOHGJcOShlR",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "bruno": {
+    "provider": "elevenlabs",
+    "voice": "LjHEEZYE6jkpMf6w5IJV",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "ruby": {
+    "provider": "elevenlabs",
+    "voice": "H3183Z9ZcjE80HwRu4PY",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
+  },
+  "fern": {
+    "provider": "elevenlabs",
+    "voice": "tinYNLscXdfZpc4m5ue7",
+    "model": "eleven_v3",
+    "settings": {
+      "stability": 0.0,
+      "similarity_boost": 0.75
+    }
   }
 }

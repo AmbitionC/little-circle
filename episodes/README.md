@@ -3,15 +3,25 @@
 每集一个目录：`<编号>-<英文slug>/`，里面放 `script.md`（剧本、出图提示词、可灵提示词、配音清单、发布文案）和 `story.json`（给 `sbv.py` 出片用）。
 认知短片编号 `c01`、`c02`…；剧情片 `s01`…（已发布的第 1 集算 s01）。图片、视频素材放进同一目录，但不提交（见 `.gitignore`）。
 
-## 首批 5 条认知短片（2026-10-24 写好）
+## 首批 5 条认知小绘本（2026-10-24 初稿，10-26 按新标准重写）
+
+| 编号 | 片名 | 主线 | 今日单词 | 建议 |
+|---|---|---|---|---|
+| [c01](c01-fruits/script.md) | Nutty Is Hungry 栗栗好饿呀 | 吃饱了要会说 I am full（顺带认水果、数 1–3） | hungry, full, apple | 第 1 周 |
+| [c02](c02-carrots/script.md) | Where Is My Carrot? 小兔数胡萝卜 | 数 1–5，少了一根；想要先问 Can I have one? | carrot, five, four | 第 1 周 |
+| [c03](c03-colors/script.md) | Hazel's Colorful Leaves 小刺猬的彩色背 | 落叶粘满刺猬背，认红黄橙 | red, yellow, leaf | 第 1 周 |
+| [c04](c04-body/script.md) | Achoo! Cover Your Mouth! 栗栗打喷嚏 | 打喷嚏要捂嘴 | nose, mouth, sneeze | 第 2 周 |
+| [c05](c05-weather/script.md) | Bun's Rainy Picnic 小兔的下雨野餐 | 野餐遇上雨，认晴天、下雨、刮风 | sunny, rainy, windy | 第 2 周 |
+
+**统一格式（10-26 起）**：每集一个主题，一个主线词串成故事，或者讲一个道理，不做一页一问一答。可灵钩子 5 秒，第 1 帧就有给家长看的大字标题；接 8 页动态绘本，起承转合，每 2–3 页一个笑点；最后是 3.5 秒片尾。
+台词按 2–3 岁写：全片 11–13 句，每句 3–5 个词，每页最多两句。互动长在剧情里，比如让宝宝替角色喊一句、找一找。完整版约 45 秒；`--max-pages 4` 出约 25 秒的推荐流精华版，停在悬念上。
+依据见 `docs/benchmark-story-2026-10.md`。c01–c03 之前按旧剧本出过的图要重出：提示词改了，`codex_images.py` 会自动只重出改过的那几张。
+
+## 森林故事（剧情片）
 
 | 编号 | 片名 | 主题 | 今日单词 | 建议 |
 |---|---|---|---|---|
-| [c01](c01-fruits/script.md) | Nutty's Fruit Basket 栗栗的水果篮 | 认水果 | apple, banana, orange | 第 1 周发 |
-| [c02](c02-carrots/script.md) | Bun Counts Carrots 小兔数胡萝卜 | 数数 1–5 | carrot, three, five | 第 1 周发 |
-| [c03](c03-colors/script.md) | Hazel's Colorful Spines 小刺猬的彩色背 | 认颜色 | red, yellow, blue | 第 1 周发 |
-| [c04](c04-body/script.md) | Touch Your Nose! 栗栗摸一摸 | 身体部位 | head, nose, hands | 第 2 周 |
-| [c05](c05-weather/script.md) | What's the Weather? 今天什么天气 | 天气 | sunny, rainy, windy | 第 2 周 |
+| [s02](s02-help/script.md) | Help! Hazel's Red Ball 小刺猬的红皮球 | 一个词讲一个道理：help（遇到困难要开口） | help, push, ball | 10-27 成品做完、质检通过，只差可灵钩子（见 HANDOFF）；写法依据见 `docs/benchmark-story-2026-10.md` |
 
 **统一格式**：可灵钩子 5 秒（第 1 帧就有给家长看的大字标题）→ 6 页动态绘本 → 片尾 3.5 秒。
 前 5 页每页一个词：旁白提问，停 1 秒多让宝宝抢答，角色再说答案；第 6 页复习，并向屏幕前的宝宝提一个问题，方便评论区互动。

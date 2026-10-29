@@ -1,0 +1,405 @@
+{
+  "output_name": "s04_brave",
+  "title_en": "Brave Little Pip!",
+  "title_zh": "小老鼠皮皮好勇敢！",
+  "series": {
+    "badge_text": "栗栗学英语 · 森林故事",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ],
+      "pip": [
+        70,
+        96,
+        150
+      ],
+      "bruno": [
+        120,
+        72,
+        30
+      ],
+      "fern": [
+        200,
+        90,
+        20
+      ],
+      "ruby": [
+        190,
+        70,
+        50
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "frames": [
+      {
+        "image": "kling_first.png",
+        "at": 0
+      },
+      {
+        "image": "h02.png",
+        "at": 1.0,
+        "shake": true
+      },
+      {
+        "image": "h03.png",
+        "at": 2.2
+      },
+      {
+        "image": "h04.png",
+        "at": 3.6,
+        "shake": true
+      }
+    ],
+    "max_seconds": 4.8,
+    "motion": "in",
+    "zoom": 1.06,
+    "focus": [
+      0.5,
+      0.35
+    ],
+    "headline": "孩子胆小不敢试？今晚讲这个",
+    "subline": "3岁英语启蒙 · 学会说 I am brave",
+    "say": {
+      "speaker": "narrator",
+      "en": "Oh no! Baby Robin!",
+      "zh": "哎呀！知更鸟宝宝！",
+      "say": "[gasps] Oh no! Baby Robin!",
+      "at": 1.25
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.3
+      },
+      {
+        "file": "../../assets/sfx/crack.mp3",
+        "at": 0.98,
+        "gain": 0.5
+      },
+      {
+        "file": "../../assets/sfx/pop.mp3",
+        "at": 3.58,
+        "gain": 0.45
+      }
+    ]
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.3
+      ],
+      "frames": [
+        {
+          "image": "p01b.png",
+          "line": 0,
+          "offset": 0.0
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "ruby",
+          "en": "Peep! Help me, please!",
+          "zh": "啾！救救我！",
+          "say": "[crying] Peep! Help me, please!"
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "up",
+      "cut": true,
+      "frames": [
+        {
+          "image": "p02b.png",
+          "line": 0,
+          "offset": 1.9,
+          "shake": true
+        },
+        {
+          "image": "p02c.png",
+          "line": 0,
+          "offset": 2.9,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "bruno",
+          "en": "I am big! I can do it!",
+          "zh": "我个子大！我能行！",
+          "say": "[confident] I am big! I can do it!"
+        }
+      ],
+      "hold": 0.6,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/crack.mp3",
+          "at": 2.4,
+          "gain": 0.5
+        },
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 3.4,
+          "gain": 0.55
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "in",
+      "frames": [
+        {
+          "image": "p03b.png",
+          "at": 0.9,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "pip",
+          "en": "Me? I am... scared.",
+          "zh": "我？我……好害怕。",
+          "say": "[whispers] Me? I am... scared.",
+          "gain": 0.7
+        },
+        {
+          "speaker": "narrator",
+          "en": "Let's help Pip! Say: Be brave!",
+          "zh": "我们帮帮皮皮！一起喊：勇敢！",
+          "say": "[softly] Let's help Pip! Say: Be brave!",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.85,
+          "gain": 0.5
+        },
+        {
+          "file": "../../assets/sfx/leaves.mp3",
+          "at": 0.9,
+          "gain": 0.5
+        }
+      ],
+      "focus": [
+        0.6,
+        0.8
+      ],
+      "zoom": 1.25
+    },
+    {
+      "image": "p04.png",
+      "motion": "up",
+      "cut": true,
+      "frames": [
+        {
+          "image": "p04b.png",
+          "line": 0,
+          "offset": 1.2,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "pip",
+          "en": "I can be brave!",
+          "zh": "我可以勇敢！",
+          "say": "[shouting] I can be brave!",
+          "gain": 1.3
+        }
+      ],
+      "hold": 0.4,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 1.65,
+          "gain": 0.6
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.35
+      ],
+      "frames": [
+        {
+          "image": "p05b.png",
+          "line": 1,
+          "offset": 0.8
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "bruno",
+          "en": "Be brave, Pip!",
+          "zh": "勇敢点，皮皮！",
+          "say": "[shouting] Be brave, Pip!",
+          "take": 2,
+          "gap": 0.8
+        },
+        {
+          "speaker": "pip",
+          "en": "Step... step... step...",
+          "zh": "一步……一步……又一步……",
+          "say": "[nervously] Step... step... step...",
+          "gain": 0.6
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "down",
+      "cut": true,
+      "frames": [
+        {
+          "image": "p06b.png",
+          "line": 0,
+          "offset": 0.0,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "Oh no! The branch!",
+          "zh": "哎呀！树枝断了！",
+          "say": "[gasps] Oh no! The branch!"
+        }
+      ],
+      "hold": 0.2,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/crack.mp3",
+          "at": 0.3,
+          "gain": 0.7
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "out",
+      "cut": true,
+      "frames": [
+        {
+          "image": "p07b.png",
+          "line": 0,
+          "offset": 1.0
+        },
+        {
+          "image": "p07c.png",
+          "line": 1,
+          "offset": 0.0,
+          "shake": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "bruno",
+          "en": "Boing! Boing! Got you!",
+          "zh": "嘭！嘭！接住啦！",
+          "say": "[excited] Boing! Boing! Got you!"
+        },
+        {
+          "speaker": "ruby",
+          "en": "Brave Pip! Thank you!",
+          "zh": "勇敢的皮皮！谢谢你！",
+          "say": "[happily] Brave Pip! Thank you!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.0,
+          "gain": 0.55
+        },
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.28,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "motion": "out",
+      "hold": 0.8,
+      "frames": [
+        {
+          "image": "p08b.png",
+          "line": 1,
+          "offset": 0.0
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "pip",
+          "en": "I am scared, but I am brave!",
+          "zh": "我会害怕，但我很勇敢！",
+          "say": "[proudly] I am scared, but I am brave!"
+        },
+        {
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！",
+          "say": "[warmly] The end. Bye-bye!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.3,
+          "gain": 0.4
+        }
+      ],
+      "focus": [
+        0.5,
+        0.7
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "See you next time! 下集见！",
+    "subline": "宝宝会说 I am brave 吗？",
+    "seconds": 3.5,
+    "feed_headline": "小老鼠能救下小鸟吗？",
+    "feed_subline": "完整版在主页合集 · 森林故事"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.22
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

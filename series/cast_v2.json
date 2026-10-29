@@ -1,0 +1,51 @@
+{
+  "_说明": "备用：multilingual_v2 版。比 10-27 版本更有起伏（stability 调低、style 调高）。v3 出问题时用 --cast ../../series/cast_v2.json。",
+  "narrator": {
+    "provider": "elevenlabs",
+    "voice": "eIu3yWnYwRobofvvNUiW",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.35,
+      "similarity_boost": 0.75,
+      "style": 0.55,
+      "use_speaker_boost": true,
+      "speed": 0.88
+    }
+  },
+  "nutty": {
+    "provider": "elevenlabs",
+    "voice": "FxhIL9WJO2rPlM8h61S3",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.25,
+      "similarity_boost": 0.75,
+      "style": 0.7,
+      "use_speaker_boost": true,
+      "speed": 0.95
+    }
+  },
+  "hazel": {
+    "provider": "elevenlabs",
+    "voice": "RAD8sK2svw3uV2PEGgol",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.3,
+      "similarity_boost": 0.75,
+      "style": 0.65,
+      "use_speaker_boost": true,
+      "speed": 0.92
+    }
+  },
+  "bun": {
+    "provider": "elevenlabs",
+    "voice": "Pjk17S5HHrvLvoCHM2lJ",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.3,
+      "similarity_boost": 0.75,
+      "style": 0.6,
+      "use_speaker_boost": true,
+      "speed": 0.8
+    }
+  }
+}

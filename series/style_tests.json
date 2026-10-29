@@ -1,0 +1,14 @@
+{
+  "_说明": "画风对比：每种画风出同样两张图（全员合影、s02 第 1 页），不带画风样张和角色参考图，免得被现有画风拉回去。用法：python3 tools/storybook-video/codex_images.py styles",
+  "scenes": {
+    "cast": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf, a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, and a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest, standing side by side in a sunny forest clearing, smiling and waving at the viewer, full bodies visible, vertical 9:16, no text, no watermark",
+    "scene": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls, standing at the edge of a big brown mud puddle on a forest path after the rain, stretching his arm toward a shiny red ball stuck halfway in the mud, worried face, keep every face in the upper 55% of the image and the lower 40% simple open ground, vertical 9:16, no text, no watermark"
+  },
+  "styles": {
+    "watercolor": {"name": "水彩绘本", "why": "温柔、有书卷气，家长好感高；但小屏上轮廓偏软，2 岁孩子一眼认角色稍难", "style": "soft watercolor children's picture book illustration, gentle transparent washes, visible paper texture, delicate ink outlines, warm pastel palette"},
+    "3d": {"name": "3D 软萌动画", "why": "头部早教账号最常见的画风，立体、亮、表情夸张，2–3 岁孩子注意力抓得最牢；做可灵动画也最不容易崩", "style": "cute 3D animated feature film style render, soft plush-like fur, big glossy expressive eyes, chunky rounded proportions, soft global illumination, vibrant cheerful colors, shallow depth of field"},
+    "flat": {"name": "扁平粗线卡通", "why": "学龄前动画片那种粗轮廓、纯色块，手机小屏上最清楚，角色前后最容易保持一致，出图失败率低", "style": "bold flat 2D cartoon for preschool television, thick clean dark outlines, simple rounded shapes, flat bright saturated colors, minimal soft shading, clean uncluttered background"},
+    "felt": {"name": "毛毡黏土手作", "why": "毛茸茸的手工质感，和「森林小伙伴」很搭，辨识度高、有记忆点；风险是 AI 偶尔会出成写实摄影感", "style": "handmade needle-felted wool and clay stop-motion diorama style, fuzzy felt textures, tiny handcrafted props, miniature forest set, soft studio lighting, slight tilt-shift"},
+    "anime": {"name": "日系手绘动画", "why": "对应你发的第二张参考图：干净的赛璐璐角色加细腻的手绘背景，画面通透、有电影感", "style": "Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, lush richly painted backgrounds, bright blue sky with fluffy clouds, gentle warm nostalgic light"}
+  }
+}

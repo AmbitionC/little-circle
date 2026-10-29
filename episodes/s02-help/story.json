@@ -1,0 +1,276 @@
+{
+  "output_name": "s02_help",
+  "title_en": "Help! Hazel's Red Ball",
+  "title_zh": "小刺猬的红皮球",
+  "series": {
+    "badge_text": "栗栗学英语 · 森林故事",
+    "badge_alpha": 0.72
+  },
+  "style": {
+    "speaker_colors": {
+      "narrator": [
+        74,
+        52,
+        38
+      ],
+      "nutty": [
+        178,
+        78,
+        22
+      ],
+      "hazel": [
+        160,
+        104,
+        0
+      ],
+      "bun": [
+        172,
+        56,
+        44
+      ]
+    }
+  },
+  "cast": "../../series/cast.json",
+  "hook": {
+    "max_seconds": 4.6,
+    "headline": "孩子遇到困难不敢开口？",
+    "subline": "3岁英语启蒙 · 学会说 Help",
+    "headline_y": 220,
+    "say": {
+      "speaker": "narrator",
+      "en": "Oh no! Hazel's ball!",
+      "at": 0.95,
+      "say": "[gasps] Oh no! Hazel's ball!"
+    },
+    "sfx": [
+      {
+        "file": "../../assets/sfx/jingle_in.mp3",
+        "at": 0.0,
+        "gain": 0.35
+      },
+      {
+        "file": "../../assets/sfx/bonk.mp3",
+        "at": 0.64,
+        "gain": 0.6
+      },
+      {
+        "file": "../../assets/sfx/pop.mp3",
+        "at": 0.72,
+        "gain": 0.45
+      }
+    ],
+    "clip_kling": "kling01.mp4",
+    "frames": [
+      {
+        "image": "kling_first.png",
+        "at": 0
+      },
+      {
+        "image": "h02.png",
+        "at": 0.6,
+        "shake": true
+      },
+      {
+        "image": "h03.png",
+        "at": 1.8
+      },
+      {
+        "image": "h04.png",
+        "at": 3.2
+      }
+    ],
+    "motion": "in",
+    "zoom": 1.06
+  },
+  "pages": [
+    {
+      "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "My red ball! It's stuck!",
+          "zh": "我的红皮球！卡住了！",
+          "say": "[surprised] My red ball! [worried] It's stuck!"
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Push, push... Oh no!",
+          "zh": "推，推……哎呀！",
+          "say": "[straining] Push... push... [gasps] Oh no!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 1.6,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "out",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Help... help me, please.",
+          "zh": "帮帮……帮帮我吧。",
+          "gain": 0.3,
+          "say": "[whispers] Help... help me, please."
+        },
+        {
+          "speaker": "narrator",
+          "en": "Louder, Hazel! Say help!",
+          "zh": "大声点，Hazel！喊 help！",
+          "gap": 2.0,
+          "say": "[excited] Louder, Hazel! Say help!"
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "in",
+      "cut": true,
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Help! Help me, please!",
+          "zh": "帮帮我！帮帮我吧！",
+          "gain": 1.3,
+          "say": "[shouting] Help! Help me, please!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.2,
+          "gain": 0.5
+        },
+        {
+          "file": "../../assets/sfx/leaves.mp3",
+          "at": 1.8,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "right",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "I can help!",
+          "zh": "我来帮你！",
+          "say": "[excited] I can help!"
+        },
+        {
+          "speaker": "bun",
+          "en": "I can help, too!",
+          "zh": "我也来帮你！",
+          "say": "[cheerfully] I can help, too!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.1,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "narrator",
+          "en": "One, two, three... push!",
+          "zh": "一、二、三……推！",
+          "say": "[excited] One, two, three... [shouting] push!"
+        },
+        {
+          "speaker": "hazel",
+          "en": "Push, push, push!",
+          "zh": "推，推，推！",
+          "say": "[straining] Push, push, push!"
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "out",
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "My ball! Thank you, friends!",
+          "zh": "我的球！谢谢你们！",
+          "say": "[laughs] My ball! [happily] Thank you, friends!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.1,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p08.png",
+      "motion": "out",
+      "hold": 1.3,
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Need help? Say help!",
+          "zh": "需要帮忙？就说 help！",
+          "say": "[playfully] Need help? Say help!"
+        },
+        {
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！",
+          "say": "[warmly] The end. Bye-bye!"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.3,
+          "gain": 0.5
+        }
+      ]
+    }
+  ],
+  "ending": {
+    "headline": "See you next time! 下集见！",
+    "subline": "宝宝帮 Hazel 喊出 Help 了吗？",
+    "seconds": 3.5,
+    "feed_headline": "Hazel 喊出 Help，谁会来帮他？",
+    "feed_subline": "完整版在主页合集 · 森林故事 第2集"
+  },
+  "bgm": {
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.25
+  },
+  "loudness": {
+    "I": -16,
+    "TP": -1.5
+  }
+}

@@ -2,13 +2,18 @@
 """用本机 Codex CLI（ChatGPT 登录，内置 image_gen）按 script.md 的出图提示词批量出图。
 
   python3 codex_images.py refs                         # 先出三个角色的参考图 → series/refs/
+  python3 codex_images.py styles                       # 画风对比：series/style_tests.json → out/style_test/
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
+  python3 codex_images.py ../../episodes/s03-sleepy --comic   # 漫画剧本：每三格一张横版漫画，剧本确认前给用户看
+
+关键帧（做动画用，不花可灵灵感值）：script.md 里写 **p01b.png** ← p01.png，下面代码块只写"改哪里"。
+脚本先出底图，再把底图当第一张参考图，让 Codex 只改动作、其余不动，出同一镜头的下一张画。
 
 已有的图跳过；script.md 里某张图的提示词改了，会自动重出那一张。--force 全部重出，--only p02,p05 只出这几张。
 图会裁成 1080×1920 存进集目录，原图路径和提示词指纹记在 images.json。
 """
-import argparse, glob, hashlib, json, os, re, subprocess, sys, threading, time
+import argparse, glob, hashlib, json, os, re, subprocess, sys, tempfile, threading, time
 from concurrent.futures import ThreadPoolExecutor
 from PIL import Image, ImageFilter
 
@@ -18,13 +23,24 @@ REFS = os.path.join(ROOT, "series", "refs")
 CODEX_HOME = os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex"))
 W, H = 1080, 1920
 
-STYLE = ("watercolor and gouache children's picture book illustration, hand-painted brush strokes, "
-         "visible paper grain, soft warm light, cozy vintage storybook feel, no text, no watermark")
+STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, gentle warm nostalgic light, clear bright colors, no text, no watermark")
+# 画风参考图（用户给的样张，只留在本机，不进仓库）：每张图都带上，锁住画风
+STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
 CHARACTERS = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
     "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
     "bun": "a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
+    # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
+    "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
+    "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
+    "fern": "a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
+    "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
+    "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
+    "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
+    "dot": "a gentle little fawn with white spots on her back and big soft ears, wearing a small pink flower behind one ear",
+    "bo": "a little badger with a black-and-white striped face, holding a small leaf book",
+    "wiggles": "a little brown otter with a sleek shiny coat and long whiskers, balancing a small round pebble on his head",
 }
 REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "
               "friendly smile, plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
@@ -36,36 +52,102 @@ def parse_script(path):
     jobs = {}
     for name, body in re.findall(r"\*\*(p\d+\.png)\*\*\s*\n```[^\n]*\n(.*?)```", text, re.S):
         jobs[name] = " ".join(body.split())
-    m = re.search(r"可灵首帧出图提示词.*?```[^\n]*\n(.*?)```", text, re.S)
+    m = re.search(r"(?:可灵|钩子)首帧出图提示词.*?```[^\n]*\n(.*?)```", text, re.S)
     if m:
         jobs["kling_first.png"] = " ".join(m.group(1).split())
     last = sorted(k for k in jobs if k.startswith("p"))
     if last and "封面关键画面" in text:
-        base = jobs[last[-1]].replace(", keep the bottom quarter of the image simple and free of faces", "")
+        base = jobs[last[-1]].replace(", keep every face in the upper 55% of the image and the lower 40% simple open ground", "")
         jobs["cover.png"] = base + ", the characters and props sit in the lower half, the top 40% is clean open sky and soft tree canopy with empty space for a title"
     return jobs
 
 
+def parse_keys(path):
+    """关键帧：{文件名: (底图文件名, 改动说明)}，写法是 **p01b.png** ← p01.png（也认 <-）。"""
+    text = open(path, encoding="utf-8").read()
+    return {name: (src, " ".join(body.split())) for name, src, body in re.findall(
+        r"\*\*([\w-]+\.png)\*\*\s*(?:←|<-)\s*([\w-]+\.png)[^\n]*\n```[^\n]*\n(.*?)```", text, re.S)}
+
+
+KEY_ASK = ("Edit the FIRST attached image. It is one drawing of an animation sequence and you are drawing the NEXT drawing of the "
+           "same shot. Keep exactly the same scene, background, camera angle, framing, lighting, colors, art style, line work "
+           "and character designs; keep every character in the same place and size unless the change says otherwise. "
+           "Change ONLY this: {change}. Same vertical 9:16 size, no text, no watermark.")
+
+
+def style_refs():
+    return sorted(glob.glob(os.path.join(STYLE_DIR, "*.png")) + glob.glob(os.path.join(STYLE_DIR, "*.jpg")))
+
+
 def fingerprint(prompt, refs):
     h = hashlib.sha1(prompt.encode())
-    for r in refs:
+    for r in style_refs() + refs:
         h.update(str(os.path.getmtime(r)).encode())
     return h.hexdigest()[:12]
 
 
-def codex_generate(prompt, refs, log):
-    """跑一次 codex exec，返回生成的原图路径。"""
-    ask = ("Use your built-in image_gen tool exactly once to generate ONE vertical portrait image "
-           "(9:16, the tallest portrait size available). Use this prompt verbatim:\n\n" + prompt + "\n\n")
+def small_ref(path, size=768):
+    """参考图缩成 768px 的 JPEG 再上传：三张 2.6MB 的 PNG 一起传，网络一抖就断（Broken pipe）。关键帧底图用 1280px，细节要对得上。"""
+    dst = os.path.join(tempfile.gettempdir(), "codex_refs",
+                       f"{os.path.splitext(os.path.basename(path))[0]}_{int(os.path.getmtime(path))}_{size}.jpg")
+    if not os.path.exists(dst):
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        img = Image.open(path).convert("RGB")
+        img.thumbnail((size, size), Image.LANCZOS)
+        img.save(dst, quality=88)
+    return dst
+
+
+MAX_IMAGES = 5
+
+
+def lineup(refs, h=640):
+    """把几张角色参考图按同样高度横着拼成一张阵容图（顺序和 CHARACTERS 一致）。"""
+    order = {f"{k}.png": i for i, k in enumerate(CHARACTERS)}
+    refs = sorted(refs, key=lambda r: order.get(os.path.basename(r), 99))
+    ims = [Image.open(r).convert("RGB") for r in refs]
+    ims = [im.resize((round(im.width * h / im.height), h), Image.LANCZOS) for im in ims]
+    gap = 24
+    out = Image.new("RGB", (sum(i.width for i in ims) + gap * (len(ims) - 1), h), (255, 255, 255))
+    x = 0
+    for im in ims:
+        out.paste(im, (x, 0))
+        x += im.width + gap
+    dst = os.path.join(tempfile.gettempdir(), "codex_refs",
+                       "lineup_" + "_".join(os.path.splitext(os.path.basename(r))[0] + str(int(os.path.getmtime(r))) for r in refs) + ".jpg")
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    out.save(dst, quality=88)
+    return dst
+
+
+def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical portrait image (9:16, the tallest portrait size available)"):
+    """跑一次 codex exec，返回生成的原图路径。use_style=False 时不带画风样张（做画风对比用）。
+    base：关键帧的底图，排第一张，只改提示词里说的动作（底图本身就带画风和角色，不再带样张）。"""
+    ask = (f"Use your built-in image_gen tool exactly once to generate ONE {shape}. "
+           "Use this prompt verbatim:\n\n" + prompt + "\n\n")
+    styles = style_refs() if use_style and not base else []
+    # Codex 一次最多收 5 张附图：样张最多 2 张；角色多时拼成一张从左到右的阵容图
+    styles = styles[:2]
+    room = MAX_IMAGES - len(styles) - (1 if base else 0)
+    lineup_note = ""
+    if len(refs) > room:
+        names = [k for k, _ in CHARACTERS.items() if any(os.path.basename(r) == f"{k}.png" for r in refs)]
+        refs = [lineup(refs)]
+        lineup_note = ("They are combined into ONE lineup image; from left to right it shows: "
+                       + "; ".join(CHARACTERS[n] for n in names) + ". ")
+    if styles:
+        ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
+                "style closely: rendering, line work, cel shading, eye style, lighting, color palette and background painting. "
+                "Do not copy their characters, poses, composition or scene.\n\n")
     if refs:
-        ask += ("The attached image(s) are the character reference sheets for this series. Keep each character's "
-                "face, body shape, colors and clothing exactly like the reference, but use the pose, scene and "
-                "composition from the prompt, not the reference's.\n\n")
+        ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "
+                "series. " + lineup_note + "Keep each character's face, body shape, colors and clothing exactly like the reference, "
+                "but use the pose, scene and composition from the prompt, not the reference's.\n\n")
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
-    for r in refs:
-        cmd += ["-i", r]
+    for r in ([base] if base else []) + styles + refs:
+        cmd += ["-i", small_ref(r, 1280 if base or os.path.basename(r).startswith("lineup_") else 768)]
     cmd.append("-")  # 提示词走 stdin：-i 会吞掉后面的位置参数
     # 图一落盘就收工：网络抖动时 codex 会在出图后继续重连很久
     with open(log, "a", encoding="utf-8") as f:
@@ -101,29 +183,63 @@ def to_frame(src, dst):
     img.save(dst)
 
 
-def run_jobs(outdir, jobs, args, frame=True):
+def comic_jobs(script):
+    """漫画剧本：钩子首帧 + p01–p08 每三格拼一张横版三联漫画（comic/sheet1-3.png），给用户确认剧本用。
+    提示词去掉风格词和构图要求，只留画面；三格一起画，角色和画风前后对得上。"""
+    shots = parse_script(script)
+    order = [k for k in ["kling_first.png"] + [f"p{i:02d}.png" for i in range(1, 13)] if k in shots]
+    keys = parse_keys(script)
+    def scene(k):
+        x = re.split(r", (?:Japanese hand-painted|polished digital children's)", shots[k])[0]
+        x = x.split(", keep every face")[0]
+        # 这一页有关键帧时，漫画画最后一张关键帧那一刻（剧情的转折往往在那里，比如树枝断了），首图只当场景说明
+        stem = os.path.splitext(k)[0]
+        last = sorted(n for n in keys if re.fullmatch(stem + r"[b-z]\.png", n))
+        if last:
+            x += f"; draw the moment right after this, when {keys[last[-1]][1]}"
+        return x
+    jobs = {}
+    for n in range(0, len(order), 3):
+        group = order[n:n + 3]
+        panels = " ".join(f"Panel {i + 1}: {scene(k)}." for i, k in enumerate(group))
+        prompt = (f"A {len(group)}-panel comic strip laid out left to right, {len(group)} equal tall vertical panels side by side "
+                  "separated by clean white gutters, each panel a full scene. " + panels + " Same characters, same art style in every "
+                  "panel, " + STYLE + ". Absolutely no text, no speech bubbles, no captions, no panel numbers.")
+        refs = [os.path.join(REFS, f"{c}.png") for c, d in CHARACTERS.items()
+                if d in prompt and os.path.exists(os.path.join(REFS, f"{c}.png"))]
+        jobs[f"comic/sheet{n // 3 + 1}.png"] = (prompt, refs)
+    return jobs, order
+
+
+def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
     lock_path = os.path.join(outdir, "images.json")
     lock = json.load(open(lock_path)) if os.path.exists(lock_path) else {}
     log = os.path.join(outdir, ".codex_images.log")
     todo = []
-    for name, (prompt, refs) in jobs.items():
-        if args.only and os.path.splitext(name)[0] not in args.only:
+    for name, job in jobs.items():
+        prompt, refs = job[0], job[1]
+        base = job[2] if len(job) > 2 else None
+        if args.only and not {os.path.splitext(name)[0], os.path.splitext(os.path.basename(name))[0]} & set(args.only):
             continue
-        fp = fingerprint(prompt, refs)
+        if base and not os.path.exists(base):
+            print(f"  ✗ {name}：底图 {os.path.basename(base)} 还没出")
+            continue
+        fp = fingerprint(prompt, refs + ([base] if base else []))
         dst = os.path.join(outdir, name)
         if not args.force and os.path.exists(dst) and lock.get(name, {}).get("fp") in (fp, None):
             continue
-        todo.append((name, prompt, refs, fp, dst))
+        todo.append((name, prompt, refs, fp, dst, base))
     if not todo:
         print(f"{os.path.relpath(outdir, ROOT)}：都出好了")
         return 0
 
     def one(job):
-        name, prompt, refs, fp, dst = job
+        name, prompt, refs, fp, dst, base = job
         t = time.time()
         for attempt in (1, 2):
             try:
-                src = codex_generate(prompt, refs, log)
+                src = (codex_generate(prompt, refs, log, use_style, base, shape) if shape
+                       else codex_generate(prompt, refs, log, use_style, base))
                 break
             except Exception as e:  # 失败重试一次
                 if attempt == 2:
@@ -143,14 +259,24 @@ def run_jobs(outdir, jobs, args, frame=True):
 
 def main():
     ap = argparse.ArgumentParser(description="用 Codex CLI 按 script.md 出图")
-    ap.add_argument("targets", nargs="+", help="refs，或集目录（里面有 script.md）")
+    ap.add_argument("targets", nargs="+", help="refs、styles，或集目录（里面有 script.md）")
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
+    ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
     args = ap.parse_args()
 
     failed = 0
     for t in args.targets:
+        if t == "styles":
+            # 画风对比：series/style_tests.json 里每种画风 × 每个场景各出一张，放 out/style_test/
+            cfg = json.load(open(os.path.join(ROOT, "series", "style_tests.json"), encoding="utf-8"))
+            outdir = os.path.join(ROOT, "out", "style_test")
+            os.makedirs(outdir, exist_ok=True)
+            jobs = {f"{k}_{sc}.png": (f"{prompt}, {v['style']}", [])
+                    for k, v in cfg["styles"].items() for sc, prompt in cfg["scenes"].items()}
+            failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
             jobs = {f"{k}.png": (REF_PROMPT.format(desc=d), []) for k, d in CHARACTERS.items()}
@@ -159,12 +285,33 @@ def main():
         script = os.path.join(t, "script.md")
         if not os.path.exists(script):
             sys.exit(f"找不到 {script}")
+        if args.comic:
+            os.makedirs(os.path.join(t, "comic"), exist_ok=True)
+            jobs, _ = comic_jobs(script)
+            failed += run_jobs(os.path.abspath(t), jobs, args, frame=False,
+                               shape="wide landscape image (3:2, the widest landscape size available)")
+            continue
         jobs = {}
         for name, prompt in parse_script(script).items():
             refs = [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
                     if d in prompt and os.path.exists(os.path.join(REFS, f"{k}.png"))]
             jobs[name] = (prompt, refs)
         failed += run_jobs(os.path.abspath(t), jobs, args)
+        # 第二轮：关键帧（底图要先出好）
+        # 改动说明里点名了新角色（如 h03 镜头下移、露出树下的朋友），就把他们的参考图也带上
+        keys = {name: (KEY_ASK.format(change=change),
+                       [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
+                        if d in change and os.path.exists(os.path.join(REFS, f"{k}.png"))],
+                       os.path.join(os.path.abspath(t), src))
+                for name, (src, change) in parse_keys(script).items()}
+        # 关键帧也可以以关键帧为底（h04 ← h03）：底图还在待出列表里的，等下一轮再出，
+        # 否则 --force 时会和底图同一轮并行，拿旧底图去改（s04 的 h04 就这样配错了）
+        k_failed = 0
+        while keys:
+            ready = {n: j for n, j in keys.items() if os.path.basename(j[2]) not in keys} or keys
+            k_failed += run_jobs(os.path.abspath(t), ready, args)
+            keys = {n: j for n, j in keys.items() if n not in ready}
+        failed += k_failed
     sys.exit(1 if failed else 0)
 
 

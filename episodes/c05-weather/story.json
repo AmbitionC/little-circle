@@ -1,7 +1,7 @@
 {
   "output_name": "c05_weather",
-  "title_en": "What's the Weather?",
-  "title_zh": "今天什么天气",
+  "title_en": "Bun's Rainy Picnic",
+  "title_zh": "小兔的下雨野餐",
   "series": {
     "badge_text": "栗栗学英语 · 认知小绘本",
     "badge_alpha": 0.72
@@ -34,11 +34,11 @@
   "hook": {
     "clip": "kling01.mp4",
     "max_seconds": 5,
-    "headline": "出门前问一句：What's the weather?",
-    "subline": "3岁英语启蒙 · 中英字幕",
+    "headline": "晴天、下雨、刮风，英语怎么说？",
+    "subline": "3岁英语启蒙 · 跟 Bun 学天气",
     "say": {
       "speaker": "narrator",
-      "en": "What's the weather today, Nutty?",
+      "en": "Bun has a picnic!",
       "at": 0.6
     },
     "sfx": [
@@ -52,18 +52,123 @@
   "pages": [
     {
       "image": "p01.png",
+      "motion": "in",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "It's sunny! Let's play!",
+          "zh": "晴天！一起玩吧！"
+        }
+      ]
+    },
+    {
+      "image": "p02.png",
       "motion": "up",
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Oh! What is that?",
+          "zh": "哦！那是什么？"
+        },
+        {
+          "speaker": "narrator",
+          "en": "What is it? Hmm?",
+          "zh": "是什么呢？嗯？",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.0,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p03.png",
+      "motion": "down",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "It's rainy! I'm wet!",
+          "zh": "下雨了！我湿了！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/leaves.mp3",
+          "at": 0.2,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "image": "p04.png",
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "bun",
+          "en": "Look! Ear umbrella!",
+          "zh": "看！耳朵雨伞！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/ding.mp3",
+          "at": 0.2,
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p05.png",
+      "motion": "up",
+      "cut": true,
       "lines": [
         {
           "speaker": "narrator",
-          "en": "What's the weather?",
-          "zh": "今天什么天气？",
-          "gap": 1.2
+          "en": "Whoosh! It's windy!",
+          "zh": "呼——刮风啦！"
         },
         {
+          "speaker": "bun",
+          "en": "Help! I'm flying!",
+          "zh": "救命！我飞起来啦！"
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/whoosh.mp3",
+          "at": 0.0,
+          "gain": 0.7
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "motion": "left",
+      "lines": [
+        {
+          "speaker": "hazel",
+          "en": "Come here, Bun!",
+          "zh": "Bun，快过来！"
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "motion": "out",
+      "lines": [
+        {
           "speaker": "nutty",
-          "en": "It's sunny! Hello, sun!",
-          "zh": "是晴天！太阳你好！"
+          "en": "Look! A rainbow!",
+          "zh": "看！彩虹！"
         }
       ],
       "sfx": [
@@ -75,111 +180,25 @@
       ]
     },
     {
-      "image": "p02.png",
-      "motion": "left",
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "What's the weather?",
-          "zh": "今天什么天气？",
-          "gap": 1.2
-        },
-        {
-          "speaker": "nutty",
-          "en": "It's cloudy. Where is the sun?",
-          "zh": "是多云。太阳去哪啦？"
-        }
-      ]
-    },
-    {
-      "image": "p03.png",
+      "image": "p08.png",
       "motion": "in",
-      "focus": [
-        0.5,
-        0.42
-      ],
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "What's the weather?",
-          "zh": "今天什么天气？",
-          "gap": 1.2
-        },
-        {
-          "speaker": "nutty",
-          "en": "It's rainy! My tail is my umbrella!",
-          "zh": "下雨啦！我的尾巴就是雨伞！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/pop.mp3",
-          "at": 2.0,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p04.png",
-      "motion": "right",
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "What's the weather?",
-          "zh": "今天什么天气？",
-          "gap": 1.2
-        },
-        {
-          "speaker": "nutty",
-          "en": "It's windy! Whoosh! My scarf!",
-          "zh": "刮风啦！呼——我的围巾！"
-        }
-      ],
-      "sfx": [
-        {
-          "file": "../../assets/sfx/whoosh.mp3",
-          "at": 1.0,
-          "gain": 0.5
-        }
-      ]
-    },
-    {
-      "image": "p05.png",
-      "motion": "down",
-      "lines": [
-        {
-          "speaker": "narrator",
-          "en": "What's the weather?",
-          "zh": "今天什么天气？",
-          "gap": 1.2
-        },
-        {
-          "speaker": "nutty",
-          "en": "It's snowy! Look, white snow!",
-          "zh": "下雪啦！看，白白的雪！"
-        }
-      ]
-    },
-    {
-      "image": "p06.png",
-      "motion": "out",
       "hold": 0.8,
       "lines": [
         {
-          "speaker": "narrator",
-          "en": "Sunny, cloudy, rainy, windy, snowy!",
-          "zh": "晴天、多云、下雨、刮风、下雪！"
+          "speaker": "bun",
+          "en": "Rain or sun, let's play!",
+          "zh": "下雨晴天，都能玩！"
         },
         {
-          "speaker": "nutty",
-          "en": "What's the weather today?",
-          "zh": "今天是什么天气呀？"
+          "speaker": "narrator",
+          "en": "The end. Bye-bye!",
+          "zh": "讲完啦，拜拜！"
         }
       ],
       "sfx": [
         {
           "file": "../../assets/sfx/ding.mp3",
-          "at": 0.2,
+          "at": 0.3,
           "gain": 0.5
         }
       ]
@@ -187,10 +206,10 @@
   ],
   "ending": {
     "headline": "See you next time! 下集见！",
-    "subline": "收藏起来，和宝宝一起说",
+    "subline": "今天是什么天气呀？",
     "seconds": 3.5,
-    "feed_headline": "完整版在主页合集",
-    "feed_subline": "栗栗学英语 · 认知小绘本 第5集"
+    "feed_headline": "Bun 的耳朵雨伞，被风吹走了吗？",
+    "feed_subline": "完整版在主页合集 · 认知小绘本 第5集"
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",
