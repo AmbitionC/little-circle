@@ -208,6 +208,8 @@ def pick(ep, story_path, story, k):
         sys.exit(f"没有 {src}")
     shutil.copy(src, os.path.join(out, "song.mp3"))
     info = json.load(open(os.path.join(out, f"v{k}.json")))
+    if info.get("meta"):   # 早期存的 words 可能混着 {…} 演唱提示，选定前再清一遍
+        info["words"] = find_words(info["meta"]) or info.get("words", [])
     json.dump(info.get("words", []), open(os.path.join(out, "song_words.json"), "w"), ensure_ascii=False, indent=1)
     rel = os.path.relpath(out, os.path.abspath(ep))
     story["song"].update({"file": f"{rel}/song.mp3", "words": f"{rel}/song_words.json", "picked": f"v{k}"})
