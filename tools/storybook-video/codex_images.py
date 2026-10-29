@@ -188,9 +188,16 @@ def comic_jobs(script):
     提示词去掉风格词和构图要求，只留画面；三格一起画，角色和画风前后对得上。"""
     shots = parse_script(script)
     order = [k for k in ["kling_first.png"] + [f"p{i:02d}.png" for i in range(1, 13)] if k in shots]
+    keys = parse_keys(script)
     def scene(k):
         x = re.split(r", (?:Japanese hand-painted|polished digital children's)", shots[k])[0]
-        return x.split(", keep every face")[0]
+        x = x.split(", keep every face")[0]
+        # 这一页有关键帧时，漫画画最后一张关键帧那一刻（剧情的转折往往在那里，比如树枝断了），首图只当场景说明
+        stem = os.path.splitext(k)[0]
+        last = sorted(n for n in keys if re.fullmatch(stem + r"[b-z]\.png", n))
+        if last:
+            x += f"; draw the moment right after this, when {keys[last[-1]][1]}"
+        return x
     jobs = {}
     for n in range(0, len(order), 3):
         group = order[n:n + 3]
