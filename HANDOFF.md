@@ -3,6 +3,13 @@
 > 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
+## 0. 最新：角色升级（2026-10-30）
+
+- 用户要求角色像疯狂动物城一样有鲜明记忆点、不要千篇一律的动物。按用户确认的方案，每个角色补了六件套：反差、剪影钩子、情绪器官、口头禅、想要、小毛病，还有体型阶梯 XS–XL。方法和依据在 [docs/character-design.md](docs/character-design.md)，设定在 [series/characters.md](series/characters.md)，skill 第 5.2 节同步改了。
+- 出图描述每句加了一个夸张部位；旧描述 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响。参考图改成招牌姿势，新增 `codex_images.py sheets` 出设定图到 `series/sheets/`（只给人看，不进出图流程）。
+- 7 张参考图、设定图、头像在用户 Mac 上重出了两轮（第二轮修了 Bun 的耳朵和 Fern 的比例），已提交。旧参考图备份在用户 Mac 的 `series/refs_old_1030/`（未提交）。
+- 图鉴网页：https://claude.ai/artifact/JfVDc75EjRdgw5pMRKVHkR 。2026-10-30 之前已发布和定稿的集不重做，下一集起用新设定。
+
 ## 0. 最新：选题升级 + 儿歌线暂停（2026-10-30）
 
 - 新分册 [docs/skill-topics.md](docs/skill-topics.md)：口语线的选题来源（含国内外节日、每周在线搜热点）、筛选标准、不重复规则、每周日排期；儿歌线选题写在第 9 节，**可以用公有领域经典儿歌做素材**（用户 10-30 定，用前逐首核版权）。
