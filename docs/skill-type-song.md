@@ -1,8 +1,12 @@
 # 类型二：儿歌线「栗栗唱儿歌」（2026-10-28 起，第一集 m01）
 
+> ⏸ **2026-10-30 起暂停**。用户原话："儿歌流程先停掉，相关产物删掉，先关注 skill 升级。" m01 的集目录、成片、网页已删（剧本在 git 历史里能找回）。本分册的方法论先留着，用户说恢复再用；恢复前不做新儿歌。
+
 > 系列 skill 的分册。公共部分（红线、系列规范、出图、漫画剧本确认、渲染、成品交付、发布）在 [skill-kids-english-story-video.md](skill-kids-english-story-video.md)，这里只写儿歌线和口语线不一样的地方。2026-10-29 从主文件原 3.2 节拆出来，原有规则没改，新加了子类表、发布和剧本质检两小节。
 
 **儿歌线是什么**：一首 AI 儿歌就是全部声音，没有配音、背景音乐、音效；画面是一组跟着小节切换的卡片，角色用关键帧跟拍子动。编号 `m01`、`m02`…，目录 `episodes/m01-big-small/`。
+
+**素材可以用公有领域的经典儿歌**（2026-10-30 用户定）：不要求每首都原创，可以用 Twinkle Twinkle、Old MacDonald 这类没版权的老歌做素材，再配上自家角色和画面重新生成。版权怎么核、哪些能用哪些不能用，见 [skill-topics.md](skill-topics.md) 第 9.1 节。
 
 **形式来源**：抖音「英文儿歌合集」类账号（录屏拆解见项目调研文档：一首 AI 儿歌 + 一组单词卡，按小节硬切，没有口型）。我们的版本：竖屏、用自家角色、日系手绘，每张卡 **2 小节（120 BPM 下 4 秒）**，给 2–3 岁孩子跟唱、跟做动作的时间。
 
@@ -30,7 +34,7 @@
 ## 4. 歌怎么做（`tools/storybook-video/song.py`，ElevenLabs Music，Starter 档就能用）
 
 1. story.json 写 `song` 段：`model: music_v2_5`、`styles`、`negative`、`sections`（每段 `name`、`seconds`、`pages` 或 `lines`、`direction`）。有 `pages` 的段，歌词自动取那几页的 `en`；段时长就是卡片时长，v2.5 会严格照着来。
-2. **不能唱得没感情、像机器人**（2026-10-28 用户原话）：`styles` 写"笑着唱的温暖女声、像唱给宝宝听、副歌一群小朋友跟唱和喊、强弱对比大"；`negative` 写 `flat monotone vocal`、`robotic voice`、`spoken word`；**每段 `direction` 写清怎么唱**（big 唱得大、small 唱得轻、fast 唱快、slow 拖长犯困、Up 一声比一声高）。不写现有歌名、频道名、歌手名。
+2. **不能唱得没感情、像机器人**（2026-10-28 用户原话）：`styles` 写"笑着唱的温暖女声、像唱给宝宝听、副歌一群小朋友跟唱和喊、强弱对比大"；`negative` 写 `flat monotone vocal`、`robotic voice`、`spoken word`；**每段 `direction` 写清怎么唱**（big 唱得大、small 唱得轻、fast 唱快、slow 拖长犯困、Up 一声比一声高）。不写频道名、歌手名；原创歌不写现有歌名。用公有领域老歌时，歌词按原版（或简化、换词）写进 sections，`styles` 里可以写"经典英文童谣的旋律"，先实测 ElevenLabs Music 会不会拒绝或唱跑调。
 3. 在用户 Mac 上：`source ~/.zshrc && python3 song.py ../../episodes/<集>` 出 3 版到 `out/<集号>/song/v1–v3`（每版扣 ElevenLabs 额度；Starter 每月音乐下载上限 30 分钟）。
 4. `.venv/bin/python song.py ../../episodes/<集> --check`（PATH 里要有 ffprobe，用 sbv-ffmpeg 环境）：每段听写相似度、开口时间。每段 ≥0.6、平均 ≥0.75 才算过，听错词的直接淘汰（m01 v1 把 "Up, up, up" 唱成 "top top"）。
 5. **剩下最好的两版做成试听网页（Artifact，mp3 内嵌）给用户用耳朵挑**，情绪只能人听。两版都平就改 `styles`/`direction` 重出，最多两轮。
@@ -58,7 +62,7 @@
 
 - 只发完整版，抖音进「栗栗唱儿歌」合集；小红书图文可以用 8 张卡片 + 一张歌词卡。
 - 正文用主文件第 10 节模板，"跟读句子"换成"跟唱 + 动作"：`Big, big, big! 👐 张开手`。
-- 歌是 AI 生成的，发布时照样勾 AI 声明；不写"改编自某某儿歌"。
+- 歌是 AI 生成的，发布时照样勾 AI 声明；原创歌不写"改编自某某儿歌"；用公有领域老歌的，可以写"经典英文儿歌《…》"，不写任何频道名。
 
 ## 8. Mac 上的工作区
 

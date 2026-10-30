@@ -12,7 +12,9 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 **2026-10-29 起按视频类型分册**（用户要求把口语类和儿歌类拆开）：本文件只放各类型都一样的公共部分；类型不同的地方写在两个分册里，开工先看第 3 节选类型，再读对应分册：
 
 - 口语线（有配音的故事 / 认知 / 生活口语）→ [skill-type-talk.md](skill-type-talk.md)
-- 儿歌线（AI 儿歌 + 卡片）→ [skill-type-song.md](skill-type-song.md)
+- 儿歌线（AI 儿歌 + 卡片）→ [skill-type-song.md](skill-type-song.md)。**2026-10-30 起暂停**（用户："儿歌流程先停掉"），用户说恢复之前不做新儿歌
+
+**做哪一集、哪天发**（选题来源、筛选、节日热点、选题库、周排期）→ [skill-topics.md](skill-topics.md)，选题库在 `series/topic-bank.md`（2026-10-30 起）。
 
 全程用简体中文跟用户沟通，说大白话，给能直接复制的命令，一次只给要做的那几步。
 
@@ -20,7 +22,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 1. 工作都在仓库 `AmbitionC/little-circle` 里做（用户本机是 `~/code/little-circle`）。**先读 `HANDOFF.md`**，看当前进度、ElevenLabs 档位、`series/cast.json` 里 Voice ID 填了没有。
 2. 需要时再读：`docs/brand.md`（账号、角色、简介、平台分工）、`docs/elevenlabs-workflow.md`（配音流程和交付标准）、`tools/storybook-video/README.md`（story.json 全部字段）、`milestones/M1-*.md`（本月判据和每周节奏）。仓库文档和本 skill 冲突时，**以仓库里更新日期更近的为准**，并在汇报里说一句。
-3. 看本文第 11 节的剧集表和 `tracking/videos.csv`，避免主题、单词、句型重复。**按第 3 节定这一集是哪条线、哪个子类，读对应分册。**
+3. **从选题库领题**（`series/topic-bank.md`，规则见 [skill-topics.md](skill-topics.md)），不临时现想；再看本文第 11 节的剧集表和 `tracking/videos.csv`，避免主题、单词、句型重复。**按第 3 节定这一集是哪条线、哪个子类，读对应分册。**
 4. 做完一段工作，回去更新 `HANDOFF.md`。改动直接提交并推送到默认分支，不开分支、不走 PR。
 
 ## 1. 红线（每集都检查）
@@ -56,7 +58,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 转场 | 页间 0.35 秒叠化；冲击镜头用 `cut: true` 硬切 |
 | 背景音乐 | 口语线用 `assets/bgm/` 三首整季复用：bgm_play 俏皮 / bgm_calm 安静 / bgm_happy 庆祝；有人说话时自动压低一半。儿歌线不加 |
 | 响度 | -16 LUFS（±1），峰值不超过 -1.5 dBFS |
-| 更新 | 每周二、四、六 19:00 |
+| 更新 | 2026-10-30 起按周排期，默认每天 19:30 一条口语线（[skill-topics.md](skill-topics.md) 第 1 节）；做不过来退回二、四、六 |
 | 成本 | 单条现金 ≤20 元（可灵每集约 120 灵感值，最多 2 个片段）；出图走用户 ChatGPT 订阅额度，不另花钱；第 3 周起单条制作 ≤3 小时；当月总现金 ≤300 元 |
 
 系列徽章文字用 **「栗栗学英语」**（2026-10-27 定）：视频角标写 `"badge_text": "栗栗学英语 · 森林故事"`（或 `· 认知小绘本`），封面徽章由 `brand.py` 画。仓库示例里的旧名 "Forest Friends English · 森林小伙伴英语" 不再用。
@@ -70,8 +72,8 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 口语线（[分册](skill-type-talk.md)）：角色说台词、旁白讲故事，ElevenLabs 配音 + 背景音乐 + 音效 | 森林故事 | `s` · 森林故事 | 一个道理（求助、勇敢、分享），靠一个主线词讲出来 | 在做：s02、s04 |
 | | 认知小绘本 | `c` · 认知小绘本 | 一组同类词（水果、颜色、身体、天气） | 剧本已写：c01–c05 |
 | | 生活口语 | `d` · 栗栗的一天（暂定） | 一句家长每天能对孩子说的话（洗手、穿鞋、收玩具） | 待试 1 集 |
-| 儿歌线（[分册](skill-type-song.md)）：一首 AI 儿歌就是全部声音，卡片按小节切 | 单词卡儿歌 | `m` · 栗栗唱儿歌 | 一组词，每张卡一个词 + 一个动作 | 在做：m01 |
-| | 动作儿歌 | `m` · 栗栗唱儿歌 | 一组身体动作或一段日常流程，跟着做 | 待试 1 首 |
+| 儿歌线（[分册](skill-type-song.md)）：一首 AI 儿歌就是全部声音，卡片按小节切 | 单词卡儿歌 | `m` · 栗栗唱儿歌 | 一组词，每张卡一个词 + 一个动作 | **暂停**（10-30），m01 产物已删 |
+| | 动作儿歌 | `m` · 栗栗唱儿歌 | 一组身体动作或一段日常流程，跟着做 | **暂停**（10-30） |
 
 **为什么只拆这两条线、不拆更细**〔分析〕：头部儿童英语频道（Super Simple、CoComelon、Pinkfong、Peppa、Bluey、嘟嘟英语绘本馆、托比和朋友）的内容基本落在"故事 / 认知 / 日常 / 儿歌 / 动作歌 / 字母拼读"几类里。前四类在制作上其实只有两种：有配音的和唱出来的；认知、日常和故事的差别在选题，不在流程。拆成五份 skill，公共部分要改五处，很快就会漂。
 
@@ -83,11 +85,13 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 **新子类怎么上**：生活口语和动作儿歌各先做 1 集，和同线的老子类比 2 秒跳出率、完播率、收藏率（记 `tracking/videos.csv`，"本条改动的变量"写子类）。数据不比老子类差才继续，不行就从这张表删掉。
 
+**选题**：每集的题从选题库领，来源（母题、家长烦恼、一日流程、认知词组、国内外节日、在线搜的热点……）、筛选标准、不重复规则和每周排期都在 [skill-topics.md](skill-topics.md)。
+
 **所有类型都要有一个主题**（2026-10-26 用户定的硬要求）。用户原话："你做的是视频，要有一个主题，不是纯互动，要么教一个词和派生词，串成一个剧本，要么就是教一个道理。" 最好两者合一：一个道理，靠一个主线词讲出来；主线词全片出现 5 次以上，带上它的变化（help me / I can help / helper）。
 
 ## 4. 写剧本（公共部分；台词、结构、歌词等差异见分册）
 
-**写剧本前先读两份 reference**：`docs/story-psychology-reference.md`（为什么：选题打分、8 页情绪曲线、红线）和 `docs/script-craft-global-hits.md`（怎么写：Bluey、Peppa、Gruffalo、Mo Willems、Eric Carle 等 11 个爆款的写法和 12 条可选手法）。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s04-brave/script.md`（口语线）、`episodes/m01-big-small/script.md`（儿歌线）。
+**写剧本前先读两份 reference**：`docs/story-psychology-reference.md`（为什么：选题打分、8 页情绪曲线、红线）和 `docs/script-craft-global-hits.md`（怎么写：Bluey、Peppa、Gruffalo、Mo Willems、Eric Carle 等 11 个爆款的写法和 12 条可选手法）。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s04-brave/script.md`。
 
 `script-craft-global-hits.md` 是**工具箱，不是硬性要求**（2026-10-29 用户原话："并不是硬性要求，还是要和选题搭配，选最适合的"）。每集按选题挑 2–4 条最合适的手法用上（比如能输的规则、先写结尾埋伏笔、三次阶梯、出糗的是大个子），在概要里写一行"用了哪些手法"，不用逐条打勾。
 
@@ -367,7 +371,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 口语 · 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 口语 · 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| m01 | 儿歌 · 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过，待发布；用户选了歌的 A 版（v2） |
+| m01 | 儿歌 · 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-30 儿歌线暂停，用户要求删掉产物（集目录、成片、网页），不发布 |
 | s04 | 口语 · 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-30 定稿待发布（用户：「这一版还不错」）。重做两轮后定下三条标准：简洁画面、关键帧对齐 + 大动作加过渡帧、谁在说话（张嘴帧 + 镜头靠向 + 字幕头像）；只出完整版、封面只留 3:4；Bruno 用男孩声 Chintu |
 | s03 | 口语 · 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
 | s02 | 口语 · 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |
