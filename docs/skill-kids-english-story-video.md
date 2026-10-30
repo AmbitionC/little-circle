@@ -148,11 +148,11 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 ### 5.2 角色固定描述（出现角色名时原文替换，一个字都别改）
 
-- Nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf`
-- Hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls`
-- Bun: `a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes, wearing a small red vest`
+- Nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom`
+- Hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee`
+- Bun: `a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
 
-其他角色的原文见 `series/characters.md`。2026-10-30 角色升级，每句加了一个夸张部位（剪影钩子），旧句子 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响；新写的剧本一律用新句子。
+其他角色的原文见 `series/characters.md`。2026-10-30 角色升级，每句加了一个夸张部位（剪影钩子）和「活人感」细节（衣服的磨损、小瑕疵、随身小物，见角色表），旧句子 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响；新写的剧本一律用新句子。
 
 **出图脚本靠这几句原文认角色**：提示词里出现哪句，就自动把 `series/refs/` 里对应的参考图一起发给 Codex，锁住长相。改了一个字就认不出来，参考图也就不会带上。
 

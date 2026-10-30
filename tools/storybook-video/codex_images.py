@@ -31,15 +31,15 @@ STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded charac
 STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
 CHARACTERS = {
-    # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子），六件套见 series/characters.md
-    "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf",
-    "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls",
-    "bun": "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes, wearing a small red vest",
+    # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子）；同日第二版加了「活人感」：衣服的来历、磨损和小瑕疵。六件套见 series/characters.md
+    "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom",
+    "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee",
+    "bun": "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
     # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
-    "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
-    "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy and small round ears, wearing a little orange neckerchief",
-    "fern": "a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
-    "ruby": "a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest and stubby little wings too small to fly",
+    "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and a thin curly tail with a white bandage wrapped around the tip, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up",
+    "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains",
+    "fern": "a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear",
+    "ruby": "a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest, a messy tuft of baby fluff sticking up on her head with a bit of nest straw caught in it, and stubby little wings too small to fly with one feather bent the wrong way",
     "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
     "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
     "dot": "a gentle little fawn with very long thin wobbly legs, white spots on her back and big soft ears, wearing a small pink flower behind one ear",
