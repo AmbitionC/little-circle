@@ -2,6 +2,7 @@
 """用本机 Codex CLI（ChatGPT 登录，内置 image_gen）按 script.md 的出图提示词批量出图。
 
   python3 codex_images.py refs                         # 先出三个角色的参考图 → series/refs/
+  python3 codex_images.py sheets                       # 角色设定图（正面+侧面+三表情）→ series/sheets/，给人看
   python3 codex_images.py styles                       # 画风对比：series/style_tests.json → out/style_test/
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
@@ -30,22 +31,72 @@ STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded charac
 STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
 CHARACTERS = {
+    # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子），六件套见 series/characters.md
+    "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf",
+    "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls",
+    "bun": "a fluffy light-gray bunny with very long ears, one ear always flopped down over her eye, sleepy half-closed eyes, wearing a small red vest",
+    # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
+    "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
+    "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy and small round ears, wearing a little orange neckerchief",
+    "fern": "a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
+    "ruby": "a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest and stubby little wings too small to fly",
+    "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
+    "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
+    "dot": "a gentle little fawn with very long thin wobbly legs, white spots on her back and big soft ears, wearing a small pink flower behind one ear",
+    "bo": "a little badger with a black-and-white striped face, big digging claws and a smudge of dirt on his nose",
+    "wiggles": "a little brown otter with a sleek shiny coat and long whiskers, hugging his favorite small round pebble to his chest",
+}
+# 升级前的旧描述：已出过图的旧集 script.md 里还是这几句，照样认得出、带上参考图
+OLD_DESC = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
     "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
     "bun": "a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
-    # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
     "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
     "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
-    "fern": "a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
     "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
-    "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
-    "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
-    "dot": "a gentle little fawn with white spots on her back and big soft ears, wearing a small pink flower behind one ear",
-    "bo": "a little badger with a black-and-white striped face, holding a small leaf book",
-    "wiggles": "a little brown otter with a sleek shiny coat and long whiskers, balancing a small round pebble on his head",
 }
-REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "
-              "friendly smile, plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
+# 参考图不再全员"正面站好、张嘴笑"：每个角色用自己的招牌姿势和默认表情
+POSES = {
+    "nutty": "hugging a big shiny chestnut with an eager toothy grin, his huge tail puffed up high behind him",
+    "hazel": "shyly opening his little arms for a hug, a small hopeful smile, his spines softly raised",
+    "bun": "standing a little slouched mid-yawn, one paw rubbing her eye, sleepy contented smile",
+    "pip": "clutching his own tail nervously with wide worried eyes, one huge ear turned to the side listening",
+    "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
+    "fern": "striking a ta-da pose on one leg with one paw raised high and chin up, a cheeky showing-off smile",
+    "ruby": "flapping her stubby wings hard with a determined face, her feet just barely off the ground",
+    "ollie": "turning his head almost all the way around, one wing raised like a know-it-all",
+    "rocky": "scrubbing a little apple with his gloved paws, very serious about getting it clean",
+    "dot": "wobbling on her long thin legs, trying to keep her balance, a surprised little smile",
+    "bo": "proudly holding up his big digging claws, a smudge of dirt on his nose",
+    "wiggles": "hugging his favorite pebble tightly, a blissful happy face",
+}
+REF_PROMPT = ("character reference sheet of {desc}, one single full-body view, {pose}, "
+              "plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
+# 角色设定图：给人看的，不进出图流程（一张图里多个视图，当参考图会让 Codex 画出好几个同一角色）
+SHEET_PROMPT = ("character model sheet of {desc}, laid out on one wide sheet with plain warm cream paper background: "
+                "on the left a large full-body front view, then a small full-body side view, then three head close-ups "
+                "with three clearly different expressions: {faces}. The same character in every view, consistent colors "
+                "and proportions. " + STYLE + ". Absolutely no text, no labels, no arrows")
+FACES = {
+    "nutty": "an eager toothy grin; a puzzled face scratching his head with his tail curled like a question mark; a happy 'yum' face with closed eyes",
+    "hazel": "a shy hopeful smile; a startled face with all spines popped straight out; a blissful face being hugged",
+    "bun": "a sleepy yawn; fast asleep with a tiny bubble at her nose; both ears shooting straight up in surprise",
+    "pip": "worried with his huge ears covering his face; listening with one ear turned; a proud brave smile",
+    "bruno": "a big confident grin; terrified of a tiny bee near his nose; tearing up with joy holding a honey pot",
+    "fern": "a cheeky ta-da wink; embarrassed after tripping with her tail hidden behind her; a big honest laugh",
+    "ruby": "a determined frown while flapping; puffed up into an angry little red ball; a delighted 'I did it' smile",
+}
+
+
+def char_ids(text):
+    """提示词里点名了哪些角色（新旧描述都认）。"""
+    return [k for k, d in CHARACTERS.items() if d in text or (k in OLD_DESC and OLD_DESC[k] in text)]
+
+
+def char_refs(text):
+    return [os.path.join(REFS, f"{k}.png") for k in char_ids(text) if os.path.exists(os.path.join(REFS, f"{k}.png"))]
+
+
 # 字幕旁的说话人小头像：只要头和一点肩膀，脸占满画面，缩到手机上 130 像素也认得出
 AVATAR_PROMPT = ("close-up head-and-shoulders portrait of {desc}, facing the viewer with a friendly smile, the face filling most "
                  "of the square picture and centered, plain soft warm cream background, nothing else in the picture, " + STYLE + ", square 1:1")
@@ -210,8 +261,7 @@ def comic_jobs(script):
         prompt = (f"A {len(group)}-panel comic strip laid out left to right, {len(group)} equal tall vertical panels side by side "
                   "separated by clean white gutters, each panel a full scene. " + panels + " Same characters, same art style in every "
                   "panel, " + STYLE + ". Absolutely no text, no speech bubbles, no captions, no panel numbers.")
-        refs = [os.path.join(REFS, f"{c}.png") for c, d in CHARACTERS.items()
-                if d in prompt and os.path.exists(os.path.join(REFS, f"{c}.png"))]
+        refs = char_refs(prompt)
         jobs[f"comic/sheet{n // 3 + 1}.png"] = (prompt, refs)
     return jobs, order
 
@@ -264,7 +314,7 @@ def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
 
 def main():
     ap = argparse.ArgumentParser(description="用 Codex CLI 按 script.md 出图")
-    ap.add_argument("targets", nargs="+", help="refs、avatars、styles，或集目录（里面有 script.md）")
+    ap.add_argument("targets", nargs="+", help="refs、sheets、avatars、styles，或集目录（里面有 script.md）")
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
@@ -293,8 +343,17 @@ def main():
             continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
-            jobs = {f"{k}.png": (REF_PROMPT.format(desc=d), []) for k, d in CHARACTERS.items()}
+            jobs = {f"{k}.png": (REF_PROMPT.format(desc=d, pose=POSES[k]), []) for k, d in CHARACTERS.items()}
             failed += run_jobs(REFS, jobs, args, frame=False)
+            continue
+        if t == "sheets":
+            # 角色设定图（正面 + 侧面 + 三个表情）：以参考图为准，出到 series/sheets/，给人看、不进出图流程
+            outdir = os.path.join(ROOT, "series", "sheets")
+            os.makedirs(outdir, exist_ok=True)
+            jobs = {f"{k}.png": (SHEET_PROMPT.format(desc=d, faces=FACES[k]), [os.path.join(REFS, f"{k}.png")])
+                    for k, d in CHARACTERS.items() if k in FACES and os.path.exists(os.path.join(REFS, f"{k}.png"))}
+            failed += run_jobs(outdir, jobs, args, frame=False, use_style=False,
+                               shape="wide landscape image (3:2, the widest landscape size available)")
             continue
         script = os.path.join(t, "script.md")
         if not os.path.exists(script):
@@ -307,9 +366,7 @@ def main():
             continue
         jobs = {}
         for name, prompt in parse_script(script).items():
-            refs = [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
-                    if d in prompt and os.path.exists(os.path.join(REFS, f"{k}.png"))]
-            jobs[name] = (prompt, refs)
+            jobs[name] = (prompt, char_refs(prompt))
         if args.variant:
             v = json.load(open(os.path.join(ROOT, "series", "style_variants.json"), encoding="utf-8"))[args.variant]
             outdir = os.path.join(ROOT, "out", os.path.basename(os.path.abspath(t)).split("-")[0], f"variant_{args.variant}")
@@ -325,8 +382,7 @@ def main():
         # 第二轮：关键帧（底图要先出好）
         # 改动说明里点名了新角色（如 h03 镜头下移、露出树下的朋友），就把他们的参考图也带上
         keys = {name: (KEY_ASK.format(change=change),
-                       [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
-                        if d in change and os.path.exists(os.path.join(REFS, f"{k}.png"))],
+                       char_refs(change),
                        os.path.join(os.path.abspath(t), src))
                 for name, (src, change) in parse_keys(script).items()}
         # 关键帧也可以以关键帧为底（h04 ← h03）：底图还在待出列表里的，等下一轮再出，

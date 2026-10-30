@@ -42,9 +42,9 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | --- | --- |
 | 账号名 | **栗栗学英语**（三个平台统一） |
 | 系列名 | 森林小伙伴；合集分「认知小绘本」「森林故事」 |
-| 其他角色 | 狐狸、小熊、小老鼠、知更鸟、猫头鹰、浣熊、小鹿、獾、水獭……各有一个鲜明性格和一个小标志，轮流当主角（2026-10-28 用户要求不只三个），**设定和出图原文见 `series/characters.md`**；新角色第一次出场前跑 `codex_images.py refs --only <id>` |
+| 其他角色 | 狐狸、小熊、小老鼠、知更鸟、猫头鹰、浣熊、小鹿、獾、水獭……轮流当主角（2026-10-28 用户要求不只三个）。2026-10-30 升级：每个角色有一个反差和六件套，像疯狂动物城一样有记忆点（方法见 `docs/character-design.md`）。**设定和出图原文见 `series/characters.md`**；新角色第一次出场前跑 `codex_images.py refs --only <id>`，再跑 `sheets --only <id>` 出设定图 |
 | 主角团 | 栗栗 Nutty 红松鼠（绿色针织围巾，抱大栗子）、Hazel 小刺猬（黄色小背带裤，老实可爱、有点害羞的小男孩）、Bun 小灰兔（红色小背心，软萌慢半拍）；旁白是温柔女声。每集可加一个新朋友 |
-| 角色参考图 | `series/refs/nutty.png`、`hazel.png`、`bun.png`（Codex 出的全身设定图；2026-10-28 按日系手绘画风重出）。出图时自动带上，整季不换；用户定了新头像就替换这几个文件 |
+| 角色参考图 | `series/refs/<id>.png`（Codex 出的单人全身图，招牌姿势 + 默认表情；2026-10-30 角色升级后重出）。出图时自动带上，整季不换。`series/sheets/<id>.png` 是设定图（正面 + 侧面 + 三表情），给人看，不进出图流程 |
 | 画幅 | 竖版 9:16，1080×1920，30fps，H.264，AAC |
 | 画风 | **日系手绘动画**（2026-10-28 用户从 5 组样图里挑定，替换 10-27 的精致数字插画）：干净的赛璐璐上色角色，柔和描边，大而有神的眼睛，圆润可爱的比例；背景是细腻的手绘森林，蓝天白云，光线温暖通透，带点怀旧电影感，颜色清爽明亮。不要 3D 渲染感、不要水彩纸纹、不要厚涂毛发 |
 | 结构 | [可选 0.4 秒静止封面] → 钩子 4–5 秒（第 1 帧就叠给家长看的大字标题）→ 绘本页 / 歌词卡 → 片尾卡（最后 0.6 秒淡出）。**不再做 3 秒片头**（它占掉了决定去留的前 2 秒）。各线的页数和时长见分册 |
@@ -148,11 +148,15 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 ### 5.2 角色固定描述（出现角色名时原文替换，一个字都别改）
 
-- Nutty: `a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf`
-- Hazel: `a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls`
-- Bun: `a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest`
+- Nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf`
+- Hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls`
+- Bun: `a fluffy light-gray bunny with very long ears, one ear always flopped down over her eye, sleepy half-closed eyes, wearing a small red vest`
+
+其他角色的原文见 `series/characters.md`。2026-10-30 角色升级，每句加了一个夸张部位（剪影钩子），旧句子 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响；新写的剧本一律用新句子。
 
 **出图脚本靠这几句原文认角色**：提示词里出现哪句，就自动把 `series/refs/` 里对应的参考图一起发给 Codex，锁住长相。改了一个字就认不出来，参考图也就不会带上。
+
+**角色要演出性格**（2026-10-30 用户要求角色像疯狂动物城一样有记忆点，方法见 `docs/character-design.md`）：每个角色有六件套（反差、剪影钩子、情绪器官、口头禅、想要、小毛病）。分镜提示词里别让角色都"站着微笑"：主演要用上情绪器官（Nutty 的尾巴、Hazel 的刺、Bun 的耳朵、Pip 的大耳朵、Bruno 的肚子、Fern 的尾巴、Ruby 的红胸脯），同框按体型阶梯画（Bruno 约是朋友们的两倍高，Pip、Ruby 最小）。
 
 ### 5.3 怎么出（`tools/storybook-video/codex_images.py`）
 
