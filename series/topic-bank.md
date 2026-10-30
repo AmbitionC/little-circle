@@ -12,7 +12,7 @@
 | s01 | 森林故事 | 我的！ | Nutty's Big Acorn / 小松鼠的大橡果 | acorn, share, hungry | 栗栗想独吞大橡果，咬不动，最后和朋友分着吃 | 孩子不肯分享？ | nutty | — |  | 已发 10-21（基线） |
 | s02 | 森林故事 | 我自己来 / 我做不到 | Help! Hazel's Red Ball / 小刺猬的红皮球 | help, push, ball | Hazel 推不动泥里的球、不敢喊，宝宝帮他喊 Help | 孩子遇到困难不敢开口？ | hazel | 18 |  | 成品，待发布 |
 | s03 | 森林故事 | 晚安 | Nutty Is NOT Sleepy! / 栗栗才不困呢！ | sleepy, good night, snore | — | — | nutty | — |  | 否掉（困了不算困境，没张力） |
-| s04 | 森林故事 | 我自己来 / 我做不到 | Brave Little Pip! / 小老鼠皮皮好勇敢！ | brave, scared, help | 最小的皮皮害怕也去救鸟宝宝 | 孩子胆小不敢试？ | pip | — |  | 成品，待发布 |
+| s04 | 森林故事 | 我自己来 / 我做不到 | Brave Little Pip! / 小老鼠皮皮好勇敢！ | brave, scared, step | 最小的皮皮害怕也去救鸟宝宝 | 孩子胆小不敢试？ | pip | — |  | 成品，待发布 |
 | c01 | 认知小绘本 | 饿和饱 | Nutty Is Hungry / 栗栗好饿 | hungry, full, apple | 栗栗越吃越饿，吃成球滚下山，学会说 I am full | 孩子吃饭不知道饱？ | nutty | — |  | 剧本（要按新画风标准出图） |
 | c02 | 认知小绘本 | 我的！ | Where Is My Carrot? / 我的胡萝卜呢？ | carrot, five, four | 数胡萝卜 1–5，想要先问 Can I have one? | 3岁宝宝数到5 | bun | — |  | 剧本 |
 | c03 | 认知小绘本 | 大和小、多和少 | Hazel's Colorful Leaves / Hazel 的彩色叶子 | red, yellow, leaf | Hazel 滚进落叶堆变成彩色"树叶怪" | 宝宝认颜色，跟着说 | hazel | — |  | 剧本（图已出，旧画风） |
@@ -48,15 +48,15 @@
 
 | 日期 | 选题 | 今日单词 | 主角 | 备注 |
 |---|---|---|---|---|
-| 11-02 一 | s04 Brave Little Pip! | brave, scared, help | pip | 成品 |
+| 11-02 一 | s04 Brave Little Pip! | brave, scared, step | pip | 成品 |
 | 11-03 二 | c01 Nutty Is Hungry | hungry, full, apple | nutty | |
 | 11-04 三 | c03 Hazel's Colorful Leaves | red, yellow, leaf | hazel | 秋天落叶正当季 |
 | 11-05 四 | c04 Achoo! Cover Your Mouth! | nose, mouth, sneeze | bun | 流感季 |
 | 11-06 五 | c07 Too Many Clothes! | hat, scarf, mittens | nutty | 立冬（11-07）前一天；新写 |
-| 11-07 六 | s02 Help! Hazel's Red Ball | help, push, ball | hazel | 成品；help 和 s04 隔 5 天，s04 第三个词建议换成 try |
+| 11-07 六 | s02 Help! Hazel's Red Ball | help, push, ball | hazel | 成品 |
 | 11-08 日 | c05 Bun's Rainy Picnic | sunny, rainy, windy | bun | |
 
-查第 4 节：相邻两天主角不同 ✓（c04 和 c05 都是 Bun，但中间隔了两天）；森林故事不连排 ✓；母题 6 个 ✓。唯一冲突是 help：s04 的第三个今日单词建议换成 try（只改封面和置顶评论，不动成片）。
+查第 4 节：相邻两天主角不同 ✓（c04 和 c05 都是 Bun，但中间隔了两天）；森林故事不连排 ✓；母题 6 个 ✓。10-30 用户同意 s04 第三个今日单词换成 step（片中出现 3 次；try 片里没出现），和 s02 的 help 不再冲突。
 
 ### 第 2 周（11-09 ～ 11-15）：试生活口语，接世界善意日
 
@@ -76,7 +76,7 @@
 |---|---|---|
 | acorn, share, hungry | s01 | 已发 10-21 |
 | help, push, ball | s02 | 待发 |
-| brave, scared, help | s04 | 待发 |
+| brave, scared, step | s04 | 待发 |
 | hungry, full, apple | c01 | 剧本 |
 | carrot, five, four | c02 | 剧本 |
 | red, yellow, leaf | c03 | 剧本 |

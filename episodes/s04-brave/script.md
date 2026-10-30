@@ -13,7 +13,7 @@
 3. **孩子会学的一句话**：`I am scared, but I am brave!`
 
 - **主题**：勇敢不是不害怕，而是害怕了还愿意试一试。2–3 岁的孩子天天都在"想试又不敢"：滑梯、陌生人、黑屋子、第一次自己吃饭。皮皮是全森林最小的那个，孩子会把自己代入他。
-- **今日单词**：brave 勇敢 · scared 害怕 · help 帮忙
+- **今日单词**：brave 勇敢 · scared 害怕 · step 一步
 - **重复句型**：`I am scared.` → `Be brave!` → `I can be brave!` → `I am scared, but I am brave!`（brave 出现 6 次，scared 3 次）
 - **台词量**：全片 13 句（钩子 1 句 + 正片 12 句），每句 3–5 个词，最后一句寓意是 6 个词。
 - **张力设计**（这一集的重点）：
@@ -245,7 +245,7 @@ the mouse smiles shyly but proudly and waves one tiny paw at the viewer, the fri
 🐭 森林故事｜Brave Little Pip! 小老鼠皮皮好勇敢！
 小鸟宝宝被困在高高的树枝上，大熊爬不上去，狐狸跳不上去……全森林最小、最胆小的皮皮，抱着尾巴发抖，最后却冲了上去！
 
-📖 今日单词：brave 勇敢｜scared 害怕｜help 帮忙
+📖 今日单词：brave 勇敢｜scared 害怕｜step 一步
 🗣 跟读句子：
 I am scared. 我好害怕。
 Be brave! 勇敢点！
@@ -255,7 +255,7 @@ I am scared, but I am brave! 我会害怕，但我很勇敢！
 
 #幼儿英语启蒙 #英语启蒙 #儿童英语 #英语绘本 #亲子英语 #勇敢 #胆小
 ```
-- **置顶评论**：今日单词 brave 勇敢｜scared 害怕｜help 帮忙。宝宝不敢试新东西的时候，一起说 "I am scared, but I am brave!"
+- **置顶评论**：今日单词 brave 勇敢｜scared 害怕｜step 一步。宝宝不敢试新东西的时候，一起说 "I am scared, but I am brave!"
 - 发布时勾选"内容由 AI 生成"。
 
 ### 张嘴帧（谁在说话，10-30 补齐每一句）
