@@ -1,6 +1,6 @@
 # 交接记录
 
-> 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停、m01 产物已删**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
 ## 0. 最新：选题升级 + 儿歌线暂停（2026-10-30）
@@ -8,7 +8,7 @@
 - 新分册 [docs/skill-topics.md](docs/skill-topics.md)：口语线的选题来源（含国内外节日、每周在线搜热点）、筛选标准、不重复规则、每周日排期；儿歌线选题写在第 9 节，**可以用公有领域经典儿歌做素材**（用户 10-30 定，用前逐首核版权）。
 - 选题库和排期样例在 [series/topic-bank.md](series/topic-bank.md)：口语 7 条库存 + 19 条候选，11-02 起两周排期样例（等用户确认）；儿歌候选 12 条。
 - 发布节奏：用户想日更，默认每天 19:30 一条口语；原计划一天两条（加一条儿歌），**儿歌线 10-30 起暂停生产**，skill 里保留。
-- m01 产物已删：仓库 `episodes/m01-big-small/`、共享文件夹 `m01-song/`。工具（`song.py`、sbv/qa 的儿歌模式）留着。
+- 用户先让删 m01 产物，后又改口全部保留：仓库 `episodes/m01-big-small/` 已从 git 历史恢复，共享文件夹 `m01-song/` 已从网页和仓库拷回。Mac 上 `~/code/little-circle-songs` 没动。
 - 待办：s04 第三个今日单词建议从 help 换成 try（和 s02 隔得太近）；首次搜国内热点时云端读不到抖音，靠搜索结果。
 
 ## 0. 最新：skill 按视频类型分册（2026-10-29）
@@ -27,7 +27,7 @@
 
 - 新合集「栗栗唱儿歌」，第一首是 m01《Big and Small!》，44 秒，成片已过质检。集目录在 `episodes/m01-big-small/`，做法写在 skill 儿歌分册 [docs/skill-type-song.md](docs/skill-type-song.md)。
 - 工具：`tools/storybook-video/song.py`（ElevenLabs Music 生成、听写质检、选定）；`sbv.py` 和 `qa.py` 都加了儿歌模式。
-- ~~成品在用户 Mac 的 `~/code/little-circle-songs/out/m01/`~~（10-30 用户要求删掉儿歌产物）。
+- 成品在用户 Mac 的 `~/code/little-circle-songs/out/m01/`（这一首在单独目录里做，没放进主工作区）。
 - 用户要做的两件事：
   - 在 `~/.zshrc` 里加上 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET`，否则 `oss_publish.py` 跑不了。
   - 把 Fredoka.ttf 放进 `tools/storybook-video/fonts/`；现在英文字用的是系统里的 Arial Rounded。

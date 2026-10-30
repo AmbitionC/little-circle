@@ -72,7 +72,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 口语线（[分册](skill-type-talk.md)）：角色说台词、旁白讲故事，ElevenLabs 配音 + 背景音乐 + 音效 | 森林故事 | `s` · 森林故事 | 一个道理（求助、勇敢、分享），靠一个主线词讲出来 | 在做：s02、s04 |
 | | 认知小绘本 | `c` · 认知小绘本 | 一组同类词（水果、颜色、身体、天气） | 剧本已写：c01–c05 |
 | | 生活口语 | `d` · 栗栗的一天（暂定） | 一句家长每天能对孩子说的话（洗手、穿鞋、收玩具） | 待试 1 集 |
-| 儿歌线（[分册](skill-type-song.md)）：一首 AI 儿歌就是全部声音，卡片按小节切 | 单词卡儿歌 | `m` · 栗栗唱儿歌 | 一组词，每张卡一个词 + 一个动作 | **暂停**（10-30），m01 产物已删 |
+| 儿歌线（[分册](skill-type-song.md)）：一首 AI 儿歌就是全部声音，卡片按小节切 | 单词卡儿歌 | `m` · 栗栗唱儿歌 | 一组词，每张卡一个词 + 一个动作 | **暂停**（10-30），m01 成品保留待发 |
 | | 动作儿歌 | `m` · 栗栗唱儿歌 | 一组身体动作或一段日常流程，跟着做 | **暂停**（10-30） |
 
 **为什么只拆这两条线、不拆更细**〔分析〕：头部儿童英语频道（Super Simple、CoComelon、Pinkfong、Peppa、Bluey、嘟嘟英语绘本馆、托比和朋友）的内容基本落在"故事 / 认知 / 日常 / 儿歌 / 动作歌 / 字母拼读"几类里。前四类在制作上其实只有两种：有配音的和唱出来的；认知、日常和故事的差别在选题，不在流程。拆成五份 skill，公共部分要改五处，很快就会漂。
@@ -371,7 +371,7 @@ Let's share! 我们一起分享吧！
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | s01 | 口语 · 森林故事 | Nutty's Big Acorn | 小松鼠的大橡果 | 分享 | acorn, share, hungry | It's mine! / Let's share! / Sharing is fun! | 2026-10-21 已发（全程可灵，基线） |
 | c01–c05 | 口语 · 认知小绘本 | Nutty Is Hungry / Where Is My Carrot? / Hazel's Colorful Leaves / Achoo! Cover Your Mouth! / Bun's Rainy Picnic | | 饿和饱、数数、颜色、打喷嚏捂嘴、天气 | 以各目录 script.md 为准 | | 2026-10-26 按新标准重写（一个主题、8 页、约 11 句），等确认后出图 |
-| m01 | 儿歌 · 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-30 儿歌线暂停，用户要求删掉产物（集目录、成片、网页），不发布 |
+| m01 | 儿歌 · 栗栗唱儿歌 | Big and Small! | 大大小小，唱起来！ | 反义词 big/small、tall/short、fast/slow | big, small, tall | Big, big, big! / Big and small! Short and tall! | 2026-10-29 成品完成、qa 全部通过；10-30 儿歌线暂停，产物全部保留，先不发布 |
 | s04 | 口语 · 森林故事 | Brave Little Pip! | 小老鼠皮皮好勇敢！ | 勇敢（害怕也可以勇敢） | brave, scared, help | I am scared. / Be brave! / I am scared, but I am brave! | 2026-10-30 定稿待发布（用户：「这一版还不错」）。重做两轮后定下三条标准：简洁画面、关键帧对齐 + 大动作加过渡帧、谁在说话（张嘴帧 + 镜头靠向 + 字幕头像）；只出完整版、封面只留 3:4；Bruno 用男孩声 Chintu |
 | s03 | 口语 · 森林故事 | Nutty Is NOT Sleepy! | 栗栗才不困呢！ | 困了就说晚安（sleepy → Good night） | sleepy, good night, snore | I am not sleepy! / I am sleepy, too. / So sleepy... Good night! | 2026-10-28 用户否掉（"一点波澜都没有"）：困了不算困境，没有张力 |
 | s02 | 口语 · 森林故事 | Help! Hazel's Red Ball | 小刺猬的红皮球 | 求助（一个词 help 讲一个道理） | help, push, ball | Help me, please! / I can help! / Thank you! | 2026-10-27 成品做完、全部质检通过，只差可灵钩子；10-28 换 v3 语气配音、字幕上移去底板；画风定为日系手绘，重画中；钩子要等充值后按新画风重出；待发布 |

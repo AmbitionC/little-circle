@@ -91,7 +91,7 @@
 
 | 编号 | 子类 | 素材 | 英文名 / 中文名 | 4 个词 + 动作 | 小反转 | 版权 | 状态 |
 |---|---|---|---|---|---|---|---|
-| m01 | 单词卡 | 原创 | Big and Small! / 大大小小，唱起来！ | big, small, tall, short | 最矮的 Hazel 爬到最高 | 原创 | 10-30 产物已删（剧本在 git 历史里） |
+| m01 | 单词卡 | 原创 | Big and Small! / 大大小小，唱起来！ | big, small, tall, short | 最矮的 Hazel 爬到最高 | 原创 | 成品，暂停中，未发 |
 | m02 | 动作 | 经典：Twinkle, Twinkle, Little Star | Twinkle, Twinkle! / 小星星 | star 一闪 · sky 指天 · up 举高 · sleep 合手 | Ollie 唱着唱着把大家都唱睡了，自己醒着 | 待核（预计公有领域） | 候选 |
 | m03 | 单词卡 | 经典：Old MacDonald Had a Farm（动物换成森林角色） | Old Forest Had a Friend / 森林里的朋友 | squirrel, hedgehog, bunny, bear + 叫声动作 | 最后一段 Bruno 出来，"roar"变成打哈欠 | 待核（传统民谣） | 候选 |
 | m04 | 动作 | 经典：Head, Shoulders, Knees and Toes | Head and Toes! / 头和脚 | head, shoulders, knees, toes | Bun 的长耳朵每次都比别人先碰到头 | 待核（传统） | 候选 |
