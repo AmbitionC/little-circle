@@ -23,7 +23,9 @@ REFS = os.path.join(ROOT, "series", "refs")
 CODEX_HOME = os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex"))
 W, H = 1080, 1920
 
-STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, gentle warm nostalgic light, clear bright colors, no text, no watermark")
+STYLE = ("Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, "
+         "simple calm background painted with a few big soft shapes, plenty of open empty space, no small scattered details, "
+         "a limited harmonious palette, the characters brighter and sharper than the background, one clear focal point, no text, no watermark")
 # 画风参考图（用户给的样张，只留在本机，不进仓库）：每张图都带上，锁住画风
 STYLE_DIR = os.path.join(ROOT, "series", "style")
 # 角色固定描述（和 Skill 5.2 节一字不差），出现在提示词里就带上对应参考图
@@ -44,6 +46,9 @@ CHARACTERS = {
 }
 REF_PROMPT = ("character reference sheet of {desc}, one single full-body view standing and facing the viewer, "
               "friendly smile, plain warm cream paper background, nothing else in the picture, " + STYLE + ", vertical 9:16")
+# 字幕旁的说话人小头像：只要头和一点肩膀，脸占满画面，缩到手机上 130 像素也认得出
+AVATAR_PROMPT = ("close-up head-and-shoulders portrait of {desc}, facing the viewer with a friendly smile, the face filling most "
+                 "of the square picture and centered, plain soft warm cream background, nothing else in the picture, " + STYLE + ", square 1:1")
 
 
 def parse_script(path):
@@ -259,11 +264,12 @@ def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
 
 def main():
     ap = argparse.ArgumentParser(description="用 Codex CLI 按 script.md 出图")
-    ap.add_argument("targets", nargs="+", help="refs、styles，或集目录（里面有 script.md）")
+    ap.add_argument("targets", nargs="+", help="refs、avatars、styles，或集目录（里面有 script.md）")
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
+    ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
 
     failed = 0
@@ -276,6 +282,14 @@ def main():
             jobs = {f"{k}_{sc}.png": (f"{prompt}, {v['style']}", [])
                     for k, v in cfg["styles"].items() for sc, prompt in cfg["scenes"].items()}
             failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
+        if t == "avatars":
+            # 说话人头像：以角色参考图为准，出到 series/refs/avatars/<角色>.png，sbv.py 字幕旁会用
+            outdir = os.path.join(REFS, "avatars")
+            os.makedirs(outdir, exist_ok=True)
+            jobs = {f"{k}.png": (AVATAR_PROMPT.format(desc=d), [os.path.join(REFS, f"{k}.png")])
+                    for k, d in CHARACTERS.items() if os.path.exists(os.path.join(REFS, f"{k}.png"))}
+            failed += run_jobs(outdir, jobs, args, frame=False, use_style=False, shape="square image (1:1)")
             continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
@@ -296,6 +310,17 @@ def main():
             refs = [os.path.join(REFS, f"{k}.png") for k, d in CHARACTERS.items()
                     if d in prompt and os.path.exists(os.path.join(REFS, f"{k}.png"))]
             jobs[name] = (prompt, refs)
+        if args.variant:
+            v = json.load(open(os.path.join(ROOT, "series", "style_variants.json"), encoding="utf-8"))[args.variant]
+            outdir = os.path.join(ROOT, "out", os.path.basename(os.path.abspath(t)).split("-")[0], f"variant_{args.variant}")
+            os.makedirs(outdir, exist_ok=True)
+            for name, (prompt, refs) in jobs.items():
+                for a, b in v["replace"]:
+                    prompt = prompt.replace(a, b)
+                prompt = prompt.replace(", no text, no watermark", ", " + v["append"] + ", no text, no watermark", 1)
+                jobs[name] = (prompt, refs)
+            failed += run_jobs(outdir, jobs, args, use_style=False)
+            continue
         failed += run_jobs(os.path.abspath(t), jobs, args)
         # 第二轮：关键帧（底图要先出好）
         # 改动说明里点名了新角色（如 h03 镜头下移、露出树下的朋友），就把他们的参考图也带上

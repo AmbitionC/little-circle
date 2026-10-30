@@ -64,7 +64,8 @@
       },
       {
         "image": "h03.png",
-        "at": 2.2
+        "at": 2.2,
+        "tween": 0
       },
       {
         "image": "h04.png",
@@ -109,7 +110,6 @@
   "pages": [
     {
       "image": "p01.png",
-      "motion": "in",
       "focus": [
         0.5,
         0.3
@@ -126,13 +126,16 @@
           "speaker": "ruby",
           "en": "Peep! Help me, please!",
           "zh": "啾！救救我！",
-          "say": "[crying] Peep! Help me, please!"
+          "say": "[crying] Peep! Help me, please!",
+          "where": [
+            0.67,
+            0.31
+          ]
         }
       ]
     },
     {
       "image": "p02.png",
-      "motion": "up",
       "cut": true,
       "frames": [
         {
@@ -142,10 +145,17 @@
           "shake": true
         },
         {
+          "image": "p02d.png",
+          "line": 0,
+          "offset": 2.4,
+          "tween": 0
+        },
+        {
           "image": "p02c.png",
           "line": 0,
           "offset": 2.9,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -153,7 +163,12 @@
           "speaker": "bruno",
           "en": "I am big! I can do it!",
           "zh": "我个子大！我能行！",
-          "say": "[confident] I am big! I can do it!"
+          "say": "[slowly, proudly] I am big! I can do it!",
+          "talk": {
+            "p02.png": "p02_bruno.png",
+            "p02b.png": "p02b_bruno.png",
+            "p02d.png": "p02d_bruno.png"
+          }
         }
       ],
       "hold": 0.6,
@@ -172,12 +187,18 @@
     },
     {
       "image": "p03.png",
-      "motion": "in",
       "frames": [
         {
+          "image": "p03c.png",
+          "at": 0.55,
+          "shake": true,
+          "tween": 0
+        },
+        {
           "image": "p03b.png",
-          "at": 0.9,
-          "shake": true
+          "at": 0.95,
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -186,7 +207,10 @@
           "en": "Me? I am... scared.",
           "zh": "我？我……好害怕。",
           "say": "[whispers] Me? I am... scared.",
-          "gain": 0.7
+          "gain": 0.7,
+          "talk": {
+            "p03b.png": "p03b_pip.png"
+          }
         },
         {
           "speaker": "narrator",
@@ -216,14 +240,20 @@
     },
     {
       "image": "p04.png",
-      "motion": "up",
       "cut": true,
       "frames": [
         {
-          "image": "p04b.png",
+          "image": "p04c.png",
           "line": 0,
           "offset": 1.2,
-          "shake": true
+          "shake": true,
+          "tween": 0
+        },
+        {
+          "image": "p04b.png",
+          "line": 0,
+          "offset": 1.65,
+          "tween": 0
         }
       ],
       "lines": [
@@ -232,7 +262,10 @@
           "en": "I can be brave!",
           "zh": "我可以勇敢！",
           "say": "[shouting] I can be brave!",
-          "gain": 1.3
+          "gain": 1.3,
+          "talk": {
+            "p04.png": "p04_pip.png"
+          }
         }
       ],
       "hold": 0.4,
@@ -246,7 +279,6 @@
     },
     {
       "image": "p05.png",
-      "motion": "in",
       "focus": [
         0.5,
         0.35
@@ -263,29 +295,39 @@
           "speaker": "bruno",
           "en": "Be brave, Pip!",
           "zh": "勇敢点，皮皮！",
-          "say": "[shouting] Be brave, Pip!",
-          "take": 2,
-          "gap": 0.8
+          "say": "[excited] Be brave, Pip!",
+          "gap": 0.8,
+          "take": 2
         },
         {
           "speaker": "pip",
           "en": "Step... step... step...",
           "zh": "一步……一步……又一步……",
           "say": "[nervously] Step... step... step...",
-          "gain": 0.6
+          "gain": 0.6,
+          "talk": {
+            "p05.png": "p05_pip.png",
+            "p05b.png": "p05b_pip.png"
+          }
         }
       ]
     },
     {
       "image": "p06.png",
-      "motion": "down",
       "cut": true,
       "frames": [
         {
-          "image": "p06b.png",
+          "image": "p06c.png",
           "line": 0,
           "offset": 0.0,
           "shake": true
+        },
+        {
+          "image": "p06b.png",
+          "line": 0,
+          "offset": 0.5,
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -307,19 +349,26 @@
     },
     {
       "image": "p07.png",
-      "motion": "out",
       "cut": true,
       "frames": [
         {
           "image": "p07b.png",
           "line": 0,
-          "offset": 1.0
+          "offset": 0.6,
+          "tween": 0
+        },
+        {
+          "image": "p07d.png",
+          "line": 0,
+          "offset": 1.5,
+          "tween": 0
         },
         {
           "image": "p07c.png",
           "line": 1,
           "offset": 0.0,
-          "shake": true
+          "shake": true,
+          "tween": 0
         }
       ],
       "lines": [
@@ -327,13 +376,22 @@
           "speaker": "bruno",
           "en": "Boing! Boing! Got you!",
           "zh": "嘭！嘭！接住啦！",
-          "say": "[excited] Boing! Boing! Got you!"
+          "say": "[happy, goofy] Boing! Boing! Got you!",
+          "talk": {
+            "p07.png": "p07_bruno.png",
+            "p07b.png": "p07b_bruno.png",
+            "p07d.png": "p07d_bruno.png"
+          }
         },
         {
           "speaker": "ruby",
           "en": "Brave Pip! Thank you!",
           "zh": "勇敢的皮皮！谢谢你！",
-          "say": "[happily] Brave Pip! Thank you!"
+          "say": "[happily] Brave Pip! Thank you!",
+          "where": [
+            0.57,
+            0.2
+          ]
         }
       ],
       "sfx": [
@@ -351,7 +409,6 @@
     },
     {
       "image": "p08.png",
-      "motion": "out",
       "hold": 0.8,
       "frames": [
         {
@@ -365,7 +422,10 @@
           "speaker": "pip",
           "en": "I am scared, but I am brave!",
           "zh": "我会害怕，但我很勇敢！",
-          "say": "[proudly] I am scared, but I am brave!"
+          "say": "[proudly] I am scared, but I am brave!",
+          "talk": {
+            "p08.png": "p08_pip.png"
+          }
         },
         {
           "speaker": "narrator",
@@ -390,9 +450,7 @@
   "ending": {
     "headline": "See you next time! 下集见！",
     "subline": "宝宝会说 I am brave 吗？",
-    "seconds": 3.5,
-    "feed_headline": "小老鼠能救下小鸟吗？",
-    "feed_subline": "完整版在主页合集 · 森林故事"
+    "seconds": 3.5
   },
   "bgm": {
     "file": "../../assets/bgm/bgm_play.mp3",
