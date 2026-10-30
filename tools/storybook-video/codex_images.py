@@ -34,11 +34,11 @@ CHARACTERS = {
     # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子），六件套见 series/characters.md
     "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf",
     "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls",
-    "bun": "a fluffy light-gray bunny with very long ears, one ear always flopped down over her eye, sleepy half-closed eyes, wearing a small red vest",
+    "bun": "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes, wearing a small red vest",
     # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
     "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
     "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy and small round ears, wearing a little orange neckerchief",
-    "fern": "a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
+    "fern": "a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
     "ruby": "a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest and stubby little wings too small to fly",
     "ollie": "a small round brown owl with big amber eyes and tiny round glasses",
     "rocky": "a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves",
@@ -54,6 +54,7 @@ OLD_DESC = {
     "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
     "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
     "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
+    "fern": "a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear",
 }
 # 参考图不再全员"正面站好、张嘴笑"：每个角色用自己的招牌姿势和默认表情
 POSES = {
@@ -62,7 +63,7 @@ POSES = {
     "bun": "standing a little slouched mid-yawn, one paw rubbing her eye, sleepy contented smile",
     "pip": "clutching his own tail nervously with wide worried eyes, one huge ear turned to the side listening",
     "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
-    "fern": "striking a ta-da pose on one leg with one paw raised high and chin up, a cheeky showing-off smile",
+    "fern": "striking a ta-da pose standing upright on both feet, one paw raised high, chin up, tail fluffed proudly, a cheeky showing-off smile",
     "ruby": "flapping her stubby wings hard with a determined face, her feet just barely off the ground",
     "ollie": "turning his head almost all the way around, one wing raised like a know-it-all",
     "rocky": "scrubbing a little apple with his gloved paws, very serious about getting it clean",
@@ -75,7 +76,7 @@ REF_PROMPT = ("character reference sheet of {desc}, one single full-body view, {
 # 角色设定图：给人看的，不进出图流程（一张图里多个视图，当参考图会让 Codex 画出好几个同一角色）
 SHEET_PROMPT = ("character model sheet of {desc}, laid out on one wide sheet with plain warm cream paper background: "
                 "on the left a large full-body front view, then a small full-body side view, then three head close-ups "
-                "with three clearly different expressions: {faces}. The same character in every view, consistent colors "
+                "with exactly three clearly different expressions: {faces}. Only these five views, each fully inside the picture, nothing cropped or repeated. The same character in every view, consistent colors "
                 "and proportions. " + STYLE + ". Absolutely no text, no labels, no arrows")
 FACES = {
     "nutty": "an eager toothy grin; a puzzled face scratching his head with his tail curled like a question mark; a happy 'yum' face with closed eyes",

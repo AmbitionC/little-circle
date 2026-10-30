@@ -58,10 +58,10 @@
 
 - nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body, round bright eyes, wearing a little green knitted scarf`
 - hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines, rosy cheeks, wearing tiny yellow overalls`
-- bun: `a fluffy light-gray bunny with very long ears, one ear always flopped down over her eye, sleepy half-closed eyes, wearing a small red vest`
+- bun: `a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes, wearing a small red vest`
 - pip: `a tiny gray mouse with huge round pink ears even bigger than his head, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt`
 - bruno: `a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy and small round ears, wearing a little orange neckerchief`
-- fern: `a slim young orange fox, not a squirrel, with a long pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear`
+- fern: `a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs and a long fluffy fox tail with a white tip held low, a red maple leaf tucked behind one ear`
 - ruby: `a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest and stubby little wings too small to fly`
 - ollie: `a small round brown owl with big amber eyes and tiny round glasses`
 - rocky: `a little raccoon with a black eye mask and a striped bushy tail, wearing tiny blue rubber gloves`
