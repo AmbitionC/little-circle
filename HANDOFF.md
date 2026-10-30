@@ -8,6 +8,7 @@
 - 用户要求角色像疯狂动物城一样有鲜明记忆点、不要千篇一律的动物。按用户确认的方案，每个角色补了六件套：反差、剪影钩子、情绪器官、口头禅、想要、小毛病，还有体型阶梯 XS–XL。方法和依据在 [docs/character-design.md](docs/character-design.md)，设定在 [series/characters.md](series/characters.md)，skill 第 5.2 节同步改了。
 - 出图描述每句加了一个夸张部位；旧描述 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响。参考图改成招牌姿势，新增 `codex_images.py sheets` 出设定图到 `series/sheets/`（只给人看，不进出图流程）。
 - 7 张参考图、设定图、头像在用户 Mac 上重出了两轮（第二轮修了 Bun 的耳朵和 Fern 的比例），已提交。旧参考图备份在用户 Mac 的 `series/refs_old_1030/`（未提交）。
+- 同日第二版（用户："衣服，装饰，甚至是一些小缺点这些，要有真实感和活人感"）：每个角色加了衣服来历和磨损、和性格对得上的小瑕疵、随身小物（见角色表「活人感细节」），参考图、设定图、头像全部重出（7921abf），第一版备份在用户 Mac 的 `series/refs_v1_1030/`。
 - 图鉴网页：https://claude.ai/artifact/JfVDc75EjRdgw5pMRKVHkR 。2026-10-30 之前已发布和定稿的集不重做，下一集起用新设定。
 
 ## 0. 最新：选题升级 + 儿歌线暂停（2026-10-30）
