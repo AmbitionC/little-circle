@@ -126,13 +126,13 @@ def word_chip(en, zh_txt, scale=1.0):
     return im
 
 
-def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y=0.55):
+def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y=0.55, fade=235, zh_size=66):
     cw, ch = size; k = max(cw/key_art.width, ch/key_art.height)
     art = key_art.convert('RGBA').resize((int(key_art.width*k), int(key_art.height*k)), Image.LANCZOS)
     oy, ox = int((art.height-ch)*crop_y), (art.width-cw)//2
     cv = art.crop((ox, oy, ox+cw, oy+ch)); s = cw/1080; tall = ch > cw*1.5
     top = int(ch*(0.40 if tall else 0.47))
-    cv.alpha_composite(gradient(size, 235, 0, BRAND['cream'], int(top*0.45), top))
+    cv.alpha_composite(gradient(size, fade, 0, BRAND['cream'], int(top*0.45), top))
     cv.alpha_composite(gradient(size, 0, 190, BRAND['ink'], int(ch*0.72), ch))
     y = 95*s
     b = series_badge(s); paste_c(cv, b, cw/2, y+b.height/2-15); y += b.height+10*s
@@ -141,7 +141,7 @@ def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y
     for line in wrap_title(title_en, ft, cw-120*s):
         t = text_block(line, ft, BRAND['cream_txt'], int(12*s), BRAND['brown'], int(14*s))
         paste_c(cv, t, cw/2, y+t.height/2-25*s); y += t.height-50*s
-    tz = text_block(title_zh, zh(int(66*s)), BRAND['brown'], int(8*s), BRAND['cream'], int(8*s))
+    tz = text_block(title_zh, zh(int(zh_size*s)), BRAND['brown'], int(8*s), BRAND['cream'], int(8*s))
     paste_c(cv, tz, cw/2, y+tz.height/2+5*s)
     cs = s if tall else s*0.82
     chips = [word_chip(e, z, cs) for e, z in words]
@@ -160,6 +160,10 @@ def main():
     ap.add_argument("--ep", type=int, required=True, help="集数（封面上的 EP.xx）")
     ap.add_argument("--words", nargs="+", required=True, help="今日单词，写成 help=帮忙")
     ap.add_argument("--key-art", help="默认用 story.json 同目录的 cover.png")
+    ap.add_argument("--title-en", help="封面英文大字，默认 story.json 的 title_en")
+    ap.add_argument("--title-zh", help="封面中文大字，默认 title_zh；钩子集可以用谜题，如 黑影是谁？")
+    ap.add_argument("--fade", type=int, default=235, help="顶部奶油色渐变的浓度 0–255；钩子在上半部（如黑影）时调低，别把它盖住")
+    ap.add_argument("--zh-size", type=int, default=66, help="中文大字字号；用谜题当大字时加大，如 96")
     ap.add_argument("--crop-3x4", type=float, default=0.55, help="3:4 封面从原图哪里裁（0=顶部，1=底部），标题压脸时调")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
@@ -172,7 +176,7 @@ def main():
     name = cfg.get("output_name", "storybook")
     for size, tag, crop_y in (((1080, 1920), "9x16", 0.55), ((1080, 1440), "3x4", a.crop_3x4)):
         p = os.path.join(a.out, f"{name}_cover_{tag}.jpg")
-        make_cover(art, a.ep, cfg["title_en"], cfg["title_zh"], words, size, crop_y).save(p, quality=93)
+        make_cover(art, a.ep, a.title_en or cfg["title_en"], a.title_zh or cfg["title_zh"], words, size, crop_y, a.fade, a.zh_size).save(p, quality=93)
         print(p)
 
 

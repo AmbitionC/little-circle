@@ -146,12 +146,33 @@ def main():
 
     # 5 发音：Whisper 转写，按 SRT 时间段逐句对照
     from faster_whisper import WhisperModel
-    model = WhisperModel("base.en", device="cpu", compute_type="int8")
-    segs, _ = model.transcribe(a.mp4, language="en", word_timestamps=True, beam_size=5,
-                               initial_prompt="Hazel, Nutty, Bun. Help me, please! I can help!")
-    words = [w for s in segs for w in s.words]
+    song_mode = (cfg.get("song") or {}).get("file")
+    # 配音逐句听写用 small.en：base.en 对 Boo!、Candy! 这种一两个词的带语气短句常听错（2026-11-01 s05）
+    model = WhisperModel("base.en" if song_mode else "small.en", device="cpu", compute_type="int8")
     song = (cfg.get("song") or {}).get("file")
-    print("发音（Whisper base.en）" + ("，儿歌：唱歌听写难一些，合格线 0.6" if song else ""))
+    if song:
+        segs, _ = model.transcribe(a.mp4, language="en", word_timestamps=True, beam_size=5,
+                                   initial_prompt="Hazel, Nutty, Bun. Help me, please! I can help!")
+        words = [w for s in segs for w in s.words]
+    else:
+        # 配音：逐句截出字幕时间段单独听写。整片一次听写会漂（短词 Candy!、Boo! 被吞，下一句的词串进来），
+        # 2026-11-01 s05 同一条片子跑两次结果都不一样
+        words = []
+        for i, s in enumerate(srt):
+            a0 = max(0.0, s["start"] - 0.1)
+            a1 = min(s["end"], srt[i + 1]["start"] - 0.05) if i + 1 < len(srt) else s["end"]
+            raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}", "-i", a.mp4,
+                                  "-f", "f32le", "-ac", "1", "-ar", "16000", "-"], check=True, capture_output=True).stdout
+            segs, _ = model.transcribe(np.frombuffer(raw, dtype=np.float32), language="en", word_timestamps=True,
+                                       beam_size=5, initial_prompt="Hazel, Nutty, Bun, Bruno, Pip, Fern.",
+                                       # 跟读停顿是空白，不加这两项 Whisper 会在空白里编词（"Boo! Boo!"）
+                                       vad_filter=True, vad_parameters={"min_silence_duration_ms": 300},
+                                       condition_on_previous_text=False)
+            for seg in segs:
+                for w in seg.words:
+                    w.start, w.end = w.start + a0, w.end + a0
+                    words.append(w)
+    print(f"发音（Whisper {'base.en' if song else 'small.en，逐句'}）" + ("，儿歌：唱歌听写难一些，合格线 0.6" if song else ""))
     bad = []
     for i, (s, ln) in enumerate(zip(srt, lines)):
         got = [w for w in words if s["start"] - 0.15 <= (w.start + w.end) / 2 <= s["end"] + 0.15]
@@ -187,9 +208,16 @@ def main():
             voice["take"] = ln["take"]
         wav, _ = sbv.synthesize(ln.get("say", ln["en"]), voice, cache)
         x = pcm(wav)
-        st = stats.setdefault(spk, {"f0": [], "wps": []})
+        st = stats.setdefault(spk, {"f0": [], "wps": [], "soft": []})
+        # 耳语没有音高，估出来的基频是乱的；这个角色有别的句子时，耳语句不算基频和语速
+        if "[whisper" in ln.get("say", ""):
+            st["soft"].append((f0(x), len(ln["en"].split()) / (len(x) / SR)))
+            continue
         st["f0"].append(f0(x))
         st["wps"].append(len(ln["en"].split()) / (len(x) / SR))
+    for st in stats.values():
+        if not st["f0"]:
+            st["f0"], st["wps"] = [v[0] for v in st["soft"]], [v[1] for v in st["soft"]]
     print("角色声音")
     summary = {}
     for spk, st in stats.items():

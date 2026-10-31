@@ -74,7 +74,7 @@
         "tween": 0
       }
     ],
-    "max_seconds": 4.8,
+    "max_seconds": 5.0,
     "motion": "in",
     "zoom": 1.06,
     "focus": [
@@ -88,7 +88,7 @@
       "en": "Shh... Who is it?",
       "zh": "嘘……它是谁？",
       "say": "[whispers] Shh... Who is it?",
-      "at": 1.45
+      "at": 1.55
     },
     "sfx": [
       {
@@ -98,15 +98,16 @@
       },
       {
         "file": "../../assets/sfx/thump.mp3",
-        "at": 1.15,
+        "at": 0.95,
         "gain": 0.45
       },
       {
         "file": "../../assets/sfx/pop.mp3",
-        "at": 2.58,
+        "at": 2.6,
         "gain": 0.45
       }
-    ]
+    ],
+    "clip": "h3_hook.mp4"
   },
   "pages": [
     {
@@ -137,12 +138,12 @@
       "sfx": [
         {
           "file": "../../assets/sfx/pop.mp3",
-          "at": 2.1,
+          "at": 2.2,
           "gain": 0.4
         },
         {
           "file": "../../assets/sfx/pop.mp3",
-          "at": 2.3,
+          "at": 2.35,
           "gain": 0.35
         },
         {
@@ -150,7 +151,9 @@
           "at": 2.5,
           "gain": 0.35
         }
-      ]
+      ],
+      "clip": "h3_p01.mp4",
+      "clip_seconds": 3.6
     },
     {
       "image": "p02.png",
@@ -187,6 +190,14 @@
             "p02b.png": "p02b_fern.png"
           }
         }
+      ],
+      "lead": 1.2,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/knock.mp3",
+          "at": 0.0,
+          "gain": 0.45
+        }
       ]
     },
     {
@@ -195,7 +206,7 @@
       "frames": [
         {
           "image": "p03b.png",
-          "at": 1.4,
+          "at": 1.3,
           "shake": true,
           "tween": 0
         }
@@ -216,20 +227,21 @@
       "sfx": [
         {
           "file": "../../assets/sfx/thump.mp3",
-          "at": 0.1,
-          "gain": 0.35
-        },
-        {
-          "file": "../../assets/sfx/thump.mp3",
-          "at": 0.9,
+          "at": 0.05,
           "gain": 0.4
         },
         {
           "file": "../../assets/sfx/thump.mp3",
-          "at": 1.7,
+          "at": 0.5,
           "gain": 0.45
+        },
+        {
+          "file": "../../assets/sfx/thump.mp3",
+          "at": 0.95,
+          "gain": 0.5
         }
-      ]
+      ],
+      "lead": 1.6
     },
     {
       "image": "p04.png",
@@ -238,7 +250,7 @@
         {
           "image": "p04b.png",
           "line": 0,
-          "offset": 1.4,
+          "offset": 1.9,
           "tween": 0
         }
       ],
@@ -247,20 +259,23 @@
           "speaker": "nutty",
           "en": "My candy! Where is it?",
           "zh": "我的糖！去哪儿了？",
-          "say": "[gasps] My candy! Where is it?",
+          "say": "[shocked] My candy! Where is it?",
           "talk": {
             "p04.png": "p04_nutty.png"
-          }
+          },
+          "take": 2
         }
       ],
       "hold": 0.6,
       "sfx": [
         {
           "file": "../../assets/sfx/bonk.mp3",
-          "at": 0.0,
+          "at": 4.05,
           "gain": 0.5
         }
-      ]
+      ],
+      "clip": "h3_p04.mp4",
+      "clip_from": 0.8
     },
     {
       "image": "p05.png",
@@ -282,9 +297,20 @@
         },
         {
           "speaker": "nutty",
-          "en": "Trick... or treat?!",
-          "zh": "不给糖……就捣蛋？！",
-          "say": "[nervously] Trick... [shouting] or treat?!",
+          "en": "Trick...",
+          "zh": "不给糖……",
+          "say": "[whispers, nervously] Trick...",
+          "talk": {
+            "p05b.png": "p05b_nutty.png"
+          },
+          "gain": 0.45,
+          "gap": 0.5
+        },
+        {
+          "speaker": "nutty",
+          "en": "...or treat?!",
+          "zh": "……就捣蛋？！",
+          "say": "[shouting] Or treat?!",
           "talk": {
             "p05b.png": "p05b_nutty.png"
           }
@@ -295,6 +321,11 @@
         {
           "file": "../../assets/sfx/leaves.mp3",
           "at": 0.2,
+          "gain": 0.45
+        },
+        {
+          "file": "../../assets/sfx/knock.mp3",
+          "at": 4.1,
           "gain": 0.45
         }
       ]
@@ -316,10 +347,11 @@
           "speaker": "bruno",
           "en": "Boo! I am a mouse!",
           "zh": "嘣！我是小老鼠！",
-          "say": "[giggles] Boo! I am a mouse!",
+          "say": "[playfully] Boo! I am a mouse!",
           "talk": {
             "p06.png": "p06_bruno.png"
-          }
+          },
+          "take": 4
         }
       ],
       "hold": 0.5,
@@ -327,14 +359,17 @@
         {
           "file": "../../assets/sfx/tada.mp3",
           "at": 0.0,
-          "gain": 0.5
+          "gain": 0.4
         },
         {
           "file": "../../assets/sfx/whoosh.mp3",
           "at": 0.0,
           "gain": 0.4
         }
-      ]
+      ],
+      "lead": 1.1,
+      "clip": "h3_p06.mp4",
+      "clip_seconds": 4.4
     },
     {
       "image": "p07.png",
@@ -362,15 +397,17 @@
       "sfx": [
         {
           "file": "../../assets/sfx/sparkle.mp3",
-          "at": 0.3,
-          "gain": 0.45
+          "at": 0.0,
+          "gain": 0.35
         }
-      ]
+      ],
+      "clip": "h3_p07.mp4",
+      "lead": 1.6
     },
     {
       "image": "p08.png",
       "motion": "out",
-      "hold": 0.5,
+      "hold": 0.2,
       "frames": [
         {
           "image": "p08b.png",
@@ -392,7 +429,7 @@
       "sfx": [
         {
           "file": "../../assets/sfx/ding.mp3",
-          "at": 0.3,
+          "at": 2.9,
           "gain": 0.4
         }
       ]
@@ -413,14 +450,15 @@
       "sfx": [
         {
           "file": "../../assets/sfx/knock.mp3",
-          "at": 0.0,
+          "at": 0.05,
           "gain": 0.4
         }
       ],
       "word": {
         "en": "Trick or treat!",
         "zh": "不给糖就捣蛋"
-      }
+      },
+      "lead": 1.2
     },
     {
       "image": "p07.png",
@@ -439,7 +477,7 @@
         {
           "file": "../../assets/sfx/sparkle.mp3",
           "at": 0.0,
-          "gain": 0.35
+          "gain": 0.3
         }
       ],
       "word": {
@@ -470,7 +508,8 @@
       "word": {
         "en": "Boo!",
         "zh": "吓你一跳"
-      }
+      },
+      "lead": 0.9
     },
     {
       "image": "p09.png",
@@ -480,26 +519,28 @@
           "speaker": "pip",
           "en": "I am big!",
           "zh": "我是大个子！",
-          "say": "[proudly, squeaky] I am big!",
+          "say": "[squeaky, high-pitched, proudly] I am... BIG!",
           "talk": {
             "p09.png": "p09_pip.png"
-          }
+          },
+          "take": 5
         }
       ],
-      "hold": 0.6,
+      "hold": 0.4,
       "sfx": [
         {
           "file": "../../assets/sfx/pop.mp3",
           "at": 0.0,
           "gain": 0.45
         }
-      ]
+      ],
+      "lead": 0.7
     }
   ],
   "ending": {
     "headline": "Happy Halloween! 下集见！",
     "subline": "宝宝猜对黑影是谁了吗？",
-    "seconds": 3.5
+    "seconds": 3.0
   },
   "bgm": {
     "_说明": "分段配乐（sbv.py bgm.cues）：page 0=钩子，1–8=p01–p08，9–11=复习 r1–r3，12=彩蛋 p09",

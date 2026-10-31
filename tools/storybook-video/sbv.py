@@ -1352,7 +1352,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         placements.append((song_path, song_t0, song.get("gain", 1.0)))
 
     for i, page in enumerate([] if song else pages):
-        lines, cur = [], st["lead"]
+        lines, cur = [], page.get("lead", st["lead"])   # 页面 lead：开口前留多久（给敲门声、脚步声让位，不压住第一个字）
         for ln in page_lines(page):
             if ln.get("audio"):
                 wav, words = os.path.join(base, ln["audio"]), ln.get("words", [])

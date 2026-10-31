@@ -113,7 +113,7 @@ SFX = {
     "jingle_out": ("music box jingle C6 G5 E5 C5, gentle ending, 2 seconds", 2.0),
     # 2026-10-31 s05 万圣节加的
     "knock":      ("two crisp friendly knocks on a small wooden door, cartoon, close, dry", 1.0),
-    "thump":      ("one soft heavy cartoon footstep on a forest path, low and round, not scary", 0.8),
+    "thump":      ("one soft bouncy cartoon footstep, a plush toy padding onto grass, warm and round, playful, no deep boom, not scary", 0.8),
     "tada":       ("short cheerful cartoon reveal sting, bright brass and cymbal, ta-da", 1.5),
 }
 

@@ -1,0 +1,122 @@
+{
+  "h3_hook": {
+    "task_id": 198582972,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=kling_first.png",
+      "尾帧=h04.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Start: on a moonlit forest path with glowing pumpkin lanterns, a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom in a pumpkin hat, a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee in a white ghost sheet and a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy with little bat wings walk happily toward the camera swinging their pumpkin baskets. Behind them a huge soft dark shadow shaped like a giant cartoon mouse, two big round ears and a long thin wiggly tail, slowly grows bigger and leans forward over the path and tree trunks. At about 2.5 seconds the hedgehog stops and looks back, his spines pop out through the ghost sheet, the bunny's ears flop down, the squirrel's tail puffs up. End: the three friends hug each other tightly, wide eyes, staring back at the shadow. The shadow stays round, blobby and cute, no eyes, no teeth, never scary; warm lantern light stays on. Gentle, readable motion for toddlers. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x (Pip = 1x).",
+    "at": "2026-11-01 01:08",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011332_18e3ac90616b93f373d6.mp4",
+    "wait_min": 4.7
+  },
+  "h3_p07": {
+    "task_id": 198596143,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p07.png",
+      "尾帧=p07b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains with a pink mouse-ear headband tips his big pumpkin basket upside down and lots of colorful wrapped candies pour out and fall all the way down to the grass like a rain shower, bouncing on the ground; a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom, a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee and a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy in their costumes jump up and down happily catching the falling candies in their hands. In the last second the squirrel leaps up and pops the biggest candy into the bear's mouth, and the bear's round belly shakes with laughter. Candies keep moving downward and never stick to anyone's body. Joyful, moonlit night with pumpkin lanterns, gentle steady camera, readable motion for toddlers. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy; bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x, bruno about 2.6x (Pip = 1x).",
+    "at": "2026-11-01 01:29",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101013422_18e3adb35c3b494ed2e8.mp4",
+    "wait_min": 4.6
+  },
+  "h3_p06": {
+    "task_id": 198583165,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p06.png",
+      "尾帧=p06b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains wearing a too-small headband with two big round pink mouse ears and a long pink yarn tail tied around his waist bursts out of a big round bush with his arms up in a playful 'boo' pose and a goofy grin, holding a big pumpkin basket full of colorful wrapped candies. Then he laughs so hard his belly wobbles, the headband slides down over one eye and the yarn tail falls off. Moonlit night, glowing pumpkin lanterns. Playful and friendly, not scary; readable motion for toddlers. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays.",
+    "at": "2026-11-01 01:09",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011249_18e3ac864a34abc06d93.mp4",
+    "wait_min": 3.8
+  },
+  "h3_p04": {
+    "task_id": 198583626,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p04.png",
+      "尾帧=p04b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Close-up of a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom in a pumpkin hat opening his patched cloth pouch and staring into it: it is empty, his big tail slowly curls into a question mark. Then he lifts the empty pouch upside down above his face and peeks through the hole in the bottom with one big eye; one last candy drops out and bonks him on the nose, he blinks. Funny, gentle, readable motion for toddlers; camera slowly pushes in. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays.",
+    "at": "2026-11-01 01:09",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011350_18e3ac947ce8c697751b.mp4",
+    "wait_min": 4.1
+  },
+  "h3_p01": {
+    "task_id": 198583874,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p01.png",
+      "尾帧=p01b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "On a moonlit path by a glowing pumpkin lantern, a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom in a pumpkin hat holds his cloth pouch wide open, his tail bouncing with excitement; a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee in a small white ghost sheet giggles; a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy with little bat wings yawns. Then the hedgehog's spines pop out one by one through the ghost sheet, poking little holes so it looks like a colander, and all three laugh. Gentle, readable motion for toddlers, camera slowly pushes in. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x (Pip = 1x).",
+    "at": "2026-11-01 01:10",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011418_18e3ac9b02e2a32aa14b.mp4",
+    "wait_min": 4.4
+  },
+  "h3_p03": {
+    "task_id": 198596206,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p03.png",
+      "尾帧=p03b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Seen from behind the whole time: a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom, a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee and a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy in their costumes keep slowly walking away from the camera down the moonlit path, their backs to the camera, they never turn around and never look back. Wrapped candies drop one by one from the hole in the bottom of the squirrel's pouch onto the path. Behind the big tree on the left, the huge soft round shadow of a giant cartoon mouse with two big round ears slowly slides a little closer and bends to pick up one fallen candy. In the last second the hedgehog's spines pop out through his ghost sheet and the bunny's ears flop down, still facing away. The shadow stays round, blobby and cute, no eyes, no teeth, never scary. Very slow gentle camera. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x (Pip = 1x).",
+    "at": "2026-11-01 01:30",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101013422_18e3adb366c62c1d3054.mp4",
+    "wait_min": 4.6
+  },
+  "h3_p03_v1": {
+    "task_id": 198585543,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p03.png",
+      "尾帧=p03b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Seen from behind, a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom, a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee and a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy in their costumes walk away down the moonlit path; wrapped candies drop one by one from a hole in the bottom of the squirrel's pouch, leaving a trail. Far behind a tree a huge soft round shadow of a giant cartoon mouse, big round ears and a long thin tail, peeks out and comes a little closer, bending down to pick up one of the fallen candies. The hedgehog stops and his spines pop straight out through the ghost sheet, the bunny's ears drop flat. The shadow stays round, blobby and cute, no eyes, no teeth, never scary. Slow gentle camera drifting left. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x (Pip = 1x).",
+    "at": "2026-11-01 01:12",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011649_18e3acbe2115044fd5ea.mp4",
+    "wait_min": 4.1
+  },
+  "h3_p07_v1": {
+    "task_id": 198583125,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p07.png",
+      "尾帧=p07b.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains with pink mouse-ear headband tips his big pumpkin basket and colorful wrapped candies rain down like confetti; a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom, a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee and a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy in their costumes jump up happily catching candies. Then the squirrel leaps up and pops the biggest candy into the bear's mouth, and the bear's round belly shakes with laughter. Joyful celebration, moonlit night with pumpkin lanterns, gentle camera pulling back, readable motion for toddlers. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): nutty: huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole; hazel: ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch; bun: left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy; bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: hazel about 1.3x, nutty about 1.4x, bun about 1.6x, bruno about 2.6x (Pip = 1x).",
+    "at": "2026-11-01 01:09",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/01/20261101011359_18e3ac9683e4a81d2350.mp4",
+    "wait_min": 5.0
+  }
+}

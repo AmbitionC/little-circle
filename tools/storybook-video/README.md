@@ -77,6 +77,7 @@ curl -L -o fonts/Fredoka.ttf "https://raw.githubusercontent.com/google/fonts/mai
 - `cover`：`{"image": "cover.png", "seconds": 0.4}`，在钩子前放 0.4 秒静止封面帧。
 - 每页的 `cut: true`：冲击镜头用硬切，不叠化。
 - 每页的 `hold`：说完后多停几秒。
+- 每页的 `lead`：开口前留多久（默认 0.5 秒）。翻页就有敲门、脚步这类音效时加长，音效放在开口之前，不压住台词第一个字。
 - 每页的 `zoom`：推拉幅度，默认 1.12。
 - 每句的 `audio`：直接用你录好的音频（比如 ElevenLabs 导出的），不走合成。
 - 每句的 `say`：给配音用的文本，可以带 v3 语气标签，例如 `[excited] Wow!`；字幕仍然显示 `en`。

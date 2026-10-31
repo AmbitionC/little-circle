@@ -285,7 +285,7 @@ open ../../out/c01
 1. 出图：`python3 codex_images.py ../../episodes/<集> -j 2`，放后台跑。主图出完会自动接着出关键帧（第 5.3.1 节）。
 2. 钩子：默认用关键帧翻页钩子（`hook.frames`）；有可灵灵感值、用户也同意花时，才按第 5.4 节出 `kling01.mp4`。
 3. 渲染：**只出完整版**，用正式的 `story.json`（2026-10-29 用户：片子本来就三四十秒，精华版没必要；口语线、儿歌线都一样）。
-4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。
+4. 封面：`python brand.py ../../episodes/<集>/story.json --ep <集数> --words help=帮忙 push=推 ball=球 --out ../../out/<集>`，出 9:16（1080×1920）和 3:4（1080×1440）两张，徽章是"栗栗学英语"（`brand.py` 就是附录 A 的 `make_cover`，字体改成本机能找到的）。钩子是谜题的集（如 s05 黑影）：`--key-art` 用钩子首帧，`--title-zh "黑影是谁？" --zh-size 104` 把谜题当大字，`--fade 110` 调淡顶部渐变，别把钩子盖住。
 5. 发布包：`out/<集>/publish.txt`（抖音标题、小红书标题、正文、置顶评论），小红书图文用的图放在 `out/<集>/xhs/`。
 6. **同步 OSS，出最终网页**（2026-10-28 用户要求：以后只给一个网页）：`.venv/bin/python oss_publish.py ../../out/<集>`，链接写进 `out/<集>/oss.json`；再发布一个预览网页（Artifact），里面有完整版播放、封面、每个文件的下载按钮（视频直接用 OSS 链接）、按平台分好的标题/正文/话题/置顶评论和一键复制。交付只发这个网页链接，不发本地路径、不让用户自己去文件夹找。OSS key 只从环境变量 `OSS_ACCESS_KEY_ID`、`OSS_ACCESS_KEY_SECRET` 读（在用户 `~/.zshrc` 里），读不到就先用 Artifact 自带的素材存储顶上，并在汇报里说一句。
 7. 收尾：脚本修复提交推送；`tracking/videos.csv` 加一行（状态"待发布"、工时、现金成本）；更新 `HANDOFF.md` 和第 11 节剧集表；`open out/<集>`。

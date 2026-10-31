@@ -92,6 +92,13 @@ def wait(tid):
         time.sleep(10)
 
 
+def save(meta, name, entry):
+    """写之前重新读一遍：几条镜头并行跑时，各写各的那一项，不互相覆盖。"""
+    log = json.load(open(meta)) if os.path.exists(meta) else {}
+    log[name] = entry
+    json.dump(log, open(meta, "w"), ensure_ascii=False, indent=2)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode")
@@ -121,16 +128,15 @@ def main():
         tid = r.get("task_id") or (r.get("data") or {}).get("task_id") or sys.exit(f"提交失败：{r}")
         entry = {"task_id": tid, "model": MODEL, "inputs": shown, "resolution": args.resolution,
                  "duration": args.duration, "prompt": text, "at": time.strftime("%Y-%m-%d %H:%M")}
-        log[args.name] = entry
-        json.dump(log, open(meta, "w"), ensure_ascii=False, indent=2)   # 先记下 task_id，断了也能 --status 接着查
+        save(meta, args.name, entry)   # 先记下 task_id，断了也能 --status 接着查
         print(f"已提交 {tid}，每 10 秒查一次（常见 5~60 分钟）")
 
+    t0 = time.time()
     st = wait(tid)
     out = os.path.join(epdir, f"{args.name}.mp4")
     urllib.request.urlretrieve(st["result_url"], out)
-    entry.update(task_id=tid, cost=st.get("cost"), result_url=st["result_url"])
-    log[args.name] = entry
-    json.dump(log, open(meta, "w"), ensure_ascii=False, indent=2)
+    entry.update(task_id=tid, cost=st.get("cost"), result_url=st["result_url"], wait_min=round((time.time() - t0) / 60, 1))
+    save(meta, args.name, entry)
     print(f"完成：{out}，实扣 {st.get('cost')}（逐帧看一遍：角色走没走样、有没有融化变形，再写进 story.json 的 hook.clip）")
 
 

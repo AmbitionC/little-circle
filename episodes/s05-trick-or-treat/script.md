@@ -255,16 +255,16 @@ the mouse opens his mouth wide shouting proudly, nothing else changes
 | 2 | 栗栗 | Knock, knock! Trick or treat! | `[shouting] Knock, knock! Trick or treat!` | 三人齐喊，先用栗栗配；效果弱再叠 Hazel、Bun |
 | 3 | Fern | Ta-da! Candy for you! | `[proudly] Ta-da! Candy for you!` | |
 | 4 | Hazel | A big... mouse?! | `[whispers] A big... [gasps] mouse?!` | gain 0.7 |
-| 5 | 栗栗 | My candy! Where is it? | `[gasps] My candy! Where is it?` | |
+| 5 | 栗栗 | My candy! Where is it? | `[shocked] My candy! Where is it?` | take 2：原来的 [gasps] 开头先喘一口，字幕早出、My 被吞 |
 | 6 | 旁白 | Let's knock! Trick or treat! | `[whispers] Let's knock! Trick or treat!` | gap 2.0 |
-| 7 | 栗栗 | Trick... or treat?! | `[nervously] Trick... [shouting] or treat?!` | 小声→大喊，差 ≥6 dB |
-| 8 | Bruno | Boo! I am a mouse! | `[giggles] Boo! I am a mouse!` | |
+| 7 | 栗栗 | Trick... ／ ...or treat?! | `[whispers, nervously] Trick...`（gain 0.45）＋ `[shouting] Or treat?!` | 小声→大喊，差 ≥6 dB；一句里 v3 只差 2 dB，拆成两句 |
+| 8 | Bruno | Boo! I am a mouse! | `[playfully] Boo! I am a mouse!` | take 4：原来的 [giggles] 先笑后说，字幕早出；笑靠画面 |
 | 9 | 栗栗 | A treat for you, Bruno! | `[laughs] A treat for you, Bruno!` | |
 | 10 | 栗栗 | Trick or treat! Happy Halloween! | `[warmly] Trick or treat! Happy Halloween!` | |
 | r1 | 栗栗 | Trick or treat! | `[clearly, slowly] Trick or treat!` | 复习，gap 1.5 |
 | r2 | 栗栗 | Candy! | `[happily, clearly] Candy!` | 复习，gap 1.5 |
 | r3 | Bruno | Boo! | `[playfully] Boo!` | 复习，gap 1.5 |
-| 12 | 皮皮 | I am big! | `[proudly, squeaky] I am big!` | 彩蛋 |
+| 12 | 皮皮 | I am big! | `[squeaky, high-pitched, proudly] I am... BIG!` | 彩蛋；take 5：慢一点、顿一下，和栗栗基频差 53 Hz、语速差 27% |
 
 音色都已在 `series/cast.json`（含 Fern、Bruno、Pip）。音效库里没有敲门声：出片时用 `el_prep.py` 补一个 knock（木门两下，清脆），或先用 bonk 低音量顶。
 
