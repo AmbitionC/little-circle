@@ -14,7 +14,7 @@
 不带 --go 只打印请求和预计花费；带 --go 才提交（中转站下单即扣费，失败自动退款）。
 成片存成 <集目录>/<名字>.mp4，story.json 写 "hook": {"clip": "<名字>.mp4"} 就能用
 （H3 自带声音，默认不用；要留声音加 keep_clip_audio）。
-key 只从环境变量 AI778_API_KEY 读（放 ~/.zshrc，不要发进聊天）；地址用 AI778_API_BASE 改。
+key 只从环境变量 AI778_API_KEY 读（跑 set_ai778_key.sh 弹框写进 ~/.zshrc，不要发进聊天）；地址用 AI778_API_BASE 改。
 接口文档：https://ai778.cc/apidoc#model/minimax-h3 （2026-10-31 查）
 """
 import argparse, base64, io, json, os, sys, time, urllib.error, urllib.request
