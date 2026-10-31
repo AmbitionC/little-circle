@@ -97,9 +97,9 @@
         "gain": 0.3
       },
       {
-        "file": "../../assets/sfx/bonk.mp3",
+        "file": "../../assets/sfx/thump.mp3",
         "at": 1.15,
-        "gain": 0.4
+        "gain": 0.45
       },
       {
         "file": "../../assets/sfx/pop.mp3",
@@ -212,7 +212,24 @@
           }
         }
       ],
-      "hold": 0.4
+      "hold": 0.4,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/thump.mp3",
+          "at": 0.1,
+          "gain": 0.35
+        },
+        {
+          "file": "../../assets/sfx/thump.mp3",
+          "at": 0.9,
+          "gain": 0.4
+        },
+        {
+          "file": "../../assets/sfx/thump.mp3",
+          "at": 1.7,
+          "gain": 0.45
+        }
+      ]
     },
     {
       "image": "p04.png",
@@ -308,9 +325,14 @@
       "hold": 0.5,
       "sfx": [
         {
+          "file": "../../assets/sfx/tada.mp3",
+          "at": 0.0,
+          "gain": 0.5
+        },
+        {
           "file": "../../assets/sfx/whoosh.mp3",
           "at": 0.0,
-          "gain": 0.55
+          "gain": 0.4
         }
       ]
     },
@@ -391,9 +413,9 @@
       ],
       "sfx": [
         {
-          "file": "../../assets/sfx/bonk.mp3",
+          "file": "../../assets/sfx/knock.mp3",
           "at": 0.0,
-          "gain": 0.35
+          "gain": 0.4
         }
       ]
     },
@@ -471,8 +493,44 @@
     "seconds": 3.5
   },
   "bgm": {
-    "file": "../../assets/bgm/bgm_play.mp3",
-    "volume": 0.2
+    "_说明": "分段配乐（sbv.py bgm.cues）：page 0=钩子，1–8=p01–p08，9–11=复习 r1–r3，12=彩蛋 p09",
+    "cues": [
+      {
+        "page": 0,
+        "file": "../../assets/bgm/bgm_halloween.mp3",
+        "volume": 0.22
+      },
+      {
+        "page": 3,
+        "file": "../../assets/bgm/bgm_tiptoe.mp3",
+        "volume": 0.14,
+        "fade": 0.8
+      },
+      {
+        "page": 6,
+        "offset": -0.35,
+        "file": null,
+        "fade": 0.2
+      },
+      {
+        "page": 6,
+        "file": "../../assets/bgm/bgm_happy.mp3",
+        "volume": 0.24,
+        "fade": 0.1
+      },
+      {
+        "page": 8,
+        "file": "../../assets/bgm/bgm_calm.mp3",
+        "volume": 0.18,
+        "fade": 1.0
+      },
+      {
+        "page": 9,
+        "file": "../../assets/bgm/bgm_halloween.mp3",
+        "volume": 0.12,
+        "fade": 0.6
+      }
+    ]
   },
   "loudness": {
     "I": -16,

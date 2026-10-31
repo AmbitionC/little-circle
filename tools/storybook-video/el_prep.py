@@ -111,6 +111,10 @@ SFX = {
     "page":       ("soft storybook page turn", 1.0),
     "jingle_in":  ("music box jingle C5 E5 G5 C6, cheerful, 2 seconds", 2.0),
     "jingle_out": ("music box jingle C6 G5 E5 C5, gentle ending, 2 seconds", 2.0),
+    # 2026-10-31 s05 万圣节加的
+    "knock":      ("two crisp friendly knocks on a small wooden door, cartoon, close, dry", 1.0),
+    "thump":      ("one soft heavy cartoon footstep on a forest path, low and round, not scary", 0.8),
+    "tada":       ("short cheerful cartoon reveal sting, bright brass and cymbal, ta-da", 1.5),
 }
 
 # 背景音乐：与 docs/elevenlabs-workflow.md 1.4 节一致
@@ -121,6 +125,13 @@ BGM = {
                  "instrumental, no vocals, seamless loop",
     "bgm_happy": "happy glockenspiel and ukulele with light shakers, celebration, 90 BPM, "
                  "instrumental, no vocals, seamless loop",
+    # 2026-10-31 s05 万圣节：可爱的"小怪兽"味，不吓人
+    "bgm_halloween": "cute playful Halloween music for toddlers, pizzicato strings, celesta and soft xylophone, "
+                     "light bouncy bassoon, minor key but cheerful and silly, 100 BPM, cartoon trick-or-treat walk, "
+                     "never scary, no screams, no organ, instrumental, no vocals, seamless loop",
+    "bgm_tiptoe":    "sneaky tiptoe cartoon music for toddlers, sparse low pizzicato and soft bassoon, "
+                     "slow 70 BPM, curious and a little suspenseful but cute, lots of space, quiet, never scary, "
+                     "instrumental, no vocals, seamless loop",
 }
 BGM_MS = 60000
 

@@ -19,6 +19,7 @@
 - 设计：钩子是三人身后的大圆黑影；栗栗袋子漏糖（宝宝先发现）；p05 宝宝一起喊 Trick or treat；反转是 Bruno 扮成老鼠、一路帮大家捡糖。Trick or treat 配固定"敲门 + 伸篮子"动作，说 5 次。对标拆解在 script.md 第 0 节（Super Simple 敲门儿歌、Peppa Pumpkin Party、Go Away Big Green Monster、Blue's Clues 戏剧反讽）。
 - 10-31 第 2 版（用户："能不能更有趣一点？看看怎么做成爆款……怎么利用人性"）：黑影改成"猜猜它是谁"的巨型老鼠影子（谜底 Bruno 戴老鼠耳朵），p05 栗栗对着镜头敲门让宝宝敲屏幕，片尾彩蛋皮皮戴熊耳朵 "I am big!"；script.md 第 0 节是人性 × 设计 × 数据表，第 6 节 H3 候选镜头（钩子、糖果雨，先报价），第 7 节发布打法。
 - 10-31 用户定（全系列）：结尾不再说 The end. Bye-bye!，改成 3 页今日单词复习（每词复用故事里那张图、角色再说一遍、停 1.5 秒跟读），写进 skill 口语分册第 2 节；`sbv.py` 待补 `"review": true` 大字词卡，补之前按普通页渲染。
+- 10-31 配乐升级：sbv.py 支持 `bgm.cues` 分段配乐（已用假配音测通：分段、静音、交叉淡入都对）；el_prep.py 加了 bgm_halloween、bgm_tiptoe 和 knock、thump、tada 音效（要在 Mac 上生成）；skill 口语分册 7.1 节写了按情绪曲线配乐的规则；s05 配乐表在 script.md 分镜后。
 - 状态：第 2 版剧本 + 漫画剧本给用户确认中；确认后在 Mac 上出图出片。sfx 时间点要等图出来再对；库里没有敲门声。
 
 ## 0. 试接 MiniMax H3 做动作镜头（2026-10-31）

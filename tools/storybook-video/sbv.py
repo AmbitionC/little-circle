@@ -1284,6 +1284,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
     TR = st["transition_seconds"]
 
     segs, placements, srt = [], [], []
+    page_start = {0: 0.0}   # 第几页（0=钩子）从第几秒开始，分段配乐用
     t = 0.0
 
     def add(seg):
@@ -1361,6 +1362,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
             cur += dur + ln.get("gap", st["gap"])
         seg = PageSeg(page, i, lines, ctx, base)
         add(seg)
+        page_start[i + 1] = seg.start
         for ln in lines:
             # gain：单句音量，比如"小声说"的句子写 0.4
             placements.append((ln["wav"], seg.start + ln["start"], ln.get("gain", 1.0)))
@@ -1391,13 +1393,31 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         voice[o:o + len(a)] += a
     mix = voice.copy()
     bgm = cfg.get("bgm") or {}
-    if bgm.get("file"):
-        m = decode_audio(os.path.join(base, bgm["file"]))
-        m = np.tile(m, n // len(m) + 1)[:n]
+    if bgm.get("file") or bgm.get("cues"):
+        # cues：分段配乐。每段 {"page": 第几页(0=钩子), "offset": 秒, "file": 音乐或 null(静音), "volume": 0.2, "fade": 0.4}，
+        # 从这一点放到下一段开始，段与段之间交叉淡入淡出。没有 cues 时整片一首 file。
+        cues = bgm.get("cues") or [{"page": 0, "file": bgm["file"], "volume": bgm.get("volume", 0.25)}]
+        pts = sorted(((page_start.get(c.get("page", 0), 0.0) + c.get("offset", 0.0), c) for c in cues), key=lambda x: x[0])
+        m = np.zeros(n, dtype=np.float32)
+        for k, (t0, c) in enumerate(pts):
+            t1 = pts[k + 1][0] if k + 1 < len(pts) else total
+            f = int(c.get("fade", 0.4) * SR)
+            o0, o1 = max(0, int(t0 * SR) - f // 2), min(n, int(t1 * SR) + f // 2)
+            if not c.get("file") or o1 <= o0:
+                continue
+            src = decode_audio(os.path.join(base, c["file"]))
+            src = src[int(c.get("skip", 0.0) * SR):]
+            seg_a = np.tile(src, (o1 - o0) // len(src) + 1)[:o1 - o0] * c.get("volume", bgm.get("volume", 0.25))
+            ramp = np.ones(o1 - o0, dtype=np.float32)
+            f = min(f, (o1 - o0) // 2)
+            if f:
+                ramp[:f] = np.linspace(0, 1, f)
+                ramp[-f:] = np.linspace(1, 0, f)
+            m[o0:o1] += seg_a * ramp
         win = int(0.25 * SR)
         env = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
         duck = np.convolve(np.clip(env / 0.01, 0, 1), np.ones(win) / win, mode="same")
-        mix += m * bgm.get("volume", 0.25) * (1 - 0.5 * duck)
+        mix += m * (1 - 0.5 * duck)
         fade = int(1.2 * SR)
         mix[-fade:] *= np.linspace(1, 0, fade)
     wav = os.path.join(work, "mix.wav")
