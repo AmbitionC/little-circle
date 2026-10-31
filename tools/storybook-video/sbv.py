@@ -852,6 +852,10 @@ class PageSeg:
             self.dur = page["dur"]
         else:
             self.dur = lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines else page.get("seconds", 3)
+        # clip：这一页放一段视频（H3 / 可灵动作镜头），台词、字幕照常叠在上面；页长至少放完这段视频
+        self.clip = page.get("_clip")
+        if self.clip:
+            self.dur = max(self.dur, self.clip[1] / FPS)
         self.img = Image.open(os.path.join(base, page["image"])).convert("RGB")
         self.motion = page.get("motion", "in")   # 默认统一缓推：每页换方向（左摇、右摇、拉远）会让镜头来回甩，不连贯
         self.focus = page.get("focus", [0.5, 0.42])
@@ -1047,32 +1051,36 @@ class PageSeg:
         return im
 
     def render(self, t, gt):
-        frame = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-        if self.bg is not None:
-            frame.paste(self.bg, (0, 0))
-        rx, ry, rw, rh = self.region
-        iw, ih = self.img.size
-        img, kick = pick_key(self.kf, t)
-        box = kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from)
-        cur = self.keys_name(t)
-        spk, w = self.speaker(t, cur)
-        if spk and w > 0:   # 谁说话，镜头就往谁那边轻轻靠一点
-            box = self.lean(box, spk, w, iw, ih)
-        box = shake_box(box, kick, iw, ih)
-        if self.fx or self.par:
-            if img is not self.img:
-                self.src = np.asarray(img).astype(np.float32)
-                self.img = img
-            src = self.src.copy() if self.fx else self.src
-            for fx in self.fx:
-                fx.apply(src, t)
-            src = np.clip(src, 0, 255).astype(np.uint8)
-            region = self.warp(src, box, t) if self.par else Image.fromarray(src).resize((rw, rh), Image.BICUBIC, box=box)
+        if self.clip:
+            cdir, n = self.clip
+            frame = Image.open(os.path.join(cdir, f"c_{min(int(t * FPS), n - 1) + 1:04d}.jpg")).convert("RGBA")
         else:
-            region = img.resize((rw, rh), Image.BICUBIC, box=box)
-        if spk and w > 0 and self.ctx.st.get("speaker_spotlight", 0.14) > 0:
-            region = self.spotlight(region, spk, w, box)
-        frame.paste(region, (rx, ry))
+            frame = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+            if self.bg is not None:
+                frame.paste(self.bg, (0, 0))
+            rx, ry, rw, rh = self.region
+            iw, ih = self.img.size
+            img, kick = pick_key(self.kf, t)
+            box = kb_box(self.motion, t / self.dur, iw, ih, rw, rh, self.focus, self.zoom, self.zoom_from)
+            cur = self.keys_name(t)
+            spk, w = self.speaker(t, cur)
+            if spk and w > 0:   # 谁说话，镜头就往谁那边轻轻靠一点
+                box = self.lean(box, spk, w, iw, ih)
+            box = shake_box(box, kick, iw, ih)
+            if self.fx or self.par:
+                if img is not self.img:
+                    self.src = np.asarray(img).astype(np.float32)
+                    self.img = img
+                src = self.src.copy() if self.fx else self.src
+                for fx in self.fx:
+                    fx.apply(src, t)
+                src = np.clip(src, 0, 255).astype(np.uint8)
+                region = self.warp(src, box, t) if self.par else Image.fromarray(src).resize((rw, rh), Image.BICUBIC, box=box)
+            else:
+                region = img.resize((rw, rh), Image.BICUBIC, box=box)
+            if spk and w > 0 and self.ctx.st.get("speaker_spotlight", 0.14) > 0:
+                region = self.spotlight(region, spk, w, box)
+            frame.paste(region, (rx, ry))
         if self.ctx.sparkles:
             self.ctx.sparkles.draw(frame, gt)
         if self.word is not None:   # 儿歌卡片的大字单词：开头 0.2 秒弹出来
@@ -1360,6 +1368,14 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
             lines.append(dict(ln, speaker=ln.get("speaker", "narrator"), start=cur, end=cur + dur,
                               wav=wav, tokens=tokens, spans=align_tokens(tokens, words, wav)))
             cur += dur + ln.get("gap", st["gap"])
+        if page.get("clip"):
+            cdir = os.path.join(work, f"clip{i + 1:02d}")
+            os.makedirs(cdir)
+            run(["ffmpeg", "-v", "error", "-ss", str(page.get("clip_from", 0)), "-i", os.path.join(base, page["clip"]),
+                 "-t", str(page.get("clip_seconds", 15)),
+                 "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
+                 "-q:v", "2", os.path.join(cdir, "c_%04d.jpg")])
+            page = dict(page, _clip=(cdir, len([x for x in os.listdir(cdir) if x.endswith(".jpg")])))
         seg = PageSeg(page, i, lines, ctx, base)
         add(seg)
         page_start[i + 1] = seg.start
