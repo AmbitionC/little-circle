@@ -98,7 +98,7 @@ def main():
     ap.add_argument("name", help="输出文件名（不带 .mp4），如 hook")
     ap.add_argument("--first"); ap.add_argument("--last")
     ap.add_argument("--prompt"); ap.add_argument("--prompt-file")
-    ap.add_argument("--duration", type=int, default=5, help="4–15 秒")
+    ap.add_argument("--duration", type=int, default=4, help="4–15 秒；默认最短 4 秒省钱，钩子只用 4.8 秒以内")
     ap.add_argument("--resolution", default="768P", choices=list(PRICE))
     ap.add_argument("--go", action="store_true", help="真的提交（花钱）")
     ap.add_argument("--status", help="已提交的 task_id：只查结果、下载，不重新提交")
