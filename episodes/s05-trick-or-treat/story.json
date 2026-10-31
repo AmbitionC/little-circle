@@ -81,13 +81,13 @@
       0.5,
       0.45
     ],
-    "headline": "今晚万圣节！宝宝学会这句",
-    "subline": "3岁英语启蒙 · 学会说 Trick or treat",
+    "headline": "黑影是谁？宝宝猜对了吗",
+    "subline": "万圣节英语 · 学会说 Trick or treat",
     "say": {
       "speaker": "narrator",
-      "en": "Shh... Who is behind them?",
-      "zh": "嘘……他们身后是谁？",
-      "say": "[whispers] Shh... Who is behind them?",
+      "en": "Shh... Who is it?",
+      "zh": "嘘……它是谁？",
+      "say": "[whispers] Shh... Who is it?",
       "at": 1.45
     },
     "sfx": [
@@ -203,10 +203,10 @@
       "lines": [
         {
           "speaker": "hazel",
-          "en": "Who is it? I'm scared.",
-          "zh": "是谁呀？我好怕。",
-          "say": "[whispers] Who is it? I'm scared.",
-          "gain": 0.6,
+          "en": "A big... mouse?!",
+          "zh": "一只……大老鼠？！",
+          "say": "[whispers] A big... [gasps] mouse?!",
+          "gain": 0.7,
           "talk": {
             "p03b.png": "p03b_hazel.png"
           }
@@ -250,23 +250,27 @@
       "frames": [
         {
           "image": "p05b.png",
-          "line": 1,
-          "offset": 0.0
+          "line": 0,
+          "offset": 0.0,
+          "tween": 0
         }
       ],
       "lines": [
         {
           "speaker": "narrator",
-          "en": "Let's say: Trick or treat!",
-          "zh": "我们一起喊：不给糖就捣蛋！",
-          "say": "[whispers] Let's say: Trick or treat!",
-          "gap": 1.8
+          "en": "Let's knock! Trick or treat!",
+          "zh": "我们一起敲门：不给糖就捣蛋！",
+          "say": "[whispers] Let's knock! Trick or treat!",
+          "gap": 2.0
         },
         {
           "speaker": "nutty",
           "en": "Trick... or treat?!",
           "zh": "不给糖……就捣蛋？！",
-          "say": "[nervously] Trick... [shouting] or treat?!"
+          "say": "[nervously] Trick... [shouting] or treat?!",
+          "talk": {
+            "p05b.png": "p05b_nutty.png"
+          }
         }
       ],
       "hold": 0.3,
@@ -317,22 +321,12 @@
       "frames": [
         {
           "image": "p07b.png",
-          "line": 1,
+          "line": 0,
           "offset": 0.0,
           "tween": 0
         }
       ],
       "lines": [
-        {
-          "speaker": "bruno",
-          "en": "Here! Your candy!",
-          "zh": "给！你们的糖！",
-          "say": "[happily] Here! Your candy!",
-          "talk": {
-            "p07.png": "p07_bruno.png"
-          },
-          "gap": 0.6
-        },
         {
           "speaker": "nutty",
           "en": "A treat for you, Bruno!",
@@ -354,7 +348,7 @@
     {
       "image": "p08.png",
       "motion": "out",
-      "hold": 0.8,
+      "hold": 0.5,
       "frames": [
         {
           "image": "p08b.png",
@@ -386,11 +380,34 @@
           "gain": 0.4
         }
       ]
+    },
+    {
+      "image": "p09.png",
+      "cut": true,
+      "lines": [
+        {
+          "speaker": "pip",
+          "en": "I am big!",
+          "zh": "我是大个子！",
+          "say": "[proudly, squeaky] I am big!",
+          "talk": {
+            "p09.png": "p09_pip.png"
+          }
+        }
+      ],
+      "hold": 0.6,
+      "sfx": [
+        {
+          "file": "../../assets/sfx/pop.mp3",
+          "at": 0.0,
+          "gain": 0.45
+        }
+      ]
     }
   ],
   "ending": {
     "headline": "Happy Halloween! 下集见！",
-    "subline": "宝宝会说 Trick or treat 吗？",
+    "subline": "宝宝猜对黑影是谁了吗？",
     "seconds": 3.5
   },
   "bgm": {
