@@ -400,7 +400,6 @@
     {
       "image": "p05b.png",
       "cut": true,
-      "review": true,
       "motion": "in",
       "lines": [
         {
@@ -417,12 +416,15 @@
           "at": 0.0,
           "gain": 0.4
         }
-      ]
+      ],
+      "word": {
+        "en": "Trick or treat!",
+        "zh": "不给糖就捣蛋"
+      }
     },
     {
       "image": "p07.png",
       "cut": true,
-      "review": true,
       "motion": "in",
       "lines": [
         {
@@ -439,12 +441,15 @@
           "at": 0.0,
           "gain": 0.35
         }
-      ]
+      ],
+      "word": {
+        "en": "candy",
+        "zh": "糖果"
+      }
     },
     {
       "image": "p06.png",
       "cut": true,
-      "review": true,
       "motion": "in",
       "lines": [
         {
@@ -461,7 +466,11 @@
           "at": 0.0,
           "gain": 0.35
         }
-      ]
+      ],
+      "word": {
+        "en": "Boo!",
+        "zh": "吓你一跳"
+      }
     },
     {
       "image": "p09.png",
