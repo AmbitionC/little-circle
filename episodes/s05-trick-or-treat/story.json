@@ -352,8 +352,8 @@
       "frames": [
         {
           "image": "p08b.png",
-          "line": 1,
-          "offset": 0.0
+          "line": 0,
+          "offset": 2.2
         }
       ],
       "lines": [
@@ -365,12 +365,6 @@
           "talk": {
             "p08.png": "p08_nutty.png"
           }
-        },
-        {
-          "speaker": "narrator",
-          "en": "The end. Bye-bye!",
-          "zh": "讲完啦，拜拜！",
-          "say": "[warmly] The end. Bye-bye!"
         }
       ],
       "sfx": [
@@ -378,6 +372,72 @@
           "file": "../../assets/sfx/ding.mp3",
           "at": 0.3,
           "gain": 0.4
+        }
+      ]
+    },
+    {
+      "image": "p05b.png",
+      "cut": true,
+      "review": true,
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Trick or treat!",
+          "zh": "不给糖就捣蛋！",
+          "say": "[clearly, slowly] Trick or treat!",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/bonk.mp3",
+          "at": 0.0,
+          "gain": 0.35
+        }
+      ]
+    },
+    {
+      "image": "p07.png",
+      "cut": true,
+      "review": true,
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "nutty",
+          "en": "Candy!",
+          "zh": "糖果！",
+          "say": "[happily, clearly] Candy!",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/sparkle.mp3",
+          "at": 0.0,
+          "gain": 0.35
+        }
+      ]
+    },
+    {
+      "image": "p06.png",
+      "cut": true,
+      "review": true,
+      "motion": "in",
+      "lines": [
+        {
+          "speaker": "bruno",
+          "en": "Boo!",
+          "zh": "吓你一跳！",
+          "say": "[playfully] Boo!",
+          "gap": 1.5
+        }
+      ],
+      "sfx": [
+        {
+          "file": "../../assets/sfx/boing.mp3",
+          "at": 0.0,
+          "gain": 0.35
         }
       ]
     },
