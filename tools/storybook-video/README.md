@@ -140,6 +140,10 @@ python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2  
 3. 勾选"内容由 AI 生成"声明。
 4. 封面可以在发布页手动选帧或上传，不必靠视频第一帧。
 
+## 7. 动作镜头：MiniMax H3（可选，替代可灵）
+
+`minimax_video.py <集目录> hook --first h01.png --last p01.png --prompt "..."` 先报价，加 `--go` 才提交。成片存 `<集目录>/hook.mp4`，story.json 写 `"hook": {"clip": "hook.mp4"}`。key 从 `MINIMAX_API_KEY` 读，地址可用 `MINIMAX_API_BASE` 改。
+
 ## 已知限制
 
 - 画面只有镜头运动和光点，角色本身不会动。需要动作的镜头，用可灵单独出 5 秒片段，再作为一页的视频素材插进去（这是下一步可以加的功能）。

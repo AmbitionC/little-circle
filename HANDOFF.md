@@ -3,6 +3,13 @@
 > 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
+## 0. 最新：试接 MiniMax H3 做动作镜头（2026-10-31）
+
+- 用户要试 MiniMax H3 生成视频，**API 渠道等用户给**。脚本已写好：`tools/storybook-video/minimax_video.py`，不带 `--go` 只报价不花钱。
+- 默认走首尾帧（首帧用过了角色质检的 Codex 图）；没有首帧时用参考图模式，`[[id]]` 自动带 `series/refs/<id>.png`。两种模式接口上不能混用。
+- key 放 `~/.zshrc` 的 `MINIMAX_API_KEY`；渠道不是官方国内站时改 `MINIMAX_API_BASE`。官方国内价 768P 0.5 元/秒、2K 0.8 元/秒（5 秒 768P 约 2.5 元）。
+- **还没实测过**：图片用 base64 直传是否被接受、9:16 首帧出来的尺寸、自带音频能不能关，都等拿到 key 验证。
+
 ## 0. 最新：角色升级（2026-10-30）
 
 - 用户要求角色像疯狂动物城一样有鲜明记忆点、不要千篇一律的动物。按用户确认的方案，每个角色补了六件套：反差、剪影钩子、情绪器官、口头禅、想要、小毛病，还有体型阶梯 XS–XL。方法和依据在 [docs/character-design.md](docs/character-design.md)，设定在 [series/characters.md](series/characters.md)，skill 第 5.2 节同步改了。
