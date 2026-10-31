@@ -142,7 +142,7 @@ python3 tools/storybook-video/el_prep.py pick narrator=2 nutty=1 hazel=3 bun=2  
 
 ## 7. 动作镜头：MiniMax H3（可选，替代可灵）
 
-`minimax_video.py <集目录> hook --first h01.png --last p01.png --prompt "..."` 先报价，加 `--go` 才提交。成片存 `<集目录>/hook.mp4`，story.json 写 `"hook": {"clip": "hook.mp4"}`。key 从 `MINIMAX_API_KEY` 读，地址可用 `MINIMAX_API_BASE` 改。
+`minimax_video.py <集目录> hook --first h01.png --last p01.png --prompt "..."` 先报价，加 `--go` 才提交。成片存 `<集目录>/hook.mp4`，story.json 写 `"hook": {"clip": "hook.mp4"}`。走七七八AI 中转（api.lk888.ai），key 从 `AI778_API_KEY` 读，地址可用 `AI778_API_BASE` 改；断了用 `--status <task_id>` 接着查。
 
 ## 已知限制
 

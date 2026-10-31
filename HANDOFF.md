@@ -5,10 +5,11 @@
 
 ## 0. 最新：试接 MiniMax H3 做动作镜头（2026-10-31）
 
-- 用户要试 MiniMax H3 生成视频，**API 渠道等用户给**。脚本已写好：`tools/storybook-video/minimax_video.py`，不带 `--go` 只报价不花钱。
-- 默认走首尾帧（首帧用过了角色质检的 Codex 图）；没有首帧时用参考图模式，`[[id]]` 自动带 `series/refs/<id>.png`。两种模式接口上不能混用。
-- key 放 `~/.zshrc` 的 `MINIMAX_API_KEY`；渠道不是官方国内站时改 `MINIMAX_API_BASE`。官方国内价 768P 0.5 元/秒、2K 0.8 元/秒（5 秒 768P 约 2.5 元）。
-- **还没实测过**：图片用 base64 直传是否被接受、9:16 首帧出来的尺寸、自带音频能不能关，都等拿到 key 验证。
+- 用户要试 MiniMax H3，**渠道是七七八AI（ai778.cc）中转**，接口 `https://api.lk888.ai/v1/media/generate` + `/v1/media/status`，模型 `minimax-h3`（`mode` = shouweizhen 首尾帧 / cankaosheng 参考生），图片可 base64 内联。文档 https://ai778.cc/apidoc#model/minimax-h3 不用登录就能看；价格要登录才显示。
+- 脚本：`tools/storybook-video/minimax_video.py`，不带 `--go` 只报价不花钱；提交后 task_id 先记进集目录 `minimax.json`，断了用 `--status <id>` 接着查。
+- key 放 Mac `~/.zshrc` 的 `AI778_API_KEY`。云端容器连不上 api.lk888.ai（代理拦），实测要在 Mac 上跑。
+- 中转站下单即扣，失败自动退款；视频常见 5~60 分钟出。
+- 第一条试跑：s04 钩子，`kling_first.png → h04.png`，提示词在 `episodes/s04-brave/h3_hook.txt`，768P 5 秒，按官方价估约 2.5 元。**等用户点头再跑。**
 
 ## 0. 最新：角色升级（2026-10-30）
 
