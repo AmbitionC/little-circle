@@ -24,8 +24,8 @@ from codex_images import REFS, char_ids, consistency_note, expand
 
 BASE = os.environ.get("AI778_API_BASE", "https://api.lk888.ai").rstrip("/")
 MODEL = os.environ.get("AI778_VIDEO_MODEL", "minimax-h3")
-# 中转站价格要登录才看得到；这里先按 MiniMax 官方国内价估（元/秒），真实扣费以任务返回的 cost 为准
-PRICE = {"768P": 0.5, "2K": 0.8}
+# 七七八AI 实扣（元/秒）：2026-10-31 s04 钩子 768P 5 秒扣 3.795 元；2K 按文档"约 768P 的 1.6 倍"估。真实扣费以返回的 cost 为准
+PRICE = {"768P": 0.76, "2K": 1.21}
 # 画面要求：和出图同一画风；儿童片，动作要清楚、不要镜头乱甩
 STYLE = ("Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. "
          "Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. "
@@ -113,7 +113,7 @@ def main():
         body, text, shown = build(args, epdir)
         cost = PRICE[args.resolution] * args.duration
         print(f"模型 {MODEL} @ {BASE}（{body['params']['mode']}）\n输入：{', '.join(shown)}\n"
-              f"{args.resolution} {args.duration} 秒，预计约 {cost:.1f} 元（按官方价估，实扣看返回的 cost）\n提示词：{text}")
+              f"{args.resolution} {args.duration} 秒，预计约 {cost:.1f} 元（按七七八AI 实扣估，以返回的 cost 为准）\n提示词：{text}")
         if not args.go:
             print("\n只报价。确认要花再加 --go。")
             return

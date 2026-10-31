@@ -9,7 +9,8 @@
 - 脚本：`tools/storybook-video/minimax_video.py`，不带 `--go` 只报价不花钱；提交后 task_id 先记进集目录 `minimax.json`，断了用 `--status <id>` 接着查。
 - key 放 Mac `~/.zshrc` 的 `AI778_API_KEY`。云端容器连不上 api.lk888.ai（代理拦），实测要在 Mac 上跑。
 - 中转站下单即扣，失败自动退款；视频常见 5~60 分钟出。
-- 第一条试跑：s04 钩子，`kling_first.png → h04.png`，提示词在 `episodes/s04-brave/h3_hook.txt`，768P 5 秒，按官方价估约 2.5 元。**等用户点头再跑。**
+- **10-31 第一条试跑完成**：s04 钩子 `kling_first.png → h04.png`（提示词 `episodes/s04-brave/h3_hook.txt`），768P 5 秒，**实扣 3.795 元（≈0.76 元/秒，比官方价贵约 50%）**，约 5 分钟出片。成片 768×1344、5.17 秒、24fps、带音轨，存 Mac `episodes/s04-brave/h3_hook.mp4`（不提交）。角色没融化没走样，首尾帧贴合；缺点是「树枝下沉、Ruby 一只脚悬空」那一下没做出来，紧张感偏弱。是否再试一版或替换现有关键帧钩子，等用户定。
+- Mac 上 `~/.zshrc` 还没有 key（权限拦了代写），这次是弹框临时输入的；长期用要用户自己 `open -e ~/.zshrc` 加 `export AI778_API_KEY=...`。
 
 ## 0. 最新：角色升级（2026-10-30）
 
