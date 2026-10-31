@@ -34,7 +34,7 @@
 | d03 | 生活口语 | 饿和饱 | One More Bite! / 再吃一口 | bite, yummy, all gone | 核心句 "One more bite!" / "All gone!"；Bun 挑食，每吃一口耳朵就竖起来一点 | 孩子挑食？吃饭说这句 | bun | 15 |  | 候选（和 c01 至少隔 2 周） |
 | d04 | 生活口语 | 天气和外面 | Hold My Hand! / 牵着我的手 | stop, hold, hand | 核心句 "Stop! Hold my hand."；过小溪踩石头，Dot 松手差点滑倒，牵手一起跳过去 | 出门过马路，教这一句 | dot | 15 |  | 候选（不能吓人，滑一下就好） |
 | d05 | 生活口语 | 身体小事 | Bath Time! / 洗澡啦 | bath, bubbles, splash | 核心句 "Bath time!"；Wiggles 不肯出浴盆，泡泡越吹越大把自己飘起来 | 孩子不肯洗澡 / 不肯出来？ | wiggles | 15 |  | 候选 |
-| c11 | 认知小绘本 | 交朋友 | Trick or Treat! / 不给糖就捣蛋 | pumpkin, mask, candy | 大家扮装去讨糖，Pip 扮成大熊把自己吓一跳，摘下面具"It's me!" | 万圣节英语，3岁也能玩 | pip | 16 | 节日：万圣节，2027-10-24 前定 | 候选（今年来不及） |
+| c11 | 认知小绘本 | 交朋友 | Trick or Treat! / 不给糖就捣蛋 | pumpkin, mask, candy | 大家扮装去讨糖，Pip 扮成大熊把自己吓一跳，摘下面具"It's me!" | 万圣节英语，3岁也能玩 | pip | 16 | 节日：万圣节 | 2026-10-31 用户点题，提成森林故事 s05（episodes/s05-trick-or-treat），剧本待确认 |
 | s11 | 森林故事 | 饿和饱 | Thank You, Friends! / 谢谢你们 | thank you, pie, together | Bruno 做大派摔了一地，朋友们一人带一样东西拼出更大的派，他学会说 Thank you | 感恩节，教孩子说谢谢 | bruno | 16 | 节日：感恩节，11-26 前发 | 候选 |
 | c12 | 认知小绘本 | 天气和外面 | First Snow! / 下雪啦 | snow, cold, snowman | 第一次见雪，Bun 堆雪人，胡萝卜鼻子被自己吃掉了 | 下雪了，跟宝宝说英文 | bun | 15 | 节日：小雪 11-22 前后 | 候选 |
 | s12 | 森林故事 | 晚安 | Happy New Year! / 新年快乐 | new year, three two one, hug | 大家等着倒数，Ollie 白天睡多了最清醒，把睡着的朋友一个个叫醒一起喊 3-2-1 | 跨年夜，跟宝宝一起倒数 | ollie | 15 | 节日：元旦，12-24 前定 | 候选（烟花要远、要柔） |

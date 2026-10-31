@@ -3,7 +3,13 @@
 > 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
-## 0. 最新：试接 MiniMax H3 做动作镜头（2026-10-31）
+## 0. 最新：万圣节 s05《Trick or Treat!》剧本（2026-10-31）
+
+- 用户当天点题："生成一个万圣节主题的剧本，重点让小朋友学会 trick or treat，看怎么做得非常有吸引力"。选题库 c11 提前到今年，改成森林故事 s05：`episodes/s05-trick-or-treat/`（script.md + story.json）。
+- 设计：钩子是三人身后的大圆黑影；栗栗袋子漏糖（宝宝先发现）；p05 宝宝一起喊 Trick or treat；反转是 Bruno 扮成老鼠、一路帮大家捡糖。Trick or treat 配固定"敲门 + 伸篮子"动作，说 5 次。对标拆解在 script.md 第 0 节（Super Simple 敲门儿歌、Peppa Pumpkin Party、Go Away Big Green Monster、Blue's Clues 戏剧反讽）。
+- 状态：剧本 + 漫画剧本给用户确认中；确认后在 Mac 上出图出片。sfx 时间点要等图出来再对；库里没有敲门声。
+
+## 0. 试接 MiniMax H3 做动作镜头（2026-10-31）
 
 - 用户要试 MiniMax H3，**渠道是七七八AI（ai778.cc）中转**，接口 `https://api.lk888.ai/v1/media/generate` + `/v1/media/status`，模型 `minimax-h3`（`mode` = shouweizhen 首尾帧 / cankaosheng 参考生），图片可 base64 内联。文档 https://ai778.cc/apidoc#model/minimax-h3 不用登录就能看；价格要登录才显示。
 - 脚本：`tools/storybook-video/minimax_video.py`，不带 `--go` 只报价不花钱；提交后 task_id 先记进集目录 `minimax.json`，断了用 `--status <id>` 接着查。
