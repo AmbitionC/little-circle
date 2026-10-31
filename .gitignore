@@ -30,3 +30,9 @@ series/style/
 
 series/style_old/
 series/style_detailed/
+
+# 角色参考图的出图日志和旧版备份，只留在本机
+series/**/.codex_images.log
+series/**/images.json
+series/refs_old_1030/
+series/refs_v1_1030/

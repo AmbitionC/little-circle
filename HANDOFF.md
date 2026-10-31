@@ -1,7 +1,17 @@
 # 交接记录
 
-> 最近更新：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
+> 最近更新：2026-10-31（**全量同步进默认分支，接手方法见下一节**；s05 万圣节剧本第 2 版；H3 试跑后暂停）。再上一次：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
+
+## 接手方法（2026-10-31 全量同步后）
+
+- **唯一主线**：GitHub `AmbitionC/little-circle` 的默认分支 `claude/funny-franklin-ucpap0`。skill、角色图鉴（`series/characters.md` + `series/refs/`、`series/sheets/`、`series/refs/avatars/` 当前版参考图）、出图/出片/H3 脚本（`tools/storybook-video/`）、各集剧本（`episodes/*/script.md` + `story.json`，含 s05 万圣节第 2 版）、首月计划和 M1 判据都在这条分支上。旧的 `claude/project-thread-*` 分支已全部合进来，不用再看。
+- **仓库是公开的**：不提交任何 key（ElevenLabs、七七八AI 都从环境变量读，key 只放 Mac `~/.zshrc`），也不提交剧集图片、视频、音效（见 `.gitignore`）。图和片只在用户 Mac 的 `~/code/little-circle/` 里，云端会话拿不到，需要出图出片就在 Mac 上跑。
+- **skill 正文**在 `docs/skill-kids-english-story-video.md`，分册 `docs/skill-type-talk.md`（口语）、`docs/skill-type-song.md`（儿歌，暂停）、`docs/skill-topics.md`（选题）、`docs/story-psychology-reference.md`（方法论）。共享文件夹 `/mnt/project-files` 里的同名副本是 10-24 ～ 10-28 的旧版，以仓库为准。
+- **只留在 Mac、不进仓库的**：旧参考图备份 `series/refs_old_1030/`、`series/refs_v1_1030/`；出图日志 `images.json`、`.codex_images.log`；公司层面的计划（共享文件夹 `company-plan/`，含收入测算，不放公开仓库）。
+- **开工前**：`git pull origin claude/funny-franklin-ucpap0`；改完按功能小步提交，直推这条分支。
+- **当前进度**：s04 定稿待用户发布；s05 万圣节第 2 版剧本等用户确认，确认后在 Mac 上出图出片（见下一节）；H3 暂停；儿歌线暂停。
+- `git stash` 里有一条 10-31 的 HANDOFF 备份（H3 试跑记录），内容已合进下面的 H3 一节，可以丢掉。
 
 ## 0. 最新：万圣节 s05《Trick or Treat!》剧本（2026-10-31）
 
@@ -17,6 +27,7 @@
 - key 放 Mac `~/.zshrc` 的 `AI778_API_KEY`。云端容器连不上 api.lk888.ai（代理拦），实测要在 Mac 上跑。
 - 中转站下单即扣，失败自动退款；视频常见 5~60 分钟出。
 - **10-31 第一条试跑完成**：s04 钩子 `kling_first.png → h04.png`（提示词 `episodes/s04-brave/h3_hook.txt`），768P 5 秒，**接口返回 cost 3.795（单位没核实；若是元≈0.76 元/秒，比官方贵约 50%）**，约 5 分钟出片。成片 768×1344、5.17 秒、24fps、带音轨，存 Mac `episodes/s04-brave/h3_hook.mp4`（不提交）。角色没融化没走样，首尾帧贴合；缺点是「树枝下沉、Ruby 一只脚悬空」那一下没做出来，紧张感偏弱。**用户看完说「先这样吧，还是有点贵」，H3 暂停**；动作照旧用关键帧动画。日后重启：先查站上其他 H3 型号单价和 cost 单位（3.795 单位没核实），只给 1–2 个动作镜头用、4 秒起。
+- 补充：中转站 H3 只有 768P / 2K 两档，768P 已是最低；`minimax_video.py` 默认时长已改 4 秒（最短档）。成片手机查看页 https://claude.ai/artifact/SXgFXEbf6tGVVVyvvyPAzR ，task 记录在 `episodes/s04-brave/minimax.json`。
 - Mac 上 `~/.zshrc` 还没有 key（权限拦了代写），这次是弹框临时输入的；长期用要用户自己 `open -e ~/.zshrc` 加 `export AI778_API_KEY=...`。
 
 ## 0. 最新：角色升级（2026-10-30）

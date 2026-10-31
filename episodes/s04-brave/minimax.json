@@ -1,0 +1,16 @@
+{
+  "h3_hook": {
+    "task_id": 198151130,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=kling_first.png",
+      "尾帧=h04.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Start: low angle up a tall old tree, a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest, a messy tuft of baby fluff sticking up on her head with a bit of nest straw caught in it, and stubby little wings too small to fly with one feather bent the wrong way wobbles at the very tip of a thin branch, beak wide open chirping for help, her worried mother robin flapping beside her. At about 1 second the branch dips down sharply with a crack, Ruby slips and one tiny foot dangles in the air, a few leaves fall. Then the camera slowly tilts down the same tree trunk to the friends standing on a big mossy root: a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains and a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear stare up with open mouths, a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up peeks out from behind the bear's foot. End: Bruno and Fern reach their arms up toward Ruby at the same time, Pip covers his eyes with both paws. Gentle, readable motion for toddlers; nobody falls. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. Must-keep details for each character (check every one before finishing): pip: ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves; bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief; fern: rounded cute proportions standing on two legs, crinkled red maple leaf behind one ear, black stocking legs with one dusty knee, white tail tip; ruby: tiny round ball body, messy head fluff with a bit of straw, orange-red chest, one bent wing feather, cannot fly. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: pip about 1x, ruby about 1x, fern about 1.8x, bruno about 2.6x (Pip = 1x).",
+    "at": "2026-10-31 17:32",
+    "cost": 3.795,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.10/31/20261031173737_18e393af38cbfd4c3322.mp4"
+  }
+}
