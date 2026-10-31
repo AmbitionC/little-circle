@@ -62,7 +62,7 @@
 | 栗栗 Nutty | 奶奶织的绿围巾，太长了，一头松了线 | 两颗门牙中间有条缝；大尾巴里老挂着一根小树枝 | 打了补丁的布坚果袋，袋底有个洞，栗子一路漏，所以总找不到 |
 | Hazel | 黄背带裤大了一号，一边背带老往下滑；膝盖上一块圆圆的蓝补丁 | 刺上总扎着一片小红叶，自己不知道 | — |
 | Bun | 红背心扣错了扣子，歪歪地挂着 | 两耳中间一撮睡乱的呆毛 | 抱着一根旧旧的胡萝卜布偶，睡觉要抱 |
-| 皮皮 Pip | 哥哥姐姐穿剩的条纹衫，太大，袖子卷起来 | 左耳有个小缺口；尾巴尖缠着一圈白绷带 | — |
+| 皮皮 Pip | 哥哥姐姐穿剩的条纹衫，太大，袖子卷起来 | 左耳有个小缺口（2026-10-31 去掉了尾巴绷带：用户说看着像尾巴断了） | — |
 | 布鲁诺 Bruno | 橙色领巾上全是蜂蜜滴下来的黄渍 | 鼻尖上一个被蜜蜂蛰的小红包 | — |
 | 小芬 Fern | 耳后的红枫叶有点皱了，舍不得换 | 一边膝盖蹭脏了一块（摆造型摔的） | — |
 | 露比 Ruby | — | 头顶一撮乱翘的绒毛，夹着一根鸟窝里的草；一根翅膀羽毛翘反了 | — |
@@ -74,7 +74,7 @@
 - nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom`
 - hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee`
 - bun: `a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
-- pip: `a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and a thin curly tail with a white bandage wrapped around the tip, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up`
+- pip: `a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up`
 - bruno: `a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains`
 - fern: `a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear`
 - ruby: `a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest, a messy tuft of baby fluff sticking up on her head with a bit of nest straw caught in it, and stubby little wings too small to fly with one feather bent the wrong way`

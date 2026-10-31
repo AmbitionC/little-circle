@@ -36,7 +36,7 @@ CHARACTERS = {
     "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee",
     "bun": "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
     # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
-    "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and a thin curly tail with a white bandage wrapped around the tip, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up",
+    "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up",
     "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains",
     "fern": "a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear",
     "ruby": "a tiny ball-shaped fluffy baby robin with a puffed-up orange-red chest, a messy tuft of baby fluff sticking up on her head with a bit of nest straw caught in it, and stubby little wings too small to fly with one feather bent the wrong way",
@@ -61,7 +61,7 @@ POSES = {
     "nutty": "hugging a big shiny chestnut with an eager toothy grin, his huge tail puffed up high behind him",
     "hazel": "shyly opening his little arms for a hug, a small hopeful smile, his spines softly raised",
     "bun": "standing a little slouched mid-yawn, one paw rubbing her eye, sleepy contented smile",
-    "pip": "clutching his own tail nervously with wide worried eyes, one huge ear turned to the side listening",
+    "pip": "clutching the end of his own long unbroken tail nervously with wide worried eyes, one huge ear turned to the side listening",
     "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
     "fern": "striking a ta-da pose standing upright on both feet, one paw raised high, chin up, tail fluffed proudly, a cheeky showing-off smile",
     "ruby": "flapping her stubby wings hard with a determined face, her feet just barely off the ground",
