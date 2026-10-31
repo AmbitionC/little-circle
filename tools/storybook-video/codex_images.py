@@ -7,6 +7,11 @@
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
   python3 codex_images.py ../../episodes/s03-sleepy --comic   # 漫画剧本：每三格一张横版漫画，剧本确认前给用户看
+  python3 codex_images.py ../../episodes/s05-xxx --check      # 只查角色写法，不出图
+
+角色一致性：script.md 里写 [[pip]] 会展开成角色表里的整句英文描述，并自动带上 series/refs/pip.png；
+每次出图还会把这个角色最容易画丢的细节（KEEP）和同框身高比例（SIZES）一起交代给 Codex。
+出图前自动检查（提到角色却没用描述、用了旧描述、缺参考图），没过不出图；出完拼 qc/characters.jpg 对比参考图。
 
 关键帧（做动画用，不花可灵灵感值）：script.md 里写 **p01b.png** ← p01.png，下面代码块只写"改哪里"。
 脚本先出底图，再把底图当第一张参考图，让 Codex 只改动作、其余不动，出同一镜头的下一张画。
@@ -98,6 +103,118 @@ def char_refs(text):
     return [os.path.join(REFS, f"{k}.png") for k in char_ids(text) if os.path.exists(os.path.join(REFS, f"{k}.png"))]
 
 
+# 角色一致性（2026-10-31 用户："这些形象怎么能集成到 skill，保证每次视频生成的一致性"）
+# 每张图带上参考图之外，再把这几样逐条点给 Codex：最容易被画丢的标志细节、同框时的身高比例
+KEEP = {
+    "nutty": "huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole",
+    "hazel": "ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch",
+    "bun": "left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy",
+    "pip": "ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves",
+    "bruno": "about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief",
+    "fern": "rounded cute proportions standing on two legs, crinkled red maple leaf behind one ear, black stocking legs with one dusty knee, white tail tip",
+    "ruby": "tiny round ball body, messy head fluff with a bit of straw, orange-red chest, one bent wing feather, cannot fly",
+}
+# 体型阶梯：数字是大约多少个"小个子"高（Pip、Ruby 记 1）
+SIZES = {"ruby": 1, "pip": 1, "nutty": 1.4, "hazel": 1.3, "bun": 1.6, "fern": 1.8, "bruno": 2.6}
+# 剧本里可以只写 [[pip]]，出图前展开成整句英文描述（不用再手抄长句，也就不会抄错）
+TOKEN = re.compile(r"\[\[(\w+)\]\]")
+# 提示词里出现这些词却没带上对应描述，多半是角色写漏了，会画成路人动物
+NAMES = {"nutty": r"\bnutty\b|squirrel", "hazel": r"\bhazel\b|hedgehog", "bun": r"\bbun\b|bunny|rabbit",
+         "pip": r"\bpip\b|\bmouse\b", "bruno": r"\bbruno\b|\bbear\b", "fern": r"\bfern\b|\bfox\b",
+         "ruby": r"\bruby\b|robin", "ollie": r"\bollie\b|\bowl\b", "rocky": r"\brocky\b|raccoon",
+         "dot": r"\bdot\b|fawn|\bdeer\b", "bo": r"\bbo\b|badger", "wiggles": r"\bwiggles\b|otter"}
+
+
+def expand(text):
+    def one(m):
+        k = m.group(1).lower()
+        if k not in CHARACTERS:
+            sys.exit(f"script.md 里的 [[{m.group(1)}]] 不是已知角色（{', '.join(CHARACTERS)}）")
+        return CHARACTERS[k]
+    return TOKEN.sub(one, text)
+
+
+def consistency_note(ids):
+    """附在出图请求后面：逐个角色点名要保留的细节；两人以上同框时说明身高比例。"""
+    note = ""
+    keep = [f"{k}: {KEEP[k]}" for k in ids if k in KEEP]
+    if keep:
+        note += ("Must-keep details for each character (check every one before finishing): " + "; ".join(keep) + ". "
+                 "Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, "
+                 "but everything in the character description always stays. ")
+    sized = [k for k in ids if k in SIZES]
+    if len(sized) >= 2:
+        note += ("Keep the series' height ladder when they stand together: "
+                 + ", ".join(f"{k} about {SIZES[k]}x" for k in sorted(sized, key=SIZES.get)) + " (Pip = 1x). ")
+    return note
+
+
+def check_script(jobs):
+    """出图前查一遍，返回必须先改的问题条数：点了名字/物种却没用整句描述（参考图带不上）、缺参考图。
+    还在用升级前旧描述的只提示、不拦（旧集重出图照样能用）。"""
+    issues, old = 0, set()
+    for name, prompt in jobs.items():
+        ids = set(char_ids(prompt))
+        rest = prompt.lower()
+        # 物种词也会出现在别人的描述里（"not a squirrel"），先去掉已识别的描述再找
+        for i in ids:
+            for d in (CHARACTERS[i], OLD_DESC.get(i)):
+                if d:
+                    rest = rest.replace(d.lower(), "")
+        for k, pat in NAMES.items():
+            if k not in ids and re.search(pat, rest):
+                print(f"  ✗ {name}: 提到了 {k}，但没用整句描述，参考图带不上。改成 [[{k}]]")
+                issues += 1
+        for k in ids:
+            if k in OLD_DESC and OLD_DESC[k] in prompt and CHARACTERS[k] not in prompt:
+                old.add(k)
+            if not os.path.exists(os.path.join(REFS, f"{k}.png")):
+                print(f"  ✗ {name}: {k} 还没有参考图，先跑 codex_images.py refs --only {k}")
+                issues += 1
+    if old:
+        print(f"  提示：{', '.join(sorted(old))} 用的是 2026-10-30 升级前的旧描述（旧集可以不管；新剧本请改成 [[id]]）")
+    return issues
+
+
+def qc_sheet(epdir, names):
+    """把每张出好的图和它带的参考图并排拼成 qc/characters.jpg，一眼对比角色有没有走样。"""
+    lock = os.path.join(epdir, "images.json")
+    if not os.path.exists(lock):
+        return None
+    rec = json.load(open(lock, encoding="utf-8"))
+    rows = []
+    for n in names:
+        r = rec.get(n)
+        if not r or not r.get("refs") or not os.path.exists(os.path.join(epdir, n)):
+            continue
+        im = Image.open(os.path.join(epdir, n)).convert("RGB")
+        im.thumbnail((360, 640))
+        refs = []
+        for b in r["refs"]:
+            if os.path.exists(os.path.join(REFS, b)):
+                x = Image.open(os.path.join(REFS, b)).convert("RGB")
+                x.thumbnail((240, 320))
+                refs.append(x)
+        rows.append((im, refs))
+    if not rows:
+        return None
+    w = max(im.width + 20 + sum(x.width + 10 for x in refs) for im, refs in rows)
+    h = sum(im.height + 20 for im, _ in rows)
+    sheet = Image.new("RGB", (w, h), "white")
+    y = 0
+    for im, refs in rows:
+        sheet.paste(im, (0, y))
+        x0 = im.width + 20
+        for x in refs:
+            sheet.paste(x, (x0, y))
+            x0 += x.width + 10
+        y += im.height + 20
+    os.makedirs(os.path.join(epdir, "qc"), exist_ok=True)
+    dst = os.path.join(epdir, "qc", "characters.jpg")
+    sheet.save(dst, quality=85)
+    return dst
+
+
 # 字幕旁的说话人小头像：只要头和一点肩膀，脸占满画面，缩到手机上 130 像素也认得出
 AVATAR_PROMPT = ("close-up head-and-shoulders portrait of {desc}, facing the viewer with a friendly smile, the face filling most "
                  "of the square picture and centered, plain soft warm cream background, nothing else in the picture, " + STYLE + ", square 1:1")
@@ -105,7 +222,7 @@ AVATAR_PROMPT = ("close-up head-and-shoulders portrait of {desc}, facing the vie
 
 def parse_script(path):
     """从 script.md 取出 {文件名: 提示词}：**p01.png** 下面的代码块、可灵首帧、封面关键画面。"""
-    text = open(path, encoding="utf-8").read()
+    text = expand(open(path, encoding="utf-8").read())
     jobs = {}
     for name, body in re.findall(r"\*\*(p\d+\.png)\*\*\s*\n```[^\n]*\n(.*?)```", text, re.S):
         jobs[name] = " ".join(body.split())
@@ -121,7 +238,7 @@ def parse_script(path):
 
 def parse_keys(path):
     """关键帧：{文件名: (底图文件名, 改动说明)}，写法是 **p01b.png** ← p01.png（也认 <-）。"""
-    text = open(path, encoding="utf-8").read()
+    text = expand(open(path, encoding="utf-8").read())
     return {name: (src, " ".join(body.split())) for name, src, body in re.findall(
         r"\*\*([\w-]+\.png)\*\*\s*(?:←|<-)\s*([\w-]+\.png)[^\n]*\n```[^\n]*\n(.*?)```", text, re.S)}
 
@@ -200,6 +317,10 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
         ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "
                 "series. " + lineup_note + "Keep each character's face, body shape, colors and clothing exactly like the reference, "
                 "but use the pose, scene and composition from the prompt, not the reference's.\n\n")
+        ids = [os.path.splitext(os.path.basename(r))[0] for r in refs]
+        if lineup_note:
+            ids = names
+        ask += consistency_note(ids) + "\n\n"
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
@@ -319,6 +440,8 @@ def main():
     ap.add_argument("-j", "--jobs", type=int, default=2, help="并行张数，默认 2")
     ap.add_argument("--only", type=lambda s: s.split(","), help="只出这几张，如 p02,kling_first")
     ap.add_argument("--force", action="store_true", help="已有的也重出")
+    ap.add_argument("--check", action="store_true", help="只检查角色写法（[[id]]、整句描述、参考图齐不齐），不出图")
+    ap.add_argument("--allow-mismatch", action="store_true", help="角色检查有问题也照样出图（不推荐）")
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
     ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
@@ -365,8 +488,18 @@ def main():
             failed += run_jobs(os.path.abspath(t), jobs, args, frame=False,
                                shape="wide landscape image (3:2, the widest landscape size available)")
             continue
+        # 角色一致性检查：没过不出图，免得白等一小时出一批走样的图
+        shots = parse_script(script)
+        print(f"检查角色写法：{script}")
+        issues = check_script(shots)  # 关键帧只写"改哪里"（the mouse jumps），角色已在底图里，不查
+        print(f"  {'没有问题' if not issues else f'{issues} 处问题'}")
+        if args.check:
+            failed += 1 if issues else 0
+            continue
+        if issues and not args.allow_mismatch:
+            sys.exit("角色检查没过，先改 script.md（或加 --allow-mismatch 硬出）")
         jobs = {}
-        for name, prompt in parse_script(script).items():
+        for name, prompt in shots.items():
             jobs[name] = (prompt, char_refs(prompt))
         if args.variant:
             v = json.load(open(os.path.join(ROOT, "series", "style_variants.json"), encoding="utf-8"))[args.variant]
@@ -394,6 +527,9 @@ def main():
             k_failed += run_jobs(os.path.abspath(t), ready, args)
             keys = {n: j for n, j in keys.items() if n not in ready}
         failed += k_failed
+        qc = qc_sheet(os.path.abspath(t), list(shots))
+        if qc:
+            print(f"角色对比图：{qc}（每张图右边是它带的参考图，逐个看标志细节在不在）")
     sys.exit(1 if failed else 0)
 
 

@@ -156,6 +156,15 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 **出图脚本靠这几句原文认角色**：提示词里出现哪句，就自动把 `series/refs/` 里对应的参考图一起发给 Codex，锁住长相。改了一个字就认不出来，参考图也就不会带上。
 
+**角色一致性：怎么保证每集角色长得一样**（2026-10-31 用户要求"这些形象集成到 skill，保证每次视频生成的一致性"）。全部做在 `codex_images.py` 里，写剧本的人只要守第 1 条：
+
+1. **剧本里角色一律写 `[[id]]`**，比如 `[[pip]] hugs his tail under the oak tree`。出图前自动展开成角色表里的整句英文描述，并带上 `series/refs/<id>.png`。不用再手抄长句，也就不会抄错一个字导致参考图没带上。同一句里再提到他，用 `the mouse`、`the bear` 就行。关键帧的改动说明照旧只写"改哪里"。
+2. **每张图都带参考图 + 必保细节**：除了参考图，还会把这个角色最容易画丢的细节逐条交代给 Codex（`KEEP`：Pip 左耳缺口、尾巴是完整一条；Bruno 鼻子上的蜂蛰包、领巾蜂蜜渍……），并说明参考图里手上拿的道具（Nutty 的栗子）只在剧本写到时才画。
+3. **同框按身高阶梯**：两个以上角色同框，自动附上身高比例（`SIZES`：Pip、Ruby 1 倍，Bruno 约 2.6 倍）。
+4. **出图前自动检查，没过不出图**：提示词里出现了角色名或物种词（squirrel、mouse、bear、fox……）却没用 `[[id]]`，会画成没参考图的路人动物，直接拦下；角色缺参考图也拦。只想检查时跑 `python3 codex_images.py <集目录> --check`。旧集用的是升级前的旧描述，只提示、不拦。
+5. **出完自动拼角色对比图** `qc/characters.jpg`：每张图右边放它带的参考图。质检时逐个对照 `KEEP` 里的细节，有丢的就 `--only pXX --force` 重出。
+6. **改角色长相时**，`series/characters.md`、本节、`codex_images.py` 的 `CHARACTERS` / `KEEP` / `POSES` / `FACES` 一起改，然后 `refs --only <id> --force` → `sheets --only <id> --force` → `avatars --only <id> --force`，更新图鉴。
+
 **角色要演出性格**（2026-10-30 用户要求角色像疯狂动物城一样有记忆点，方法见 `docs/character-design.md`）：每个角色有六件套（反差、剪影钩子、情绪器官、口头禅、想要、小毛病）。分镜提示词里别让角色都"站着微笑"：主演要用上情绪器官（Nutty 的尾巴、Hazel 的刺、Bun 的耳朵、Pip 的大耳朵、Bruno 的肚子、Fern 的尾巴、Ruby 的红胸脯），同框按体型阶梯画（Bruno 约是朋友们的两倍高，Pip、Ruby 最小）。
 
 ### 5.3 怎么出（`tools/storybook-video/codex_images.py`）
@@ -300,7 +309,7 @@ open ../../out/c01
 
 | 环节 | 检查什么 | 合格线 | 不合格怎么修 |
 |---|---|---|---|
-| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图（Hazel：棕刺、黄背带裤男孩）；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
+| 出图 | 每张图（拼一张 `qc/images.jpg` 自己看） | 角色像 `series/refs/` 参考图：打开 `qc/characters.jpg` 逐张对照 `KEEP` 里的标志细节（Pip 左耳缺口、尾巴完整；Hazel 滑落的背带和膝盖补丁；Bun 一竖一折的耳朵……），同框身高按阶梯；道具颜色、数量前后一致；笑点动作看得出来；下 40% 没有脸；没有文字和水印；没有多余肢体；**画风和 `series/style/` 样张一致**（赛璐璐上色、柔和描边、手绘背景、通透暖光；不能有 3D 渲染感或厚涂毛发） | `--only pXX --force` 重出，最多两轮；还不行就改提示词再出 |
 | 渲染 | ffprobe、ebur128、第 0 帧、每页抽 2 帧拼图（`qc/frames.jpg`） | 1080×1920、30fps；I 在 -16±1 LUFS、Peak ≤ -1.5；第 0 帧是带大字的钩子画面；字幕不挡脸，大字不挡主体，没有黑边；每条字幕出现后 0.6 秒内有人声；完整版 40–55 秒 | 调 `focus` / `subtitle_center` / `gap`，然后重渲染 |
 | 封面 | 两张封面图 | 标题不压脸；今日单词三个都在；徽章是"栗栗学英语" | 3:4 标题压脸就调 `brand.py --crop-3x4`（0=从顶部裁，默认 0.55；s02 用 0.2），或重出 `cover.png` |
 | 发布包 | publish.txt | 没有微信号、二维码、网址（谐音也不行）；带 AI 声明；每个标题 ≤20 字；话题 ≤5 个、含"英语启蒙" | 改文案 |
