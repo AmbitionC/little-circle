@@ -52,7 +52,7 @@
     "at": 3.7
    }
   ],
-  "max_seconds": 4.8,
+  "max_seconds": 4.5,
   "motion": "in",
   "zoom": 1.06,
   "focus": [
@@ -66,7 +66,7 @@
    "en": "Shh... Where is Pip?",
    "zh": "嘘……皮皮在哪里？",
    "say": "[whispers] Shh... Where is Pip?",
-   "at": 3.0
+   "at": 2.9
   },
   "sfx": [
    {
@@ -94,7 +94,12 @@
     {
      "image": "p01b.png",
      "line": 0,
-     "offset": 2.0
+     "offset": 2.3
+    },
+    {
+     "image": "p01c.png",
+     "line": 0,
+     "offset": 3.0
     }
    ],
    "lines": [
@@ -114,12 +119,18 @@
      "at": 0.1,
      "gain": 0.35
     }
-   ]
+   ],
+   "hold": 0.5
   },
   {
    "image": "p02.png",
    "cut": true,
    "frames": [
+    {
+     "image": "p02c.png",
+     "line": 0,
+     "offset": 1.4
+    },
     {
      "image": "p02b.png",
      "line": 1,
@@ -189,7 +200,15 @@
      "gain": 0.4
     }
    ],
-   "hold": 1.0
+   "hold": 0.6,
+   "cycle": {
+    "images": [
+     "p03.png",
+     "p03c.png"
+    ],
+    "step": 0.5,
+    "line": 0
+   }
   },
   {
    "image": "p04.png",
@@ -198,7 +217,12 @@
     {
      "image": "p04b.png",
      "line": 0,
-     "offset": 1.6
+     "offset": 1.4
+    },
+    {
+     "image": "p04c.png",
+     "line": 0,
+     "offset": 2.2
     }
    ],
    "lines": [
@@ -212,7 +236,7 @@
      }
     }
    ],
-   "hold": 0.6,
+   "hold": 0.5,
    "sfx": [
     {
      "file": "../../assets/sfx/thump.mp3",
@@ -225,6 +249,12 @@
    "image": "p05.png",
    "motion": "in",
    "frames": [
+    {
+     "image": "p05c.png",
+     "line": 0,
+     "offset": 1.6,
+     "tween": 0
+    },
     {
      "image": "p05b.png",
      "line": 1,
@@ -267,9 +297,16 @@
    "cut": true,
    "frames": [
     {
+     "image": "p06c.png",
+     "line": 0,
+     "offset": 1.6,
+     "tween": 0,
+     "shake": true
+    },
+    {
      "image": "p06b.png",
      "line": 0,
-     "offset": 1.8,
+     "offset": 2.0,
      "tween": 0,
      "shake": true
     }
@@ -285,7 +322,7 @@
      }
     }
    ],
-   "hold": 0.6,
+   "hold": 0.5,
    "sfx": [
     {
      "file": "../../assets/sfx/tada.mp3",
@@ -304,9 +341,23 @@
    "motion": "out",
    "frames": [
     {
+     "image": "p07c.png",
+     "at": 0.3,
+     "tween": 0
+    },
+    {
+     "image": "p07.png",
+     "at": 0.6,
+     "tween": 0
+    },
+    {
+     "image": "p07c.png",
+     "at": 0.9,
+     "tween": 0
+    },
+    {
      "image": "p07b.png",
-     "line": 0,
-     "offset": 0,
+     "at": 1.3,
      "tween": 0
     }
    ],
@@ -321,8 +372,8 @@
      }
     }
    ],
-   "lead": 1.6,
-   "hold": 0.8,
+   "lead": 1.5,
+   "hold": 0.6,
    "sfx": [
     {
      "file": "../../assets/sfx/boing.mp3",
@@ -345,6 +396,11 @@
    "image": "p08.png",
    "motion": "in",
    "frames": [
+    {
+     "image": "p08c.png",
+     "line": 0,
+     "offset": 0.9
+    },
     {
      "image": "p08b.png",
      "line": 1,
@@ -372,7 +428,7 @@
      "_说明": "皮皮和 Bruno 一起说；sbv 不支持两人同声，先用皮皮的声音，张嘴帧两人都张嘴"
     }
    ],
-   "hold": 0.8,
+   "hold": 0.6,
    "sfx": [
     {
      "file": "../../assets/sfx/sparkle.mp3",
@@ -397,7 +453,7 @@
     "en": "peekaboo",
     "zh": "躲猫猫"
    },
-   "lead": 0.7,
+   "lead": 0.5,
    "sfx": [
     {
      "file": "../../assets/sfx/pop.mp3",
@@ -422,7 +478,7 @@
     "en": "where",
     "zh": "在哪里"
    },
-   "lead": 0.7
+   "lead": 0.5
   },
   {
    "image": "p06b.png",
@@ -440,7 +496,7 @@
     "en": "here",
     "zh": "在这里"
    },
-   "lead": 0.7,
+   "lead": 0.5,
    "sfx": [
     {
      "file": "../../assets/sfx/ding.mp3",
@@ -476,13 +532,20 @@
      "at": 0.1,
      "gain": 0.4
     }
+   ],
+   "frames": [
+    {
+     "image": "p09b.png",
+     "line": 0,
+     "offset": 1.4
+    }
    ]
   }
  ],
  "ending": {
   "headline": "See you next time! 下集见！",
   "subline": "你家宝宝也是捂眼睛藏的吗？",
-  "seconds": 3.0
+  "seconds": 2.5
  },
  "bgm": {
   "_说明": "分段配乐：page 0=钩子，1–8=p01–p08，9–11=复习 r1–r3，12=彩蛋 p09",
@@ -527,5 +590,6 @@
  "loudness": {
   "I": -16,
   "TP": -1.5
- }
+ },
+ "_说明": "目标总长 50 秒（用户 11-01 定）。配音出来后用 qa.py --dur 49 51 量，超了先砍各页 hold、再砍复习页 lead，不砍台词和 1.5 秒跟读停顿"
 }

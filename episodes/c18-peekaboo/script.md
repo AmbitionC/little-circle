@@ -1,7 +1,8 @@
 # C18 · Peekaboo! Where's Pip? 皮皮在哪里？（第 1 版）
 
-> 认知小绘本｜主题：躲猫猫（找一找、藏起来、找到了）｜主线词：peekaboo｜主角：皮皮 Pip ＋ Bruno，片尾彩蛋栗栗 Nutty｜2–3 岁英语启蒙｜9:16 竖版｜关键帧钩子 5 秒 + 8 页 + 今日单词复习约 8 秒 + 彩蛋 1 页 + 片尾 3 秒，完整版约 55 秒｜日常模式（全关键帧）｜eleven_v3 带语气配音｜中英字幕
+> 认知小绘本｜主题：躲猫猫（找一找、藏起来、找到了）｜主线词：peekaboo｜主角：皮皮 Pip ＋ Bruno，片尾彩蛋栗栗 Nutty｜2–3 岁英语启蒙｜9:16 竖版｜关键帧钩子 4.5 秒 + 8 页 + 今日单词复习约 7 秒 + 彩蛋 1 页 + 片尾 2.5 秒，**完整版 50 秒**（用户 11-01 定）｜日常模式（全关键帧，动作关键帧 20 张）｜eleven_v3 带语气配音｜中英字幕
 >
+> 2026-11-01 第 3 版（用户："视频时长控制在 50 秒，然后你看看图片分镜如果生成多一倍，效果会不会好一点"）：总长压到 50 秒（各页 hold、复习页 lead、片尾都缩了，台词不动）；动作关键帧从 11 张加到 20 张，只加在动作上（偷偷走过去、影子罩下来、尾巴甩、爬到一半、转圈时皮皮跟着转、往后倒的过程、蹦到最高、从指缝偷看、甩叶子），不加新页。爆点：钩子大字改成"画面里藏了 2 只小动物，你找到几只？"，栗栗的尾巴在 p01、p04、p05、p07、p08 远景的叶子堆里都露一点，引导重看、评论。
 > 2026-11-01 第 2 版（用户看漫画："图片里面不符合常理的要修改下，比如那么窄的树，怎么挡得住"）：藏身处都改成真能挡住身子的。皮皮藏在比他高一点的圆灌木后面，只有大耳朵露在上面（耳朵比头还大，所以藏不住）；空心倒木改短，尾巴才伸得出另一头；Bruno 藏在大橡树后面，圆肚子和屁股从树干两边鼓出来；皮皮倒挂时用脚勾住 Bruno 的耳朵；落叶堆改大，才藏得下栗栗。
 > 2026-11-01 写。选题来自用户 11-01 定的「基于已有爆款的故事剧本」：按头部儿童频道播放量反推选题，用户从三条里挑了躲猫猫（选题库 c18）。
 
@@ -24,7 +25,7 @@
 | 认出自己孩子的样子（家长共鸣） | 皮皮捂眼睛 "You can't see me!"，正是 2–3 岁孩子真实的藏法 | 转发、评论（"我家也这样"） |
 | 被看见的安全感 | 躲猫猫的乐趣是"不见了 → 又出现了"；结尾两个角色转向镜头对宝宝说 "Peekaboo! I see you!" | 复看、家长拍宝宝回应 |
 | 反差萌 | 全森林最大的 Bruno 躲到大橡树后面，圆肚子和大屁股鼓在外面，还捂着眼睛 | 点赞 |
-| 彩蛋 | 复习完，叶子堆里钻出栗栗："Where is everyone?"——他从一开始就藏着，大家把他忘了 | 完播率 |
+| 彩蛋 + 找第二只（本集爆点） | 钩子大字问"画面里藏了 2 只小动物，你找到几只？"；栗栗的尾巴从第 1 秒起就在远景叶子堆里露着，复习完他钻出来："Where is everyone?"——他从一开始就藏着，大家把他忘了 | 复看、评论（"第一秒就看到了"）、完播率 |
 | 实用价值 | 置顶评论给"今晚和宝宝玩躲猫猫的 3 句英语" | 收藏率 |
 
 **守住的边界**：Bruno 找不到皮皮只着急 6 秒左右，宝宝一直看得见皮皮在哪，不吓人；不贩卖焦虑；平台上不放联系方式。
@@ -34,7 +35,7 @@
 **三句话**：
 
 1. **Logline**：Bruno 靠着大橡树数数，最小的皮皮去藏。皮皮藏在灌木后面、钻进空木头里，每次都捂住眼睛以为自己藏好了，可大耳朵、长尾巴全露在外面，一下就被找到。第三次皮皮悄悄爬上了 Bruno 的背，Bruno 怎么也找不到，急了，宝宝帮着喊 "Peekaboo!"，皮皮从 Bruno 头顶倒挂下来："Peekaboo! Here I am!"。换 Bruno 藏，他躲在大橡树后面，圆肚子鼓在外面，也捂着眼睛。彩蛋：叶子堆里的栗栗从头藏到尾，大家忘了找他。
-2. **家长钩子**（第 0 帧大字）：皮皮藏哪了？宝宝先找到！
+2. **家长钩子**（第 0 帧大字）：画面里藏了 2 只小动物，你找到几只？（第二只是叶子堆里的栗栗，尾巴从第 1 秒起在远景里一直露着，彩蛋才揭晓）
 3. **孩子会学的一句话**：`Peekaboo! I see you!`（配动作：两手捂眼，再"哗"地打开）
 
 - **今日单词**：peekaboo 躲猫猫 · where 在哪里 · here 在这里
@@ -52,7 +53,8 @@
 
 ## 2. 开头钩子（关键帧动画 5 秒）
 
-- **大字标题**（第 1 帧）：皮皮藏哪了？宝宝先找到！
+- **大字标题**（第 1 帧）：画面里藏了 2 只小动物，你找到几只？
+- **原标题**（备用，两平台可以各发一版比 2 秒跳出率）：皮皮藏哪了？宝宝先找到！
 - **小字**：2–3 岁英语启蒙 · 学会说 Peekaboo
 - **备选标题**：2岁宝宝最爱躲猫猫，学这句英语
 - **旁白**（皮皮躲好之后进）：`[whispers] Shh... Where is Pip?`　嘘……皮皮在哪里？
@@ -124,6 +126,10 @@ the same sunny forest clearing: one big old oak tree on the left, one round leaf
 ```
 the big brown character shades his eyes with one paw and looks left and right, searching, the pink ears above the bush still sticking up, nothing else changes
 ```
+**p01c.png** ← p01b.png
+```
+the big brown character starts to sneak toward the round bush with big exaggerated tiptoe steps, one leg lifted high, a finger on his lips, the pink ears still sticking up above the bush, nothing else changes
+```
 **p01_bruno.png** ← p01.png
 ```
 only the big brown character opens his mouth wide shouting happily, nothing else changes
@@ -136,6 +142,10 @@ close view of the round leafy bush in the sunny forest clearing; [[pip]] crouche
 **p02b.png** ← p02.png
 ```
 [[bruno]] bends down and leans his big face in over the top of the bush from above, smiling eye to eye with the tiny character, who has just opened his paws and flinches with his ears twitching, surprised
+```
+**p02c.png** ← p02.png
+```
+a big round soft shadow falls over the bush from behind as someone big comes close, the tiny character still covering his eyes and giggling, not noticing, nothing else changes
 ```
 **p02_pip.png** ← p02.png
 ```
@@ -154,14 +164,22 @@ the short hollow fallen log in the sunny forest clearing seen from the side, the
 ```
 the big brown character gently pinches the tip of the pink tail with two fingers, and [[pip]] pops his head out of the near opening of the log, covering his mouth and giggling, caught
 ```
+**p03c.png** ← p03.png
+```
+the pink tail sticking out of the far end of the log swings to the other side and curls into a little hook, the big brown character still looking the wrong way, nothing else changes
+```
 
 **p04.png**
 ```
-in the sunny forest clearing, [[pip]] has climbed out of the hollow log and stands with tiny fists on his hips, ears standing up tall, pouting and determined; in the background [[bruno]] has turned back to the big oak tree, covering his eyes to count again, his wide back toward us, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+in the sunny forest clearing, [[pip]] has climbed out of the hollow log and stands with tiny fists on his hips, ears standing up tall, pouting and determined; in the background [[bruno]] has turned back to the big oak tree, covering his eyes to count again, his wide back toward us; far in the background at the edge of the clearing the big heap of golden autumn leaves with a fluffy rust-red bushy tail with a little twig poking out of the top of it, small and easy to miss, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p04b.png** ← p04.png
 ```
 the tiny character's eyes light up as he looks at the big character's wide back, and he tiptoes over and starts to climb up the back of the big brown character, sneaky and giggling
+```
+**p04c.png** ← p04b.png
+```
+the tiny character is now halfway up the big character's broad back, clinging to the orange neckerchief knot with both tiny paws, legs dangling, the big character still counting at the tree, nothing else changes
 ```
 **p04_pip.png** ← p04.png
 ```
@@ -170,11 +188,15 @@ only the tiny character opens his mouth talking, determined, nothing else change
 
 **p05.png**
 ```
-in the middle of the sunny forest clearing [[bruno]] searches with a worried face, bending to look behind the round bush, the hollow log and the oak tree all empty around him; [[pip]], so tiny next to him, lies flat on the big character's broad back holding on to the neckerchief knot, only his two huge round pink ears poking up behind the big character's shoulders, one ear turned toward the big character's worried face, the big character cannot see him, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+in the middle of the sunny forest clearing [[bruno]] searches with a worried face, bending to look behind the round bush, the hollow log and the oak tree all empty around him; [[pip]], so tiny next to him, lies flat on the big character's broad back holding on to the neckerchief knot, only his two huge round pink ears poking up behind the big character's shoulders, one ear turned toward the big character's worried face, the big character cannot see him; far in the background at the edge of the clearing the big heap of golden autumn leaves with a fluffy rust-red bushy tail with a little twig poking out of the top of it, small and easy to miss, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p05b.png** ← p05.png
 ```
 the big brown character stands up straight in the middle of the clearing, cups both paws around his mouth to call out, eyebrows drooping sadly, the pink ears still peeking up behind his shoulders
+```
+**p05c.png** ← p05.png
+```
+the big brown character spins around to look behind himself, and the tiny character on his back swings around with him and stays hidden behind his shoulders, the pink ears flapping in the wind of the spin
 ```
 **p05_bruno.png** ← p05.png
 ```
@@ -189,6 +211,10 @@ close view in the sunny forest clearing: [[pip]] hangs upside down from the top 
 ```
 the big brown character falls back and lands sitting on his bottom on the grass with a bump, legs up, surprised, the tiny character still hugging the top of his head and laughing
 ```
+**p06c.png** ← p06.png
+```
+in between: the big brown character tips backward with his arms flailing and one foot lifting off the grass, about to fall, the tiny character still hugging the top of his head, nothing else changes
+```
 **p06_pip.png** ← p06.png
 ```
 only the tiny character opens his mouth wide shouting happily, the big character keeps his mouth closed, nothing else changes
@@ -196,11 +222,15 @@ only the tiny character opens his mouth wide shouting happily, the big character
 
 **p07.png**
 ```
-in the sunny forest clearing [[bruno]] sits on the grass laughing hard with his round soft tummy jiggling, and [[pip]] bounces on his tummy like a trampoline, high in the air with arms up, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+in the sunny forest clearing [[bruno]] sits on the grass laughing hard with his round soft tummy jiggling, and [[pip]] bounces on his tummy like a trampoline, high in the air with arms up; far in the background at the edge of the clearing the big heap of golden autumn leaves with a fluffy rust-red bushy tail with a little twig poking out of the top of it, small and easy to miss, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p07b.png** ← p07.png
 ```
 now the big brown character hides behind the big old oak tree, but his round tummy and big bottom bulge out on both sides of the trunk, too big to hide, covering his own eyes with his big paws and giggling, sure he is hidden; the tiny character stands in front looking at him with a big grin
+```
+**p07c.png** ← p07.png
+```
+the tiny character is at the very top of his bounce, high in the air above the big character's tummy with his ears flying up, the big character laughing with his tummy pressed down, nothing else changes
 ```
 **p07b_bruno.png** ← p07b.png
 ```
@@ -209,11 +239,15 @@ only the big brown character opens his mouth giggling and talking, the tiny char
 
 **p08.png**
 ```
-in the sunny forest clearing [[bruno]] hides behind the big old oak tree with his round tummy bulging out on one side of the trunk, and [[pip]] squeezes in beside his feet with his huge ears sticking out the other side, both covering their eyes with their paws and giggling, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+in the sunny forest clearing [[bruno]] hides behind the big old oak tree with his round tummy bulging out on one side of the trunk, and [[pip]] squeezes in beside his feet with his huge ears sticking out the other side, both covering their eyes with their paws and giggling; far in the background at the edge of the clearing the big heap of golden autumn leaves with a fluffy rust-red bushy tail with a little twig poking out of the top of it, small and easy to miss, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 **p08b.png** ← p08.png
 ```
 both characters throw their paws open and turn to face the camera, smiling warmly straight at the viewer as if they just found them
+```
+**p08c.png** ← p08.png
+```
+both characters peek out with one eye between their fingers, grinning, still behind the big oak tree, nothing else changes
 ```
 **p08_pip.png** ← p08.png
 ```
@@ -227,6 +261,10 @@ both characters open their mouths wide, laughing and talking together, nothing e
 **p09.png**
 ```
 the small pile of golden autumn leaves at the edge of the sunny forest clearing bursts open and [[nutty]] pops out with leaves all over his head and stuck all over his huge tail, looking around puzzled, the clearing empty behind him, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+```
+**p09b.png** ← p09.png
+```
+leaves are still raining down around the red character, he shakes himself like a wet dog so leaves fly off his huge tail, and one leaf lands right on his nose, nothing else changes
 ```
 **p09_nutty.png** ← p09.png
 ```
@@ -258,7 +296,7 @@ only the red character opens his mouth talking, puzzled, nothing else changes
 
 ## 6. 发布文案
 
-- **标题**（≤20 字）：皮皮藏哪了？宝宝先找到！
+- **标题**（≤20 字）：藏了 2 只小动物，你找到几只？
 - **正文**：2–3 岁英语启蒙｜躲猫猫小故事。皮皮捂住眼睛就以为别人看不见他，你家宝宝是不是也这样藏？今天学：Peekaboo 躲猫猫、Where 在哪里、Here 在这里。今晚用毛巾和宝宝玩一次吧！
 - **话题**（≤5 个）：#英语启蒙 #躲猫猫 #幼儿英语 #亲子游戏 #英语绘本
 - **置顶评论**：今晚躲猫猫说这 3 句👉 盖住脸问 Where is Mommy? ｜掀开说 Peekaboo! Here I am! ｜找到宝宝说 Peekaboo! I see you!
