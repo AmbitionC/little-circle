@@ -1,0 +1,531 @@
+{
+ "output_name": "c18_peekaboo",
+ "title_en": "Peekaboo! Where's Pip?",
+ "title_zh": "皮皮在哪里？",
+ "series": {
+  "badge_text": "栗栗学英语 · 认知小绘本",
+  "badge_alpha": 0.72
+ },
+ "style": {
+  "speaker_colors": {
+   "narrator": [
+    74,
+    52,
+    38
+   ],
+   "nutty": [
+    178,
+    78,
+    22
+   ],
+   "pip": [
+    70,
+    96,
+    150
+   ],
+   "bruno": [
+    120,
+    72,
+    30
+   ]
+  }
+ },
+ "cast": "../../series/cast.json",
+ "hook": {
+  "frames": [
+   {
+    "image": "kling_first.png",
+    "at": 0
+   },
+   {
+    "image": "h02.png",
+    "at": 1.3,
+    "tween": 0
+   },
+   {
+    "image": "h03.png",
+    "at": 2.5,
+    "shake": true
+   },
+   {
+    "image": "h04.png",
+    "at": 3.7
+   }
+  ],
+  "max_seconds": 4.8,
+  "motion": "in",
+  "zoom": 1.06,
+  "focus": [
+   0.5,
+   0.45
+  ],
+  "headline": "皮皮藏哪了？宝宝先找到！",
+  "subline": "2–3岁英语启蒙 · 学会说 Peekaboo",
+  "say": {
+   "speaker": "narrator",
+   "en": "Shh... Where is Pip?",
+   "zh": "嘘……皮皮在哪里？",
+   "say": "[whispers] Shh... Where is Pip?",
+   "at": 3.0
+  },
+  "sfx": [
+   {
+    "file": "../../assets/sfx/jingle_in.mp3",
+    "at": 0.0,
+    "gain": 0.3
+   },
+   {
+    "file": "../../assets/sfx/whoosh.mp3",
+    "at": 1.25,
+    "gain": 0.35
+   },
+   {
+    "file": "../../assets/sfx/pop.mp3",
+    "at": 2.5,
+    "gain": 0.45
+   }
+  ]
+ },
+ "pages": [
+  {
+   "image": "p01.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p01b.png",
+     "line": 0,
+     "offset": 2.0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "bruno",
+     "en": "One, two, three... I'm coming!",
+     "zh": "一、二、三……我来找啦！",
+     "say": "[excited] One, two, three... I'm coming!",
+     "talk": {
+      "p01.png": "p01_bruno.png"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/thump.mp3",
+     "at": 0.1,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "image": "p02.png",
+   "cut": true,
+   "frames": [
+    {
+     "image": "p02b.png",
+     "line": 1,
+     "offset": 0,
+     "tween": 0,
+     "shake": true
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "You can't see me!",
+     "zh": "你看不见我！",
+     "say": "[whispers, giggling] You can't see me!",
+     "gain": 0.7,
+     "talk": {
+      "p02.png": "p02_pip.png"
+     }
+    },
+    {
+     "speaker": "bruno",
+     "en": "Peekaboo! I see you!",
+     "zh": "躲猫猫！我看见你啦！",
+     "say": "[laughs] Peekaboo! I see you!",
+     "talk": {
+      "p02b.png": "p02b_bruno.png"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.45
+    }
+   ]
+  },
+  {
+   "image": "p03.png",
+   "motion": "left",
+   "frames": [
+    {
+     "image": "p03b.png",
+     "line": 0,
+     "offset": 2.6,
+     "tween": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "en": "Where is Pip? Look!",
+     "zh": "皮皮在哪里？看！",
+     "say": "[curious] Where is Pip? Look!",
+     "gap": 1.5
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/leaves.mp3",
+     "at": 0.1,
+     "gain": 0.3
+    },
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 4.2,
+     "gain": 0.4
+    }
+   ],
+   "hold": 1.0
+  },
+  {
+   "image": "p04.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p04b.png",
+     "line": 0,
+     "offset": 1.6
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "My turn to win!",
+     "zh": "这次我要赢！",
+     "say": "[determined] My turn to win!",
+     "talk": {
+      "p04.png": "p04_pip.png"
+     }
+    }
+   ],
+   "hold": 0.6,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/thump.mp3",
+     "at": 2.2,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "p05.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p05b.png",
+     "line": 1,
+     "offset": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "bruno",
+     "en": "Pip? Where are you?",
+     "zh": "皮皮？你在哪儿呀？",
+     "say": "[worried] Pip? Where are you?",
+     "talk": {
+      "p05.png": "p05_bruno.png"
+     }
+    },
+    {
+     "speaker": "narrator",
+     "en": "Let's call him... Peekaboo!",
+     "zh": "我们一起叫他：躲猫猫！",
+     "say": "[whispers] Let's call him... [excited] Peekaboo!",
+     "gap": 2.0
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/thump.mp3",
+     "at": 0.2,
+     "gain": 0.3
+    },
+    {
+     "file": "../../assets/sfx/thump.mp3",
+     "at": 0.9,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "p06.png",
+   "cut": true,
+   "frames": [
+    {
+     "image": "p06b.png",
+     "line": 0,
+     "offset": 1.8,
+     "tween": 0,
+     "shake": true
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "Peekaboo! Here I am!",
+     "zh": "躲猫猫！我在这儿！",
+     "say": "[shouting] Peekaboo! Here I am!",
+     "talk": {
+      "p06.png": "p06_pip.png"
+     }
+    }
+   ],
+   "hold": 0.6,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/tada.mp3",
+     "at": 0.0,
+     "gain": 0.45
+    },
+    {
+     "file": "../../assets/sfx/bonk.mp3",
+     "at": 2.3,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "image": "p07.png",
+   "motion": "out",
+   "frames": [
+    {
+     "image": "p07b.png",
+     "line": 0,
+     "offset": 0,
+     "tween": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "bruno",
+     "en": "Now you can't see me!",
+     "zh": "现在你看不见我啦！",
+     "say": "[giggles] Now you can't see me!",
+     "talk": {
+      "p07b.png": "p07b_bruno.png"
+     }
+    }
+   ],
+   "lead": 1.6,
+   "hold": 0.8,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 0.1,
+     "gain": 0.4
+    },
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 0.7,
+     "gain": 0.4
+    },
+    {
+     "file": "../../assets/sfx/tummy.mp3",
+     "at": 0.3,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "image": "p08.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p08b.png",
+     "line": 1,
+     "offset": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "Me too!",
+     "zh": "我也要！",
+     "say": "[happily] Me too!",
+     "talk": {
+      "p08.png": "p08_pip.png"
+     }
+    },
+    {
+     "speaker": "pip",
+     "en": "Peekaboo! I see you!",
+     "zh": "躲猫猫！我看见你啦！",
+     "say": "[laughs] Peekaboo! I see you!",
+     "talk": {
+      "p08b.png": "p08b_both.png"
+     },
+     "_说明": "皮皮和 Bruno 一起说；sbv 不支持两人同声，先用皮皮的声音，张嘴帧两人都张嘴"
+    }
+   ],
+   "hold": 0.8,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 0.0,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "image": "p06.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "Peekaboo!",
+     "zh": "躲猫猫！",
+     "say": "[clearly] Peekaboo!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "peekaboo",
+    "zh": "躲猫猫"
+   },
+   "lead": 0.7,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "image": "p05b.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "en": "Where?",
+     "zh": "在哪里？",
+     "say": "[clearly] Where?",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "where",
+    "zh": "在哪里"
+   },
+   "lead": 0.7
+  },
+  {
+   "image": "p06b.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "Here I am!",
+     "zh": "我在这儿！",
+     "say": "[happily] Here I am!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "here",
+    "zh": "在这里"
+   },
+   "lead": 0.7,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.0,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "image": "p09.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "Where is everyone?",
+     "zh": "大家去哪儿啦？",
+     "say": "[confused] Where is everyone?",
+     "talk": {
+      "p09.png": "p09_nutty.png"
+     }
+    }
+   ],
+   "hold": 0.4,
+   "lead": 0.7,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/leaves.mp3",
+     "at": 0.0,
+     "gain": 0.4
+    },
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.1,
+     "gain": 0.4
+    }
+   ]
+  }
+ ],
+ "ending": {
+  "headline": "See you next time! 下集见！",
+  "subline": "你家宝宝也是捂眼睛藏的吗？",
+  "seconds": 3.0
+ },
+ "bgm": {
+  "_说明": "分段配乐：page 0=钩子，1–8=p01–p08，9–11=复习 r1–r3，12=彩蛋 p09",
+  "cues": [
+   {
+    "page": 0,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.2
+   },
+   {
+    "page": 5,
+    "file": "../../assets/bgm/bgm_tiptoe.mp3",
+    "volume": 0.14,
+    "fade": 0.8
+   },
+   {
+    "page": 6,
+    "offset": -0.35,
+    "file": null,
+    "fade": 0.2
+   },
+   {
+    "page": 6,
+    "file": "../../assets/bgm/bgm_happy.mp3",
+    "volume": 0.24,
+    "fade": 0.1
+   },
+   {
+    "page": 8,
+    "file": "../../assets/bgm/bgm_calm.mp3",
+    "volume": 0.18,
+    "fade": 1.0
+   },
+   {
+    "page": 9,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.12,
+    "fade": 0.6
+   }
+  ]
+ },
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ }
+}

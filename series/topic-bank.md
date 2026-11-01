@@ -50,7 +50,7 @@
 | s16 | 森林故事 | 找不到 | Where Did I Hide It? / 我把栗子藏哪了？ | hide, dig, tree | 栗栗为过冬到处埋栗子转头就忘，宝宝记得、指着屏幕喊；彩蛋：春天没找到的地方长出小树苗 | 松鼠会忘了埋哪？ | nutty | 17 | 季节：11 月存粮季 | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
 | s17 | 森林故事 | 晚安 | Moon, Come Down! / 月亮你下来 | moon, big, round | Pip 以为大月亮是饼干，叠罗汉去够，倒下来躺在草地上发现躺着看最美 | 今晚超级月亮 | pip | 15 | 节日：超级月亮 11-24 当天 | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
 | c17 | 认知小绘本 | 饿和饱 | Yummy or Yucky? / 好吃还是难吃 | yes, no, yummy | Bruno 开森林餐厅端出蜂蜜配袜子、胡萝卜冰淇淋，每道停顿等宝宝喊 Yes!/No!；彩蛋 Bruno 偷尝袜子 | 宝宝会喊 Yes 和 No 吗？ | bruno | 17 |  | 候选（对标 Super Simple Broccoli Ice Cream 11 亿播放） |
-| c18 | 认知小绘本 | 找不到 | Peekaboo! Where's Pip? / 皮皮在哪里 | peekaboo, where, here | 大家轮流躲，每次露出招牌部位（Pip 大耳朵、Bruno 大屁股），宝宝先找到 | 2岁宝宝最爱躲猫猫 | pip | 17 |  | 候选（对标 CoComelon Peek A Boo 31 亿） |
+| c18 | 认知小绘本 | 找不到 | Peekaboo! Where's Pip? / 皮皮在哪里 | peekaboo, where, here | 大家轮流躲，每次露出招牌部位（Pip 大耳朵、Bruno 大屁股），宝宝先找到 | 2岁宝宝最爱躲猫猫 | pip | 17 |  | 剧本第 1 版（11-01，待用户确认；对标 CoComelon Peek A Boo 31 亿） |
 | c19 | 认知小绘本 | 交朋友 | Who Said That? / 是谁在叫 | moo, quack, roar | 灌木丛后传来叫声，先猜再揭晓；最后 ROAR 是最小的 Pip | 宝宝猜得出是谁吗？ | pip | 17 |  | 候选（对标 Super Simple Animals On The Farm 重制版 3800 万，近期 5.7 倍） |
 | c20 | 认知小绘本 | 大和小、多和少 | Five in the Bed / 五个挤一张床 | five, one, roll over | 五个伙伴挤叶子床，Bruno 一翻身掉一个，悬念是最后剩谁 | 睡前数数，从5数到1 | bruno | 16 |  | 候选（对标 Five Little Ducks 19 亿、Ten in the Bed；传统儿歌公有领域） |
 | s18 | 森林故事 | 我自己来 | Our Secret Den / 我们的秘密基地 | in, blanket, shh | 下雨天用毯子搭基地，越搭越大最后塌了，大家钻在下面笑 | 冬天在家跟娃搭基地 | nutty | 16 |  | 候选（对标 Peppa 官方近期第一 Secret Hideout 160 万） |
