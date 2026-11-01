@@ -39,7 +39,7 @@ CHARACTERS = {
     # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子）；同日第二版加了「活人感」：衣服的来历、磨损和小瑕疵。六件套见 series/characters.md
     "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom",
     "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee",
-    "bun": "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
+    "bun": "a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
     # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
     "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up",
     "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains",
@@ -55,7 +55,9 @@ CHARACTERS = {
 OLD_DESC = {
     "nutty": "a small red squirrel with a big fluffy tail, round bright eyes, wearing a little green knitted scarf",
     "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
-    "bun": "a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
+    "bun": ("a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
+            # 10-30 版（一耳耷拉、半眯眼），11-01 用户嫌成人化换掉；旧集重出图仍认得
+            "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy"),
     "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
     "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
     "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
@@ -65,7 +67,7 @@ OLD_DESC = {
 POSES = {
     "nutty": "hugging a big shiny chestnut with an eager toothy grin, his huge tail puffed up high behind him",
     "hazel": "shyly opening his little arms for a hug, a small hopeful smile, his spines softly raised",
-    "bun": "standing a little slouched mid-yawn, one paw rubbing her eye, sleepy contented smile",
+    "bun": "hugging her stuffed carrot toy with both arms, both ears straight up, a soft drowsy baby smile with her big round eyes open",
     "pip": "clutching the end of his own long unbroken tail nervously with wide worried eyes, one huge ear turned to the side listening",
     "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
     "fern": "striking a ta-da pose standing upright on both feet, one paw raised high, chin up, tail fluffed proudly, a cheeky showing-off smile",
@@ -86,7 +88,7 @@ SHEET_PROMPT = ("character model sheet of {desc}, laid out on one wide sheet wit
 FACES = {
     "nutty": "an eager toothy grin; a puzzled face scratching his head with his tail curled like a question mark; a happy 'yum' face with closed eyes",
     "hazel": "a shy hopeful smile; a startled face with all spines popped straight out; a blissful face being hugged",
-    "bun": "a sleepy yawn; fast asleep with a tiny bubble at her nose; both ears shooting straight up in surprise",
+    "bun": "a big wide-open baby yawn with eyes squeezed shut; fast asleep curled up hugging her carrot with a tiny bubble at her nose; a delighted giggle with both ears perked up extra tall",
     "pip": "worried with his huge ears covering his face; listening with one ear turned; a proud brave smile",
     "bruno": "a big confident grin; terrified of a tiny bee near his nose; tearing up with joy holding a honey pot",
     "fern": "a cheeky ta-da wink; embarrassed after tripping with her tail hidden behind her; a big honest laugh",
@@ -94,9 +96,15 @@ FACES = {
 }
 
 
+def old_descs(k):
+    """某角色所有旧描述（一个或多个）。"""
+    o = OLD_DESC.get(k, ())
+    return (o,) if isinstance(o, str) else tuple(o)
+
+
 def char_ids(text):
     """提示词里点名了哪些角色（新旧描述都认）。"""
-    return [k for k, d in CHARACTERS.items() if d in text or (k in OLD_DESC and OLD_DESC[k] in text)]
+    return [k for k, d in CHARACTERS.items() if d in text or any(x in text for x in old_descs(k))]
 
 
 def char_refs(text):
@@ -108,14 +116,14 @@ def char_refs(text):
 KEEP = {
     "nutty": "huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole",
     "hazel": "ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch",
-    "bun": "left ear straight up and right ear flopped over her right eye, bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy",
+    "bun": "BOTH ears standing straight up (neither ear flopped), chubby toddler body with a big round head, big round baby eyes (no winking, no long eyelashes, no half-closed eyes), bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy",
     "pip": "ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves",
     "bruno": "about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief",
     "fern": "rounded cute proportions standing on two legs, crinkled red maple leaf behind one ear, black stocking legs with one dusty knee, white tail tip",
     "ruby": "tiny round ball body, messy head fluff with a bit of straw, orange-red chest, one bent wing feather, cannot fly",
 }
 # 体型阶梯：数字是大约多少个"小个子"高（Pip、Ruby 记 1）
-SIZES = {"ruby": 1, "pip": 1, "nutty": 1.4, "hazel": 1.3, "bun": 1.6, "fern": 1.8, "bruno": 2.6}
+SIZES = {"ruby": 1, "pip": 1, "nutty": 1.4, "hazel": 1.3, "bun": 1.35, "fern": 1.8, "bruno": 2.6}
 # 剧本里可以只写 [[pip]]，出图前展开成整句英文描述（不用再手抄长句，也就不会抄错）
 TOKEN = re.compile(r"\[\[(\w+)\]\]")
 # 提示词里出现这些词却没带上对应描述，多半是角色写漏了，会画成路人动物
@@ -158,21 +166,20 @@ def check_script(jobs):
         rest = prompt.lower()
         # 物种词也会出现在别人的描述里（"not a squirrel"），先去掉已识别的描述再找
         for i in ids:
-            for d in (CHARACTERS[i], OLD_DESC.get(i)):
-                if d:
-                    rest = rest.replace(d.lower(), "")
+            for d in (CHARACTERS[i],) + old_descs(i):
+                rest = rest.replace(d.lower(), "")
         for k, pat in NAMES.items():
             if k not in ids and re.search(pat, rest):
                 print(f"  ✗ {name}: 提到了 {k}，但没用整句描述，参考图带不上。改成 [[{k}]]")
                 issues += 1
         for k in ids:
-            if k in OLD_DESC and OLD_DESC[k] in prompt and CHARACTERS[k] not in prompt:
+            if any(x in prompt for x in old_descs(k)) and CHARACTERS[k] not in prompt:
                 old.add(k)
             if not os.path.exists(os.path.join(REFS, f"{k}.png")):
                 print(f"  ✗ {name}: {k} 还没有参考图，先跑 codex_images.py refs --only {k}")
                 issues += 1
     if old:
-        print(f"  提示：{', '.join(sorted(old))} 用的是 2026-10-30 升级前的旧描述（旧集可以不管；新剧本请改成 [[id]]）")
+        print(f"  提示：{', '.join(sorted(old))} 用的是旧描述（旧集可以不管；新剧本请改成 [[id]]）")
     return issues
 
 

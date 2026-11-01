@@ -32,7 +32,7 @@
 |---|---|---|---|---|---|---|---|---|
 | nutty | 栗栗 Nutty（男孩） | 红松鼠 · S · 圆＋大尾巴 | 松鼠是囤粮专家，栗栗**藏完就忘了藏在哪** | 尾巴比整个身体还大 | 尾巴：兴奋时炸成毛球，想不起来时卷成问号 | "Yum!" / "Where is it?" · 抱着大栗子，挠头到处挖 | 吃到最大的栗子 / 急，藏完就忘 | 分享、等待、记住；彩蛋：忘掉的栗子长成小树 |
 | hazel | Hazel（男孩） | 刺猬 · S · 圆 | 浑身是刺，**偏偏最想要抱抱** | 圆滚滚一个球，刺比身体宽一圈 | 刺：紧张"嘭"地竖起，开心变软趴下，害怕缩成球 | "Hug?" · 张开小手，又缩回去 | 和大家抱抱 / 一害羞就缩成球滚走 | 求助、交朋友、温柔地碰 |
-| bun | Bun（女孩） | 灰兔 · S · 圆＋一长一折的耳朵 | 兔子跑得最快，Bun **走到哪睡到哪** | 一只耳朵永远耷拉着盖住一只眼；半眯的困眼 | 耳朵：开心两只都竖起，困了两只都塌下来 | "Wait for me!" · 打哈欠，咯咯笑 | 跟上大家 / 随时睡着 | 午睡、慢慢来、等等别人 |
+| bun | Bun（女孩） | 灰兔 · S · 圆滚滚的幼儿身材＋两只竖耳 | 兔子跑得最快，Bun **走到哪睡到哪** | 两只竖直的耳朵＋头顶呆毛＋怀里的胡萝卜布偶；大圆眼、婴儿脸 | 耳朵：开心惊讶时竖得更高还会抖，困了慢慢往后贴 | "Wait for me!" · 打哈欠，咯咯笑 | 跟上大家 / 随时睡着 | 午睡、慢慢来、等等别人 |
 
 ## 常驻配角
 
@@ -52,6 +52,8 @@
 | dot | 朵朵 Dot | 小鹿 | 腿最长，**偏偏老打滑**，像刚出生的小鹿站不稳 | "Oops!" | 慢慢来、扶一把、陌生的东西 |
 | bo | 波波 Bo | 小獾 | **挖洞专家**，什么问题都想挖个洞解决 | "Dig, dig!" | 找东西、动手试试 |
 | wiggles | 扭扭 Wiggles | 小水獭 | 有一块**最爱的小石头**，走哪带哪，一丢就天塌了（海獭真的会把喜欢的石头揣在腋下） | "My rock!" | 安抚物、丢了怎么办、借给朋友 |
+
+> 2026-11-01 Bun 改版：用户说原来的兔子"有点成人化"（眨眼、长睫毛、半眯眼、身子细长），要"两个耳朵正常竖着"。改成圆滚滚的幼儿身材、大圆眼、两耳都竖，身高从 1.6 降到 1.35，和 Nutty、Hazel 一档。困的性格靠打哈欠、睡着来演，不再靠半眯眼。
 
 ## 活人感细节（2026-10-30 第二版）
 
@@ -74,7 +76,7 @@
 
 - nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom`
 - hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee`
-- bun: `a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
+- bun: `a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
 - pip: `a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up`
 - bruno: `a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains`
 - fern: `a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear`
