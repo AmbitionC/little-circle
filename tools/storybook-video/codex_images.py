@@ -146,9 +146,15 @@ def expand(text):
     return TOKEN.sub(one, text)
 
 
+# 全员统一年龄感（2026-11-01 Bun 两次被否：一次成人化，一次太幼态）：都是五岁左右的小朋友
+AGE_NOTE = ("All the animal friends are little children about five years old: child proportions with a big head and short legs, "
+            "simple round eyes with a white highlight, no eyelashes, no winking, no half-closed eyes, "
+            "never a grown-up figure and never a chubby baby (Bruno is just a bigger child). ")
+
+
 def consistency_note(ids):
     """附在出图请求后面：逐个角色点名要保留的细节；两人以上同框时说明身高比例。"""
-    note = ""
+    note = AGE_NOTE if any(k in KEEP for k in ids) else ""
     keep = [f"{k}: {KEEP[k]}" for k in ids if k in KEEP]
     if keep:
         note += ("Must-keep details for each character (check every one before finishing): " + "; ".join(keep) + ". "
@@ -478,14 +484,14 @@ def main():
             continue
         if t == "refs":
             os.makedirs(REFS, exist_ok=True)
-            jobs = {f"{k}.png": (REF_PROMPT.format(desc=d, pose=POSES[k]), []) for k, d in CHARACTERS.items()}
+            jobs = {f"{k}.png": (REF_PROMPT.format(desc=d, pose=POSES[k]) + ". " + AGE_NOTE, []) for k, d in CHARACTERS.items()}
             failed += run_jobs(REFS, jobs, args, frame=False)
             continue
         if t == "sheets":
             # 角色设定图（正面 + 侧面 + 三个表情）：以参考图为准，出到 series/sheets/，给人看、不进出图流程
             outdir = os.path.join(ROOT, "series", "sheets")
             os.makedirs(outdir, exist_ok=True)
-            jobs = {f"{k}.png": (SHEET_PROMPT.format(desc=d, faces=FACES[k]), [os.path.join(REFS, f"{k}.png")])
+            jobs = {f"{k}.png": (SHEET_PROMPT.format(desc=d, faces=FACES[k]) + ". " + AGE_NOTE, [os.path.join(REFS, f"{k}.png")])
                     for k, d in CHARACTERS.items() if k in FACES and os.path.exists(os.path.join(REFS, f"{k}.png"))}
             failed += run_jobs(outdir, jobs, args, frame=False, use_style=False,
                                shape="wide landscape image (3:2, the widest landscape size available)")

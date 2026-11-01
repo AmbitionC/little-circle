@@ -160,10 +160,15 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 1. **剧本里角色一律写 `[[id]]`**，比如 `[[pip]] hugs his tail under the oak tree`。出图前自动展开成角色表里的整句英文描述，并带上 `series/refs/<id>.png`。不用再手抄长句，也就不会抄错一个字导致参考图没带上。同一句里再提到他，用 `the mouse`、`the bear` 就行。关键帧的改动说明照旧只写"改哪里"。
 2. **每张图都带参考图 + 必保细节**：除了参考图，还会把这个角色最容易画丢的细节逐条交代给 Codex（`KEEP`：Pip 左耳缺口、尾巴是完整一条；Bruno 鼻子上的蜂蛰包、领巾蜂蜜渍……），并说明参考图里手上拿的道具（Nutty 的栗子）只在剧本写到时才画。
-3. **同框按身高阶梯**：两个以上角色同框，自动附上身高比例（`SIZES`：Pip、Ruby 1 倍，Bruno 约 2.6 倍）。
-4. **出图前自动检查，没过不出图**：提示词里出现了角色名或物种词（squirrel、mouse、bear、fox……）却没用 `[[id]]`，会画成没参考图的路人动物，直接拦下；角色缺参考图也拦。只想检查时跑 `python3 codex_images.py <集目录> --check`。旧集用的是升级前的旧描述，只提示、不拦。
-5. **出完自动拼角色对比图** `qc/characters.jpg`：每张图右边放它带的参考图。质检时逐个对照 `KEEP` 里的细节，有丢的就 `--only pXX --force` 重出。
-6. **改角色长相时**，`series/characters.md`、本节、`codex_images.py` 的 `CHARACTERS` / `KEEP` / `POSES` / `FACES` 一起改，然后 `refs --only <id> --force` → `sheets --only <id> --force` → `avatars --only <id> --force`，更新图鉴。
+3. **全员统一年龄感**（2026-11-01 加：Bun 先被嫌成人化、改完又被嫌太幼态像老鼠）：每张有角色的图和参考图、设定图都自动附上 `AGE_NOTE`，所有角色都是五岁左右的小朋友：大头短腿，圆眼带高光，不画睫毛、不眨眼、不半眯眼，既不画成大人身材也不画成胖婴儿（Bruno 只是个头大的孩子）。质检时这条和 `KEEP` 一起看。
+4. **同框按身高阶梯**：两个以上角色同框，自动附上身高比例（`SIZES`：Pip、Ruby 1 倍，Bruno 约 2.6 倍）。
+5. **出图前自动检查，没过不出图**：提示词里出现了角色名或物种词（squirrel、mouse、bear、fox……）却没用 `[[id]]`，会画成没参考图的路人动物，直接拦下；角色缺参考图也拦。只想检查时跑 `python3 codex_images.py <集目录> --check`。旧集用的是升级前的旧描述，只提示、不拦。
+6. **出完自动拼角色对比图** `qc/characters.jpg`：每张图右边放它带的参考图。质检时逐个对照 `KEEP` 里的细节，有丢的就 `--only pXX --force` 重出。
+7. **改角色长相时**，按这个顺序（2026-11-01 Bun 改版的做法）：
+   - 先对照这个角色的人格（六件套）定外形方向，外形要能一眼看出性格；性格和外形对不上时，先问用户要不要一起改性格。
+   - 先出 2–3 版候选给用户挑（放 `series/candidates/`），不要直接覆盖正式参考图。用户本机的自动权限会拦覆盖 `series/refs` 的出图命令，所以候选一律出成新文件名。
+   - 用户挑定后，`series/characters.md`、本节、`codex_images.py` 的 `CHARACTERS` / `KEEP` / `POSES` / `FACES` 一起改；旧描述挪进 `OLD_DESC`（可以是元组，存多个旧版本），旧集重出图还能认出来。
+   - 出 `refs --only <id> --force` → `sheets --only <id> --force` → `avatars --only <id> --force`（或出到候选文件名再替换正式文件），更新图鉴；角色口头禅、配音语速随性格一起改（`series/cast.json`）。
 
 **角色要演出性格**（2026-10-30 用户要求角色像疯狂动物城一样有记忆点，方法见 `docs/character-design.md`）：每个角色有六件套（反差、剪影钩子、情绪器官、口头禅、想要、小毛病）。分镜提示词里别让角色都"站着微笑"：主演要用上情绪器官（Nutty 的尾巴、Hazel 的刺、Bun 的耳朵、Pip 的大耳朵、Bruno 的肚子、Fern 的尾巴、Ruby 的红胸脯），同框按体型阶梯画（Bruno 约是朋友们的两倍高，Pip、Ruby 最小）。
 
