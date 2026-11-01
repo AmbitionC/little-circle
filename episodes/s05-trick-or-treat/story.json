@@ -74,7 +74,7 @@
         "tween": 0
       }
     ],
-    "max_seconds": 5.0,
+    "max_seconds": 4.8,
     "motion": "in",
     "zoom": 1.06,
     "focus": [
@@ -106,8 +106,7 @@
         "at": 2.6,
         "gain": 0.45
       }
-    ],
-    "clip": "h3_hook.mp4"
+    ]
   },
   "pages": [
     {
@@ -151,9 +150,7 @@
           "at": 2.5,
           "gain": 0.35
         }
-      ],
-      "clip": "h3_p01.mp4",
-      "clip_seconds": 3.6
+      ]
     },
     {
       "image": "p02.png",
@@ -270,12 +267,10 @@
       "sfx": [
         {
           "file": "../../assets/sfx/bonk.mp3",
-          "at": 4.05,
+          "at": 2.4,
           "gain": 0.5
         }
-      ],
-      "clip": "h3_p04.mp4",
-      "clip_from": 0.8
+      ]
     },
     {
       "image": "p05.png",
@@ -367,9 +362,7 @@
           "gain": 0.4
         }
       ],
-      "lead": 1.1,
-      "clip": "h3_p06.mp4",
-      "clip_seconds": 4.4
+      "lead": 1.1
     },
     {
       "image": "p07.png",
@@ -401,7 +394,6 @@
           "gain": 0.35
         }
       ],
-      "clip": "h3_p07.mp4",
       "lead": 1.6
     },
     {
