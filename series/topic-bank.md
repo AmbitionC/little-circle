@@ -24,7 +24,7 @@
 | s08 | 森林故事 | 天气和外面 | Boom! Thunder! / 轰！打雷啦 | boom, hug, safe | 打雷了 Pip 躲进 Bruno 怀里，Bruno 其实也怕，两人抱着数到三，雷声变成大鼓声 | 孩子怕打雷？今晚讲这个 | pip | 15 |  | 候选（雷声音效要轻） |
 | s09 | 森林故事 | 交朋友 | Gentle, Gentle! / 轻轻的 | gentle, soft, touch | Bruno 想摸小鸟太用力把鸟窝摇晃了，学会轻轻摸 | 孩子下手没轻重？ | bruno | 16 | 节日：世界善意日 11-13 前后 | 候选 |
 | s10 | 森林故事 | 找不到 | Where Is Mama? / 妈妈在哪儿？ | where, mama, here | Ruby 追蝴蝶找不到妈妈，大声喊 Mama，妈妈就在树后 | 教孩子走丢了喊妈妈 | ruby | 15 |  | 候选（分离焦虑，不能吓人，找不到不超过 2 页） |
-| c06 | 认知小绘本 | 天气和外面 | Beep Beep! Wrong Bus! / 坐错车啦 | car, bus, train | Bun 慢半拍上错车，一路换车，最后坐火车回家 | 宝宝爱车？一次学3个 | bun | 15 |  | 候选 |
+| c06 | 认知小绘本 | 天气和外面 | Beep Beep! Wrong Bus! / 坐错车啦 | car, bus, train | Bun 心急跳上车，上错车，一路换车，最后坐火车回家 | 宝宝爱车？一次学3个 | bun | 15 |  | 候选 |
 | c07 | 认知小绘本 | 天气和外面 | Too Many Clothes! / 穿太多啦 | hat, scarf, mittens | 栗栗怕冷一件件往身上穿，穿成球滚不动 | 天冷了，教宝宝说衣服 | nutty | 17 | 节日：立冬 11-07 前后 | 候选 |
 | c08 | 认知小绘本 | 饿和饱 | Breakfast Time! / 早饭时间 | milk, egg, bread | Rocky 什么都要先洗一洗，早饭一样样洗没了（面包洗成了糊），最后大家一起做大三明治 | 3岁宝宝早餐英语 | rocky | 15 |  | 候选 |
 | c09 | 认知小绘本 | 找不到 | Where's My Scarf? / 我的围巾呢？ | in, on, under | 栗栗找围巾，盒子里、床底下、树枝上，原来围在 Bun 脖子上 | 宝宝学 in on under | nutty | 16 |  | 候选 |
