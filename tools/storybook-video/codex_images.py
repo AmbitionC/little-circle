@@ -39,7 +39,7 @@ CHARACTERS = {
     # 2026-10-30 角色升级：每句加了一个夸张部位（剪影钩子）；同日第二版加了「活人感」：衣服的来历、磨损和小瑕疵。六件套见 series/characters.md
     "nutty": "a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom",
     "hazel": "a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee",
-    "bun": "a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
+    "bun": "a nimble little light-gray bunny girl with child proportions like her friends, long narrow upright rabbit ears tapered to a soft point, about as long as her head, bright clever eyes with a lively sparkle, a white fluffy cotton-tail, wearing a small red vest with a little carrot-shaped badge and a tiny magnifying glass on a string around her neck",
     # 其他森林伙伴（性格见 series/characters.md）；refs 只出用到的：codex_images.py refs --only pip,bruno
     "pip": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up",
     "bruno": "a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains",
@@ -57,7 +57,9 @@ OLD_DESC = {
     "hazel": "a round little hedgehog boy with soft brown spines, rosy cheeks, wearing tiny yellow overalls",
     "bun": ("a fluffy light-gray bunny with long ears, one ear slightly floppy, wearing a small red vest",
             # 10-30 版（一耳耷拉、半眯眼），11-01 用户嫌成人化换掉；旧集重出图仍认得
-            "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy"),
+            "a fluffy light-gray bunny with very long ears, her left ear standing straight up tall and her right ear flopped down over her right eye, sleepy half-closed eyes and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy",
+            # 11-01 上午幼态版（用户嫌太幼、耳朵像老鼠）
+            "a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy"),
     "pip": "a tiny gray mouse with big round pink ears, a pink nose and a thin curly tail, wearing a little blue-and-white striped shirt",
     "bruno": "a big chubby brown bear cub with a round soft tummy and small round ears, wearing a little orange neckerchief",
     "ruby": "a tiny round fluffy baby robin with an orange-red chest and stubby little wings",
@@ -67,7 +69,7 @@ OLD_DESC = {
 POSES = {
     "nutty": "hugging a big shiny chestnut with an eager toothy grin, his huge tail puffed up high behind him",
     "hazel": "shyly opening his little arms for a hug, a small hopeful smile, his spines softly raised",
-    "bun": "hugging her stuffed carrot toy with both arms, both ears straight up, a soft drowsy baby smile with her big round eyes open",
+    "bun": "one paw raised with a finger up as if she just had a great idea, both ears perked straight up, a bright clever grin, light on her toes",
     "pip": "clutching the end of his own long unbroken tail nervously with wide worried eyes, one huge ear turned to the side listening",
     "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
     "fern": "striking a ta-da pose standing upright on both feet, one paw raised high, chin up, tail fluffed proudly, a cheeky showing-off smile",
@@ -88,7 +90,7 @@ SHEET_PROMPT = ("character model sheet of {desc}, laid out on one wide sheet wit
 FACES = {
     "nutty": "an eager toothy grin; a puzzled face scratching his head with his tail curled like a question mark; a happy 'yum' face with closed eyes",
     "hazel": "a shy hopeful smile; a startled face with all spines popped straight out; a blissful face being hugged",
-    "bun": "a big wide-open baby yawn with eyes squeezed shut; fast asleep curled up hugging her carrot with a tiny bubble at her nose; a delighted giggle with both ears perked up extra tall",
+    "bun": "a bright clever 'I have an idea!' grin with one finger raised; an eager confident smile mid-hop with ears streaming back; a focused knowing smile peering through her little magnifying glass",
     "pip": "worried with his huge ears covering his face; listening with one ear turned; a proud brave smile",
     "bruno": "a big confident grin; terrified of a tiny bee near his nose; tearing up with joy holding a honey pot",
     "fern": "a cheeky ta-da wink; embarrassed after tripping with her tail hidden behind her; a big honest laugh",
@@ -116,7 +118,7 @@ def char_refs(text):
 KEEP = {
     "nutty": "huge tail bigger than his body with a little twig in it, tooth gap, too-long green scarf with an unraveling end, patched nut pouch with a hole",
     "hazel": "ball-shaped body, small red leaf stuck in his spines, yellow overalls with one strap slipped off the shoulder, round blue knee patch",
-    "bun": "BOTH ears standing straight up (neither ear flopped), chubby toddler body with a big round head, big round baby eyes (no winking, no long eyelashes, no half-closed eyes), bed-head tuft, crooked misbuttoned red vest, worn stuffed carrot toy",
+    "bun": "long narrow upright rabbit ears about as long as her head (NOT big round mouse ears), child proportions like Nutty and Hazel with short legs (not a baby, not a grown-up), bright clever eyes with no eyelashes and no winking, red vest with a carrot badge, tiny magnifying glass on a string, white cotton-tail",
     "pip": "ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves",
     "bruno": "about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief",
     "fern": "rounded cute proportions standing on two legs, crinkled red maple leaf behind one ear, black stocking legs with one dusty knee, white tail tip",

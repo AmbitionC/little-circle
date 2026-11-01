@@ -53,7 +53,7 @@
 | bo | 波波 Bo | 小獾 | **挖洞专家**，什么问题都想挖个洞解决 | "Dig, dig!" | 找东西、动手试试 |
 | wiggles | 扭扭 Wiggles | 小水獭 | 有一块**最爱的小石头**，走哪带哪，一丢就天塌了（海獭真的会把喜欢的石头揣在腋下） | "My rock!" | 安抚物、丢了怎么办、借给朋友 |
 
-> 2026-11-01 Bun 性格改版（用户在卡片上选"改成机灵点子王"）：从"走到哪睡到哪"改成机灵点子王，外形候选在挑。下面的活人感细节和英文描述等外形定稿后一起改。
+> 2026-11-01 Bun 性格改版（用户在卡片上选"改成机灵点子王"）：从"走到哪睡到哪"改成机灵点子王，外形出了 A 点子王 / B 小飞毛腿 / C 小侦探三版，用户说"ABC 都可以有"：合成一个 Bun，A 竖手指是招牌姿势，B 蹦跳和 C 拿放大镜是她的常用动作，放大镜和胡萝卜徽章是随身物。候选图 series/candidates/bun_options_1101.jpg。
 >
 > 同日更早一次外形改版（已被否）：用户说原来的兔子"有点成人化"（眨眼、长睫毛、半眯眼、身子细长），要"两个耳朵正常竖着"。改成圆滚滚的幼儿身材、大圆眼、两耳都竖，身高从 1.6 降到 1.35，和 Nutty、Hazel 一档。困的性格靠打哈欠、睡着来演，不再靠半眯眼。
 
@@ -66,7 +66,7 @@
 |---|---|---|---|
 | 栗栗 Nutty | 奶奶织的绿围巾，太长了，一头松了线 | 两颗门牙中间有条缝；大尾巴里老挂着一根小树枝 | 打了补丁的布坚果袋，袋底有个洞，栗子一路漏，所以总找不到 |
 | Hazel | 黄背带裤大了一号，一边背带老往下滑；膝盖上一块圆圆的蓝补丁 | 刺上总扎着一片小红叶，自己不知道 | — |
-| Bun | 红背心扣错了扣子，歪歪地挂着 | 两耳中间一撮睡乱的呆毛 | 抱着一根旧旧的胡萝卜布偶，睡觉要抱 |
+| Bun | 红背心胸前别着一枚胡萝卜徽章（自己做的"点子王"勋章） | 心急：一有主意就跑，常常话说一半人已经跳出去了 | 脖子上挂一个小放大镜，什么都要凑近看看 |
 | 皮皮 Pip | 哥哥姐姐穿剩的条纹衫，太大，袖子卷起来 | 左耳有个小缺口（2026-10-31 去掉了尾巴绷带：用户说看着像尾巴断了） | — |
 | 布鲁诺 Bruno | 橙色领巾上全是蜂蜜滴下来的黄渍 | 鼻尖上一个被蜜蜂蛰的小红包 | — |
 | 小芬 Fern | 耳后的红枫叶有点皱了，舍不得换 | 一边膝盖蹭脏了一块（摆造型摔的） | — |
@@ -78,7 +78,7 @@
 
 - nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom`
 - hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee`
-- bun: `a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
+- bun: `a nimble little light-gray bunny girl with child proportions like her friends, long narrow upright rabbit ears tapered to a soft point, about as long as her head, bright clever eyes with a lively sparkle, a white fluffy cotton-tail, wearing a small red vest with a little carrot-shaped badge and a tiny magnifying glass on a string around her neck`
 - pip: `a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up`
 - bruno: `a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains`
 - fern: `a cute little orange fox kit with soft rounded cartoon proportions like her friends, always standing upright on two legs, not a squirrel, with a pointed fox snout, tall smooth triangular fox ears, black stocking legs with a scuffed dusty patch on one knee and a long fluffy fox tail with a white tip held low, a slightly crinkled red maple leaf tucked behind one ear`

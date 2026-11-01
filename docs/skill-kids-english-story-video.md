@@ -150,7 +150,7 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 - Nutty: `a small red squirrel with a huge fluffy tail even bigger than his whole body with a little twig stuck in it, round bright eyes and a tiny gap between his two front teeth, wearing a too-long hand-knitted green scarf with one unraveling end and a loose thread, and a small patched cloth nut pouch on a strap with a hole at the bottom`
 - Hazel: `a round ball-shaped little hedgehog boy with a wide puffy crown of soft brown spines with one small red leaf stuck on them, rosy cheeks, wearing slightly too-big tiny yellow overalls with one strap slipping off his shoulder and a round blue patch on one knee`
-- Bun: `a chubby little light-gray bunny girl with toddler proportions, a big round head and a short round body, two soft medium-length ears both standing straight up with pink insides, big round shiny baby eyes like her friends, rosy round cheeks and a messy tuft of bed-head fur sticking up between her ears, wearing a small red vest buttoned up wrong so it hangs crooked, hugging a worn little stuffed carrot toy`
+- Bun: `a nimble little light-gray bunny girl with child proportions like her friends, long narrow upright rabbit ears tapered to a soft point, about as long as her head, bright clever eyes with a lively sparkle, a white fluffy cotton-tail, wearing a small red vest with a little carrot-shaped badge and a tiny magnifying glass on a string around her neck`
 
 其他角色的原文见 `series/characters.md`。2026-10-30 角色升级，每句加了一个夸张部位（剪影钩子）和「活人感」细节（衣服的磨损、小瑕疵、随身小物，见角色表），旧句子 `codex_images.py` 也还认得（`OLD_DESC`），旧集重出图不受影响；新写的剧本一律用新句子。
 
