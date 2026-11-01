@@ -38,6 +38,12 @@
 | s11 | 森林故事 | 饿和饱 | Thank You, Friends! / 谢谢你们 | thank you, pie, together | Bruno 做大派摔了一地，朋友们一人带一样东西拼出更大的派，他学会说 Thank you | 感恩节，教孩子说谢谢 | bruno | 16 | 节日：感恩节，11-26 前发 | 候选 |
 | c12 | 认知小绘本 | 天气和外面 | First Snow! / 下雪啦 | snow, cold, snowman | 第一次见雪，Bun 堆雪人，胡萝卜鼻子被自己吃掉了 | 下雪了，跟宝宝说英文 | bun | 15 | 节日：小雪 11-22 前后 | 候选 |
 | s12 | 森林故事 | 晚安 | Happy New Year! / 新年快乐 | new year, three two one, hug | 大家等着倒数，Ollie 白天睡多了最清醒，把睡着的朋友一个个叫醒一起喊 3-2-1 | 跨年夜，跟宝宝一起倒数 | ollie | 15 | 节日：元旦，12-24 前定 | 候选（烟花要远、要柔） |
+| c13 | 认知小绘本 | 大和小、多和少 | A Big Box! / 好大一个箱子 | box, open, in | 大箱子送到森林，大家猜里面是什么；拆开是个小玩具，最后大家都钻进箱子里玩 | 娃只爱纸箱不爱玩具？ | bo | 17 | 节日：双十一 11-11，11-07 前定 | 候选（11-01 搜热点加；不碰买买买） |
+| s13 | 森林故事 | 等一等 | Are We There Yet? / 到了吗？ | there, look, wow | 坐车去看红叶，Pip 一直问 Are we there yet?，Bruno 教她一路找东西说 Look!，到了 Wow! | 路上一直问到了没？ | pip | 16 | 热点：11 月秋假出游，11-15 前发 | 候选（11-01 搜热点加） |
+| d06 | 生活口语 | 我的！ | We Say Please! / 我们说 Please | please, give, thank you | 核心句 "We don't say Give me. We say... Please!"（借热梗「我们不说 X，我们可以说 Y」）；Rocky 伸手就抢 | 孩子张口就是"给我"？ | rocky | 17 |  | 候选（可做系列：No, thank you / Excuse me） |
+| c14 | 认知小绘本 | 身体小事 | Hot! Hot! Hot! / 烤红薯好烫 | hot, blow, wait | Bruno 烤红薯，栗栗等不及烫得两爪来回扔，大家一起 blow blow 等一等 | 教娃别碰烫的 | bruno | 16 | 节日：立冬 11-07 / 消防日 11-09 | 候选（11-01 搜热点加） |
+| c15 | 认知小绘本 | 找不到 | Hide and Seek, Turkey! / 火鸡躲猫猫 | in, on, under | 火鸡来做客玩躲猫猫，尾巴羽毛总露在外面，宝宝帮忙找 | 感恩节英语，宝宝帮忙找 | 新客串（火鸡） | 14 | 节日：感恩节 11-26 | 备选（词和 c09 重，二选一；不提吃火鸡） |
+| d07 | 生活口语 | 天气和外面 | I'm Cold! / 好冷啊 | cold, warm, hug | 寒风一吹 Bun 耳朵结冰，大家抱成一团取暖 | 降温了，跟娃说这句 | bun | 15 | 热点：寒潮当天发 | 备选（和 c07、c12 都讲冷，看天气二选一） |
 
 
 ## 2. 排期
