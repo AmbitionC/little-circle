@@ -3,6 +3,7 @@
 
   python3 codex_images.py ../../episodes/s03-sleepy --comic        # 先出 comic/sheet1-3.png
   python3 comic_page.py ../../episodes/s03-sleepy                  # → out/<集>/comic.html，再发布成 Artifact
+  （用 --comic-all 出的漫画会带 comic/panels.json，每个动作关键帧一格，台词写在它说出的那一格下面）
 
 格子按白色分隔条自动切；切不出来就按宽度均分。台词从 story.json 读，画面说明从 script.md 的分镜表读。
 """
@@ -61,6 +62,50 @@ def table_rows(script):
     return rows, hook
 
 
+def keys_of(ep):
+    sys.path.insert(0, HERE)
+    from codex_images import parse_keys
+    return parse_keys(os.path.join(ep, "script.md"))
+
+
+def every_card(every, j, story, rows, hook_beats, keys):
+    """--comic-all 的一格：主图格写这一页的段落、画面、音效、运镜；关键帧格写这一刻的动作（分镜表里有 → p01b 就用中文，
+    没有就用出图提示词）；台词只写在它说出的那一格。"""
+    p = every[j]
+    im, stem = p["image"], os.path.splitext(p["image"])[0]
+    if p["page"] == "hook":
+        h = story.get("hook", {})
+        n = sum(1 for q in every[:j] if q["page"] == "hook")
+        beats = [b.strip(" -") for b in hook_beats.splitlines()]
+        scene = md(beats[n]) if n < len(beats) else ""
+        say = h.get("say", {})
+        lines = [("旁白", say.get("en", ""), say.get("zh", ""))] if 0 in p["lines"] and say else []
+        if n == 0:
+            title = f"开头钩子 · {h.get('max_seconds') or 5:g} 秒"
+            extra = (f"<p class=big>第 0 帧大字：<b>{html.escape(h.get('headline', ''))}</b><br>"
+                     f"<span>{html.escape(h.get('subline', ''))}</span></p>")
+        else:
+            title, extra = f"钩子 · {stem}", ""
+        return title, "钩子", scene, lines, extra, ""
+    page = story["pages"][p["index"]]
+    r = rows.get(p["page"], {})
+    num = int(p["page"][1:])
+    parts = re.split(r"\s*→\s*(p\d+[a-z])：", r.get("画面", ""))
+    desc = dict([(p["page"] + ".png", parts[0])] + [(f"{a}.png", b) for a, b in zip(parts[1::2], parts[2::2])])
+    main = im == page["image"]
+    if im in desc:
+        scene = md(desc[im])
+    elif im in keys:
+        scene = f"<span lang=en>{html.escape(keys[im][1])}</span>"
+    else:
+        scene = ""
+    lines = [(NAMES.get(l.get("speaker", "narrator"), l.get("speaker")), l["en"], l.get("zh", ""))
+             for i, l in enumerate(page["lines"]) if i in p["lines"]]
+    meta = " · ".join(x for x in [f"音效：{r['音效']}" if r.get("音效") else "", f"运镜：{r['运镜']}" if r.get("运镜") else ""] if x) if main else ""
+    title = f"第 {num} 页" if main else f"第 {num} 页 · {stem}"
+    return title, r.get("段落", "") if main else "", scene, lines, "", meta
+
+
 def jpeg_b64(im, w=720):
     im = im.copy()
     im.thumbnail((w, w * 2), Image.LANCZOS)
@@ -85,15 +130,20 @@ def main():
     sheets = sorted(glob.glob(os.path.join(ep, "comic", "sheet*.png")), key=lambda p: int(re.findall(r"\d+", os.path.basename(p))[0]))
     if not sheets:
         sys.exit("还没有漫画：先跑 codex_images.py <集> --comic")
-    keys = ["hook"] + [f"p{i + 1:02d}" for i in range(len(story["pages"]))]
+    # --comic-all 出的漫画带 comic/panels.json：一格一个关键帧，按它配字；否则一页一格
+    pj = os.path.join(ep, "comic", "panels.json")
+    every = json.load(open(pj, encoding="utf-8")) if os.path.exists(pj) else None
+    keys = [p["page"] for p in every] if every else ["hook"] + [f"p{i + 1:02d}" for i in range(len(story["pages"]))]
     panels = []
     for i, sh in enumerate(sheets):
         n = min(3, len(keys) - 3 * i)
         panels += split_panels(sh, n)[0]
 
     cards = []
-    for k, im in zip(keys, panels):
-        if k == "hook":
+    for j, (k, im) in enumerate(zip(keys, panels)):
+        if every:
+            title, seg, scene, lines, extra, meta = every_card(every, j, story, rows, hook_beats, keys_of(ep))
+        elif k == "hook":
             h = story.get("hook", {})
             say = h.get("say", {})
             intro = next((x["seconds"] for x in story.get("song", {}).get("sections", []) if not x.get("pages")), None)
@@ -146,7 +196,7 @@ h2{{font-size:18px;margin:0}}.seg{{color:var(--accent);font-size:13px;font-weigh
 .zh{{display:block;font-size:14px;color:var(--soft)}}.meta{{font-size:12px;color:var(--soft);margin:8px 0 0}}
 </style></head><body><main>
 <h1>{html.escape(story.get('title_en', ''))} · {html.escape(story.get('title_zh', ''))}</h1>
-<p class=sub>漫画剧本：每格是一页的关键画面（草图，不是成片），下面是这一页的台词、音效和运镜。看完觉得没问题，再开始出图做动画。</p>
+<p class=sub>{"漫画剧本：每个动作关键帧一格，按播放顺序排（草图，不是成片）；台词写在说出它的那一格下面。" if every else "漫画剧本：每格是一页的关键画面（草图，不是成片），下面是这一页的台词、音效和运镜。"}看完觉得没问题，再开始出图做动画。</p>
 <div class=grid>{''.join(cards)}</div>
 </main></body></html>"""
     out = args.out or os.path.join(ROOT, "out", os.path.basename(ep).split("-")[0], "comic.html")

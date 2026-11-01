@@ -7,6 +7,7 @@
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
   python3 codex_images.py ../../episodes/s03-sleepy --comic   # 漫画剧本：每三格一张横版漫画，剧本确认前给用户看
+  python3 codex_images.py ../../episodes/c18-peekaboo --comic-all   # 漫画剧本画全部格子（每个动作关键帧一格），看分镜够不够
   python3 codex_images.py ../../episodes/s05-xxx --check      # 只查角色写法，不出图
 
 角色一致性：script.md 里写 [[pip]] 会展开成角色表里的整句英文描述，并自动带上 series/refs/pip.png；
@@ -405,6 +406,75 @@ def comic_jobs(script):
     return jobs, order
 
 
+def comic_all_panels(ep):
+    """--comic-all 的格子顺序：钩子首帧 + h02–h04，每页主图 + 这一页所有动作关键帧，按 story.json 里 cycle/frames 出现的先后；
+    复习页复用的图跳过。返回 [{"image", "page"（hook / p01…）, "index"（story.json pages 下标）, "lines"（这一格下面写的台词序号）}]。"""
+    story = json.load(open(os.path.join(ep, "story.json"), encoding="utf-8"))
+    hook = [f["image"] for f in story.get("hook", {}).get("frames", [])]
+    panels = [{"image": im, "page": "hook", "lines": [0] if i == 0 and story["hook"].get("say") else []}
+              for i, im in enumerate(hook)]
+    seen = set(hook)
+    for n, page in enumerate(story["pages"]):
+        if page["image"] in seen:
+            continue
+        frames = page.get("frames", [])
+        order = [page["image"]] + page.get("cycle", {}).get("images", []) + [f["image"] for f in frames]
+        imgs = [im for i, im in enumerate(order) if im not in order[:i]]
+        seen.update(imgs)
+        # 台词写在它说出时画面上那一格：有 talk（张嘴帧）就用 talk 的底图；否则按 line/offset 或 at 找当时在画面上的那张
+        when = {page["image"]: (0, 0)}
+        for f in frames:
+            if f["image"] not in when:
+                when[f["image"]] = (f["line"], f.get("offset", 0)) if "line" in f else (0, f.get("at", 0) - page.get("lead", 0))
+        said = {im: [] for im in imgs}
+        for i, line in enumerate(page.get("lines", [])):
+            at = next((k for k in line.get("talk", {}) if k in said), None)
+            if at is None:
+                at = max((im for im in imgs if when.get(im, (0, 0)) <= (i, 0)), key=lambda im: when.get(im, (0, 0)))
+            said[at].append(i)
+        pid = re.match(r"p\d+", page["image"]).group()   # 分镜表里的页号；复习页插在中间时和 pages 下标对不上
+        panels += [{"image": im, "page": pid, "index": n, "lines": said[im]} for im in imgs]
+    return panels
+
+
+def comic_all_jobs(script, ep):
+    """漫画剧本（全部格子）：每个动作关键帧一格，三格一张。关键帧那格写成"主图场景 + 这一刻的动作"；
+    和上一格是同一镜头的，写成"同一个镜头，只改了……"，三格连起来看就是连贯的动作。"""
+    shots = parse_script(script)
+    keys = parse_keys(script)
+    panels = comic_all_panels(ep)
+
+    def base(im):
+        x = re.split(r", (?:Japanese hand-painted|polished digital children's)", shots[im])[0]
+        return x.split(", keep every face")[0]
+
+    def chain(im):   # 关键帧一路往回找到主图：[主图, 改动1, 改动2…]
+        steps = []
+        while im in keys:
+            im, change = keys[im][0], keys[im][1]
+            steps.insert(0, change)
+        return im, steps
+
+    def scene(im, prev):
+        if im in shots:
+            return base(im)
+        if prev and keys[im][0] == prev:
+            return f"the same shot as the previous panel, same background and positions, now {keys[im][1]}"
+        root, steps = chain(im)
+        return base(root) + "; at this moment, " + ", then ".join(steps)
+
+    jobs = {}
+    for n in range(0, len(panels), 3):
+        group = [p["image"] for p in panels[n:n + 3]]
+        parts = " ".join(f"Panel {i + 1}: {scene(im, group[i - 1] if i else None)}." for i, im in enumerate(group))
+        prompt = (f"A {len(group)}-panel comic strip laid out left to right, {len(group)} equal tall vertical panels side by side "
+                  "separated by clean white gutters, each panel a full scene, read left to right as one continuous moment of the "
+                  "story. " + parts + " Same characters, same art style, same places and sizes in every panel, "
+                  + STYLE + ". Absolutely no text, no speech bubbles, no captions, no panel numbers.")
+        jobs[f"comic/sheet{n // 3 + 1}.png"] = (prompt, char_refs(prompt))
+    return jobs, panels
+
+
 def run_jobs(outdir, jobs, args, frame=True, use_style=True, shape=None):
     lock_path = os.path.join(outdir, "images.json")
     lock = json.load(open(lock_path)) if os.path.exists(lock_path) else {}
@@ -460,6 +530,7 @@ def main():
     ap.add_argument("--check", action="store_true", help="只检查角色写法（[[id]]、整句描述、参考图齐不齐），不出图")
     ap.add_argument("--allow-mismatch", action="store_true", help="角色检查有问题也照样出图（不推荐）")
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
+    ap.add_argument("--comic-all", action="store_true", help="漫画剧本画全部格子：钩子 + 每页主图 + 每个动作关键帧，一格一个画面")
     ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
 
@@ -499,9 +570,17 @@ def main():
         script = os.path.join(t, "script.md")
         if not os.path.exists(script):
             sys.exit(f"找不到 {script}")
-        if args.comic:
+        if args.comic or args.comic_all:
             os.makedirs(os.path.join(t, "comic"), exist_ok=True)
-            jobs, _ = comic_jobs(script)
+            # comic/panels.json 记下每格是哪张图、写哪几句台词，comic_page.py 照它配字；--comic 没有这个文件
+            panels_json = os.path.join(t, "comic", "panels.json")
+            if args.comic_all:
+                jobs, panels = comic_all_jobs(script, t)
+                json.dump(panels, open(panels_json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            else:
+                jobs, _ = comic_jobs(script)
+                if os.path.exists(panels_json):
+                    os.remove(panels_json)
             failed += run_jobs(os.path.abspath(t), jobs, args, frame=False,
                                shape="wide landscape image (3:2, the widest landscape size available)")
             continue
