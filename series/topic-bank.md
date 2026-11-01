@@ -44,11 +44,16 @@
 | c14 | 认知小绘本 | 身体小事 | Hot! Hot! Hot! / 烤红薯好烫 | hot, blow, wait | Bruno 烤红薯，栗栗等不及烫得两爪来回扔，大家一起 blow blow 等一等 | 教娃别碰烫的 | bruno | 16 | 节日：立冬 11-07 / 消防日 11-09 | 候选（11-01 搜热点加） |
 | c15 | 认知小绘本 | 找不到 | Hide and Seek, Turkey! / 火鸡躲猫猫 | in, on, under | 火鸡来做客玩躲猫猫，尾巴羽毛总露在外面，宝宝帮忙找 | 感恩节英语，宝宝帮忙找 | 新客串（火鸡） | 14 | 节日：感恩节 11-26 | 备选（词和 c09 重，二选一；不提吃火鸡） |
 | d07 | 生活口语 | 天气和外面 | I'm Cold! / 好冷啊 | cold, warm, hug | 寒风一吹 Bun 耳朵结冰，大家抱成一团取暖 | 降温了，跟娃说这句 | bun | 15 | 热点：寒潮当天发 | 备选（和 c07、c12 都讲冷，看天气二选一） |
-| s14 | 森林故事 | 身体小事 | Who Tooted? / 谁放屁了？ | toot, oops, excuse me | 安静听故事时"噗"一声，大家互相怀疑，叶子被吹飞，是 Bun；说 Excuse me，大家说 That's OK；彩蛋又一声，是 Bruno | 孩子笑到停不下来 | bun | 17 |  | 候选（11-01 加；和 c04 都用 excuse me，隔 2 周） |
-| c16 | 认知小绘本 | 晚安 | Yaaawn! / 打哈欠会传染 | yawn, sleepy, shh | Ollie 打个哈欠，一个传一个，全森林睡着了，只剩 Ollie 睁着大眼睛 | 你看完打哈欠了吗？ | ollie | 15 |  | 候选（4 岁以下孩子不太会被传染，钩子主要打家长） |
-| s15 | 森林故事 | 身体小事 | Hic! Hic! / 打嗝停不下来 | hic, boo, stop | Bruno 打嗝停不下来，喝水、倒立、吓他 Boo! 都没用，Pip 一个抱抱嗝停了 | 宝宝打嗝怎么办（不教偏方） | bruno | 15 |  | 候选（11-01 加） |
-| s16 | 森林故事 | 找不到 | Where Did I Hide It? / 我把栗子藏哪了？ | hide, dig, tree | 栗栗为过冬到处埋栗子转头就忘，宝宝记得、指着屏幕喊；彩蛋：春天没找到的地方长出小树苗 | 松鼠会忘了埋哪？ | nutty | 17 | 季节：11 月存粮季 | 候选（11-01 加；栗栗代表作候选） |
-| s17 | 森林故事 | 晚安 | Moon, Come Down! / 月亮你下来 | moon, big, round | Pip 以为大月亮是饼干，叠罗汉去够，倒下来躺在草地上发现躺着看最美 | 今晚超级月亮 | pip | 15 | 节日：超级月亮 11-24 当天 | 候选（11-01 加） |
+| s14 | 森林故事 | 身体小事 | Who Tooted? / 谁放屁了？ | toot, oops, excuse me | 安静听故事时"噗"一声，大家互相怀疑，叶子被吹飞，是 Bun；说 Excuse me，大家说 That's OK；彩蛋又一声，是 Bruno | 孩子笑到停不下来 | bun | 17 |  | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
+| c16 | 认知小绘本 | 晚安 | Yaaawn! / 打哈欠会传染 | yawn, sleepy, shh | Ollie 打个哈欠，一个传一个，全森林睡着了，只剩 Ollie 睁着大眼睛 | 你看完打哈欠了吗？ | ollie | 15 |  | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
+| s15 | 森林故事 | 身体小事 | Hic! Hic! / 打嗝停不下来 | hic, boo, stop | Bruno 打嗝停不下来，喝水、倒立、吓他 Boo! 都没用，Pip 一个抱抱嗝停了 | 宝宝打嗝怎么办（不教偏方） | bruno | 15 |  | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
+| s16 | 森林故事 | 找不到 | Where Did I Hide It? / 我把栗子藏哪了？ | hide, dig, tree | 栗栗为过冬到处埋栗子转头就忘，宝宝记得、指着屏幕喊；彩蛋：春天没找到的地方长出小树苗 | 松鼠会忘了埋哪？ | nutty | 17 | 季节：11 月存粮季 | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
+| s17 | 森林故事 | 晚安 | Moon, Come Down! / 月亮你下来 | moon, big, round | Pip 以为大月亮是饼干，叠罗汉去够，倒下来躺在草地上发现躺着看最美 | 今晚超级月亮 | pip | 15 | 节日：超级月亮 11-24 当天 | 暂缓（11-01 用户：质量差，凭感觉想的、无对标数据） |
+| c17 | 认知小绘本 | 饿和饱 | Yummy or Yucky? / 好吃还是难吃 | yes, no, yummy | Bruno 开森林餐厅端出蜂蜜配袜子、胡萝卜冰淇淋，每道停顿等宝宝喊 Yes!/No!；彩蛋 Bruno 偷尝袜子 | 宝宝会喊 Yes 和 No 吗？ | bruno | 17 |  | 候选（对标 Super Simple Broccoli Ice Cream 11 亿播放） |
+| c18 | 认知小绘本 | 找不到 | Peekaboo! Where's Pip? / 皮皮在哪里 | peekaboo, where, here | 大家轮流躲，每次露出招牌部位（Pip 大耳朵、Bruno 大屁股），宝宝先找到 | 2岁宝宝最爱躲猫猫 | pip | 17 |  | 候选（对标 CoComelon Peek A Boo 31 亿） |
+| c19 | 认知小绘本 | 交朋友 | Who Said That? / 是谁在叫 | moo, quack, roar | 灌木丛后传来叫声，先猜再揭晓；最后 ROAR 是最小的 Pip | 宝宝猜得出是谁吗？ | pip | 17 |  | 候选（对标 Super Simple Animals On The Farm 重制版 3800 万，近期 5.7 倍） |
+| c20 | 认知小绘本 | 大和小、多和少 | Five in the Bed / 五个挤一张床 | five, one, roll over | 五个伙伴挤叶子床，Bruno 一翻身掉一个，悬念是最后剩谁 | 睡前数数，从5数到1 | bruno | 16 |  | 候选（对标 Five Little Ducks 19 亿、Ten in the Bed；传统儿歌公有领域） |
+| s18 | 森林故事 | 我自己来 | Our Secret Den / 我们的秘密基地 | in, blanket, shh | 下雨天用毯子搭基地，越搭越大最后塌了，大家钻在下面笑 | 冬天在家跟娃搭基地 | nutty | 16 |  | 候选（对标 Peppa 官方近期第一 Secret Hideout 160 万） |
 
 
 ## 2. 排期
