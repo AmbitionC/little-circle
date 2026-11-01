@@ -4,7 +4,8 @@
   .venv/bin/pip install oss2                          # 第一次
   .venv/bin/python oss_publish.py ../../out/s02       # 同步 s02
 
-key 只从环境变量读：OSS_ACCESS_KEY_ID、OSS_ACCESS_KEY_SECRET（放在 ~/.zshrc，别发进聊天、别提交）。
+key 先读环境变量 OSS_ACCESS_KEY_ID、OSS_ACCESS_KEY_SECRET；没有就读阿里云控制台导出的 ~/code/AccessKey.csv
+（表头 AccessKey ID,AccessKey Secret；路径可用 OSS_KEY_CSV 改）。key 别发进聊天、别提交、别打印。
 bucket / 地域默认和 fe-journey-faas 一致，可用 OSS_BUCKET、OSS_REGION 覆盖。
 对象放在 little-circle/<集>/ 下：能设公共读就给永久链接；bucket 禁止公共读时退回 7 天签名链接。
 """
@@ -18,6 +19,16 @@ SIGN_SECONDS = 7 * 24 * 3600
 PATTERNS = ["*.mp4", "*_cover_*.jpg", "publish.txt", "*.srt", "*_print.pdf", "xhs/*"]
 
 
+def key_from_csv():
+    """阿里云控制台"创建 AccessKey"导出的 CSV：第一行表头，第二行 ID,Secret。"""
+    import csv
+    path = os.path.expanduser(os.environ.get("OSS_KEY_CSV", "~/code/AccessKey.csv"))
+    if not os.path.exists(path):
+        return None, None
+    rows = [r for r in csv.reader(open(path, encoding="utf-8-sig")) if r]
+    return (rows[1][0].strip(), rows[1][1].strip()) if len(rows) > 1 and len(rows[1]) > 1 else (None, None)
+
+
 def main():
     ap = argparse.ArgumentParser(description="成品包同步到 OSS")
     ap.add_argument("outdir", help="成品目录，如 ../../out/s02")
@@ -28,7 +39,9 @@ def main():
         sys.exit("缺 oss2：先跑 .venv/bin/pip install oss2")
     kid, secret = os.environ.get("OSS_ACCESS_KEY_ID"), os.environ.get("OSS_ACCESS_KEY_SECRET")
     if not kid or not secret:
-        sys.exit("没读到 OSS_ACCESS_KEY_ID / OSS_ACCESS_KEY_SECRET。在 ~/.zshrc 里 export 后，新开终端或 source ~/.zshrc。")
+        kid, secret = key_from_csv()
+    if not kid or not secret:
+        sys.exit("没读到 OSS key：~/.zshrc 里 export OSS_ACCESS_KEY_ID / OSS_ACCESS_KEY_SECRET，或放好 ~/code/AccessKey.csv。")
     bucket = oss2.Bucket(oss2.Auth(kid, secret), f"https://{REGION}.aliyuncs.com", BUCKET)
 
     outdir = os.path.abspath(args.outdir)
