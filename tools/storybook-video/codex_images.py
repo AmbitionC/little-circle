@@ -69,7 +69,9 @@ OLD_DESC = {
 POSES = {
     "nutty": "hugging a big shiny chestnut with an eager toothy grin, his huge tail puffed up high behind him",
     "hazel": "shyly opening his little arms for a hug, a small hopeful smile, his spines softly raised",
-    "bun": "one paw raised with a finger up as if she just had a great idea, both ears perked straight up, a bright clever grin, light on her toes",
+    "bun": "one paw raised with a finger up as if she just had a great idea, both ears perked straight up, a bright clever grin, light on her toes, "
+           "standing with both feet on the ground, a small chubby five-year-old child body with a big head and short stubby legs, "
+           "the same size and proportions as a little hedgehog friend, simple round dark eyes with a white highlight, no eyelashes",
     "pip": "clutching the end of his own long unbroken tail nervously with wide worried eyes, one huge ear turned to the side listening",
     "bruno": "proudly patting his round tummy with both paws, chin up, big confident grin",
     "fern": "striking a ta-da pose standing upright on both feet, one paw raised high, chin up, tail fluffed proudly, a cheeky showing-off smile",
@@ -90,7 +92,7 @@ SHEET_PROMPT = ("character model sheet of {desc}, laid out on one wide sheet wit
 FACES = {
     "nutty": "an eager toothy grin; a puzzled face scratching his head with his tail curled like a question mark; a happy 'yum' face with closed eyes",
     "hazel": "a shy hopeful smile; a startled face with all spines popped straight out; a blissful face being hugged",
-    "bun": "a bright clever 'I have an idea!' grin with one finger raised; an eager confident smile mid-hop with ears streaming back; a focused knowing smile peering through her little magnifying glass",
+    "bun": "a bright clever 'I have an idea!' grin with one finger raised; an eager confident smile mid-hop with ears streaming back; a focused knowing smile peering through her little magnifying glass with BOTH eyes wide open, the other eye not closed",
     "pip": "worried with his huge ears covering his face; listening with one ear turned; a proud brave smile",
     "bruno": "a big confident grin; terrified of a tiny bee near his nose; tearing up with joy holding a honey pot",
     "fern": "a cheeky ta-da wink; embarrassed after tripping with her tail hidden behind her; a big honest laugh",
