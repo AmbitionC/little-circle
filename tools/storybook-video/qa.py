@@ -73,7 +73,8 @@ def f0(x):
 
 
 def norm_words(s):
-    return [w for w in re.sub(r"[^a-z0-9' ]", " ", s.lower().replace("-", " ")).split() if w]
+    # 连字符两边并成一个词：Whisper 常把 Peekaboo 写成 "Peek -a -boo"
+    return [w for w in re.sub(r"[^a-z0-9' ]", " ", re.sub(r"\s*-\s*", "", s.lower())).split() if w]
 
 
 def main():
@@ -163,11 +164,14 @@ def main():
             a1 = min(s["end"], srt[i + 1]["start"] - 0.05) if i + 1 < len(srt) else s["end"]
             raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}", "-i", a.mp4,
                                   "-f", "f32le", "-ac", "1", "-ar", "16000", "-"], check=True, capture_output=True).stdout
-            segs, _ = model.transcribe(np.frombuffer(raw, dtype=np.float32), language="en", word_timestamps=True,
-                                       beam_size=5, initial_prompt="Hazel, Nutty, Bun, Bruno, Pip, Fern.",
-                                       # 跟读停顿是空白，不加这两项 Whisper 会在空白里编词（"Boo! Boo!"）
-                                       vad_filter=True, vad_parameters={"min_silence_duration_ms": 300},
-                                       condition_on_previous_text=False)
+            x = np.frombuffer(raw, dtype=np.float32)
+            opts = dict(language="en", word_timestamps=True, beam_size=5,
+                        initial_prompt="Hazel, Nutty, Bun, Bruno, Pip, Fern.", condition_on_previous_text=False)
+            # 跟读停顿是空白，不加 VAD Whisper 会在空白里编词（"Boo! Boo!"）
+            segs = list(model.transcribe(x, vad_filter=True, vad_parameters={"min_silence_duration_ms": 300}, **opts)[0])
+            if not segs:
+                # VAD 会把 Pip 很尖的大喊整句当成非人声滤掉（c18 "Peekaboo! Here I am!"），空了就不带 VAD 再听一次
+                segs = list(model.transcribe(x, **opts)[0])
             for seg in segs:
                 for w in seg.words:
                     w.start, w.end = w.start + a0, w.end + a0

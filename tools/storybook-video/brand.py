@@ -141,8 +141,14 @@ def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y
     for line in wrap_title(title_en, ft, cw-120*s):
         t = text_block(line, ft, BRAND['cream_txt'], int(12*s), BRAND['brown'], int(14*s))
         paste_c(cv, t, cw/2, y+t.height/2-25*s); y += t.height-50*s
-    tz = text_block(title_zh, zh(int(zh_size*s)), BRAND['brown'], int(8*s), BRAND['cream'], int(8*s))
-    paste_c(cv, tz, cw/2, y+tz.height/2+5*s)
+    # 中文大字太宽就在逗号后断行（谜题当大字时常见，如 c18「画面里藏了 2 只小动物，你找到几只？」）；也认 \n
+    fz = zh(int(zh_size*s))
+    lines = title_zh.split("\n")
+    if len(lines) == 1 and fz.getlength(title_zh) > cw-80*s and "，" in title_zh:
+        i = title_zh.index("，")+1; lines = [title_zh[:i], title_zh[i:]]
+    for line in lines:
+        tz = text_block(line, fz, BRAND['brown'], int(8*s), BRAND['cream'], int(8*s))
+        paste_c(cv, tz, cw/2, y+tz.height/2+5*s); y += tz.height-30*s
     cs = s if tall else s*0.82
     chips = [word_chip(e, z, cs) for e, z in words]
     total = sum(c.width for c in chips)-30*(len(chips)-1); cy_chips = ch-(235 if tall else 175)*s

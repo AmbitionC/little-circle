@@ -28,7 +28,8 @@
     72,
     30
    ]
-  }
+  },
+  "tail": 0.7
  },
  "cast": "../../series/cast.json",
  "hook": {
@@ -59,7 +60,7 @@
    0.5,
    0.45
   ],
-  "headline": "皮皮藏哪了？宝宝先找到！",
+  "headline": "画面里藏了 2 只小动物，你找到几只？",
   "subline": "2–3岁英语启蒙 · 学会说 Peekaboo",
   "say": {
    "speaker": "narrator",
@@ -120,7 +121,7 @@
      "gain": 0.35
     }
    ],
-   "hold": 0.5
+   "hold": 0.2
   },
   {
    "image": "p02.png",
@@ -154,7 +155,7 @@
      "speaker": "bruno",
      "en": "Peekaboo! I see you!",
      "zh": "躲猫猫！我看见你啦！",
-     "say": "[laughs] Peekaboo! I see you!",
+     "say": "Peekaboo! [laughs] I see you!",
      "talk": {
       "p02b.png": "p02b_bruno.png"
      }
@@ -200,7 +201,7 @@
      "gain": 0.4
     }
    ],
-   "hold": 0.6,
+   "hold": 0.2,
    "cycle": {
     "images": [
      "p03.png",
@@ -236,7 +237,7 @@
      }
     }
    ],
-   "hold": 0.5,
+   "hold": 0.2,
    "sfx": [
     {
      "file": "../../assets/sfx/thump.mp3",
@@ -316,13 +317,13 @@
      "speaker": "pip",
      "en": "Peekaboo! Here I am!",
      "zh": "躲猫猫！我在这儿！",
-     "say": "[shouting] Peekaboo! Here I am!",
+     "say": "[excited] Peekaboo! Here I am!",
      "talk": {
       "p06.png": "p06_pip.png"
      }
     }
    ],
-   "hold": 0.5,
+   "hold": 0.2,
    "sfx": [
     {
      "file": "../../assets/sfx/tada.mp3",
@@ -366,14 +367,14 @@
      "speaker": "bruno",
      "en": "Now you can't see me!",
      "zh": "现在你看不见我啦！",
-     "say": "[giggles] Now you can't see me!",
+     "say": "Now you can't see me! [giggles]",
      "talk": {
       "p07b.png": "p07b_bruno.png"
      }
     }
    ],
    "lead": 1.5,
-   "hold": 0.6,
+   "hold": 0.2,
    "sfx": [
     {
      "file": "../../assets/sfx/boing.mp3",
@@ -421,14 +422,14 @@
      "speaker": "pip",
      "en": "Peekaboo! I see you!",
      "zh": "躲猫猫！我看见你啦！",
-     "say": "[laughs] Peekaboo! I see you!",
+     "say": "Peekaboo! [laughs] I see you!",
      "talk": {
       "p08b.png": "p08b_both.png"
      },
      "_说明": "皮皮和 Bruno 一起说；sbv 不支持两人同声，先用皮皮的声音，张嘴帧两人都张嘴"
     }
    ],
-   "hold": 0.6,
+   "hold": 0.2,
    "sfx": [
     {
      "file": "../../assets/sfx/sparkle.mp3",
@@ -445,7 +446,7 @@
      "speaker": "pip",
      "en": "Peekaboo!",
      "zh": "躲猫猫！",
-     "say": "[clearly] Peekaboo!",
+     "say": "[happily] Peekaboo!",
      "gap": 1.5
     }
    ],
@@ -453,7 +454,7 @@
     "en": "peekaboo",
     "zh": "躲猫猫"
    },
-   "lead": 0.5,
+   "lead": 0.3,
    "sfx": [
     {
      "file": "../../assets/sfx/pop.mp3",
@@ -470,7 +471,7 @@
      "speaker": "bruno",
      "en": "Where?",
      "zh": "在哪里？",
-     "say": "[clearly] Where?",
+     "say": "[slowly] Wheeere?",
      "gap": 1.5
     }
    ],
@@ -478,7 +479,7 @@
     "en": "where",
     "zh": "在哪里"
    },
-   "lead": 0.5
+   "lead": 0.3
   },
   {
    "image": "p06b.png",
@@ -496,7 +497,7 @@
     "en": "here",
     "zh": "在这里"
    },
-   "lead": 0.5,
+   "lead": 0.3,
    "sfx": [
     {
      "file": "../../assets/sfx/ding.mp3",
@@ -519,7 +520,7 @@
      }
     }
    ],
-   "hold": 0.4,
+   "hold": 0.2,
    "lead": 0.7,
    "sfx": [
     {
