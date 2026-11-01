@@ -40,10 +40,15 @@
 | s12 | 森林故事 | 晚安 | Happy New Year! / 新年快乐 | new year, three two one, hug | 大家等着倒数，Ollie 白天睡多了最清醒，把睡着的朋友一个个叫醒一起喊 3-2-1 | 跨年夜，跟宝宝一起倒数 | ollie | 15 | 节日：元旦，12-24 前定 | 候选（烟花要远、要柔） |
 | c13 | 认知小绘本 | 大和小、多和少 | A Big Box! / 好大一个箱子 | box, open, in | 大箱子送到森林，大家猜里面是什么；拆开是个小玩具，最后大家都钻进箱子里玩 | 娃只爱纸箱不爱玩具？ | bo | 17 | 节日：双十一 11-11，11-07 前定 | 候选（11-01 搜热点加；不碰买买买） |
 | s13 | 森林故事 | 等一等 | Are We There Yet? / 到了吗？ | there, look, wow | 坐车去看红叶，Pip 一直问 Are we there yet?，Bruno 教她一路找东西说 Look!，到了 Wow! | 路上一直问到了没？ | pip | 16 | 热点：11 月秋假出游，11-15 前发 | 候选（11-01 搜热点加） |
-| d06 | 生活口语 | 我的！ | We Say Please! / 我们说 Please | please, give, thank you | 核心句 "We don't say Give me. We say... Please!"（借热梗「我们不说 X，我们可以说 Y」）；Rocky 伸手就抢 | 孩子张口就是"给我"？ | rocky | 17 |  | 候选（可做系列：No, thank you / Excuse me） |
+| d06 | 生活口语 | 我的！ | We Say Please! / 我们说 Please | please, give, thank you | 核心句 "Please!"；Rocky 伸手就抢 "Give me!"，东西都躲着他跑，一说 Please 东西自己飞过来 | 孩子张口就是"给我"？ | rocky | 17 |  | 候选（可做系列：No, thank you / Excuse me） |
 | c14 | 认知小绘本 | 身体小事 | Hot! Hot! Hot! / 烤红薯好烫 | hot, blow, wait | Bruno 烤红薯，栗栗等不及烫得两爪来回扔，大家一起 blow blow 等一等 | 教娃别碰烫的 | bruno | 16 | 节日：立冬 11-07 / 消防日 11-09 | 候选（11-01 搜热点加） |
 | c15 | 认知小绘本 | 找不到 | Hide and Seek, Turkey! / 火鸡躲猫猫 | in, on, under | 火鸡来做客玩躲猫猫，尾巴羽毛总露在外面，宝宝帮忙找 | 感恩节英语，宝宝帮忙找 | 新客串（火鸡） | 14 | 节日：感恩节 11-26 | 备选（词和 c09 重，二选一；不提吃火鸡） |
 | d07 | 生活口语 | 天气和外面 | I'm Cold! / 好冷啊 | cold, warm, hug | 寒风一吹 Bun 耳朵结冰，大家抱成一团取暖 | 降温了，跟娃说这句 | bun | 15 | 热点：寒潮当天发 | 备选（和 c07、c12 都讲冷，看天气二选一） |
+| s14 | 森林故事 | 身体小事 | Who Tooted? / 谁放屁了？ | toot, oops, excuse me | 安静听故事时"噗"一声，大家互相怀疑，叶子被吹飞，是 Bun；说 Excuse me，大家说 That's OK；彩蛋又一声，是 Bruno | 孩子笑到停不下来 | bun | 17 |  | 候选（11-01 加；和 c04 都用 excuse me，隔 2 周） |
+| c16 | 认知小绘本 | 晚安 | Yaaawn! / 打哈欠会传染 | yawn, sleepy, shh | Ollie 打个哈欠，一个传一个，全森林睡着了，只剩 Ollie 睁着大眼睛 | 你看完打哈欠了吗？ | ollie | 15 |  | 候选（4 岁以下孩子不太会被传染，钩子主要打家长） |
+| s15 | 森林故事 | 身体小事 | Hic! Hic! / 打嗝停不下来 | hic, boo, stop | Bruno 打嗝停不下来，喝水、倒立、吓他 Boo! 都没用，Pip 一个抱抱嗝停了 | 宝宝打嗝怎么办（不教偏方） | bruno | 15 |  | 候选（11-01 加） |
+| s16 | 森林故事 | 找不到 | Where Did I Hide It? / 我把栗子藏哪了？ | hide, dig, tree | 栗栗为过冬到处埋栗子转头就忘，宝宝记得、指着屏幕喊；彩蛋：春天没找到的地方长出小树苗 | 松鼠会忘了埋哪？ | nutty | 17 | 季节：11 月存粮季 | 候选（11-01 加；栗栗代表作候选） |
+| s17 | 森林故事 | 晚安 | Moon, Come Down! / 月亮你下来 | moon, big, round | Pip 以为大月亮是饼干，叠罗汉去够，倒下来躺在草地上发现躺着看最美 | 今晚超级月亮 | pip | 15 | 节日：超级月亮 11-24 当天 | 候选（11-01 加） |
 
 
 ## 2. 排期
