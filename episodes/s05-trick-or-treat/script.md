@@ -194,7 +194,7 @@ only the squirrel opens his mouth wide shouting with a shaky brave face, everyon
 ```
 **p05b.png** ← p05.png
 ```
-the squirrel steps up to the big old tree and knocks on its trunk with two knuckles like knocking on a door, holding out his empty pouch with the other paw, knees wobbling, his friends right behind him holding on to his tail
+the squirrel steps past the bush right up to the big old tree and knocks with two knuckles directly on the bare bark of the wide tree trunk, his raised fist clearly touching the trunk above the bush like knocking on a door, holding out his empty pouch with the other paw, knees wobbling, his friends right behind him holding on to his tail, the shadow still on the trunk
 ```
 
 **p06.png**
