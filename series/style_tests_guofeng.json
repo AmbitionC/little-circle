@@ -1,0 +1,14 @@
+{
+  "_说明": "国风特别版（中国童谣绘本）样图，2026-11-02 用户要求「画风用中国画风格，你画两个图我先看看效果」，随后补充「中国水彩画」。两个场景对应两个选题：小老鼠上灯台、拔萝卜。不带画风样张和角色参考图，免得被日系手绘拉回去。只用于国风特别版，不动常规集的 STYLE。用法：python3 tools/storybook-video/codex_images.py styles --styles-config style_tests_guofeng.json",
+  "scenes": {
+    "mouse_lamp": "a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up, sitting on the rim of the small oil dish at the very top of a tall slender old wooden Chinese oil-lamp stand, both tiny hands gripping the rim, happily licking a drop of oil from his paw, the little lamp flame glowing warm beside him at a safe distance, the lamp stand is about five times taller than the mouse, quiet night in a simple old Chinese room suggested only by a faint paper lattice window and a round moon outside, only this one character, keep the face in the upper 55% of the image and the lower 40% simple empty space, vertical 9:16, no text, no watermark, no seal, no calligraphy",
+    "radish_pull": "in a simple vegetable field, a giant white Chinese radish with a pale green top and huge leafy greens, much taller than the bear, stuck in the soil; a big chubby brown bear cub with broad square shoulders, a round soft tummy, small round ears and a little orange neckerchief grips the radish leaves with both paws and leans back pulling hard; behind him a little light-gray bunny girl with long narrow upright ears, a white cotton-tail and a small red vest hugs the bear's waist and pulls; at the very end a tiny gray mouse with huge round pink ears bigger than his head and a too-big blue-and-white striped shirt holds the bunny's vest and pulls with all his might, all three leaning back in one line, cheeks puffed, sizes: bear about twice as tall as the bunny, mouse about half the bunny's height, only these three characters, faces in the upper 55% of the image, lower 40% simple soil and empty space, vertical 9:16, no text, no watermark, no seal, no calligraphy"
+  },
+  "styles": {
+    "cn_watercolor": {
+      "name": "中国水彩画",
+      "why": "用户 11-02 指定。宣纸上的水彩淡彩：颜色比水墨鲜亮、透明晕染，细墨线勾轮廓，留白多，国风感和童趣兼顾",
+      "style": "Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming and bleeding gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, ink-and-wash feeling in the background, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus"
+    }
+  }
+}

@@ -4,6 +4,7 @@
   python3 codex_images.py refs                         # 先出三个角色的参考图 → series/refs/
   python3 codex_images.py sheets                       # 角色设定图（正面+侧面+三表情）→ series/sheets/，给人看
   python3 codex_images.py styles                       # 画风对比：series/style_tests.json → out/style_test/
+  python3 codex_images.py styles --styles-config style_tests_guofeng.json   # 国风特别版样图 → out/style_tests_guofeng/
   python3 codex_images.py ../../episodes/c01-fruits    # 出一集：p01–p06、kling_first、cover
   python3 codex_images.py ../../episodes/c0[1-3]-* -j 2  # 多集，两张并行
   python3 codex_images.py ../../episodes/s03-sleepy --comic   # 漫画剧本：每三格一张横版漫画，剧本确认前给用户看
@@ -531,6 +532,7 @@ def main():
     ap.add_argument("--allow-mismatch", action="store_true", help="角色检查有问题也照样出图（不推荐）")
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
     ap.add_argument("--comic-all", action="store_true", help="漫画剧本画全部格子：钩子 + 每页主图 + 每个动作关键帧，一格一个画面")
+    ap.add_argument("--styles-config", default="style_tests.json", help="styles 用哪份画风对比配置（series/ 下的文件名），如 style_tests_guofeng.json，出到 out/<文件名去掉 .json>/")
     ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
 
@@ -538,8 +540,9 @@ def main():
     for t in args.targets:
         if t == "styles":
             # 画风对比：series/style_tests.json 里每种画风 × 每个场景各出一张，放 out/style_test/
-            cfg = json.load(open(os.path.join(ROOT, "series", "style_tests.json"), encoding="utf-8"))
-            outdir = os.path.join(ROOT, "out", "style_test")
+            cfg = json.load(open(os.path.join(ROOT, "series", args.styles_config), encoding="utf-8"))
+            sub = "style_test" if args.styles_config == "style_tests.json" else os.path.splitext(args.styles_config)[0]
+            outdir = os.path.join(ROOT, "out", sub)
             os.makedirs(outdir, exist_ok=True)
             jobs = {f"{k}_{sc}.png": (f"{prompt}, {v['style']}", [])
                     for k, v in cfg["styles"].items() for sc, prompt in cfg["scenes"].items()}
