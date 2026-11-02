@@ -232,6 +232,10 @@ now the big brown character hides behind the big old oak tree, but his round tum
 ```
 the tiny character is at the very top of his bounce, high in the air above the big character's tummy with his ears flying up, the big character laughing with his tummy pressed down, nothing else changes
 ```
+**p07d.png** ← p07.png
+```
+in between: the big brown character scrambles up from the grass and runs on tiptoe toward the big old oak tree with a sneaky grin, one paw already over his eyes, the tiny character standing on the grass watching him go, nothing else changes
+```
 **p07b_bruno.png** ← p07b.png
 ```
 only the big brown character opens his mouth giggling and talking, the tiny character keeps his mouth closed, nothing else changes

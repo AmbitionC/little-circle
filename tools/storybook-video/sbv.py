@@ -64,8 +64,9 @@ DEFAULT_STYLE = {
     "tween": 0,
     # 说话人周围提亮、远处压暗：默认关掉（压暗像一块阴影在画面上挪），靠头像、张嘴和镜头靠近说明谁在说
     "speaker_spotlight": 0,
-    # 背景音乐响度按人声定：cue 的 volume 0.2 = 比人声低 14 dB；说话时再压 6 dB（2026-11-02 用户：听不到背景音乐）
-    "bgm_rel_db": -14,
+    # 背景音乐响度按人声定：cue 的 volume 0.2 = 比人声低 11 dB；说话时再压 6 dB（2026-11-02 用户：听不到背景音乐；
+    # c18 实测 -14 时台词空档里音乐只比人声低 12–15 dB、说话时低 20 dB，外放听不见，-11 才清楚）
+    "bgm_rel_db": -11,
     "bgm_duck_db": -6,
     "lead": 0.5,
     "gap": 0.4,
@@ -1444,7 +1445,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
             src = src[int(c.get("skip", 0.0) * SR):]
             # 音乐先按自身响度归一，再放到"比人声低 bgm_rel_db"的位置；volume 是相对 0.2 的比例（0.12 ≈ 再低 4.4 dB）
             s_rms = float(np.sqrt(np.mean(src ** 2))) or 1e-3
-            g = v_rms / s_rms * 10 ** (st.get("bgm_rel_db", -14) / 20) * c.get("volume", bgm.get("volume", 0.2)) / 0.2
+            g = v_rms / s_rms * 10 ** (st.get("bgm_rel_db", -11) / 20) * c.get("volume", bgm.get("volume", 0.2)) / 0.2
             seg_a = np.tile(src, (o1 - o0) // len(src) + 1)[:o1 - o0] * g
             ramp = np.ones(o1 - o0, dtype=np.float32)
             f = min(f, (o1 - o0) // 2)

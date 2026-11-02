@@ -344,22 +344,27 @@
    "frames": [
     {
      "image": "p07c.png",
-     "at": 0.3,
+     "at": 0.25,
      "tween": 0
     },
     {
      "image": "p07.png",
-     "at": 0.6,
+     "at": 0.5,
      "tween": 0
     },
     {
      "image": "p07c.png",
-     "at": 0.9,
+     "at": 0.75,
+     "tween": 0
+    },
+    {
+     "image": "p07d.png",
+     "at": 1.0,
      "tween": 0
     },
     {
      "image": "p07b.png",
-     "at": 1.3,
+     "at": 1.45,
      "tween": 0
     }
    ],
