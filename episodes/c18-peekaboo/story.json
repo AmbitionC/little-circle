@@ -29,7 +29,8 @@
     30
    ]
   },
-  "tail": 0.7
+  "tail": 0.6,
+  "bgm_rel_db": -11
  },
  "cast": "../../series/cast.json",
  "hook": {
@@ -547,7 +548,7 @@
  "ending": {
   "headline": "See you next time! 下集见！",
   "subline": "你家宝宝也是捂眼睛藏的吗？",
-  "seconds": 2.5
+  "seconds": 1.8
  },
  "bgm": {
   "_说明": "分段配乐：page 0=钩子，1–8=p01–p08，9–11=复习 r1–r3，12=彩蛋 p09",
