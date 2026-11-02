@@ -171,6 +171,7 @@ def main():
     ap.add_argument("--fade", type=int, default=235, help="顶部奶油色渐变的浓度 0–255；钩子在上半部（如黑影）时调低，别把它盖住")
     ap.add_argument("--zh-size", type=int, default=66, help="中文大字字号；用谜题当大字时加大，如 96")
     ap.add_argument("--crop-3x4", type=float, default=0.55, help="3:4 封面从原图哪里裁（0=顶部，1=底部），标题压脸时调")
+    ap.add_argument("--with-9x16", action="store_true", help="另出 9:16 封面。默认不出：2026-10-29 用户定封面只留 3:4")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     base = os.path.dirname(os.path.abspath(a.story))
@@ -180,7 +181,10 @@ def main():
     words = [w.split("=", 1) for w in a.words]
     os.makedirs(a.out, exist_ok=True)
     name = cfg.get("output_name", "storybook")
-    for size, tag, crop_y in (((1080, 1920), "9x16", 0.55), ((1080, 1440), "3x4", a.crop_3x4)):
+    sizes = [((1080, 1440), "3x4", a.crop_3x4)]
+    if a.with_9x16:
+        sizes.append(((1080, 1920), "9x16", 0.55))
+    for size, tag, crop_y in sizes:
         p = os.path.join(a.out, f"{name}_cover_{tag}.jpg")
         make_cover(art, a.ep, a.title_en or cfg["title_en"], a.title_zh or cfg["title_zh"], words, size, crop_y, a.fade, a.zh_size).save(p, quality=93)
         print(p)
