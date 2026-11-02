@@ -149,7 +149,7 @@ a big round soft shadow falls over the bush from behind as someone big comes clo
 ```
 **p02_pip.png** ← p02.png
 ```
-only the tiny character opens his mouth whispering, nothing else changes
+only the tiny character closes his mouth into a small closed smile (his mouth is open in this picture), nothing else changes
 ```
 **p02b_bruno.png** ← p02b.png
 ```
@@ -238,7 +238,7 @@ in between: the big brown character scrambles up from the grass and runs on tipt
 ```
 **p07b_bruno.png** ← p07b.png
 ```
-only the big brown character opens his mouth giggling and talking, the tiny character keeps his mouth closed, nothing else changes
+only the big brown character closes his mouth into a small closed smile (his mouth is open in this picture), the tiny character does not change, nothing else changes
 ```
 
 **p08.png**
@@ -255,7 +255,7 @@ both characters peek out with one eye between their fingers, grinning, still beh
 ```
 **p08_pip.png** ← p08.png
 ```
-only the tiny character opens his mouth talking happily, the big character keeps his mouth closed, nothing else changes
+only the tiny gray mouse peeking out from behind the tree trunk at the lower left closes his mouth into a small closed smile (his mouth is open in this picture), the big character does not change at all, nothing else changes
 ```
 **p08b_both.png** ← p08b.png
 ```
@@ -272,7 +272,7 @@ leaves are still raining down around the red character, he shakes himself like a
 ```
 **p09_nutty.png** ← p09.png
 ```
-only the red character opens his mouth talking, puzzled, nothing else changes
+only the red character closes his mouth, puzzled, lips pressed together (his mouth is open in this picture), nothing else changes
 ```
 
 **封面关键画面**：用 p07b（大熊藏在大橡树后面捂眼睛，圆肚子鼓在外面），上方留空放大字。

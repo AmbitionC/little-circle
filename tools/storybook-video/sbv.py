@@ -532,27 +532,29 @@ def talk_paste(base_im, talk_im, hint=None, debug=None):
     for i in range(1, n):
         x, y, bw, bh, area = stats[i]
         frac = area / (w * h)
-        if not (0.0003 <= frac <= 0.015):
+        if not ((0.0001 if hint else 0.0003) <= frac <= 0.015):   # 写了 where 就放宽下限：小老鼠的嘴只有几百像素
             continue
         if x <= 2 or y <= 2 or x + bw >= w - 2 or y + bh >= h - 2:
             continue
-        if cents[i][1] > 0.7 * h or max(bw, bh) > 0.25 * w:
+        if cents[i][1] > 0.7 * h or max(bw, bh) > 0.3 * w:   # 近景熊脸张嘴能到 0.27 宽；c18 重画的树有 0.4 宽
             continue
         cand.append(i)
     if not cand:
         print(f"  ⚠ 张嘴帧里找不到像嘴的那一块（变化的地方太大或太散），这句不做张嘴：检查张嘴帧是不是把别处也重画了")
         return base_im, None
-    if hint:
-        big = min(cand, key=lambda i: (cents[i][0] / w - hint[0]) ** 2 + (cents[i][1] / h - hint[1]) ** 2)
-    else:
-        big = max(cand, key=lambda i: stats[i][4])
-    mask = cv2.dilate((lab == big).astype(np.uint8), np.ones((15, 15), np.uint8)).astype(np.float32)
+    # where 可以写一个点 [x, y]，也可以写几个点 [[x, y], [x, y]]（两个角色一起说，各贴各的嘴）
+    hints = [hint] if hint and not isinstance(hint[0], (list, tuple)) else (hint or [])
+    picks = [min(cand, key=lambda i: (cents[i][0] / w - p[0]) ** 2 + (cents[i][1] / h - p[1]) ** 2) for p in hints]
+    picks = list(dict.fromkeys(picks)) or [max(cand, key=lambda i: stats[i][4])]
+    big = picks[0]
+    mask = cv2.dilate(np.isin(lab, picks).astype(np.uint8), np.ones((15, 15), np.uint8)).astype(np.float32)
     mask = cv2.GaussianBlur(mask, (0, 0), 5)[..., None]
     out = a * (1 - mask) + b * mask
     if debug:
-        x, y, bw, bh, _ = stats[big]
         dbg = Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
-        ImageDraw.Draw(dbg).rectangle([x - 10, y - 10, x + bw + 10, y + bh + 10], outline=(255, 0, 0), width=6)
+        for i in picks:
+            x, y, bw, bh, _ = stats[i]
+            ImageDraw.Draw(dbg).rectangle([x - 10, y - 10, x + bw + 10, y + bh + 10], outline=(255, 0, 0), width=6)
         dbg.thumbnail((540, 960))
         dbg.save(debug)
     return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8)), (cents[big][0] / w, cents[big][1] / h)
@@ -626,8 +628,9 @@ def speaker_at(kf, lines, li, name):
     """这一句说话人在画面里的位置（比例坐标）：先看台词里写的 where，再看张嘴帧算出来的嘴的位置。"""
     if li is None:
         return None
-    if lines[li].get("where"):
-        return tuple(lines[li]["where"])
+    wh = lines[li].get("where")
+    if wh:
+        return tuple(wh[0] if isinstance(wh[0], (list, tuple)) else wh)
     hit = kf["talk"][li].get(name) if li < len(kf["talk"]) else None
     return hit[1] if hit else None
 

@@ -150,7 +150,11 @@
      "gain": 0.7,
      "talk": {
       "p02.png": "p02_pip.png"
-     }
+     },
+     "where": [
+      0.544,
+      0.347
+     ]
     },
     {
      "speaker": "bruno",
@@ -159,7 +163,11 @@
      "say": "Peekaboo! [laughs] I see you!",
      "talk": {
       "p02b.png": "p02b_bruno.png"
-     }
+     },
+     "where": [
+      0.47,
+      0.24
+     ]
     }
    ],
    "sfx": [
@@ -235,7 +243,11 @@
      "say": "[determined] My turn to win!",
      "talk": {
       "p04.png": "p04_pip.png"
-     }
+     },
+     "where": [
+      0.315,
+      0.53
+     ]
     }
    ],
    "hold": 0.2,
@@ -376,7 +388,11 @@
      "say": "Now you can't see me! [giggles]",
      "talk": {
       "p07b.png": "p07b_bruno.png"
-     }
+     },
+     "where": [
+      0.463,
+      0.307
+     ]
     }
    ],
    "lead": 1.5,
@@ -422,7 +438,11 @@
      "say": "[happily] Me too!",
      "talk": {
       "p08.png": "p08_pip.png"
-     }
+     },
+     "where": [
+      0.15,
+      0.52
+     ]
     },
     {
      "speaker": "pip",
@@ -432,7 +452,17 @@
      "talk": {
       "p08b.png": "p08b_both.png"
      },
-     "_说明": "皮皮和 Bruno 一起说；sbv 不支持两人同声，先用皮皮的声音，张嘴帧两人都张嘴"
+     "_说明": "皮皮和 Bruno 一起说；sbv 不支持两人同声，先用皮皮的声音，张嘴帧两人都张嘴",
+     "where": [
+      [
+       0.164,
+       0.513
+      ],
+      [
+       0.512,
+       0.257
+      ]
+     ]
     }
    ],
    "hold": 0.2,
@@ -524,7 +554,11 @@
      "say": "[confused] Where is everyone?",
      "talk": {
       "p09.png": "p09_nutty.png"
-     }
+     },
+     "where": [
+      0.376,
+      0.393
+     ]
     }
    ],
    "hold": 0.2,
