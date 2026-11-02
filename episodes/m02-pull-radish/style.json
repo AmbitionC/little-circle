@@ -1,0 +1,10 @@
+{
+  "_说明": "国风特别版的单集画风（codex_images.py 读）。用户 11-02 指定「中国水彩画」并看过样图。样张不进仓库：在 Mac 上从 out/style_tests_guofeng/ 复制到本集 style/ 目录。",
+  "name": "中国水彩画",
+  "style": "Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy",
+  "style_refs": [
+    "style/cn_watercolor_radish_pull.png",
+    "style/cn_watercolor_mouse_lamp.png"
+  ],
+  "char_refs": true
+}

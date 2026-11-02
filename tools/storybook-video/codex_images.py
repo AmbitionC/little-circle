@@ -114,6 +114,8 @@ def char_ids(text):
 
 
 def char_refs(text):
+    if not EP_CHAR_REFS:
+        return []
     return [os.path.join(REFS, f"{k}.png") for k in char_ids(text) if os.path.exists(os.path.join(REFS, f"{k}.png"))]
 
 
@@ -268,8 +270,33 @@ KEY_ASK = ("Edit the FIRST attached image. It is one drawing of an animation seq
            "Change ONLY this: {change}. Same vertical 9:16 size, no text, no watermark.")
 
 
+# 单集换画风（国风特别版等）：集目录里放 style.json，见 load_episode_style()
+EP_STYLE_REFS = None   # 不为 None 时，用这几张代替 series/style 当画风样张
+EP_CHAR_REFS = True    # False 时不带角色参考图（参考图是日系手绘，可能把画风拉回去）
+
+
 def style_refs():
+    if EP_STYLE_REFS is not None:
+        return EP_STYLE_REFS
     return sorted(glob.glob(os.path.join(STYLE_DIR, "*.png")) + glob.glob(os.path.join(STYLE_DIR, "*.jpg")))
+
+
+def load_episode_style(ep):
+    """集目录里有 style.json 就用这一集自己的画风：{"style": 画风词（漫画剧本用）, "style_refs": [相对集目录的样张路径],
+    "char_refs": true/false}。样张图片不进仓库（episodes/**/*.png 已忽略），缺了就报错，免得悄悄用回系列样张。"""
+    global STYLE, EP_STYLE_REFS, EP_CHAR_REFS
+    cfg_path = os.path.join(ep, "style.json")
+    if not os.path.exists(cfg_path):
+        return
+    cfg = json.load(open(cfg_path, encoding="utf-8"))
+    STYLE = cfg.get("style", STYLE)
+    refs = [os.path.join(ep, r) for r in cfg.get("style_refs", [])]
+    missing = [r for r in refs if not os.path.exists(r)]
+    if missing:
+        sys.exit("这一集的画风样张还没放好：" + "、".join(missing) + "（见 style.json 的说明）")
+    EP_STYLE_REFS = refs
+    EP_CHAR_REFS = cfg.get("char_refs", True)
+    print(f"用这一集自己的画风：{cfg.get('name', '')}，样张 {len(refs)} 张，角色参考图{'带' if EP_CHAR_REFS else '不带'}")
 
 
 def fingerprint(prompt, refs):
@@ -332,6 +359,10 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
         ask += (f"The first {len(styles)} attached image(s) are the STYLE reference for this series. Match their art "
                 "style closely: rendering, line work, cel shading, eye style, lighting, color palette and background painting. "
                 "Do not copy their characters, poses, composition or scene.\n\n")
+        if EP_STYLE_REFS is not None and refs:
+            ask += ("The character reference sheets are drawn in a DIFFERENT art style. Take only each character's identity "
+                    "from them (shape, colors, clothing, signature details); paint everything in the style of the STYLE "
+                    "reference.\n\n")
     if refs:
         ask += ("The " + ("other " if styles or base else "") + "attached image(s) are the character reference sheets for this "
                 "series. " + lineup_note + "Keep each character's face, body shape, colors and clothing exactly like the reference, "
@@ -387,7 +418,7 @@ def comic_jobs(script):
     order = [k for k in ["kling_first.png"] + [f"p{i:02d}.png" for i in range(1, 13)] if k in shots]
     keys = parse_keys(script)
     def scene(k):
-        x = re.split(r", (?:Japanese hand-painted|polished digital children's)", shots[k])[0]
+        x = re.split(r", (?:Japanese hand-painted|polished digital children's|Chinese watercolor painting)", shots[k])[0]
         x = x.split(", keep every face")[0]
         # 这一页有关键帧时，漫画画最后一张关键帧那一刻（剧情的转折往往在那里，比如树枝断了），首图只当场景说明
         stem = os.path.splitext(k)[0]
@@ -573,6 +604,7 @@ def main():
         script = os.path.join(t, "script.md")
         if not os.path.exists(script):
             sys.exit(f"找不到 {script}")
+        load_episode_style(t)
         if args.comic or args.comic_all:
             os.makedirs(os.path.join(t, "comic"), exist_ok=True)
             # comic/panels.json 记下每格是哪张图、写哪几句台词，comic_page.py 照它配字；--comic 没有这个文件
