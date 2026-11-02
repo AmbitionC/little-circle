@@ -29,7 +29,8 @@
       "120 BPM",
       "G major pentatonic melody",
       "very simple catchy melody that rises and falls",
-      "slow, clear English pronunciation, every word easy to hear"
+      "slow, clear English pronunciation with crisp consonants, every word easy to hear",
+      "every Pull! sung as a clear English word with a ringing L at the end, never Po or Ho"
     ],
     "negative": [
       "rap",
@@ -58,7 +59,7 @@
           "p01",
           "p02"
         ],
-        "direction": "sing Big, big, big! wide-eyed and full of wonder; sing Pull, pull, pull! on strong straining beats, Heave-ho! like a grunt, then a funny drooping Oh no!"
+        "direction": "Big, big, big! wide-eyed with wonder; then a clear, strong Pull, pull, pull! on straining beats, Heave-ho! like a grunt, then a funny drooping Oh no!"
       },
       {
         "name": "Verse 2",
@@ -76,7 +77,7 @@
           "p05",
           "p06"
         ],
-        "direction": "sing Me too! Me too! tiny, high and squeaky like an eager little mouse; then the strongest Pull, pull, pull! yet with the kids joining, and One, two, three! climbing higher on each number"
+        "direction": "Me too! Me too! tiny, high and squeaky; the strongest Pull, pull, pull! with kids joining; One, two, three! climbing higher, all finished before the Bridge"
       },
       {
         "name": "Bridge",
@@ -84,7 +85,7 @@
         "pages": [
           "p07"
         ],
-        "direction": "a big happy burst on Pop!, then everyone cheers Hooray, Pip!"
+        "direction": "right on the downbeat one loud crisp sung Pop!, then It's out! clear and bright, then everyone cheers Hooray, Pip! holding Pip long and clear"
       },
       {
         "name": "Chorus",
@@ -110,7 +111,10 @@
         ],
         "direction": "slow down and sing the three words warmly one by one like a little review, then the music ends with a guzheng ding"
       }
-    ]
+    ],
+    "file": "../../out/m02/song/song.mp3",
+    "words": "../../out/m02/song/song_words.json",
+    "picked": "v8"
   },
   "hook": {
     "frames": [
