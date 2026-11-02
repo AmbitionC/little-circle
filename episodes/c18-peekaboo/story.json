@@ -461,7 +461,8 @@
      "at": 0.0,
      "gain": 0.35
     }
-   ]
+   ],
+   "transition": "dip"
   },
   {
    "image": "p05b.png",

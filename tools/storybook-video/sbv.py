@@ -55,8 +55,18 @@ DEFAULT_STYLE = {
     "headline_color": [255, 246, 222],
     "accent": [232, 137, 43],
     "stroke": [92, 52, 24],
-    "transition": "fade",
-    "transition_seconds": 0.35,
+    # 换页：默认硬切（2026-11-02 用户反馈换画面有重影：0.35 秒叠化时两张图、两行字幕叠在一起）。
+    # 可选 "dip"（先淡到奶油色再淡入，不叠图，适合换场景、进复习）、"slide"、"fade"（旧的叠化，不推荐）。
+    "transition": "cut",
+    "transition_seconds": 0.3,
+    "dip_color": [255, 246, 228],
+    # 页内关键帧默认硬切（tween=0）：光流补的中间帧在大动作上会出重影。只有很小的动作（眨眼、抬手）才在 frames 里写 tween
+    "tween": 0,
+    # 说话人周围提亮、远处压暗：默认关掉（压暗像一块阴影在画面上挪），靠头像、张嘴和镜头靠近说明谁在说
+    "speaker_spotlight": 0,
+    # 背景音乐响度按人声定：cue 的 volume 0.2 = 比人声低 14 dB；说话时再压 6 dB（2026-11-02 用户：听不到背景音乐）
+    "bgm_rel_db": -14,
+    "bgm_duck_db": -6,
     "lead": 0.5,
     "gap": 0.4,
     "tail": 1.0,
@@ -532,7 +542,7 @@ def keyframes(page, lines, base, img0, tween=None):
     talk：  {"p02.png": "p02_talk.png"}，有人开口说词时，在这张图和它的"张嘴"版之间来回切（只换嘴那一块）。
     换上来的每张图都会先对齐到本页底图，背景不跳。
     """
-    tween = 0.22 if tween is None else tween
+    tween = 0 if tween is None else tween
 
     def when(fr):
         if "line" in fr and fr["line"] < len(lines):
@@ -848,6 +858,7 @@ class PageSeg:
         st = ctx.st
         self.ctx, self.page, self.lines = ctx, page, lines   # lines: [{speaker,en,zh,start,end,tokens,spans}]
         self.cut = page.get("cut", False)
+        self.transition = page.get("transition")   # 这一页进场的方式，覆盖 style.transition（cut / dip / slide / fade）
         if "dur" in page:     # 儿歌：卡片时长由歌的分段定，到点硬切
             self.dur = page["dur"]
         else:
@@ -1113,6 +1124,7 @@ class EndSeg:
 
     def __init__(self, ending, last_img, ctx, base):
         self.dur, self.cut, self.ctx = ending.get("seconds", 3.5), False, ctx
+        self.transition = ending.get("transition", "dip")
         if ending.get("image"):
             self.bg = cover_crop(Image.open(os.path.join(base, ending["image"])).convert("RGB")).convert("RGBA")
         else:
@@ -1133,8 +1145,11 @@ class EndSeg:
         return ImageEnhance.Brightness(frame).enhance(1 - fade) if fade > 0 else frame
 
 
-def transition(a, b, tau, kind):
+def transition(a, b, tau, kind, dip=(255, 246, 228)):
     e = ease(tau)
+    if kind == "dip":    # 淡到一个颜色再淡入：任何时刻画面里只有一张图，不会叠出重影
+        c = Image.new("RGB", a.size, tuple(dip))
+        return Image.blend(a, c, min(1.0, tau * 2)) if tau < 0.5 else Image.blend(c, b, min(1.0, (tau - 0.5) * 2))
     if kind == "slide":   # 翻页感：旧页左移变暗，新页带阴影从右滑入
         out = ImageEnhance.Brightness(a).enhance(1 - 0.45 * e)
         out = out.transform((W, H), Image.AFFINE, (1, 0, W * 0.3 * e, 0, 1, 0))
@@ -1299,7 +1314,9 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         nonlocal t
         if segs:
             prev = segs[-1]
-            t = prev.start + prev.dur - (0 if seg.cut else TR)
+            kind = getattr(seg, "transition", None) or st["transition"]
+            t = prev.start + prev.dur - (0 if (seg.cut or kind == "cut") else TR)
+            seg.kind = kind
         seg.start = t
         segs.append(seg)
 
@@ -1415,6 +1432,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         cues = bgm.get("cues") or [{"page": 0, "file": bgm["file"], "volume": bgm.get("volume", 0.25)}]
         pts = sorted(((page_start.get(c.get("page", 0), 0.0) + c.get("offset", 0.0), c) for c in cues), key=lambda x: x[0])
         m = np.zeros(n, dtype=np.float32)
+        talk = np.abs(voice) > 1e-3
+        v_rms = float(np.sqrt(np.mean(voice[talk] ** 2))) if talk.any() else 0.1
         for k, (t0, c) in enumerate(pts):
             t1 = pts[k + 1][0] if k + 1 < len(pts) else total
             f = int(c.get("fade", 0.4) * SR)
@@ -1423,7 +1442,10 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
                 continue
             src = decode_audio(os.path.join(base, c["file"]))
             src = src[int(c.get("skip", 0.0) * SR):]
-            seg_a = np.tile(src, (o1 - o0) // len(src) + 1)[:o1 - o0] * c.get("volume", bgm.get("volume", 0.25))
+            # 音乐先按自身响度归一，再放到"比人声低 bgm_rel_db"的位置；volume 是相对 0.2 的比例（0.12 ≈ 再低 4.4 dB）
+            s_rms = float(np.sqrt(np.mean(src ** 2))) or 1e-3
+            g = v_rms / s_rms * 10 ** (st.get("bgm_rel_db", -14) / 20) * c.get("volume", bgm.get("volume", 0.2)) / 0.2
+            seg_a = np.tile(src, (o1 - o0) // len(src) + 1)[:o1 - o0] * g
             ramp = np.ones(o1 - o0, dtype=np.float32)
             f = min(f, (o1 - o0) // 2)
             if f:
@@ -1433,7 +1455,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         win = int(0.25 * SR)
         env = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
         duck = np.convolve(np.clip(env / 0.01, 0, 1), np.ones(win) / win, mode="same")
-        mix += m * (1 - 0.5 * duck)
+        mix += m * (1 - (1 - 10 ** (st.get("bgm_duck_db", -6) / 20)) * duck)
         fade = int(1.2 * SR)
         mix[-fade:] *= np.linspace(1, 0, fade)
     wav = os.path.join(work, "mix.wav")
@@ -1467,7 +1489,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         if len(active) >= 2:
             a, b = active[-2], active[-1]
             img = transition(a.render(gt - a.start, gt), b.render(gt - b.start, gt),
-                             (gt - b.start) / TR, st["transition"])
+                             (gt - b.start) / TR, getattr(b, "kind", st["transition"]), st.get("dip_color", (255, 246, 228)))
         else:
             s = active[0] if active else segs[-1]
             img = s.render(min(gt - s.start, s.dur - 1e-3), gt)
