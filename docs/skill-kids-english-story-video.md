@@ -219,6 +219,8 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
   - 说话：主角说重要台词的那张图加一张张嘴帧 `**p04_talk.png** ← p04.png`（"opens his mouth wide talking, nothing else changes"），story.json 写 `"talk": {"p04.png": "p04_talk.png"}`，开口说词时只换嘴那一块来回开合。
   - 运镜：默认统一缓推（`in`），只有剧情动作需要时才用 up / down（爬树、掉下来）；不要每页换方向。
   - 质检：逐帧看每一处换图，有重影就改硬切或加过渡关键帧。
+  - **说话帧只换嘴（2026-11-02 用户："二十多秒的时候，为什么熊说话，树在抖？"）**。原因：sbv.py 拿说话帧和底图做差，以前取"变化最大的一块"当嘴；Codex 重画说话帧时顺手把树也画得不一样了，树那块比嘴大，就被当成嘴来回切，看起来像树在抖。现在 `talk_paste` 只认像嘴的小块（占画面 0.03%–1.5%、不碰边、在画面上 70%、宽高不超过画宽 25%）；台词可写 `"where": [x, y]`（0–1 相对坐标，嘴大概的位置）指定选哪块；找不到像嘴的块就不做张嘴、打印警告。
+    质检：渲染时设 `SBV_TALK_DEBUG=<目录>`，每句台词会存一张红框图，逐张确认红框框在说话角色的嘴上；再在每句台词中间抽帧，看背景有没有在动。
 - **谁在说话要一眼看出来（2026-10-29 用户："我们这个严格意义上不算视频，多个角色在一个分镜的时候，谁知道谁在说话？"）**：
   - **每一句角色台词都要有张嘴帧**，不止重要台词。给这句说话时屏幕上那张图出一张：`**p05_bruno.png** ← p05.png`，改动只写 `only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes`。story.json 写在那一句上：`"talk": "p05_bruno.png"`（说话期间换了关键帧，就写成 `{"p05.png": "p05_bruno.png", "p05b.png": "p05b_bruno.png"}`）。同一张图两个人轮流说，各出各的张嘴帧。
   - sbv.py 拿张嘴帧算出嘴在哪，然后自动做三件事：镜头往说话的人那边轻轻靠（`speaker_pull`，默认 0.3）；说话人周围亮、远处最多暗 14%（`speaker_spotlight`）；字幕左上角弹出说话人的圆头像，圈是角色色（头像用 `codex_images.py avatars` 出到 `series/refs/avatars/`，新角色出参考图后顺手出头像）。算不出嘴的位置时，在那一句写 `"where": [x, y]`（比例坐标）。

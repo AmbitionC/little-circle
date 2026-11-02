@@ -513,21 +513,48 @@ class Tween:
         return Image.fromarray(np.clip(wa * (1 - u) + wb * u, 0, 255).astype(np.uint8))
 
 
-def talk_paste(base_im, talk_im):
+def talk_paste(base_im, talk_im, hint=None, debug=None):
     """说话帧只取嘴附近变了的那一小块贴回底图：Codex 改出来的整张图别处也会有细微差别，整张来回切会闪。
-    返回 (贴好的图, 嘴的位置 (x, y)，按图宽高的比例)。嘴的位置拿来让镜头和高光偏向说话的人。"""
+    返回 (贴好的图, 嘴的位置 (x, y)，按图宽高的比例)。嘴的位置拿来让镜头和高光偏向说话的人。
+
+    2026-11-02 用户："为什么熊说话，树在抖？"——原来直接取"变化最大的一块"，Codex 改张嘴帧时把树也重画了，
+    树那块比嘴大，就被当成嘴来回切。现在只认像嘴的那一块：面积占画面 0.03%–1.5%、不贴画面边、
+    在画面上方 70% 以内（脸都在上半部分）；台词写了 where（说话人的比例坐标）时，挑离它最近的。
+    一块都不像嘴就不贴（这句不张嘴，好过让别的东西抖），并打印警告。debug 给一个路径时，把选中的区域画成红框存下来。"""
     import cv2
     a, b = np.asarray(base_im).astype(np.int16), np.asarray(talk_im).astype(np.int16)
+    h, w = a.shape[:2]
     d = (np.abs(a - b).max(axis=2) > 28).astype(np.uint8)
     d = cv2.morphologyEx(d, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    d = cv2.morphologyEx(d, cv2.MORPH_CLOSE, np.ones((15, 15), np.uint8))   # 嘴唇、牙齿、舌头连成一块
     n, lab, stats, cents = cv2.connectedComponentsWithStats(d)
-    if n <= 1:
-        return talk_im, None
-    big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
-    mask = cv2.dilate((lab == big).astype(np.uint8), np.ones((25, 25), np.uint8)).astype(np.float32)
-    mask = cv2.GaussianBlur(mask, (0, 0), 6)[..., None]
+    cand = []
+    for i in range(1, n):
+        x, y, bw, bh, area = stats[i]
+        frac = area / (w * h)
+        if not (0.0003 <= frac <= 0.015):
+            continue
+        if x <= 2 or y <= 2 or x + bw >= w - 2 or y + bh >= h - 2:
+            continue
+        if cents[i][1] > 0.7 * h or max(bw, bh) > 0.25 * w:
+            continue
+        cand.append(i)
+    if not cand:
+        print(f"  ⚠ 张嘴帧里找不到像嘴的那一块（变化的地方太大或太散），这句不做张嘴：检查张嘴帧是不是把别处也重画了")
+        return base_im, None
+    if hint:
+        big = min(cand, key=lambda i: (cents[i][0] / w - hint[0]) ** 2 + (cents[i][1] / h - hint[1]) ** 2)
+    else:
+        big = max(cand, key=lambda i: stats[i][4])
+    mask = cv2.dilate((lab == big).astype(np.uint8), np.ones((15, 15), np.uint8)).astype(np.float32)
+    mask = cv2.GaussianBlur(mask, (0, 0), 5)[..., None]
     out = a * (1 - mask) + b * mask
-    h, w = d.shape
+    if debug:
+        x, y, bw, bh, _ = stats[big]
+        dbg = Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
+        ImageDraw.Draw(dbg).rectangle([x - 10, y - 10, x + bw + 10, y + bh + 10], outline=(255, 0, 0), width=6)
+        dbg.thumbnail((540, 960))
+        dbg.save(debug)
     return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8)), (cents[big][0] / w, cents[big][1] / h)
 
 
@@ -570,12 +597,17 @@ def keyframes(page, lines, base, img0, tween=None):
         else:
             a, b = c.get("from", 0), c.get("to", 1e9)
         cyc = (a, b, c.get("step", 0.25), [load(x) for x in c["images"]])
-    def build(m):
+    dbg_dir = os.environ.get("SBV_TALK_DEBUG")   # 设了就把每张张嘴帧选中的区域画红框存到这个目录，质检用
+
+    def build(m, hint=None):
         out = {}
         for k, v in (m or {}).items():
             if os.path.exists(os.path.join(base, v)):
                 src = next((key[1] for key in keys if key[4] == k), None)
-                out[k] = talk_paste(load(k) if src is None else src, load(v))
+                dbg = os.path.join(dbg_dir, os.path.splitext(v)[0] + ".jpg") if dbg_dir else None
+                if dbg:
+                    os.makedirs(dbg_dir, exist_ok=True)
+                out[k] = talk_paste(load(k) if src is None else src, load(v), hint, dbg)
         return out
 
     # 每句可以有自己的张嘴帧：同一张图里两个角色轮流说话，各张各的嘴
@@ -585,7 +617,7 @@ def keyframes(page, lines, base, img0, tween=None):
         m = ln.get("talk")
         if isinstance(m, str):
             m = {page.get("image"): m}
-        talk.append(dict(page_talk, **build(m)) if m else page_talk)
+        talk.append(dict(page_talk, **build(m, ln.get("where"))) if m else page_talk)
     spoken = [(ln["start"] + s, ln["start"] + e, li) for li, ln in enumerate(lines) for s, e in ln.get("spans", [])]
     return {"keys": keys, "cyc": cyc, "talk": talk, "spoken": spoken, "tweens": {}}
 
