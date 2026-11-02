@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""封面图（9:16 视频封面 + 3:4 小红书封面）。代码来自系列 Skill 附录 A，字体改成本机能找到的。
+"""封面图：默认只出 3:4（1080×1440），抖音、小红书共用（用户定封面只留 3:4）。代码来自系列 Skill 附录 A，字体改成本机能找到的。
 
 用法（在本目录下）：
     python brand.py ../../episodes/s02-help/story.json --ep 2 \
@@ -161,7 +161,7 @@ def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y
 
 
 def main():
-    ap = argparse.ArgumentParser(description="出封面图：9:16 1080×1920 + 3:4 1080×1440")
+    ap = argparse.ArgumentParser(description="出封面图：3:4 1080×1440（加 --with-9x16 才另出 9:16）")
     ap.add_argument("story")
     ap.add_argument("--ep", type=int, required=True, help="集数（封面上的 EP.xx）")
     ap.add_argument("--words", nargs="+", required=True, help="今日单词，写成 help=帮忙")
