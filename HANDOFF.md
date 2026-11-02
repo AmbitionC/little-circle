@@ -21,7 +21,7 @@
 - 成片 `out/c18/c18_peekaboo.mp4`，49.8 秒，`qa.py` 全部通过（`out/c18/qc_full.txt`）。压时长：hold 0.2、页尾 tail 0.7、复习页 lead 0.3；笑声标签挪到 Peekaboo 后面；Bruno 的 "Where?" 两个 take 都被听成 That!，改成 `[slowly] Wheeere?`。qa.py 两处修：Peek-a-boo 连字符并成一个词；VAD 把 Pip 尖声大喊整句滤掉时不带 VAD 再听一次。
 - 封面用钩子首帧（Pip + 叶子堆里的尾巴），`brand.py` 中文大字太宽时在逗号后自动断行。OSS 已同步（`out/c18/oss.json`），发布页 https://claude.ai/artifact/D3DUZuiKMF5kTFy5vDsabj 。
 - 11-02 说话帧修正（用户：熊说话树在抖）：`SBV_TALK_DEBUG=目录` 渲染，逐张看红框是否在说话人嘴上。坑：底图里说话人本来就张着嘴（p02/p07b/p08/p09），Codex「张嘴」改不出差别 → 张嘴帧提示词改成**闭嘴**；小老鼠嘴太小、熊近景脸太宽 → 台词写 `where`（两人一起说写两个点）。发布页已换成新片（第 6 版）。
-- 11-02 试验「一秒一图」：p04–p05 旁白 3 秒里加 3 张 Codex 关键帧（`out/c18_dense/`，不进正片），对比页 https://claude.ai/artifact/YMLDLZNuBbpuNSv8z1yo3W ，用户看后说「效果变得更好了……这次先这样，下次再尝试升级」：c18 正片保持现版；下一集起动作段一秒一张（说台词时不换图），并试一秒两张做对比（skill 5.3.1 已写）。
+- 11-02 试验「一秒一图」：p04–p05 旁白 3 秒里加 3 张 Codex 关键帧（`out/c18_dense/`，不进正片），对比页 https://claude.ai/artifact/YMLDLZNuBbpuNSv8z1yo3W ，用户看后说「效果变得更好了……这次先这样，下次再尝试升级」：c18 正片保持现版；下一集起动作段一秒一张（说台词时不换图），并试一秒两张做对比（skill 5.3.1 已写）。用户补充：加密要非线性，按镜头动作量和信息密度分高/中/低三档分配张数（skill 5.3.1 有表）。
 - **只有用户能做的**：手机终检、点发布。
 
 ## 0. 最新：s05 第 3 版，日常模式成片（2026-11-01 晚）
