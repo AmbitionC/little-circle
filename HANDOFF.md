@@ -21,7 +21,7 @@
 - sbv.py：顶层 `ambience`（环境底声，单独一层，写法同 `bgm.cues`，默认比人声低 24 dB，`style.amb_rel_db`）；音效加 `skip` / `dur`。不写这两个字段时，混音和改之前逐采样一致（c18 新旧代码对比，差 0）。
 - 新工具：`sfx_probe.py`（听不到就看能量曲线：起音、峰值、尾巴）、`sfx_import.py`（Freesound 原始文件切头尾、统一电平进 `assets/sfx/`，出处和授权记进 `series/sfx_sources.csv`，只收 CC0）。
 - 第一批 CC0 库：`amb_forest_birds`、`amb_forest_stream`、`rustle_bush`、`rustle_quick`、`steps_grass`、`twig`（原始文件在 `assets/sfx/fs/`）。
-- 试听：`out/c18_amb/c18_peekaboo_amb.mp4` = c18 正片同一套配音 + 森林鸟叫底声（反转前和音乐一起抽掉、复习页压低）+ p03、彩蛋页换成真实灌木沙沙声（`episodes/c18-peekaboo/story_amb.json`，不提交）。底声比整体低约 26–28 dB，-15.8 LUFS。**等用户听了定底声音量，再决定下一集起默认加。**
+- 试听：`out/c18_amb/c18_peekaboo_amb.mp4` = c18 正片同一套配音 + 森林鸟叫底声（反转前和音乐一起抽掉、复习页压低）+ p03、彩蛋页换成真实灌木沙沙声（`episodes/c18-peekaboo/story_amb.json`，不提交）。底声比整体低约 26–28 dB，-15.8 LUFS。用户 11-03 听后说「先这样」：**下一集起口语线默认加底声，音量 volume 1.0**。用户问 sound 会不会选背景音乐：不会，只管音效。
 - 踩坑：配音缓存在 `--out` 目录下，换新输出目录会整集重配（这次多花了约三集的 ElevenLabs 字数）。试声音先拷正片 `.cache` 并临时去掉 key，分册第 4 节末尾有命令。
 
 ## 0. 最新：m02 拔萝卜英文对话版成片，待发布（2026-11-03 晚）

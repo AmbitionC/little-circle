@@ -34,6 +34,8 @@
 
 ## 3. 缺一个声音时怎么找（sound skill）
 
+> sound skill 只管音效，**不选也不做背景音乐**（作者说 BGM 合成在付费的"满血版"里，不买）。背景音乐照旧按口语分册 7.1 节用 ElevenLabs 付费档现做；Freesound 上的音乐片段不用。
+
 1. **先查库**：`series/sfx_sources.csv` 和 `assets/sfx/` 里有没有能用的，能复用就复用（第 1 节第 8 条）。
 2. **卡通音缺** → 在 `el_prep.py` 的 `SFX` 加一条，`el_prep.py sfx <名字>` 生成（付费档期间）。
 3. **真实声音缺** → 用全局 sound skill（`~/.agents/skills/sound`）在 Freesound 搜：
@@ -67,7 +69,7 @@
 - **音效**（页面 `sfx`，和以前一样）：`{"file": "../../assets/sfx/rustle_bush.wav", "at": 0.1, "gain": 0.35, "dur": 2.2}`
   - 新字段 `skip`（从音效第几秒开始用）、`dur`（最多用几秒，切口自动淡出），用来临时截一段，不用另存文件。
   - 台词期间的音效 `gain` ≤0.35；开口前的音效在第一个词前 0.3 秒结束（页面 `lead` 默认 0.5 秒）。
-- **环境底声**（顶层 `ambience`，单独一层，不进人声轨，所以不会触发压音乐）：
+- **环境底声**：2026-11-03 用户听过 c18 试听版说「先这样」，**下一集起口语线默认加**，音量就用 `volume: 1.0`（比人声低 24 dB）。顶层 `ambience`，单独一层，不进人声轨，所以不会触发压音乐）：
   ```json
   "ambience": {"cues": [
     {"page": 0, "file": "../../assets/sfx/amb_forest_birds.wav", "volume": 1.0, "fade": 1.0},
