@@ -41,7 +41,7 @@
    ]
   },
   "tail": 0,
-  "bgm_rel_db": -11
+  "bgm_rel_db": -8
  },
  "cast": "../../series/cast.json",
  "hook": {
@@ -130,7 +130,7 @@
      "zh": "哇！好大的萝卜！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
@@ -189,7 +189,7 @@
      ],
      "en": "Easy! I am big!",
      "zh": "小意思！我力气大！",
-     "gap": 0.578
+     "gap": 0.658
     },
     {
      "speaker": "bruno",
@@ -213,7 +213,7 @@
      ],
      "en": "Pull! Heave-ho!",
      "zh": "拔！嘿哟！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "bruno",
@@ -239,16 +239,16 @@
      "zh": "……哎呀！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
      "image": "p02b.png",
-     "at": 2.847
+     "at": 2.927
     },
     {
      "image": "p02c.png",
-     "at": 5.256
+     "at": 5.276
     }
    ],
    "motion": "left"
@@ -290,7 +290,7 @@
      "zh": "Bun！帮帮我！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
@@ -335,7 +335,7 @@
      ],
      "en": "Pull! Heave-ho!",
      "zh": "拔！嘿哟！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "bun",
@@ -391,12 +391,12 @@
      "zh": "拔不动！你能帮忙吗？和我们一起拔！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
      "image": "p04b.png",
-     "at": 3.692
+     "at": 3.632
     }
    ],
    "motion": "in"
@@ -446,7 +446,7 @@
      ],
      "en": "Me too! Me too!",
      "zh": "我也来！我也来！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "bruno",
@@ -490,7 +490,7 @@
      ],
      "en": "You? Ha ha! You're so small!",
      "zh": "你？哈哈！你那么小！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "pip",
@@ -521,16 +521,16 @@
      "zh": "我能帮忙！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
      "image": "p05b.png",
-     "at": 2.134
+     "at": 2.074
     },
     {
      "image": "p05c.png",
-     "at": 5.686
+     "at": 5.566
     }
    ],
    "motion": "up"
@@ -546,7 +546,7 @@
     0.45
    ],
    "zoom": 1.06,
-   "lead": 0.354,
+   "lead": 0.15,
    "lines": [
     {
      "speaker": "bruno",
@@ -587,16 +587,16 @@
      "zh": "一……二……三……拔！"
     }
    ],
-   "hold": 0.334,
+   "hold": 1.099,
    "cut": true,
    "frames": [
     {
      "image": "p06b.png",
-     "at": 2.267
+     "at": 2.062
     },
     {
      "image": "p06c.png",
-     "at": 3.589
+     "at": 3.385
     }
    ],
    "motion": "in"
@@ -619,7 +619,7 @@
      "audio": "../../assets/sfx/boing.mp3",
      "en": "Boing!",
      "zh": "嘭！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "bruno",
@@ -650,7 +650,7 @@
      "zh": "哎哟！我的肚子！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
@@ -659,7 +659,7 @@
     },
     {
      "image": "p07c.png",
-     "at": 3.619
+     "at": 3.559
     }
    ],
    "sfx": [
@@ -716,7 +716,7 @@
      ],
      "en": "Small Pip, big help!",
      "zh": "小小皮皮，帮了大忙！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "all",
@@ -737,12 +737,12 @@
      "zh": "好耶！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
      "image": "p08b.png",
-     "at": 2.286
+     "at": 2.226
     }
    ],
    "motion": "out"
@@ -777,7 +777,7 @@
      ],
      "en": "Crunch!",
      "zh": "咔嚓！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "bruno",
@@ -811,7 +811,7 @@
      ],
      "en": "Pip! That's MY radish!",
      "zh": "皮皮！那是我的萝卜！",
-     "gap": 0.26
+     "gap": 0.2
     },
     {
      "speaker": "pip",
@@ -847,16 +847,16 @@
      "zh": "我也要！"
     }
    ],
-   "hold": 0.28,
+   "hold": 0.2,
    "cut": true,
    "frames": [
     {
      "image": "p09b.png",
-     "at": 1.538
+     "at": 1.478
     },
     {
      "image": "p09c.png",
-     "at": 4.006
+     "at": 3.886
     }
    ],
    "sfx": [
@@ -895,7 +895,7 @@
      "zh": "拔！"
     }
    ],
-   "hold": 1.266,
+   "hold": 0.96,
    "cut": true,
    "motion": "in"
   },
@@ -926,7 +926,7 @@
      "zh": "帮忙！"
     }
    ],
-   "hold": 1.298,
+   "hold": 0.992,
    "cut": true,
    "motion": "in"
   },
@@ -962,7 +962,7 @@
      "zh": "大！"
     }
    ],
-   "hold": 0.933,
+   "hold": 0.801,
    "cut": true,
    "motion": "in"
   }
@@ -970,7 +970,7 @@
  "ending": {
   "headline": "pull 拔 · help 帮忙 · big 大",
   "subline": "和宝宝一起喊：Pull! Heave-ho!",
-  "seconds": 1.837
+  "seconds": 1.592
  },
  "bgm": {
   "file": "../../out/m02_talk/bgm_talk.wav",
