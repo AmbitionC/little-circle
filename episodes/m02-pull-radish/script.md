@@ -17,13 +17,13 @@
 | 页 | 画面 | 台词 |
 |---|---|---|
 | hook | kling_first.png：钩子：Pip 从萝卜叶后探头，手指放嘴边「嘘」 → h02.png：Pip 指着巨大的叶子 → h03.png：Pip 躲回去，大耳朵露在外面（藏不住） | **pip**：`Shh... a big secret!`<br>嘘……一个大秘密！ |
-| p01 | p01.png：Bruno 走过来，弯腰看露出地面的叶子 → p01b.png：后退一步抬头，叶子比他还高 → p01c.png：张开双臂，下巴都掉了：BIG! | **bruno**：`Wow! A big... big... BIG radish!`<br>哇！好大……好大……超级大的萝卜！ |
+| p01 | p01.png：Bruno 走过来，弯腰看露出地面的叶子 → p01b.png：后退一步抬头，叶子比他还高 → p01c.png：张开双臂，下巴都掉了：BIG! | **bruno**：`Wow! A BIG radish!`<br>哇！好大的萝卜！ |
 | p02 | p02.png：Bruno 拍胸口吹牛：Easy! I am big! → p02b.png：往后仰着使劲拔，脸憋红 → p02c.png：一屁股坐地上，手里只剩几片叶子，泄气：Oh no... | **bruno**：`Easy! I am big!`<br>小意思！我力气大！<br>**bruno**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bruno**：`...Oh no!`<br>……哎呀！ |
-| p03 | p03.png：Bruno 双手拢在嘴边喊：Bun! Help! → p03b.png：Bun 蹦着跑来：I'm coming! | **bruno**：`Bun! Help!`<br>Bun！帮帮我！<br>**bun**：`I'm coming!`<br>我来啦！ |
+| p03 | p03.png：Bruno 双手拢在嘴边喊：Bun! Help! → p03b.png：Bun 蹦着跑来：I'm coming! | **bruno**：`Bun! Help!`<br>Bun！帮帮我！ |
 | p04 | p04.png：两个一起拔：Pull! Heave-ho! → p04b.png：Bun 转身对镜头招手：Can you help? Pull with us! | **bruno+bun**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bun**：`It's stuck! Can you help? Pull with us!`<br>拔不动！你能帮忙吗？和我们一起拔！ |
 | p05 | p05.png：Pip 举着双手跑来：Me too! Me too! → p05b.png：Bruno 捂肚子笑他：You? You're so small! → p05c.png：Pip 叉腰不服气：I can help! | **pip**：`Me too! Me too!`<br>我也来！我也来！<br>**bruno**：`You? Ha ha! You're so small!`<br>你？哈哈！你那么小！<br>**pip**：`I can help!`<br>我能帮忙！ |
 | p06 | p06.png：三个排成一串一起拔：One... two... → p06b.png：土裂开了：three... → p06c.png：萝卜冒出来一半：PULL! | **all**：`One... two... three... PULL!`<br>一……二……三……拔！ |
-| p07 | p07.png：萝卜啵地飞出来，三个往后倒 → p07b.png：萝卜砸在 Bruno 软肚子上弹起来：Boing! Oof! My tummy! → p07c.png：Bun 指着 Pip：Pip did it! | **sfx**：`Boing!`<br>嘭！<br>**bruno**：`Oof! My tummy!`<br>哎哟！我的肚子！<br>**bun**：`Pip did it!`<br>是皮皮帮的忙！ |
+| p07 | p07.png：萝卜啵地飞出来，三个往后倒 → p07b.png：萝卜砸在 Bruno 软肚子上弹起来：Boing! Oof! My tummy! → p07c.png：Bun 指着 Pip：Pip did it! | **sfx**：`Boing!`<br>嘭！<br>**bruno**：`Oof! My tummy!`<br>哎哟！我的肚子！ |
 | p08 | p08.png：Bruno 把 Pip 高高举起：Small Pip, big help! → p08b.png：大家一起欢呼：Hooray! | **bruno**：`Small Pip, big help!`<br>小小皮皮，帮了大忙！<br>**all**：`Hooray!`<br>好耶！ |
 | p09 | p09.png：彩蛋：Pip 坐在萝卜上啃：Crunch! → p09b.png：Bruno 探头指着他：Pip! That's MY radish! → p09c.png：Pip 鼓着腮帮子竖大拇指：Me too! | **pip**：`Crunch!`<br>咔嚓！<br>**bruno**：`Pip! That's MY radish!`<br>皮皮！那是我的萝卜！<br>**pip**：`Me too!`<br>我也要！ |
 
@@ -170,24 +170,24 @@ the mouse turns to the bear with his cheeks stuffed full and grins a big closed-
 
 ## 4. 发布文案
 
-- **抖音标题**：拔萝卜英文儿歌｜pull和help
-- **小红书标题**：拔萝卜英文版｜2岁英语启蒙儿歌
-- **合集**：栗栗唱儿歌
-- **封面关键画面**：用最后一页 p09（Pip 坐在大萝卜上啃）自动出 3:4 封面，上方留空放标题
+- **抖音标题**：拔萝卜英文版｜pull和help
+- **小红书标题**：拔萝卜英文故事｜2岁英语启蒙
+- **合集**：森林故事
+- **封面**：p09 系列的 cover.png（Pip 坐在大萝卜上啃），`brand.py --crop-3x4 0`（默认裁法标题压 Pip 的脸）
 - **正文**：
 ```
-🎵 栗栗唱儿歌｜拔呀拔，拔萝卜！英文儿歌版
-大熊拔不动，兔子来帮也拔不动……最后是谁帮忙才拔出来的？宝宝猜对了吗？
+🥕 栗栗学英语｜拔呀拔，拔萝卜！英文对话版
+大熊说"小意思！"结果一屁股坐地上😂 小兔来帮也拔不动……最后是谁一加入就拔出来了？宝宝猜对了吗？
 
 📖 今日单词：pull 拔｜help 帮忙｜big 大
-🎤 跟唱 + 动作：
-Pull, pull, pull! 💪 双手往后拉
-Heave-ho! 🙆 身子往后一仰
+🎤 跟着喊 + 做动作：
+Pull! Heave-ho! 💪 双手往后拉，身子往后一仰
+Can you help? 🙋 小兔请宝宝一起拉，喊 PULL!
 Me too! 🙋 举手说我也来
 
-💡 道理：再小也能帮上忙，大家一起力气大。
+💡 再小也能帮上忙，大家一起力气大。
 
-#英文儿歌 #幼儿英语启蒙 #拔萝卜 #英语启蒙 #亲子英语
+#英文绘本 #幼儿英语启蒙 #拔萝卜 #英语启蒙 #亲子英语
 ```
-- **置顶评论**：猜对了吗？最后是最小的 Pip 一加入才拔出来的！今日单词 pull 拔｜help 帮忙｜big 大，和宝宝一起 Heave-ho～
+- **置顶评论**：宝宝跟着一起喊 PULL 了吗？最小的 Pip 一加入就拔出来啦！今日单词 pull 拔｜help 帮忙｜big 大
 - 发布时勾选"内容由 AI 生成"。

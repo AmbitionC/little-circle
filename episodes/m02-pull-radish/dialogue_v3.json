@@ -9,8 +9,8 @@
  "p01": [
   {
    "speaker": "bruno",
-   "en": "Wow! A big... big... BIG radish!",
-   "zh": "哇！好大……好大……超级大的萝卜！"
+   "en": "Wow! A BIG radish!",
+   "zh": "哇！好大的萝卜！"
   }
  ],
  "p02": [
@@ -35,11 +35,6 @@
    "speaker": "bruno",
    "en": "Bun! Help!",
    "zh": "Bun！帮帮我！"
-  },
-  {
-   "speaker": "bun",
-   "en": "I'm coming!",
-   "zh": "我来啦！"
   }
  ],
  "p04": [
@@ -88,11 +83,6 @@
    "speaker": "bruno",
    "en": "Oof! My tummy!",
    "zh": "哎哟！我的肚子！"
-  },
-  {
-   "speaker": "bun",
-   "en": "Pip did it!",
-   "zh": "是皮皮帮的忙！"
   }
  ],
  "p08": [

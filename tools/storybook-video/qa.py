@@ -207,10 +207,15 @@ def main():
     stats = {}
     for ln in lines:
         spk = ln.get("speaker", "narrator")
-        voice = dict(cast[spk])
-        if ln.get("take"):
-            voice["take"] = ln["take"]
-        wav, _ = sbv.synthesize(ln.get("say", ln["en"]), voice, cache)
+        if spk not in cast:      # 几人齐喊（duo、all）、音效句（sfx）：不是单个角色的声音，不参与比较
+            continue
+        if ln.get("audio"):      # 预先处理好的配音（如 m02 按小节排好的句子）
+            wav = os.path.join(base, ln["audio"])
+        else:
+            voice = dict(cast[spk])
+            if ln.get("take"):
+                voice["take"] = ln["take"]
+            wav, _ = sbv.synthesize(ln.get("say", ln["en"]), voice, cache)
         x = pcm(wav)
         st = stats.setdefault(spk, {"f0": [], "wps": [], "soft": []})
         # 耳语没有音高，估出来的基频是乱的；这个角色有别的句子时，耳语句不算基频和语速

@@ -1,447 +1,983 @@
 {
-  "output_name": "m02_pull_radish_classic",
-  "title_en": "Pull! Pull! The Big Radish",
-  "title_zh": "拔呀拔，拔萝卜！",
-  "series": {
-    "badge_text": "栗栗学英语 · 儿歌",
-    "badge_alpha": 0.72
+ "output_name": "m02_pull_radish_talk",
+ "title_en": "Pull! Pull! The Big Radish",
+ "title_zh": "拔呀拔，拔萝卜！",
+ "_说明": "2026-11-03 用户：「放弃找大人唱的思路……保留背景音乐，然后用一个乐器作为唱歌的主旋律。然后里面的动画人物用英文对话方式，把这个故事和关键单词讲好就行」，随后「剧本能不能更有意思一点呢？」→ 第 2 版台词（吹牛→失败、隔屏邀请宝宝一起拉、Pip 被笑小然后逆袭、萝卜砸肚子、Me too 回扣）。背景音乐照原曲《拔萝卜》公开简谱（署名包恩珠词曲，版权未核实）由本机脚本合成，木琴当主旋律，不进仓库。每页 lead/gap/hold 是 out/m02_talk/prep_talk.py 按 98 BPM 小节线算出来的，别手改。",
+ "series": {
+  "badge_text": "栗栗学英语 · 森林故事",
+  "badge_alpha": 0.72
+ },
+ "style": {
+  "speaker_colors": {
+   "sfx": [
+    184,
+    69,
+    44
+   ],
+   "bruno": [
+    120,
+    72,
+    30
+   ],
+   "bun": [
+    172,
+    56,
+    44
+   ],
+   "pip": [
+    70,
+    96,
+    150
+   ],
+   "duo": [
+    150,
+    70,
+    40
+   ],
+   "all": [
+    150,
+    70,
+    40
+   ]
   },
-  "style": {
-    "speaker_colors": {
-      "song": [
-        178,
-        78,
-        22
-      ]
-    }
-  },
-  "song": {
-    "_说明": "2026-11-03 用户选「按原歌结构重做」：照中文儿歌《拔萝卜》的结构填英文词。⚠️ 版权未确认：公开简谱署名「包恩珠 词曲」（不是佚名），作者生卒年未查到，不能认定已过保护期；照原谱的旋律在用户确认授权前不得发布。ElevenLabs 按文字描述作出的 v9–v14 用户听了不是原调。上一版原创旋律见 git e6801a3。",
-    "model": "music_v2_5",
-    "variants": 3,
-    "styles": [
-      "an English-lyrics version of the traditional Chinese children's folk song Ba Luobo (Pulling the Radish), following its well-known simple bouncy pentatonic melody, phrase shapes and heave-ho rhythm as closely as possible",
-      "2/4 march-like bounce, a moderate cheerful tempo a toddler can sing along to",
-      "warm, smiling, expressive female lead vocal singing to a toddler and having fun",
-      "a small group of happy kids joining on every heave-ho, heave-ho",
-      "guzheng and pipa plucks, little wood block, ukulele, xylophone, hand claps and light drums",
-      "slow, clear English pronunciation with crisp consonants, every word easy to hear",
-      "every Pull sung as a clear English word with a ringing L at the end, never Po or Ho"
-    ],
-    "negative": [
-      "rap",
-      "distortion",
-      "heavy drums",
-      "electronic dance",
-      "long instrumental solo",
-      "adult love song",
-      "heavy autotune",
-      "flat monotone vocal",
-      "robotic voice",
-      "spoken word",
-      "Chinese lyrics"
-    ],
-    "sections": [
-      {
-        "name": "Intro",
-        "seconds": 4,
-        "lines": [],
-        "direction": "instrumental intro playing the first phrase of the melody on guzheng and xylophone, kids shout Heave-ho! at the end"
-      },
-      {
-        "name": "Look",
-        "seconds": 4,
-        "pages": [
-          "p01"
-        ],
-        "direction": "a bright, wide-eyed spoken-sung Look! then A big radish! full of wonder"
-      },
-      {
-        "name": "Verse 1",
-        "seconds": 6,
-        "pages": [
-          "p02"
-        ],
-        "direction": "the main tune: Pull the radish, pull the radish, then kids join on heave-ho, heave-ho, pull the radish!"
-      },
-      {
-        "name": "Verse 1b",
-        "seconds": 6,
-        "pages": [
-          "p03"
-        ],
-        "direction": "heave-ho, heave-ho, it won't come out! with a funny droop, then a bright call Bun, Bun, come and help!"
-      },
-      {
-        "name": "Verse 2",
-        "seconds": 6,
-        "pages": [
-          "p04"
-        ],
-        "direction": "same tune again, a little stronger, ending on a funny drooping it won't come out!"
-      },
-      {
-        "name": "Call",
-        "seconds": 4,
-        "pages": [
-          "p05"
-        ],
-        "direction": "Pip, Pip, come and help! then Me too! Me too! tiny, high and squeaky like an eager little mouse"
-      },
-      {
-        "name": "Verse 3",
-        "seconds": 6,
-        "pages": [
-          "p06"
-        ],
-        "direction": "same tune, the strongest yet with all the kids, one, two, three! climbing higher on each number"
-      },
-      {
-        "name": "Pop",
-        "seconds": 4,
-        "pages": [
-          "p07"
-        ],
-        "direction": "one loud crisp Pop! on the downbeat, Out it comes! bright, everyone cheers Hooray, Pip!"
-      },
-      {
-        "name": "Chorus",
-        "seconds": 6,
-        "pages": [
-          "p08"
-        ],
-        "direction": "everyone sings the tune together, big and joyful, ending with a cheering hooray!"
-      },
-      {
-        "name": "Tag",
-        "seconds": 4,
-        "pages": [
-          "p09"
-        ],
-        "direction": "light and playful: only Crunch, crunch! in two crisp short notes, then Yummy radish! clearly, nothing else in this section"
-      },
-      {
-        "name": "Outro",
-        "seconds": 4,
-        "lines": [
-          "Pull! Help! Big!"
-        ],
-        "direction": "slow and very clear: Pull! Help! Big! one word per beat, each word held long and sung cleanly, then a soft guzheng ding"
-      }
-    ],
-    "picked": "v8"
-  },
-  "hook": {
-    "frames": [
-      {
-        "image": "kling_first.png",
-        "at": 0
-      },
-      {
-        "image": "h02.png",
-        "at": 2.0,
-        "shake": true
-      },
-      {
-        "image": "h03.png",
-        "at": 3.0
-      }
-    ],
-    "motion": "in",
-    "zoom": 1.06,
-    "focus": [
-      0.5,
-      0.45
-    ],
-    "headline": "猜猜最后是谁拔出了大萝卜？",
-    "subline": "经典故事拔萝卜 · 英文儿歌版"
-  },
-  "pages": [
-    {
-      "image": "p01.png",
-      "word": {
-        "en": "big",
-        "zh": "大"
-      },
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p01.png",
-          "p01b.png"
-        ],
-        "step": 1.0
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Look! A big radish!",
-          "zh": "看！好大的萝卜！"
-        }
-      ]
-    },
-    {
-      "image": "p02.png",
-      "word": {
-        "en": "pull",
-        "zh": "拔"
-      },
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p02.png",
-          "p02b.png"
-        ],
-        "step": 0.5
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Pull the radish, pull the radish,",
-          "zh": "拔萝卜，拔萝卜，"
-        },
-        {
-          "speaker": "song",
-          "en": "heave-ho, heave-ho, pull the radish!",
-          "zh": "嘿哟嘿哟拔萝卜！"
-        }
-      ]
-    },
-    {
-      "image": "p03.png",
-      "word": {
-        "en": "help",
-        "zh": "帮忙"
-      },
-      "motion": "left",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p03.png",
-          "p03b.png"
-        ],
-        "step": 1.0
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Heave-ho, heave-ho, it won't come out!",
-          "zh": "嘿哟嘿哟拔不动！"
-        },
-        {
-          "speaker": "song",
-          "en": "Bun, Bun, come and help!",
-          "zh": "小兔子，快快来，快来帮忙！"
-        }
-      ]
-    },
-    {
-      "image": "p04.png",
-      "word": {
-        "en": "pull",
-        "zh": "拔"
-      },
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p04.png",
-          "p04b.png"
-        ],
-        "step": 0.5
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Pull the radish, pull the radish,",
-          "zh": "拔萝卜，拔萝卜，"
-        },
-        {
-          "speaker": "song",
-          "en": "heave-ho, heave-ho, it won't come out!",
-          "zh": "嘿哟嘿哟拔不动！"
-        }
-      ]
-    },
-    {
-      "image": "p05.png",
-      "word": {
-        "en": "me too",
-        "zh": "我也来"
-      },
-      "motion": "right",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p05.png",
-          "p05b.png"
-        ],
-        "step": 1.0
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Pip, Pip, come and help!",
-          "zh": "小老鼠，快快来，快来帮忙！"
-        },
-        {
-          "speaker": "song",
-          "en": "Me too! Me too!",
-          "zh": "我也来！我也来！"
-        }
-      ]
-    },
-    {
-      "image": "p06.png",
-      "word": {
-        "en": "pull",
-        "zh": "拔"
-      },
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p06.png",
-          "p06b.png"
-        ],
-        "step": 0.5
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Pull the radish, pull the radish,",
-          "zh": "拔萝卜，拔萝卜，"
-        },
-        {
-          "speaker": "song",
-          "en": "heave-ho, heave-ho, one, two, three!",
-          "zh": "嘿哟嘿哟，一二三！"
-        }
-      ]
-    },
-    {
-      "image": "p07.png",
-      "word": {
-        "en": "out",
-        "zh": "出来啦"
-      },
-      "motion": "up",
-      "focus": [
-        0.5,
-        0.5
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p07.png",
-          "p07b.png"
-        ],
-        "step": 1.0
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Pop! Out it comes!",
-          "zh": "啵！拔出来啦！"
-        },
-        {
-          "speaker": "song",
-          "en": "Hooray, Pip!",
-          "zh": "皮皮真棒！"
-        }
-      ]
-    },
-    {
-      "image": "p08.png",
-      "word": {
-        "en": "together",
-        "zh": "一起"
-      },
-      "motion": "out",
-      "focus": [
-        0.5,
-        0.42
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p08.png",
-          "p08b.png"
-        ],
-        "step": 0.5
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Big and small, we pull together,",
-          "zh": "大大小小一起拔，"
-        },
-        {
-          "speaker": "song",
-          "en": "heave-ho, heave-ho, hooray!",
-          "zh": "嘿哟嘿哟，好耶！"
-        }
-      ]
-    },
-    {
-      "image": "p09.png",
-      "word": {
-        "en": "crunch",
-        "zh": "咔嚓"
-      },
-      "motion": "in",
-      "focus": [
-        0.5,
-        0.45
-      ],
-      "zoom": 1.06,
-      "cycle": {
-        "images": [
-          "p09.png",
-          "p09b.png"
-        ],
-        "step": 1.0
-      },
-      "lines": [
-        {
-          "speaker": "song",
-          "en": "Crunch, crunch! Yummy radish!",
-          "zh": "咔嚓咔嚓，萝卜真好吃！"
-        }
-      ]
-    }
+  "tail": 0,
+  "bgm_rel_db": -11
+ },
+ "cast": "../../series/cast.json",
+ "hook": {
+  "frames": [
+   {
+    "image": "kling_first.png",
+    "at": 0
+   },
+   {
+    "image": "h02.png",
+    "at": 2.2
+   },
+   {
+    "image": "h03.png",
+    "at": 3.6,
+    "shake": true
+   }
   ],
-  "ending": {
-    "headline": "big 大 · pull 拔 · help 帮忙",
-    "subline": "和宝宝一起：Pull, pull, pull! Heave-ho!"
-  },
-  "loudness": {
-    "I": -16,
-    "TP": -1.5
+  "max_seconds": 4.066666666666666,
+  "motion": "in",
+  "zoom": 1.06,
+  "focus": [
+   0.5,
+   0.45
+  ],
+  "headline": "猜猜最后是谁拔出了大萝卜？",
+  "subline": "经典故事拔萝卜 · 英文对话版",
+  "say": {
+   "speaker": "pip",
+   "en": "Shh... a big secret!",
+   "zh": "嘘……一个大秘密！",
+   "say": "[whispers] Shh... a big secret!",
+   "at": 0.5
   }
+ },
+ "pages": [
+  {
+   "image": "p01.png",
+   "word": {
+    "en": "big",
+    "zh": "大"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_e3a45bbf0b.wav",
+     "words": [
+      {
+       "w": "[gasps]",
+       "s": 0.0,
+       "e": 0.3714285714285714
+      },
+      {
+       "w": "Wow!",
+       "s": 0.5619047619047619,
+       "e": 1.3238095238095238
+      },
+      {
+       "w": "[shouting]",
+       "s": 1.419047619047619,
+       "e": 1.5714285714285712
+      },
+      {
+       "w": "A",
+       "s": 1.5809523809523809,
+       "e": 1.5904761904761904
+      },
+      {
+       "w": "BIG",
+       "s": 1.8190476190476188,
+       "e": 2.504761904761905
+      },
+      {
+       "w": "radish!",
+       "s": 2.638095238095238,
+       "e": 4.0285714285714285
+      }
+     ],
+     "en": "Wow! A BIG radish!",
+     "zh": "哇！好大的萝卜！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p01b.png",
+     "at": 1.691
+    },
+    {
+     "image": "p01c.png",
+     "at": 1.929
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "p02.png",
+   "word": {
+    "en": "pull",
+    "zh": "拔"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_bf0736d828.wav",
+     "words": [
+      {
+       "w": "[proudly]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "Easy!",
+       "s": 0.05904761904761904,
+       "e": 0.7142857142857143
+      },
+      {
+       "w": "I",
+       "s": 0.8285714285714286,
+       "e": 0.9428571428571428
+      },
+      {
+       "w": "am",
+       "s": 1.019047619047619,
+       "e": 1.1714285714285713
+      },
+      {
+       "w": "big!",
+       "s": 1.2857142857142858,
+       "e": 2.4666666666666663
+      }
+     ],
+     "en": "Easy! I am big!",
+     "zh": "小意思！我力气大！",
+     "gap": 0.578
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_5e13fb2d33.wav",
+     "words": [
+      {
+       "w": "[shouting]",
+       "s": 0.0,
+       "e": 0.33142857142857146
+      },
+      {
+       "w": "Pull!",
+       "s": 0.35238095238095235,
+       "e": 0.6666666666666667
+      },
+      {
+       "w": "Heave-ho!",
+       "s": 0.7428571428571429,
+       "e": 2.4952380952380953
+      }
+     ],
+     "en": "Pull! Heave-ho!",
+     "zh": "拔！嘿哟！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_bb8309191d.wav",
+     "words": [
+      {
+       "w": "[sighs]",
+       "s": 0.0,
+       "e": 0.5047619047619047
+      },
+      {
+       "w": "...Oh",
+       "s": 0.5238095238095238,
+       "e": 0.8095238095238094
+      },
+      {
+       "w": "no!",
+       "s": 1.0123809523809524,
+       "e": 1.6476190476190475
+      }
+     ],
+     "en": "...Oh no!",
+     "zh": "……哎呀！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p02b.png",
+     "at": 2.847
+    },
+    {
+     "image": "p02c.png",
+     "at": 5.256
+    }
+   ],
+   "motion": "left"
+  },
+  {
+   "image": "p03.png",
+   "word": {
+    "en": "help",
+    "zh": "帮忙"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_d08f85d60d.wav",
+     "words": [
+      {
+       "w": "[shouting]",
+       "s": 0.0,
+       "e": 0.3619047619047619
+      },
+      {
+       "w": "Bun!",
+       "s": 0.3952380952380953,
+       "e": 1.1047619047619046
+      },
+      {
+       "w": "Help!",
+       "s": 1.2266666666666663,
+       "e": 1.8666666666666665
+      }
+     ],
+     "en": "Bun! Help!",
+     "zh": "Bun！帮帮我！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p03b.png",
+     "at": 2.12
+    }
+   ],
+   "motion": "right"
+  },
+  {
+   "image": "p04.png",
+   "word": {
+    "en": "pull",
+    "zh": "拔"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "duo",
+     "audio": "../../out/m02_talk/lines/duo_5e13fb2d33.wav",
+     "words": [
+      {
+       "w": "[shouting]",
+       "s": 0.0,
+       "e": 0.33142857142857146
+      },
+      {
+       "w": "Pull!",
+       "s": 0.35238095238095235,
+       "e": 0.6666666666666667
+      },
+      {
+       "w": "Heave-ho!",
+       "s": 0.7428571428571429,
+       "e": 2.4952380952380953
+      }
+     ],
+     "en": "Pull! Heave-ho!",
+     "zh": "拔！嘿哟！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "bun",
+     "audio": "../../out/m02_talk/lines/bun_aafa61f9de.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.10285714285714286
+      },
+      {
+       "w": "It's",
+       "s": 0.11333333333333334,
+       "e": 0.2095238095238095
+      },
+      {
+       "w": "stuck!",
+       "s": 0.2857142857142857,
+       "e": 0.7428571428571429
+      },
+      {
+       "w": "Can",
+       "s": 0.819047619047619,
+       "e": 1.0476190476190477
+      },
+      {
+       "w": "you",
+       "s": 1.0857142857142856,
+       "e": 1.2
+      },
+      {
+       "w": "help?",
+       "s": 1.2761904761904763,
+       "e": 1.8476190476190475
+      },
+      {
+       "w": "Pull",
+       "s": 1.900952380952381,
+       "e": 2.1142857142857143
+      },
+      {
+       "w": "with",
+       "s": 2.1599999999999997,
+       "e": 2.3428571428571425
+      },
+      {
+       "w": "us!",
+       "s": 2.4695238095238095,
+       "e": 2.9523809523809526
+      }
+     ],
+     "en": "It's stuck! Can you help? Pull with us!",
+     "zh": "拔不动！你能帮忙吗？和我们一起拔！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p04b.png",
+     "at": 3.692
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "p05.png",
+   "word": {
+    "en": "me too",
+    "zh": "我也来"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "pip",
+     "audio": "../../out/m02_talk/lines/pip_ae55b8b70d.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.06476190476190477
+      },
+      {
+       "w": "Me",
+       "s": 0.07523809523809524,
+       "e": 0.09523809523809523
+      },
+      {
+       "w": "too!",
+       "s": 0.22857142857142856,
+       "e": 0.8190476190476191
+      },
+      {
+       "w": "Me",
+       "s": 0.8828571428571429,
+       "e": 1.0095238095238095
+      },
+      {
+       "w": "too!",
+       "s": 1.1428571428571428,
+       "e": 2.0761904761904764
+      }
+     ],
+     "en": "Me too! Me too!",
+     "zh": "我也来！我也来！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_d30f21d290.wav",
+     "words": [
+      {
+       "w": "[laughs]",
+       "s": 0.0,
+       "e": 0.3142857142857143
+      },
+      {
+       "w": "You?",
+       "s": 0.4666666666666667,
+       "e": 1.0
+      },
+      {
+       "w": "Ha",
+       "s": 1.1266666666666665,
+       "e": 1.380952380952381
+      },
+      {
+       "w": "ha!",
+       "s": 1.457142857142857,
+       "e": 1.6857142857142857
+      },
+      {
+       "w": "You're",
+       "s": 1.7809523809523808,
+       "e": 2.142857142857143
+      },
+      {
+       "w": "so",
+       "s": 2.244761904761905,
+       "e": 2.447619047619048
+      },
+      {
+       "w": "small!",
+       "s": 2.5495238095238095,
+       "e": 3.59047619047619
+      }
+     ],
+     "en": "You? Ha ha! You're so small!",
+     "zh": "你？哈哈！你那么小！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "pip",
+     "audio": "../../out/m02_talk/lines/pip_a8610dcddc.wav",
+     "words": [
+      {
+       "w": "[annoyed]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "I",
+       "s": 0.019047619047619063,
+       "e": 0.038095238095238126
+      },
+      {
+       "w": "can",
+       "s": 0.09523809523809526,
+       "e": 0.26666666666666666
+      },
+      {
+       "w": "help!",
+       "s": 0.37333333333333335,
+       "e": 1.4095238095238094
+      }
+     ],
+     "en": "I can help!",
+     "zh": "我能帮忙！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p05b.png",
+     "at": 2.134
+    },
+    {
+     "image": "p05c.png",
+     "at": 5.686
+    }
+   ],
+   "motion": "up"
+  },
+  {
+   "image": "p06.png",
+   "word": {
+    "en": "pull",
+    "zh": "拔"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.354,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_60df85221f.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.2761904761904762
+      },
+      {
+       "w": "One...",
+       "s": 0.2952380952380953,
+       "e": 0.9619047619047618
+      },
+      {
+       "w": "two...",
+       "s": 1.057142857142857,
+       "e": 1.8761904761904762
+      },
+      {
+       "w": "three...",
+       "s": 1.9523809523809526,
+       "e": 2.942857142857143
+      },
+      {
+       "w": "[shouting]",
+       "s": 2.980952380952381,
+       "e": 3.027619047619048
+      },
+      {
+       "w": "PULL!",
+       "s": 3.275238095238095,
+       "e": 4.17047619047619
+      }
+     ],
+     "en": "One... two... three... PULL!",
+     "zh": "一……二……三……拔！"
+    }
+   ],
+   "hold": 0.334,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p06b.png",
+     "at": 2.267
+    },
+    {
+     "image": "p06c.png",
+     "at": 3.589
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "p07.png",
+   "word": {
+    "en": "out",
+    "zh": "出来啦"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.45,
+   "lines": [
+    {
+     "speaker": "sfx",
+     "audio": "../../assets/sfx/boing.mp3",
+     "en": "Boing!",
+     "zh": "嘭！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_689717e442.wav",
+     "words": [
+      {
+       "w": "[groans]",
+       "s": 0.0,
+       "e": 0.12380952380952381
+      },
+      {
+       "w": "Oof!",
+       "s": 0.16190476190476188,
+       "e": 0.4285714285714285
+      },
+      {
+       "w": "My",
+       "s": 0.5552380952380952,
+       "e": 0.8095238095238095
+      },
+      {
+       "w": "tummy!",
+       "s": 0.9619047619047618,
+       "e": 1.5714285714285712
+      }
+     ],
+     "en": "Oof! My tummy!",
+     "zh": "哎哟！我的肚子！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p07b.png",
+     "at": 0.41
+    },
+    {
+     "image": "p07c.png",
+     "at": 3.619
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.55
+    }
+   ],
+   "motion": "up"
+  },
+  {
+   "image": "p08.png",
+   "word": {
+    "en": "together",
+    "zh": "一起"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.15,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_d352ee0e42.wav",
+     "words": [
+      {
+       "w": "[warmly]",
+       "s": 0.0,
+       "e": 0.009523809523809506
+      },
+      {
+       "w": "Small",
+       "s": 0.05999999999999997,
+       "e": 0.3142857142857142
+      },
+      {
+       "w": "Pip,",
+       "s": 0.4285714285714285,
+       "e": 0.9999999999999998
+      },
+      {
+       "w": "big",
+       "s": 1.0952380952380951,
+       "e": 1.3809523809523812
+      },
+      {
+       "w": "help!",
+       "s": 1.4723809523809521,
+       "e": 1.9142857142857144
+      }
+     ],
+     "en": "Small Pip, big help!",
+     "zh": "小小皮皮，帮了大忙！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "all",
+     "audio": "../../out/m02_talk/lines/all_24899d47ca.wav",
+     "words": [
+      {
+       "w": "[shouting]",
+       "s": 0.0,
+       "e": 0.022857142857142864
+      },
+      {
+       "w": "Hooray!",
+       "s": 0.030476190476190476,
+       "e": 1.4095238095238094
+      }
+     ],
+     "en": "Hooray!",
+     "zh": "好耶！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p08b.png",
+     "at": 2.286
+    }
+   ],
+   "motion": "out"
+  },
+  {
+   "image": "p09.png",
+   "word": {
+    "en": "crunch",
+    "zh": "咔嚓"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.3,
+   "lines": [
+    {
+     "speaker": "pip",
+     "audio": "../../out/m02_talk/lines/pip_eed5d237bc.wav",
+     "words": [
+      {
+       "w": "[giggles]",
+       "s": 0.0,
+       "e": 0.42857142857142855
+      },
+      {
+       "w": "Crunch!",
+       "s": 0.49428571428571416,
+       "e": 1.2666666666666666
+      }
+     ],
+     "en": "Crunch!",
+     "zh": "咔嚓！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_4cb55f6bfc.wav",
+     "words": [
+      {
+       "w": "[surprised]",
+       "s": 0.0,
+       "e": 0.33333333333333337
+      },
+      {
+       "w": "Pip!",
+       "s": 0.35238095238095235,
+       "e": 0.638095238095238
+      },
+      {
+       "w": "That's",
+       "s": 0.6838095238095238,
+       "e": 0.9428571428571428
+      },
+      {
+       "w": "MY",
+       "s": 1.0447619047619048,
+       "e": 1.2476190476190476
+      },
+      {
+       "w": "radish!",
+       "s": 1.3428571428571427,
+       "e": 2.7714285714285714
+      }
+     ],
+     "en": "Pip! That's MY radish!",
+     "zh": "皮皮！那是我的萝卜！",
+     "gap": 0.26
+    },
+    {
+     "speaker": "pip",
+     "audio": "../../out/m02_talk/lines/pip_2906801af2.wav",
+     "words": [
+      {
+       "w": "[mouth",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "full,",
+       "s": 0.007619047619047612,
+       "e": 0.07619047619047618
+      },
+      {
+       "w": "giggling]",
+       "s": 0.08380952380952379,
+       "e": 0.3428571428571428
+      },
+      {
+       "w": "Me",
+       "s": 0.39333333333333337,
+       "e": 0.49523809523809526
+      },
+      {
+       "w": "too!",
+       "s": 0.6285714285714286,
+       "e": 1.4857142857142855
+      }
+     ],
+     "en": "Me too!",
+     "zh": "我也要！"
+    }
+   ],
+   "hold": 0.28,
+   "cut": true,
+   "frames": [
+    {
+     "image": "p09b.png",
+     "at": 1.538
+    },
+    {
+     "image": "p09c.png",
+     "at": 4.006
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/chomp.mp3",
+     "at": 0.05,
+     "gain": 0.45
+    }
+   ],
+   "motion": "in"
+  },
+  {
+   "image": "p02b.png",
+   "word": {
+    "en": "pull",
+    "zh": "拔"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.12,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_2fe0fef30f.wav",
+     "words": [
+      {
+       "w": "Pull!",
+       "s": 0.0,
+       "e": 0.45999999999999996
+      }
+     ],
+     "en": "Pull!",
+     "zh": "拔！"
+    }
+   ],
+   "hold": 1.266,
+   "cut": true,
+   "motion": "in"
+  },
+  {
+   "image": "p03.png",
+   "word": {
+    "en": "help",
+    "zh": "帮忙"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.12,
+   "lines": [
+    {
+     "speaker": "bun",
+     "audio": "../../out/m02_talk/lines/bun_dfa3583dfa.wav",
+     "words": [
+      {
+       "w": "Help!",
+       "s": 0.0,
+       "e": 0.6
+      }
+     ],
+     "en": "Help!",
+     "zh": "帮忙！"
+    }
+   ],
+   "hold": 1.298,
+   "cut": true,
+   "motion": "in"
+  },
+  {
+   "image": "p01c.png",
+   "word": {
+    "en": "big",
+    "zh": "大"
+   },
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "lead": 0.12,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m02_talk/lines/bruno_bc009ac980.wav",
+     "words": [
+      {
+       "w": "[happily]",
+       "s": 0.0,
+       "e": 0.417
+      },
+      {
+       "w": "Big!",
+       "s": 0.45,
+       "e": 1.51
+      }
+     ],
+     "en": "Big!",
+     "zh": "大！"
+    }
+   ],
+   "hold": 0.933,
+   "cut": true,
+   "motion": "in"
+  }
+ ],
+ "ending": {
+  "headline": "pull 拔 · help 帮忙 · big 大",
+  "subline": "和宝宝一起喊：Pull! Heave-ho!",
+  "seconds": 1.837
+ },
+ "bgm": {
+  "file": "../../out/m02_talk/bgm_talk.wav",
+  "volume": 0.2
+ },
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ }
 }
