@@ -1,5 +1,5 @@
 {
-  "output_name": "m02_pull_radish",
+  "output_name": "m02_pull_radish_classic",
   "title_en": "Pull! Pull! The Big Radish",
   "title_zh": "拔呀拔，拔萝卜！",
   "series": {
@@ -16,21 +16,17 @@
     }
   },
   "song": {
-    "_说明": "song.py 按这里生成歌（ElevenLabs Music），sbv.py 按歌的词时间戳切卡、做逐词高亮。file/words 由 song.py pick 写进来。原创旋律：不照唱中文儿歌《拔萝卜》的曲调（那首有版权），故事本身是民间故事，公有领域。",
+    "_说明": "2026-11-03 用户选「按原歌结构重做」：照中文儿歌《拔萝卜》（「拔萝卜，拔萝卜，嘿哟嘿哟拔萝卜，嘿哟嘿哟拔不动」，一般标佚名、50 年代，按中国法律佚名作品保护期已过）的结构填英文词，旋律尽量贴原调。不用任何现成录音和编曲。上一版原创旋律见 git e6801a3。file/words 由 song.py pick 写进来。",
     "model": "music_v2_5",
-    "bpm": 120,
     "variants": 3,
     "styles": [
-      "joyful preschool sing-along song with a light touch of Chinese folk colour",
-      "warm, smiling, expressive female lead vocal that sounds like she is singing to a toddler and having fun",
-      "a small group of happy kids singing along and shouting Heave-ho! and Hooray!",
-      "strong rhythmic pulling beats on every Pull!, lots of dynamics and tension that builds verse by verse",
+      "an English-lyrics version of the traditional Chinese children's folk song Ba Luobo (Pulling the Radish), following its well-known simple bouncy pentatonic melody, phrase shapes and heave-ho rhythm as closely as possible",
+      "2/4 march-like bounce, a moderate cheerful tempo a toddler can sing along to",
+      "warm, smiling, expressive female lead vocal singing to a toddler and having fun",
+      "a small group of happy kids joining on every heave-ho, heave-ho",
       "guzheng and pipa plucks, little wood block, ukulele, xylophone, hand claps and light drums",
-      "120 BPM",
-      "G major pentatonic melody",
-      "very simple catchy melody that rises and falls",
       "slow, clear English pronunciation with crisp consonants, every word easy to hear",
-      "every Pull! sung as a clear English word with a ringing L at the end, never Po or Ho"
+      "every Pull sung as a clear English word with a ringing L at the end, never Po or Ho"
     ],
     "negative": [
       "rap",
@@ -50,50 +46,71 @@
         "name": "Intro",
         "seconds": 4,
         "lines": [],
-        "direction": "instrumental intro, guzheng glissando then ukulele and wood block, kids shout Heave-ho! on beat 3 of bar 2"
+        "direction": "instrumental intro playing the first phrase of the melody on guzheng and xylophone, kids shout Heave-ho! at the end"
+      },
+      {
+        "name": "Look",
+        "seconds": 4,
+        "pages": [
+          "p01"
+        ],
+        "direction": "a bright, wide-eyed spoken-sung Look! then A big radish! full of wonder"
       },
       {
         "name": "Verse 1",
-        "seconds": 8,
+        "seconds": 6,
         "pages": [
-          "p01",
           "p02"
         ],
-        "direction": "Big, big, big! wide-eyed with wonder; then a clear, strong Pull, pull, pull! on straining beats, Heave-ho! like a grunt, then a funny drooping Oh no!"
+        "direction": "the main tune: Pull the radish, pull the radish, then kids join on heave-ho, heave-ho, pull the radish!"
+      },
+      {
+        "name": "Verse 1b",
+        "seconds": 6,
+        "pages": [
+          "p03"
+        ],
+        "direction": "heave-ho, heave-ho, it won't come out! with a funny droop, then a bright call Bun, Bun, come and help!"
       },
       {
         "name": "Verse 2",
-        "seconds": 8,
+        "seconds": 6,
         "pages": [
-          "p03",
           "p04"
         ],
-        "direction": "sing Help, help, help! bright and loud like calling a friend; then Pull, pull, pull! stronger than before, and a funny Oh no! again"
+        "direction": "same tune again, a little stronger, ending on a funny drooping it won't come out!"
+      },
+      {
+        "name": "Call",
+        "seconds": 4,
+        "pages": [
+          "p05"
+        ],
+        "direction": "Pip, Pip, come and help! then Me too! Me too! tiny, high and squeaky like an eager little mouse"
       },
       {
         "name": "Verse 3",
-        "seconds": 8,
+        "seconds": 6,
         "pages": [
-          "p05",
           "p06"
         ],
-        "direction": "Me too! Me too! tiny, high and squeaky; the strongest Pull, pull, pull! with kids joining; One, two, three! climbing higher, all finished before the Bridge"
+        "direction": "same tune, the strongest yet with all the kids, one, two, three! climbing higher on each number"
       },
       {
-        "name": "Bridge",
+        "name": "Pop",
         "seconds": 4,
         "pages": [
           "p07"
         ],
-        "direction": "right on the downbeat one loud crisp sung Pop!, then It's out! clear and bright, then everyone cheers Hooray, Pip! holding Pip long and clear"
+        "direction": "one loud crisp Pop! on the downbeat, Out it comes! bright, everyone cheers Hooray, Pip!"
       },
       {
         "name": "Chorus",
-        "seconds": 8,
+        "seconds": 6,
         "pages": [
           "p08"
         ],
-        "direction": "everyone sings together, big and joyful, kids shout Hooray! with a cheer"
+        "direction": "everyone sings the tune together, big and joyful, ending with a cheering hooray!"
       },
       {
         "name": "Tag",
@@ -101,19 +118,17 @@
         "pages": [
           "p09"
         ],
-        "direction": "playful and light, Crunch, crunch, crunch! in crisp short notes, Yummy radish! with a happy giggle"
+        "direction": "playful and light, Crunch, crunch! crisp short notes, Yummy radish! with a giggle"
       },
       {
         "name": "Outro",
         "seconds": 4,
         "lines": [
-          "Big! Pull! Help!"
+          "Pull! Help! Big!"
         ],
-        "direction": "slow down and sing the three words warmly one by one like a little review, then the music ends with a guzheng ding"
+        "direction": "slow down and sing the three words warmly one by one like a review, end with a guzheng ding"
       }
     ],
-    "file": "../../out/m02/song/song.mp3",
-    "words": "../../out/m02/song/song_words.json",
     "picked": "v8"
   },
   "hook": {
@@ -164,13 +179,8 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Big, big, big!",
-          "zh": "大，大，大！"
-        },
-        {
-          "speaker": "song",
-          "en": "A big radish!",
-          "zh": "好大的萝卜！"
+          "en": "Look! A big radish!",
+          "zh": "看！好大的萝卜！"
         }
       ]
     },
@@ -196,13 +206,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Pull, pull, pull!",
-          "zh": "拔，拔，拔！"
+          "en": "Pull the radish, pull the radish,",
+          "zh": "拔萝卜，拔萝卜，"
         },
         {
           "speaker": "song",
-          "en": "Heave-ho! Oh no!",
-          "zh": "嘿哟！哎呀拔不动！"
+          "en": "heave-ho, heave-ho, pull the radish!",
+          "zh": "嘿哟嘿哟拔萝卜！"
         }
       ]
     },
@@ -228,13 +238,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Help, help, help!",
-          "zh": "帮帮忙，帮帮忙！"
+          "en": "Heave-ho, heave-ho, it won't come out!",
+          "zh": "嘿哟嘿哟拔不动！"
         },
         {
           "speaker": "song",
-          "en": "Bun, come and help!",
-          "zh": "Bun，快来帮忙！"
+          "en": "Bun, Bun, come and help!",
+          "zh": "小兔子，快快来，快来帮忙！"
         }
       ]
     },
@@ -260,13 +270,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Pull, pull, pull!",
-          "zh": "拔，拔，拔！"
+          "en": "Pull the radish, pull the radish,",
+          "zh": "拔萝卜，拔萝卜，"
         },
         {
           "speaker": "song",
-          "en": "Heave-ho! Oh no!",
-          "zh": "嘿哟！还是拔不动！"
+          "en": "heave-ho, heave-ho, it won't come out!",
+          "zh": "嘿哟嘿哟拔不动！"
         }
       ]
     },
@@ -292,13 +302,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Me too! Me too!",
-          "zh": "我也来！我也来！"
+          "en": "Pip, Pip, come and help!",
+          "zh": "小老鼠，快快来，快来帮忙！"
         },
         {
           "speaker": "song",
-          "en": "Little Pip can help!",
-          "zh": "小小皮皮也能帮忙！"
+          "en": "Me too! Me too!",
+          "zh": "我也来！我也来！"
         }
       ]
     },
@@ -324,13 +334,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Pull, pull, pull!",
-          "zh": "拔，拔，拔！"
+          "en": "Pull the radish, pull the radish,",
+          "zh": "拔萝卜，拔萝卜，"
         },
         {
           "speaker": "song",
-          "en": "One, two, three!",
-          "zh": "一，二，三！"
+          "en": "heave-ho, heave-ho, one, two, three!",
+          "zh": "嘿哟嘿哟，一二三！"
         }
       ]
     },
@@ -356,7 +366,7 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Pop! It's out!",
+          "en": "Pop! Out it comes!",
           "zh": "啵！拔出来啦！"
         },
         {
@@ -388,23 +398,13 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Pull together!",
-          "zh": "一起拔！"
+          "en": "Big and small, we pull together,",
+          "zh": "大大小小一起拔，"
         },
         {
           "speaker": "song",
-          "en": "Big and small!",
-          "zh": "大大小小！"
-        },
-        {
-          "speaker": "song",
-          "en": "Everyone can help!",
-          "zh": "人人都能帮忙！"
-        },
-        {
-          "speaker": "song",
-          "en": "Hooray!",
-          "zh": "好耶！"
+          "en": "heave-ho, heave-ho, hooray!",
+          "zh": "嘿哟嘿哟，好耶！"
         }
       ]
     },
@@ -430,13 +430,8 @@
       "lines": [
         {
           "speaker": "song",
-          "en": "Crunch, crunch, crunch!",
-          "zh": "咔嚓，咔嚓，咔嚓！"
-        },
-        {
-          "speaker": "song",
-          "en": "Yummy radish!",
-          "zh": "萝卜真好吃！"
+          "en": "Crunch, crunch! Yummy radish!",
+          "zh": "咔嚓咔嚓，萝卜真好吃！"
         }
       ]
     }
