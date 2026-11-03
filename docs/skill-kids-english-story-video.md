@@ -14,6 +14,8 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 - 口语线（有配音的故事 / 认知 / 生活口语）→ [skill-type-talk.md](skill-type-talk.md)
 - 儿歌线（AI 儿歌 + 卡片）→ [skill-type-song.md](skill-type-song.md)。**2026-10-30 起暂停**（用户："儿歌流程先停掉"），用户说恢复之前不做新儿歌
 
+**声音设计**（音效选材品味、环境底声、从 Freesound 找真实录音、进库和质检）→ [skill-sound-design.md](skill-sound-design.md)（2026-11-03 起，口语线每集都用）。
+
 **做哪一集、哪天发**（选题来源、筛选、节日热点、选题库、周排期）→ [skill-topics.md](skill-topics.md)，选题库在 `series/topic-bank.md`（2026-10-30 起）。
 
 全程用简体中文跟用户沟通，说大白话，给能直接复制的命令，一次只给要做的那几步。
@@ -57,6 +59,7 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 | 角标 | 故事段左上角 (24,40) 半透明系列徽章，72% 透明度；钩子和片尾不放 |
 | 转场 | 页间 0.35 秒叠化；冲击镜头用 `cut: true` 硬切 |
 | 背景音乐 | 口语线用 `assets/bgm/` 三首整季复用：bgm_play 俏皮 / bgm_calm 安静 / bgm_happy 庆祝；有人说话时自动压低一半。儿歌线不加 |
+| 音效和底声 | 口语线：角色身上的事用卡通音（ElevenLabs），世界里的东西用真实录音（Freesound CC0），每个场景铺一条很轻的环境底声（`ambience`）。品味和做法见 [skill-sound-design.md](skill-sound-design.md) |
 | 响度 | -16 LUFS（±1），峰值不超过 -1.5 dBFS |
 | 更新 | 2026-10-30 起按周排期，默认每天 19:30 一条口语线（[skill-topics.md](skill-topics.md) 第 1 节）；做不过来退回二、四、六 |
 | 成本 | 单条现金 ≤20 元（可灵每集约 120 灵感值，最多 2 个片段）；出图走用户 ChatGPT 订阅额度，不另花钱；第 3 周起单条制作 ≤3 小时；当月总现金 ≤300 元 |

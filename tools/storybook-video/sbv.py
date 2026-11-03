@@ -68,6 +68,7 @@ DEFAULT_STYLE = {
     # c18 实测 -14 时台词空档里音乐只比人声低 12–15 dB、说话时低 20 dB，外放听不见，-11 才清楚）
     "bgm_rel_db": -11,
     "bgm_duck_db": -6,
+    "amb_rel_db": -24,      # 环境底声比人声低多少 dB（story.json 顶层 "ambience"）
     "lead": 0.5,
     "gap": 0.4,
     "tail": 1.0,
@@ -107,6 +108,11 @@ def decode_audio(path):
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "f32le", "-ac", "1",
                           "-ar", str(SR), "-"], check=True, capture_output=True).stdout
     return np.frombuffer(raw, dtype=np.float32).copy()
+
+
+def sfx_item(sx, base, t0):
+    """音效放置：skip 从音效第几秒开始用、dur 最多用几秒（Freesound 的录音常带长尾巴或前面一段空白），切口自动淡出。"""
+    return (os.path.join(base, sx["file"]), t0 + sx.get("at", 0), sx.get("gain", 0.55), sx.get("skip", 0.0), sx.get("dur"))
 
 
 def ease(x):
@@ -1391,7 +1397,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         if clip and hook.get("keep_clip_audio"):
             placements.append((clip, seg.start, hook.get("clip_gain", 1.0)))
         for sx in hook.get("sfx", []):
-            placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
+            placements.append(sfx_item(sx, base, seg.start))
 
     for i, (page, a, b, lines) in enumerate(timeline if song else []):
         seg = PageSeg(dict(page, cut=True, dur=b - a), i, lines, ctx, base)
@@ -1399,7 +1405,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         for ln in lines:
             srt.append((seg.start + ln["start"] - 0.1, seg.start + ln["end"] + 0.3, ln["en"], ln.get("zh", "")))
         for sx in page.get("sfx", []):
-            placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
+            placements.append(sfx_item(sx, base, seg.start))
     if song:
         song_t0 = segs[0].start if segs else 0.0
         placements.append((song_path, song_t0, song.get("gain", 1.0)))
@@ -1437,7 +1443,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
             placements.append((ln["wav"], seg.start + ln["start"], ln.get("gain", 1.0)))
             srt.append((seg.start + ln["start"] - 0.1, seg.start + ln["end"] + 0.4, ln["en"], ln.get("zh", "")))
         for sx in page.get("sfx", []):
-            placements.append((os.path.join(base, sx["file"]), seg.start + sx.get("at", 0), sx.get("gain", 0.55)))
+            placements.append(sfx_item(sx, base, seg.start))
 
     if cfg.get("ending", {}) is not None:      # "ending": null 表示不要片尾卡
         ending = dict(cfg.get("ending", {}))
@@ -1455,21 +1461,29 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
     # 音频：人声按时间轴放置；背景音乐在有人说话时压到一半；最后统一响度
     n = int(total * SR) + 1
     voice = np.zeros(n, dtype=np.float32)
-    for path, at, gain in placements:
-        a = decode_audio(path) * gain
+    for path, at, gain, *cut in placements:
+        a = decode_audio(path)
+        if cut:
+            skip, dur = cut
+            a = a[int(skip * SR):]
+            if dur:
+                a = a[:int(dur * SR)]
+                f = min(len(a), int(0.04 * SR))
+                if f:
+                    a[-f:] *= np.linspace(1, 0, f)
+        a = a * gain
         o = int(at * SR)
         a = a[: max(0, n - o)]
         voice[o:o + len(a)] += a
     mix = voice.copy()
-    bgm = cfg.get("bgm") or {}
-    if bgm.get("file") or bgm.get("cues"):
-        # cues：分段配乐。每段 {"page": 第几页(0=钩子), "offset": 秒, "file": 音乐或 null(静音), "volume": 0.2, "fade": 0.4}，
-        # 从这一点放到下一段开始，段与段之间交叉淡入淡出。没有 cues 时整片一首 file。
-        cues = bgm.get("cues") or [{"page": 0, "file": bgm["file"], "volume": bgm.get("volume", 0.25)}]
+    talk = np.abs(voice) > 1e-3
+    v_rms = float(np.sqrt(np.mean(voice[talk] ** 2))) if talk.any() else 0.1
+
+    def layer(cues, rel_db, vol_ref):
+        # cues：分段铺底。每段 {"page": 第几页(0=钩子), "offset": 秒, "file": 音频或 null(静音), "volume": ..., "fade": 0.4, "skip": 秒}，
+        # 从这一点放到下一段开始，段与段之间交叉淡入淡出；音频先按自身响度归一，再放到"比人声低 rel_db"，volume 是相对 vol_ref 的比例。
         pts = sorted(((page_start.get(c.get("page", 0), 0.0) + c.get("offset", 0.0), c) for c in cues), key=lambda x: x[0])
         m = np.zeros(n, dtype=np.float32)
-        talk = np.abs(voice) > 1e-3
-        v_rms = float(np.sqrt(np.mean(voice[talk] ** 2))) if talk.any() else 0.1
         for k, (t0, c) in enumerate(pts):
             t1 = pts[k + 1][0] if k + 1 < len(pts) else total
             f = int(c.get("fade", 0.4) * SR)
@@ -1478,9 +1492,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
                 continue
             src = decode_audio(os.path.join(base, c["file"]))
             src = src[int(c.get("skip", 0.0) * SR):]
-            # 音乐先按自身响度归一，再放到"比人声低 bgm_rel_db"的位置；volume 是相对 0.2 的比例（0.12 ≈ 再低 4.4 dB）
             s_rms = float(np.sqrt(np.mean(src ** 2))) or 1e-3
-            g = v_rms / s_rms * 10 ** (st.get("bgm_rel_db", -11) / 20) * c.get("volume", bgm.get("volume", 0.2)) / 0.2
+            g = v_rms / s_rms * 10 ** (rel_db / 20) * c.get("volume", vol_ref) / vol_ref
             seg_a = np.tile(src, (o1 - o0) // len(src) + 1)[:o1 - o0] * g
             ramp = np.ones(o1 - o0, dtype=np.float32)
             f = min(f, (o1 - o0) // 2)
@@ -1488,10 +1501,24 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
                 ramp[:f] = np.linspace(0, 1, f)
                 ramp[-f:] = np.linspace(1, 0, f)
             m[o0:o1] += seg_a * ramp
-        win = int(0.25 * SR)
-        env = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
-        duck = np.convolve(np.clip(env / 0.01, 0, 1), np.ones(win) / win, mode="same")
-        mix += m * (1 - (1 - 10 ** (st.get("bgm_duck_db", -6) / 20)) * duck)
+        return m
+
+    win = int(0.25 * SR)
+    env = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
+    duck = np.convolve(np.clip(env / 0.01, 0, 1), np.ones(win) / win, mode="same")
+    bed = np.zeros(n, dtype=np.float32)
+    bgm = cfg.get("bgm") or {}
+    if bgm.get("file") or bgm.get("cues"):
+        # 没有 cues 时整片一首 file；volume 0.2 = 比人声低 bgm_rel_db（默认 11 dB）
+        cues = bgm.get("cues") or [{"page": 0, "file": bgm["file"], "volume": bgm.get("volume", 0.25)}]
+        bed += layer([dict({"volume": bgm.get("volume", 0.2)}, **c) for c in cues], st.get("bgm_rel_db", -11), 0.2)
+    amb = cfg.get("ambience") or {}
+    if amb.get("file") or amb.get("cues"):
+        # 环境底声（鸟叫、溪水、风、虫鸣）：单独一层，不进人声轨（否则会触发压音乐），volume 1.0 = 比人声低 amb_rel_db（默认 24 dB）
+        cues = amb.get("cues") or [{"page": 0, "file": amb["file"], "volume": amb.get("volume", 1.0), "fade": 1.0}]
+        bed += layer([dict({"volume": amb.get("volume", 1.0), "fade": 1.0}, **c) for c in cues], st.get("amb_rel_db", -24), 1.0)
+    if bed.any():
+        mix += bed * (1 - (1 - 10 ** (st.get("bgm_duck_db", -6) / 20)) * duck)
         fade = int(1.2 * SR)
         mix[-fade:] *= np.linspace(1, 0, fade)
     wav = os.path.join(work, "mix.wav")

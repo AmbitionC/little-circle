@@ -121,7 +121,8 @@
 - 某句要小声（害羞、说悄悄话）：`say` 里写 `[whispers]`，再加 `"gain": 0.6` 兜底，只降这句的音量（s02 第 3 页用 multilingual_v2 时，小声和大喊一样响）。
 - 音效别和台词第一个词撞在一起：页面 `lead` 默认 0.5 秒开口，音效放在 0.3 秒前结束，或放到这句说完之后（s02 第 4 页树叶声原来盖住了 "Help!"）。
 - 可选：`cover`（钩子前 0.4 秒静止封面帧，可以直接用脚本出的 `cover.png`）、`cut`、`hold`、`zoom`、`parallax`（2.5D 视差，需深度模型）、`fx`（glow / snow / motes，坐标按图标注）。
-- 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）。
+- 音效文件名见 `docs/elevenlabs-workflow.md` 1.3 节：pop、bonk、crack、whoosh、sparkle、ding、boing、chomp、tummy、snore、leaves、page、jingle_in、jingle_out（`.mp3`）；Freesound 真实录音和环境底声见 [skill-sound-design.md](skill-sound-design.md) 第 2 节（`.wav`）。
+- **每集都按 [skill-sound-design.md](skill-sound-design.md) 配声音**：卡通音配角色、真实录音配世界，顶层写 `ambience` 铺环境底声，反转前和音乐一起静音。音效可以加 `skip` / `dur` 截一段。
 - 背景音乐没有时（音乐接口要付费档）：`python3 tools/storybook-video/make_bgm.py assets/bgm/bgm_play.wav 60` 先顶上。
 - 写完用 `python3 -c "import json;json.load(open('story.json'))"` 校验，再数一遍每句英文是 3–5 个词、全片 11–13 句。
 
@@ -151,6 +152,7 @@ python sbv.py ../../episodes/c01-fruits/story.json --out ../../out/c01 --cast ..
 - **反转前 0.3–0.5 秒全静音**，反转那一下配一个 sting（`tada` / `boing`）和欢快的音乐一起进；
 - 峰值 → `bgm_happy`；暖收 → `bgm_calm`；
 - 复习页 → 主题曲很轻（≤0.12），跟读的空档里孩子要能听见自己。
+- 环境底声（`ambience`）和配乐一起写在配乐表里，静音点对齐，见 [skill-sound-design.md](skill-sound-design.md) 第 4 节。
 - 节日、特殊主题集可以多做一首主题曲（`el_prep.py` 的 `BGM` 里加一条再生成），整季能复用的就复用。音乐全部 ElevenLabs 付费档现做，不用现成歌曲。
 
 **音量按人声定（2026-11-02 用户："为什么没有背景音乐？"）**：以前 `volume` 直接乘在音乐波形上，ElevenLabs 出的人声和音乐响度不一样，0.2 的音乐再在说话时压掉一半，手机外放几乎听不见。现在 sbv.py 先量人声和每首音乐各自的响度，`volume: 0.2` 就是**比人声低 11 dB**（`style.bgm_rel_db`，c18 实测 -14 时外放还是听不清），说话时再压 6 dB（`style.bgm_duck_db`）；0.12 ≈ 比人声低 15.5 dB，0.24 ≈ 低 9.5 dB。质检加一条：出片后用 `ffmpeg -af volumedetect` 量一段没台词的地方，音乐要清楚听得到（比有台词的地方低 10–16 dB），手机外放听一遍。
