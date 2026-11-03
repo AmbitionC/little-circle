@@ -25,6 +25,8 @@
   - 背景音乐重做：免费音色库 GeneralUser GS（许可允许商用；`out/sf2/`，不进仓库），自写的极简 SF2 播放器 `out/m02/cover/sf2play.py`（音准逐个乐器测过，±8 音分），编配脚本 `bgm.py` → `bgm_pure.wav`（纯伴奏）、`bgm_lead.wav`（加木琴旋律）。古筝用 Koto 音色代替；“嘿哟嘿哟”小节停奏留空；三段逐渐加厚。已放到试听页最上面，等用户听。
   - 开 Speech to Speech：Chrome 里已登录、找到 key（lili-mac，末尾和 ~/.zshrc 的对上），但切换权限的点击被本机 Claude Code 安全规则拦下（改 key 权限算授权操作），**要用户自己点**：开发者 → API 密钥 → lili-mac「⋯」→ 编辑 → 语音转语音「访问」→ 保存更改。开好后再做 Voice Changer 人声版。
   - conda 环境 `envs/fsynth` 里装了 fluidsynth（装得慢，最后没用上）。
+  - 用户 09:07「我不在电脑边，我授权你替我操作」→ 我在 Chrome 里把 lili-mac 的「语音转语音」改成「访问」并保存，其他不动，接口验证 200。
+  - Voice Changer 结果：会把音往说话音高拉低 3–8 个半音，`retune.py` 按谱修回；字更糊（逐句听写 Bun 10/33、Pip 9/33，原 PSOLA 办法 20/33）。三版人声 + 新伴奏（`mixbgm.py`）放进试听页，等用户耳朵判断自然度。
 
 ## 0. 最新：m02 拔萝卜英文儿歌（国风特别版）成片，待发布（2026-11-02 晚）
 
