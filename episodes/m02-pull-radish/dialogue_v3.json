@@ -23,11 +23,6 @@
    "speaker": "bruno",
    "en": "Pull! Heave-ho!",
    "zh": "拔！嘿哟！"
-  },
-  {
-   "speaker": "bruno",
-   "en": "...Oh no!",
-   "zh": "……哎呀！"
   }
  ],
  "p03": [
@@ -57,8 +52,8 @@
   },
   {
    "speaker": "bruno",
-   "en": "You? Ha ha! You're so small!",
-   "zh": "你？哈哈！你那么小！"
+   "en": "Ha ha! So small!",
+   "zh": "哈哈！这么小！"
   },
   {
    "speaker": "pip",
@@ -90,11 +85,6 @@
    "speaker": "bruno",
    "en": "Small Pip, big help!",
    "zh": "小小皮皮，帮了大忙！"
-  },
-  {
-   "speaker": "all",
-   "en": "Hooray!",
-   "zh": "好耶！"
   }
  ],
  "p09": [

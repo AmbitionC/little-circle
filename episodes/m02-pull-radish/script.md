@@ -18,13 +18,13 @@
 |---|---|---|
 | hook | kling_first.png：钩子：Pip 从萝卜叶后探头，手指放嘴边「嘘」 → h02.png：Pip 指着巨大的叶子 → h03.png：Pip 躲回去，大耳朵露在外面（藏不住） | **pip**：`Shh... a big secret!`<br>嘘……一个大秘密！ |
 | p01 | p01.png：Bruno 走过来，弯腰看露出地面的叶子 → p01b.png：后退一步抬头，叶子比他还高 → p01c.png：张开双臂，下巴都掉了：BIG! | **bruno**：`Wow! A BIG radish!`<br>哇！好大的萝卜！ |
-| p02 | p02.png：Bruno 拍胸口吹牛：Easy! I am big! → p02b.png：往后仰着使劲拔，脸憋红 → p02c.png：一屁股坐地上，手里只剩几片叶子，泄气：Oh no... | **bruno**：`Easy! I am big!`<br>小意思！我力气大！<br>**bruno**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bruno**：`...Oh no!`<br>……哎呀！ |
+| p02 | p02.png：Bruno 拍胸口吹牛：Easy! I am big! → p02b.png：往后仰着使劲拔，脸憋红 → p02c.png：一屁股坐地上，手里只剩几片叶子，泄气：Oh no... | **bruno**：`Easy! I am big!`<br>小意思！我力气大！<br>**bruno**：`Pull! Heave-ho!`<br>拔！嘿哟！ |
 | p03 | p03.png：Bruno 双手拢在嘴边喊：Bun! Help! → p03b.png：Bun 蹦着跑来：I'm coming! | **bruno**：`Bun! Help!`<br>Bun！帮帮我！ |
 | p04 | p04.png：两个一起拔：Pull! Heave-ho! → p04b.png：Bun 转身对镜头招手：Can you help? Pull with us! | **bruno+bun**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bun**：`It's stuck! Can you help? Pull with us!`<br>拔不动！你能帮忙吗？和我们一起拔！ |
-| p05 | p05.png：Pip 举着双手跑来：Me too! Me too! → p05b.png：Bruno 捂肚子笑他：You? You're so small! → p05c.png：Pip 叉腰不服气：I can help! | **pip**：`Me too! Me too!`<br>我也来！我也来！<br>**bruno**：`You? Ha ha! You're so small!`<br>你？哈哈！你那么小！<br>**pip**：`I can help!`<br>我能帮忙！ |
+| p05 | p05.png：Pip 举着双手跑来：Me too! Me too! → p05b.png：Bruno 捂肚子笑他：You? You're so small! → p05c.png：Pip 叉腰不服气：I can help! | **pip**：`Me too! Me too!`<br>我也来！我也来！<br>**bruno**：`Ha ha! So small!`<br>哈哈！这么小！<br>**pip**：`I can help!`<br>我能帮忙！ |
 | p06 | p06.png：三个排成一串一起拔：One... two... → p06b.png：土裂开了：three... → p06c.png：萝卜冒出来一半：PULL! | **all**：`One... two... three... PULL!`<br>一……二……三……拔！ |
 | p07 | p07.png：萝卜啵地飞出来，三个往后倒 → p07b.png：萝卜砸在 Bruno 软肚子上弹起来：Boing! Oof! My tummy! → p07c.png：Bun 指着 Pip：Pip did it! | **sfx**：`Boing!`<br>嘭！<br>**bruno**：`Oof! My tummy!`<br>哎哟！我的肚子！ |
-| p08 | p08.png：Bruno 把 Pip 高高举起：Small Pip, big help! → p08b.png：大家一起欢呼：Hooray! | **bruno**：`Small Pip, big help!`<br>小小皮皮，帮了大忙！<br>**all**：`Hooray!`<br>好耶！ |
+| p08 | p08.png：Bruno 把 Pip 高高举起：Small Pip, big help! → p08b.png：大家一起欢呼：Hooray! | **bruno**：`Small Pip, big help!`<br>小小皮皮，帮了大忙！ |
 | p09 | p09.png：彩蛋：Pip 坐在萝卜上啃：Crunch! → p09b.png：Bruno 探头指着他：Pip! That's MY radish! → p09c.png：Pip 鼓着腮帮子竖大拇指：Me too! | **pip**：`Crunch!`<br>咔嚓！<br>**bruno**：`Pip! That's MY radish!`<br>皮皮！那是我的萝卜！<br>**pip**：`Me too!`<br>我也要！ |
 
 片尾复习卡：pull 拔 · help 帮忙 · big 大（不说 Bye-bye）。
