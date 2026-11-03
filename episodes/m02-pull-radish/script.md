@@ -1,188 +1,179 @@
-# M02 · Pull! Pull! The Big Radish 拔呀拔，拔萝卜！
+# M02 · Pull! Pull! The Big Radish 拔呀拔，拔萝卜！（对话版 v3）
 
-> 栗栗唱儿歌 · 国风特别版｜画风：中国水彩画（用户 11-02 指定并看过样图）｜主题：pull 拔、help 帮忙、big 大；道理：再小的帮忙也算数，大家一起力气大｜主演 Bruno、Bun、Pip｜2–3 岁英语启蒙｜9:16｜前奏 4 秒 + 9 张歌词卡 + 尾奏 4 秒，全片约 48 秒｜ElevenLabs Music 原创儿歌（不配音）｜中英字幕逐词变黄
->
-> 2026-11-02 写。用户原话：「拔萝卜生成一个视频，要童谣，英文版本，50 秒」。故事是民间故事《拔萝卜》（俄罗斯民间故事，公有领域），**歌是原创旋律**：不照唱中文儿歌《拔萝卜》的曲调，那首有版权。用户要直接出成片，这集跳过漫画剧本确认；歌由我们按 `song.py --check` 自己挑，成片网页里附上另外两版试听，可以换。
+> 国风特别版｜中国水彩画｜2026-11-03 第三版：背景音乐照原曲《拔萝卜》公开简谱合成（木琴奏主旋律，不唱），角色用英文对话讲故事。用户原话：「保留背景音乐，然后用一个乐器作为唱歌的主旋律……动画人物用英文对话方式，把这个故事和关键单词讲好」「剧本能不能更有意思一点」「画面为啥不动呢，你不要图省事」→ 按新剧本**全部重画**，每个动作 2–3 张关键帧。
+> ⚠️ 版权：原曲简谱署名包恩珠词曲，归属未核实，发布或卖电子绘本前先确认授权。之前的儿歌版（原创旋律 v8、原调演唱 v9–v14）见 git 历史。
 
 ## 1. 概要
 
-1. **Logline**：Bruno 拔不动大白萝卜，喊来 Bun 还是拔不动；最小的 Pip 喊着 "Me too!" 加进来，三个一起 "One, two, three!"，萝卜啵一声拔出来了。
-2. **家长钩子**（第 0 帧大字）：猜猜最后是谁拔出了大萝卜？（谜底是最小的 Pip，评论区猜答案）
-3. **孩子会学的一句话**：`Pull, pull, pull! Heave-ho!`
+- **Logline**：Bruno 吹牛「我力气大」，一个人拔不动；喊来 Bun 还拔不动，Bun 转身请屏幕前的宝宝一起拉；最小的 Pip 来了被笑「你那么小」，结果正是他一加入萝卜拔出来了，还砸在 Bruno 软肚子上弹了一下。彩蛋：Pip 偷啃萝卜，被抓包回一句 "Me too!"。
+- **家长钩子**：猜猜最后是谁拔出了大萝卜？
+- **今日单词**：pull 拔 · help 帮忙 · big 大（全片 pull ×4、help ×3、big ×4）
+- **用了哪些手法**：大个子出糗、最小的赢（Peppa）；三次阶梯（一个人→两个→三个）；隔屏互动（p04b 对镜头）；口头禅回扣（Pip 的 "Me too!" 开头请战、结尾抢萝卜）。
+- **道理**：再小也能帮上忙，大家一起力气大。
+- **常理**：拉的链条 Bruno 抓叶子 → Bun 抱腰 → Pip 抓背心下摆；萝卜落在 Bruno 肚子上，不压到 Pip；p02c 只剩几片叶子在手里。
 
-- **今日单词**：pull 拔 · help 帮忙 · big 大（附带 me too、out、crunch）
-- **动作互动**：唱到 Pull 时宝宝双手握拳往后拉，Heave-ho 时身子往后一仰；Help 时招手；Me too 时举手；Pop! 时一起往后倒在沙发上。
-- **张力**：拔了两轮都 "Oh no!"，一轮比一轮使劲（歌声一轮比一轮强）；第三轮最小的来了才成功，越小越反差。
-- **童趣**：p02 Bruno 憋红脸；p05 一只小老鼠来帮大熊；p07 萝卜落在 Bruno 的软肚子上（他的情绪器官）；p09 彩蛋 Pip 啃出一个小圆洞。
-- **角色**：Pip 的口头禅 "Me too!"、想要"被当成大孩子"在 p05–p07 兑现；Bruno 拍肚子/软肚子在 p07；Bun 是来帮忙的机灵鬼。
-- **结尾**：不唱 Bye-bye，尾奏复习三个词 `Big! Pull! Help!`。
-- **常理**：拉的链条是 Bruno 抓叶子 → Bun 抱 Bruno 的腰 → Pip 抓 Bun 的背心下摆（不拽尾巴）；往后倒时萝卜落在 Bruno 肚子上，不压到 Pip。
+## 2. 台词（按音乐小节卡点，Heave-ho 落在伴奏停奏小节，Boing 落在刮奏+镲）
 
-**人性 × 这一集怎么用 × 拉动哪个数据**
-
-| 人性 | 这一集怎么用 | 拉动 |
+| 页 | 画面 | 台词 |
 |---|---|---|
-| 好奇、想猜 | 开头大字"猜猜最后是谁拔出了大萝卜？"，首帧 Pip 躲在叶子后面露个头（公平线索） | 评论（猜答案）、完播 |
-| 跟着做 | 每个 Pull 一拍一拉，宝宝会跟着往后仰 | 家长拍视频晒、收藏 |
-| 以小胜大 | 最小的 Pip 一加入就成功 | 情绪高点、转发 |
-| 奖励看完 | p09 啃小圆洞的彩蛋 | 完播 |
+| hook | kling_first.png：钩子：Pip 从萝卜叶后探头，手指放嘴边「嘘」 → h02.png：Pip 指着巨大的叶子 → h03.png：Pip 躲回去，大耳朵露在外面（藏不住） | **pip**：`Shh... a big secret!`<br>嘘……一个大秘密！ |
+| p01 | p01.png：Bruno 走过来，弯腰看露出地面的叶子 → p01b.png：后退一步抬头，叶子比他还高 → p01c.png：张开双臂，下巴都掉了：BIG! | **bruno**：`Wow! A big... big... BIG radish!`<br>哇！好大……好大……超级大的萝卜！ |
+| p02 | p02.png：Bruno 拍胸口吹牛：Easy! I am big! → p02b.png：往后仰着使劲拔，脸憋红 → p02c.png：一屁股坐地上，手里只剩几片叶子，泄气：Oh no... | **bruno**：`Easy! I am big!`<br>小意思！我力气大！<br>**bruno**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bruno**：`...Oh no!`<br>……哎呀！ |
+| p03 | p03.png：Bruno 双手拢在嘴边喊：Bun! Help! → p03b.png：Bun 蹦着跑来：I'm coming! | **bruno**：`Bun! Help!`<br>Bun！帮帮我！<br>**bun**：`I'm coming!`<br>我来啦！ |
+| p04 | p04.png：两个一起拔：Pull! Heave-ho! → p04b.png：Bun 转身对镜头招手：Can you help? Pull with us! | **bruno+bun**：`Pull! Heave-ho!`<br>拔！嘿哟！<br>**bun**：`It's stuck! Can you help? Pull with us!`<br>拔不动！你能帮忙吗？和我们一起拔！ |
+| p05 | p05.png：Pip 举着双手跑来：Me too! Me too! → p05b.png：Bruno 捂肚子笑他：You? You're so small! → p05c.png：Pip 叉腰不服气：I can help! | **pip**：`Me too! Me too!`<br>我也来！我也来！<br>**bruno**：`You? Ha ha! You're so small!`<br>你？哈哈！你那么小！<br>**pip**：`I can help!`<br>我能帮忙！ |
+| p06 | p06.png：三个排成一串一起拔：One... two... → p06b.png：土裂开了：three... → p06c.png：萝卜冒出来一半：PULL! | **all**：`One... two... three... PULL!`<br>一……二……三……拔！ |
+| p07 | p07.png：萝卜啵地飞出来，三个往后倒 → p07b.png：萝卜砸在 Bruno 软肚子上弹起来：Boing! Oof! My tummy! → p07c.png：Bun 指着 Pip：Pip did it! | **sfx**：`Boing!`<br>嘭！<br>**bruno**：`Oof! My tummy!`<br>哎哟！我的肚子！<br>**bun**：`Pip did it!`<br>是皮皮帮的忙！ |
+| p08 | p08.png：Bruno 把 Pip 高高举起：Small Pip, big help! → p08b.png：大家一起欢呼：Hooray! | **bruno**：`Small Pip, big help!`<br>小小皮皮，帮了大忙！<br>**all**：`Hooray!`<br>好耶！ |
+| p09 | p09.png：彩蛋：Pip 坐在萝卜上啃：Crunch! → p09b.png：Bruno 探头指着他：Pip! That's MY radish! → p09c.png：Pip 鼓着腮帮子竖大拇指：Me too! | **pip**：`Crunch!`<br>咔嚓！<br>**bruno**：`Pip! That's MY radish!`<br>皮皮！那是我的萝卜！<br>**pip**：`Me too!`<br>我也要！ |
 
-**红线自检**：不吓人；没有危险动作（摔倒是坐倒在软草上）；歌词和旋律原创，提示词里不写任何现有歌名、频道名、歌手名；孩子不出镜。
+片尾复习卡：pull 拔 · help 帮忙 · big 大（不说 Bye-bye）。
 
-## 2. 开头钩子（前奏 4 秒，关键帧）
+## 3. 出图提示词
 
-- **大字**：猜猜最后是谁拔出了大萝卜？ **小字**：经典故事拔萝卜 · 英文儿歌版
-- 0.0 秒：菜地里一大丛萝卜叶子，Pip 从叶子后面探头招手，Bruno 和 Bun 在后面抬头看（`kling_first.png`）
-- 2.0 秒：叶子一抖，冒出一点土，Bruno 指着它（`h02.png`，轻震）
-- 3.0 秒：Pip 兴奋地蹦起来，Bun 拍手（`h03.png`）
+> 画风见 style.json（中国水彩画，样张是用户看过的两张样图）。主图写 `**p01.png**`，关键帧写 `**p01b.png** ← p01.png`，只写要改什么。
 
 - **钩子首帧出图提示词**：
   ```
-  a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens growing in a simple vegetable field, only its huge leafy greens and the round white top showing above the soil, the leaves taller than the bear; [[pip]] peeks out from behind the leaves waving one tiny hand at the viewer with a cheeky smile; in the background [[bruno]] and [[bun]] look up at the huge leaves in surprise, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+  close-up in the same simple vegetable field with soft ink-wash hills far behind: tiny [[pip]] peeks out from behind the huge leafy greens of a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens growing in the soil, one tiny finger pressed to his lips in a secretive 'shh', eyes wide and sparkling at the viewer, only the leaves and the round white top of the radish showing above the soil, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
   ```
 
 **h02.png** ← kling_first.png
 ```
-the radish leaves shake and a little puff of soil pops up beside them, the bear points at the leaves in surprise
+the mouse points up at the huge radish leaves with his other hand, mouth in an excited little 'o'
 ```
+
 **h03.png** ← kling_first.png
 ```
-the tiny mouse hops up excitedly beside the leaves, the bunny claps her paws
+the mouse ducks down behind the radish leaves, now only his two huge pink round ears stick out above the leaves (his ears are too big to hide)
 ```
-
-## 3. 分镜（每张卡 4 秒 = 2 小节，120 BPM；p08 占 8 秒）
-
-| 页 | 画面（主图 → 关键帧） | 歌词 | 运镜 |
-|---|---|---|---|
-| p01 | Bruno 在菜地里发现一个巨大的白萝卜，叶子比他还高，张开双臂惊叹 → p01b：拍拍萝卜头，冲镜头笑。大字：**big 大** | **唱**：`Big, big, big!`<br>大，大，大！<br>**唱**：`A big radish!`<br>好大的萝卜！ | in，每 1.0 秒换一次图 |
-| p02 | Bruno 一个人抓着萝卜叶子往后仰、膝盖弯、脚蹬地，萝卜纹丝不动 → p02b：仰得更狠，脸憋红，还是拔不动。大字：**pull 拔** | **唱**：`Pull, pull, pull!`<br>拔，拔，拔！<br>**唱**：`Heave-ho! Oh no!`<br>嘿哟！哎呀拔不动！ | in，每 0.5 秒换一次图 |
-| p03 | Bruno 坐在地上朝旁边招手喊人，Bun 从田边蹦过来 → p03b：Bun 跑到身边竖大拇指。大字：**help 帮忙** | **唱**：`Help, help, help!`<br>帮帮忙，帮帮忙！<br>**唱**：`Bun, come and help!`<br>Bun，快来帮忙！ | left，每 1.0 秒换一次图 |
-| p04 | Bruno 拉叶子、Bun 抱住他的腰，两个一起往后仰 → p04b：萝卜晃了一下，土裂开一点，还是没出来。大字：**pull 拔** | **唱**：`Pull, pull, pull!`<br>拔，拔，拔！<br>**唱**：`Heave-ho! Oh no!`<br>嘿哟！还是拔不动！ | in，每 0.5 秒换一次图 |
-| p05 | 两个还在拉，小不点 Pip 举着双手跑来喊，大家回头看他（反差：最小的来帮忙） → p05b：Pip 抓住 Bun 的红背心下摆，准备拉。大字：**me too 我也来** | **唱**：`Me too! Me too!`<br>我也来！我也来！<br>**唱**：`Little Pip can help!`<br>小小皮皮也能帮忙！ | right，每 1.0 秒换一次图 |
-| p06 | 三个排成一串一起往后仰 → p06b：土整个裂开，萝卜开始往上冒。大字：**pull 拔** | **唱**：`Pull, pull, pull!`<br>拔，拔，拔！<br>**唱**：`One, two, three!`<br>一，二，三！ | in，每 0.5 秒换一次图 |
-| p07 | （反转）萝卜啵一声出来了，落在 Bruno 软软的肚子上，Bun 坐地上笑，Pip 坐起来欢呼 → p07b：Pip 站上萝卜举双手当冠军。大字：**out 出来啦** | **唱**：`Pop! It's out!`<br>啵！拔出来啦！<br>**唱**：`Hooray, Pip!`<br>皮皮真棒！ | up，每 1.0 秒换一次图 |
-| p08 | 三个手拉手围着立起来的大萝卜跳舞（8 秒） → p08b：一起跳到半空。大字：**together 一起** | **唱**：`Pull together!`<br>一起拔！<br>**唱**：`Big and small!`<br>大大小小！<br>**唱**：`Everyone can help!`<br>人人都能帮忙！<br>**唱**：`Hooray!`<br>好耶！ | out，每 0.5 秒换一次图 |
-| p09 | （彩蛋）三个坐成一排啃萝卜，Bruno 一大口，Pip 一小口 → p09b：Pip 啃出一个圆圆的小洞，腮帮子鼓鼓的。大字：**crunch 咔嚓** | **唱**：`Crunch, crunch, crunch!`<br>咔嚓，咔嚓，咔嚓！<br>**唱**：`Yummy radish!`<br>萝卜真好吃！ | in，每 1.0 秒换一次图 |
-
-**尾奏**（4 秒）：片尾卡大字 "big 大 · pull 拔 · help 帮忙"，小字 "和宝宝一起：Pull, pull, pull! Heave-ho!"；歌里慢慢唱 `Big! Pull! Help!` 复习，古筝一声收住。
-
-不加背景音乐和音效，歌就是全部声音。
-
-## 4. 歌（story.json 的 `song`）
-
-| 段 | 时长 | 歌词 | 卡片 |
-|---|---|---|---|
-| Intro | 4 秒 | （纯音乐，小朋友喊 Heave-ho!） | 钩子 |
-| Verse 1 | 8 秒 | Big, big, big! / A big radish! / Pull, pull, pull! / Heave-ho! Oh no! | p01、p02 |
-| Verse 2 | 8 秒 | Help, help, help! / Bun, come and help! / Pull, pull, pull! / Heave-ho! Oh no! | p03、p04 |
-| Verse 3 | 8 秒 | Me too! Me too! / Little Pip can help! / Pull, pull, pull! / One, two, three! | p05、p06 |
-| Bridge | 4 秒 | Pop! It's out! / Hooray, Pip! | p07 |
-| Chorus | 8 秒 | Pull together! / Big and small! / Everyone can help! / Hooray! | p08 |
-| Tag | 4 秒 | Crunch, crunch, crunch! / Yummy radish! | p09 |
-| Outro | 4 秒 | Big! Pull! Help! | 片尾 |
-
-风格：笑着唱的温暖女声 + 小朋友跟喊，每个 Pull 是使劲的重拍，一轮比一轮强；古筝、琵琶、木鱼点一点国风色彩，底子是幼儿儿歌；120 BPM，五声音阶旋律。不要：机器人腔、平铺直叙、念白、中文歌词。出 3 版，`--check` 听写淘汰，取最好的一版。
-
-## 5. 出图提示词
-
-> 画风是这一集自己的（`style.json`：中国水彩画，样张是用户看过的两张样图），角色参考图照带，只取角色长相。构图：上 18% 留天空放大字，脸在 22%–58%，下 38% 留地面放字幕。
 
 **p01.png**
 ```
-[[bruno]] standing in a simple vegetable field next to a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens growing in the soil, the leafy greens taller than he is, Bruno spreads both arms wide in amazement with his mouth open in a big 'wow', Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] walks up and sees only the small tips of leafy greens sticking out of the soil, he bends down curiously with his paws on his knees, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p01b.png** ← p01.png
 ```
-the bear pats the round white top of the radish with both paws and grins at the viewer
+the bear has stepped back and looks up: now we see the leafy greens are huge, taller than him, on top of a big round white radish top, his mouth opens wide
+```
+
+**p01c.png** ← p01.png
+```
+the bear has stepped back and throws both arms wide open as wide as he can in amazement, jaw dropped, eyes huge, the giant leafy greens of the radish towering over him
 ```
 
 **p02.png**
 ```
-[[bruno]] alone in a simple vegetable field gripping the leafy greens of a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens stuck in the soil with both paws, leaning far back with his knees bent, feet braced in the soil and arms straight, cheeks puffed with effort, the radish has not moved at all, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] stands proudly next to a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens stuck in the soil, puffing out his chest and thumping it with one paw, chin up, eyes closed with a smug confident grin, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p02b.png** ← p02.png
 ```
-the bear leans back even further with his eyes squeezed shut and his face red with effort, the radish is still stuck, a little sweat drop flies off
+the bear now grips the radish leaves with both paws, leaning far back with his knees bent, feet braced in the soil and arms straight, cheeks puffed and face red with effort, the radish has not moved
+```
+
+**p02c.png** ← p02.png
+```
+the bear has fallen back onto his bottom on the soil, still holding a few torn leaves in his paw, the radish has not moved at all, his ears droop and his face is deflated and embarrassed
 ```
 
 **p03.png**
 ```
-in a simple vegetable field [[bruno]] sits on the soil next to a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens still stuck in the ground, waving one paw toward the side and calling out with a big open mouth; from the side of the field [[bun]] comes hopping toward him, ears up, ready to help, sizes: the bear about twice as tall as the bunny, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] sits on the soil next to a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens stuck in the ground, both paws cupped around his mouth calling out loudly toward the side of the field, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p03b.png** ← p03.png
 ```
-the bunny has arrived next to the sitting bear and gives him a bright thumbs-up, the bear smiles with relief
+[[bun]] comes hopping in fast from the side of the field toward the bear, ears flying back, a bright eager face, sizes: the bear about twice as tall as the bunny
 ```
 
 **p04.png**
 ```
-in a simple vegetable field [[bruno]] at the front grips the radish leaves with both paws, leaning far back with his knees bent, feet braced in the soil and arms straight; behind him [[bun]] hugs Bruno's waist and leans back too; the two of them pull a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens stuck in the soil, cheeks puffed, the radish still stuck, sizes: the bear about twice as tall as the bunny, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] grips the leafy greens of a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens leaning far back with knees bent and feet braced, and behind him [[bun]] hugs his waist and leans back too, both cheeks puffed, the radish still stuck, sizes: the bear about twice as tall as the bunny, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p04b.png** ← p04.png
 ```
-both lean back even further, the radish wobbles a tiny bit and the soil around it cracks slightly, but it is still stuck, both faces red with effort
+the bunny keeps one arm around the bear's waist but turns her head and body toward the viewer, waving the viewer over with her free paw, an eager inviting face looking straight at the camera
 ```
 
 **p05.png**
 ```
-in a simple vegetable field [[bruno]] at the front grips the radish leaves with both paws, leaning far back with his knees bent, feet braced in the soil and arms straight; behind him [[bun]] hugs Bruno's waist and leans back too, pulling a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens stuck in the soil; from the side tiny [[pip]] runs in with both little arms raised, shouting happily, and the bear and the bunny look back over their shoulders at him in surprise, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] and [[bun]] stand in a pulling line holding the radish leaves and look back over their shoulders as tiny [[pip]] runs in toward them with both little arms raised high, a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens still stuck in the soil, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p05b.png** ← p05.png
 ```
-the tiny mouse now holds the hem of the bunny's red vest with both hands behind her, feet planted, a determined little face, ready to pull
+the bear has let go of the leaves and laughs with one paw on his round tummy, pointing at the tiny mouse with the other paw, the bunny giggles behind her paw, the mouse looks up at them
+```
+
+**p05c.png** ← p05.png
+```
+the bear and the bunny still smile; the tiny mouse stands tall with his chest puffed out, fists on his hips, a determined frown and chin up, ready
 ```
 
 **p06.png**
 ```
-in a simple vegetable field all three pull a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens in one line: [[bruno]] at the front grips the radish leaves with both paws, leaning far back with his knees bent, feet braced in the soil and arms straight; behind him [[bun]] hugs Bruno's waist and leans back too; at the very end tiny [[pip]] holds the hem of the bunny's red vest with both hands and pulls with all his might; all three lean back with knees bent and feet braced, cheeks puffed, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, all three pull a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens in one line: [[bruno]] at the front grips the leaves, [[bun]] hugs Bruno's waist, and at the very end tiny [[pip]] holds the hem of the bunny's red vest with both hands; all three lean back with knees bent and feet braced, cheeks puffed, eyes squeezed shut, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p06b.png** ← p06.png
 ```
-all three lean back even further, the soil around the radish cracks open and lifts, the white radish starts to rise out of the ground
+all three lean back even further, the soil around the radish cracks open in lines and lifts up
+```
+
+**p06c.png** ← p06.png
+```
+all three lean back as far as they can, the white radish rises halfway out of the cracked soil with crumbs falling off it
 ```
 
 **p07.png**
 ```
-in a simple vegetable field a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens has just popped out of the soil with a little shower of soil crumbs; [[bruno]] lies on his back on the soft grass laughing with the huge radish landed on his round soft tummy; [[bun]] sits on the grass beside him laughing; tiny [[pip]] sits up cheering, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens has just shot up out of the soil and flies in the air with a shower of soil crumbs; below it [[bruno]], [[bun]] and tiny [[pip]] tumble backward onto the soft grass with surprised faces, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p07b.png** ← p07.png
 ```
-the tiny mouse now stands on top of the big radish resting on the bear's tummy, raising both arms like a little champion, the bunny and the bear cheer for him
+the bear lies flat on his back on the grass and the giant radish has landed right on his round soft tummy, his tummy squishes down like a trampoline, the radish bouncing a little back up with small bounce lines, the bear's eyes pop wide, the bunny and the mouse sit up on the grass beside him
+```
+
+**p07c.png** ← p07.png
+```
+the radish now rests on the bear's tummy and the bear laughs lying on his back; the bunny claps and points at the tiny mouse, the mouse sits up with both arms raised in surprise and joy
 ```
 
 **p08.png**
 ```
-in a simple vegetable field the three friends [[bruno]], [[bun]] and tiny [[pip]] hold hands in a circle and dance around a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens standing upright on the soil, big happy faces, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, [[bruno]] sits on the grass beside a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens lying on the ground and lifts tiny [[pip]] high up above his head with both paws like a little champion, [[bun]] cheers beside them, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p08b.png** ← p08.png
 ```
-all three jump up together in the air at the same moment with their hands still joined, big laughing faces
+the bear, the bunny and the mouse held high all cheer with their arms up, big laughing open mouths
 ```
 
 **p09.png**
 ```
-the three friends [[bruno]], [[bun]] and tiny [[pip]] sit in a row on the grass of a simple vegetable field next to a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens lying on the ground, each taking a crunchy bite from it, the bear a huge bite, the mouse a tiny nibble, little white crumbs flying, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, leave the top 18% of the image as simple open sky with nothing in it, keep every face between 22% and 58% of the image height and the lower 38% simple open ground
+in the same simple vegetable field with soft ink-wash hills far behind, tiny [[pip]] sits on top of a giant white Chinese radish (daikon) with a pale green top and a big bunch of leafy greens lying on the grass, nibbling it with both hands, cheeks stuffed full and round, a neat little round bite hole in the radish, small white crumbs, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, faint ink-wash distant hills, generous empty white space, cute rounded proportions and big gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p09b.png** ← p09.png
 ```
-the mouse has nibbled a neat little round hole into the radish and his cheeks are puffed full, the bear and the bunny laugh at him
+[[bruno]] has leaned into the picture from the side, pointing at the mouse with a shocked face and his mouth wide open, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height
 ```
 
-## 6. 发布文案
+**p09c.png** ← p09b.png
+```
+the mouse turns to the bear with his cheeks stuffed full and grins a big closed-mouth grin, one tiny thumb up, the bear's mouth still hanging open
+```
+
+## 4. 发布文案
 
 - **抖音标题**：拔萝卜英文儿歌｜pull和help
 - **小红书标题**：拔萝卜英文版｜2岁英语启蒙儿歌
 - **合集**：栗栗唱儿歌
-- **封面关键画面**：用最后一页 p09（三个坐成一排啃大萝卜）自动出 3:4 封面，上方留空放标题
+- **封面关键画面**：用最后一页 p09（Pip 坐在大萝卜上啃）自动出 3:4 封面，上方留空放标题
 - **正文**：
 ```
 🎵 栗栗唱儿歌｜拔呀拔，拔萝卜！英文儿歌版

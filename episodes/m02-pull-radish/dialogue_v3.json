@@ -1,0 +1,127 @@
+{
+ "hook": [
+  {
+   "speaker": "pip",
+   "en": "Shh... a big secret!",
+   "zh": "嘘……一个大秘密！"
+  }
+ ],
+ "p01": [
+  {
+   "speaker": "bruno",
+   "en": "Wow! A big... big... BIG radish!",
+   "zh": "哇！好大……好大……超级大的萝卜！"
+  }
+ ],
+ "p02": [
+  {
+   "speaker": "bruno",
+   "en": "Easy! I am big!",
+   "zh": "小意思！我力气大！"
+  },
+  {
+   "speaker": "bruno",
+   "en": "Pull! Heave-ho!",
+   "zh": "拔！嘿哟！"
+  },
+  {
+   "speaker": "bruno",
+   "en": "...Oh no!",
+   "zh": "……哎呀！"
+  }
+ ],
+ "p03": [
+  {
+   "speaker": "bruno",
+   "en": "Bun! Help!",
+   "zh": "Bun！帮帮我！"
+  },
+  {
+   "speaker": "bun",
+   "en": "I'm coming!",
+   "zh": "我来啦！"
+  }
+ ],
+ "p04": [
+  {
+   "speaker": "bruno+bun",
+   "en": "Pull! Heave-ho!",
+   "zh": "拔！嘿哟！"
+  },
+  {
+   "speaker": "bun",
+   "en": "It's stuck! Can you help? Pull with us!",
+   "zh": "拔不动！你能帮忙吗？和我们一起拔！"
+  }
+ ],
+ "p05": [
+  {
+   "speaker": "pip",
+   "en": "Me too! Me too!",
+   "zh": "我也来！我也来！"
+  },
+  {
+   "speaker": "bruno",
+   "en": "You? Ha ha! You're so small!",
+   "zh": "你？哈哈！你那么小！"
+  },
+  {
+   "speaker": "pip",
+   "en": "I can help!",
+   "zh": "我能帮忙！"
+  }
+ ],
+ "p06": [
+  {
+   "speaker": "all",
+   "en": "One... two... three... PULL!",
+   "zh": "一……二……三……拔！"
+  }
+ ],
+ "p07": [
+  {
+   "speaker": "sfx",
+   "en": "Boing!",
+   "zh": "嘭！"
+  },
+  {
+   "speaker": "bruno",
+   "en": "Oof! My tummy!",
+   "zh": "哎哟！我的肚子！"
+  },
+  {
+   "speaker": "bun",
+   "en": "Pip did it!",
+   "zh": "是皮皮帮的忙！"
+  }
+ ],
+ "p08": [
+  {
+   "speaker": "bruno",
+   "en": "Small Pip, big help!",
+   "zh": "小小皮皮，帮了大忙！"
+  },
+  {
+   "speaker": "all",
+   "en": "Hooray!",
+   "zh": "好耶！"
+  }
+ ],
+ "p09": [
+  {
+   "speaker": "pip",
+   "en": "Crunch!",
+   "zh": "咔嚓！"
+  },
+  {
+   "speaker": "bruno",
+   "en": "Pip! That's MY radish!",
+   "zh": "皮皮！那是我的萝卜！"
+  },
+  {
+   "speaker": "pip",
+   "en": "Me too!",
+   "zh": "我也要！"
+  }
+ ]
+}
