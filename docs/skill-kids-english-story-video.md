@@ -339,7 +339,7 @@ open ../../out/c01
 配音（口语线）或听写（儿歌线）和渲染两关用一条命令跑完（在 `tools/storybook-video` 下，ffmpeg 要在 PATH 里，第一次先 `.venv/bin/pip install faster-whisper`）：
 
 ```bash
-.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>.mp4 --dur 40 55
+.venv/bin/python qa.py ../../episodes/<集>/story.json ../../out/<集>/<name>.mp4 --dur 40 50   # 2026-11-03 用户定：目标 45 秒左右，不超过 50 秒
 ```
 
 最后一行写"全部通过"才算过。它查格式、响度、第 0 帧不黑、黑边、Whisper 逐句对照（相似度 ≥0.75）、字幕 0.6 秒内有人声、Hazel 和 Bun 的基频语速、时长；总览图和第 0 帧还要用眼睛看一遍（挡脸只能人看）。另外要听的：剧本里写了"小声""大喊"的句子，音量真的有差别。
