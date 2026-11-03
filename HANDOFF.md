@@ -21,6 +21,10 @@
 - 结果：Pip 声 113 个音都在半音内、逐句听写 20/33（没听对的基本是 Pull，听成 Paul），有合成味。逐音节 WORLD 修音的老办法字太糊，弃用。
 - 卡点：ElevenLabs 没有“按外部旋律唱”的功能；Voice Changer 需要 key 有 Speech to Speech 权限，现在没有。
 - 试听页：https://claude.ai/artifact/WrVax94pCBSAb3X4NshKWw 。下一步等用户挑版本，或决定找真人照伴奏版录唱。
+- 11-03 下午用户：「开权限那个，你帮我操作，先把背景音乐做好」。
+  - 背景音乐重做：免费音色库 GeneralUser GS（许可允许商用；`out/sf2/`，不进仓库），自写的极简 SF2 播放器 `out/m02/cover/sf2play.py`（音准逐个乐器测过，±8 音分），编配脚本 `bgm.py` → `bgm_pure.wav`（纯伴奏）、`bgm_lead.wav`（加木琴旋律）。古筝用 Koto 音色代替；“嘿哟嘿哟”小节停奏留空；三段逐渐加厚。已放到试听页最上面，等用户听。
+  - 开 Speech to Speech：Chrome 里已登录、找到 key（lili-mac，末尾和 ~/.zshrc 的对上），但切换权限的点击被本机 Claude Code 安全规则拦下（改 key 权限算授权操作），**要用户自己点**：开发者 → API 密钥 → lili-mac「⋯」→ 编辑 → 语音转语音「访问」→ 保存更改。开好后再做 Voice Changer 人声版。
+  - conda 环境 `envs/fsynth` 里装了 fluidsynth（装得慢，最后没用上）。
 
 ## 0. 最新：m02 拔萝卜英文儿歌（国风特别版）成片，待发布（2026-11-02 晚）
 
