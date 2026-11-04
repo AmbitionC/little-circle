@@ -3,6 +3,14 @@
 > 最近更新：2026-11-03 晚（**声音设计升级：装好全局 sound skill，新分册 docs/skill-sound-design.md，sbv.py 加环境底声层，c18 试听版待用户听**）。再上一次：2026-11-03（**m02 拔萝卜按原谱做英文翻唱试听，待用户挑版本；原谱署名包恩珠，版权未核实**）。再上一次：2026-11-02 晚（**m02 拔萝卜英文儿歌（国风特别版）成片 48 秒，待发布**）。再上一次：2026-11-01 晚（**c18 躲猫猫成片 49.8 秒，待发布**；**s05 第 3 版日常模式成片：全关键帧、不混 H3，待用户手机终检和发布**，见第 0 节最上面）。再上一次：2026-11-01（s05 H3 版）。再上一次：2026-10-31（**全量同步进默认分支，接手方法见下一节**；s05 万圣节剧本第 2 版；H3 试跑后暂停）。再上一次：2026-10-30（**选题升级：新分册 skill-topics.md + 选题库；儿歌线暂停（m01 产物保留）**；**s04 用户定稿：「这一版还不错」，Bruno 定为 Chintu，待用户发布**；剧本写法升级见第 0 节；s04 加「谁在说话」：每句张嘴帧 + 镜头靠向说话人 + 字幕旁圆头像，qa 全部通过；Bruno 配音第三轮，暂用 Chintu）。上一次：2026-10-29（s04 第一版成品；新角色音色写进 cast.json）。之前的工作在云端会话里完成；从这里开始，在用户 Mac 上的本地会话接着做。
 > 新会话请先读完本页，再按需读 [README.md](README.md)、[milestones/M1-2026-11.md](milestones/M1-2026-11.md) 和 `docs/`。
 
+## 0. 最新：专属绘本线（x）工具和 skill 已写，x00 测试集待在 Mac 上跑通（2026-11-04 下午）
+
+- 用户 11-04 定：生图继续用本机 Codex 流程（不接 API）；实体书、个体户先不管；目标是第一条推广验证视频；视频生成复用原 skill，新起一个 skill 把链路跑通。
+- 新东西：分册 [docs/skill-photo-storybook.md](docs/skill-photo-storybook.md)；`tools/storybook-video/photo_character.py`（fake / describe / cards / pick / purge：照片 → 外貌描述 → 3 版角色卡 → 登记成集内角色 `[[kid]]` + 集内 cast.json + 头像 → 删原照片）；`codex_images.py` 支持集目录 `characters.json`（集内角色、集内参考图 `refs/kid.png`）；`sbv.py` 的 `style.avatar_dir` 可写一串目录。
+- 测试集 `episodes/x00-demo/`（虚构孩子 Mia，`photo_character.py fake` 出假照片）：script.md、story.json、profile.json 已写；真实第一单 `episodes/x01-zoo/`（用户女儿的动物园）只有 `profile.example.json`，等用户把照片放进 `episodes/x01-zoo/photos/`、填 `profile.json`。
+- .gitignore 新增：`episodes/x*/photos/`、`profile.json`、`characters.json`、`character_draft.json`（孩子信息不进公开仓库）。
+- 待办：在 Mac 上按分册第 2、4 节把 x00 整条跑一遍（fake → describe → cards → pick → 出图 → sbv → qa → brand → PDF），修坑；然后等 x01 的料。
+
 ## 0. 最新：新产品线「照片变专属英文绘本」规划（2026-11-04）
 
 - 用户 11-04 提出：家长发孩子照片 + 一句话 → 英文绘本 + 动画视频 + 可打印版，后续按 credit 收费；先做成品、录屏口播演示、发布验证需求。

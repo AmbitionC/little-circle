@@ -1,0 +1,12 @@
+{
+  "_说明": "跑通链路用的虚构孩子（photo_character.py fake 出的假照片），不是真人。正式单子用 x01 起。",
+  "kid": {"id": "kid", "name_en": "Mia", "name_zh": "米娅", "age": 3, "gender": "girl",
+          "fake_look": "with short dark bob hair and straight bangs, round face, wearing a yellow t-shirt with a small strawberry print and blue denim overalls"},
+  "story": {
+    "event_zh": "周六带米娅去动物园，看了长颈鹿、大象、猴子，最喜欢喂羊：一开始躲在后面不敢，羊舔了她的手，她笑了半天",
+    "place_zh": "动物园", "favorites_zh": "喂羊", "companions_zh": "妈妈",
+    "words": ["giraffe", "elephant", "feed"], "age_band": "2-3"
+  },
+  "friends": ["nutty"],
+  "consent": "虚构人物，无需同意"
+}

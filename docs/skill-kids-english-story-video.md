@@ -92,6 +92,8 @@ description: Make one publish-ready episode of the 栗栗学英语 (Forest Frien
 
 **所有类型都要有一个主题**（2026-10-26 用户定的硬要求）。用户原话："你做的是视频，要有一个主题，不是纯互动，要么教一个词和派生词，串成一个剧本，要么就是教一个道理。" 最好两者合一：一个道理，靠一个主线词讲出来；主线词全片出现 5 次以上，带上它的变化（help me / I can help / helper）。
 
+**第三条线：专属绘本 `x`（2026-11-04 起）**：家长发孩子照片 + 一段话，我们把孩子画成系列画风的卡通角色，和栗栗一起演一本 8 页的英文绘本，交付动画视频 + 打印 PDF，成品只给这一家、不发账号。流程、红线（照片是敏感个人信息，角色卡确认后 7 天内删）、`photo_character.py` 用法见分册 [skill-photo-storybook.md](skill-photo-storybook.md)。
+
 ## 4. 写剧本（公共部分；台词、结构、歌词等差异见分册）
 
 **写剧本前先读两份 reference**：`docs/story-psychology-reference.md`（为什么：选题打分、8 页情绪曲线、红线）和 `docs/script-craft-global-hits.md`（怎么写：Bluey、Peppa、Gruffalo、Mo Willems、Eric Carle 等 11 个爆款的写法和 12 条可选手法）。script.md 概要里要有"三句话""选题打分""情绪曲线""家长任务"这几行，范例见 `episodes/s04-brave/script.md`。

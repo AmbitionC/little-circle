@@ -718,8 +718,10 @@ class Ctx:
         if speaker in self._av:
             return self._av[speaker]
         im = None
-        path = os.path.join(self.avatar_dir or "", f"{speaker}.png")
-        if speaker != "narrator" and self.st.get("speaker_avatar", True) and os.path.exists(path):
+        # avatar_dir 可以是一个目录，也可以是一串目录（专属绘本线：先找集目录 refs/avatars/ 里孩子的头像，再找系列头像）
+        dirs = self.avatar_dir if isinstance(self.avatar_dir, (list, tuple)) else [self.avatar_dir or ""]
+        path = next((p for p in (os.path.join(d, f"{speaker}.png") for d in dirs) if os.path.exists(p)), "")
+        if speaker != "narrator" and self.st.get("speaker_avatar", True) and path:
             size, ring = self.st.get("avatar_size", 132), 7
             src = cover_crop(Image.open(path).convert("RGB"), size, size)
             im = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -1342,7 +1344,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
     fonts = Fonts(st["fonts"], base)
     ctx = Ctx(st, fonts, Sparkles() if sparkle and st["sparkles"] else None,
               badge_image(cfg.get("series"), fonts, base), cache,
-              os.path.join(base, st.get("avatar_dir", "../../series/refs/avatars")))
+              [os.path.join(base, d) for d in (st.get("avatar_dir", "../../series/refs/avatars") if isinstance(st.get("avatar_dir"), list)
+                                                else [st.get("avatar_dir", "../../series/refs/avatars")])])
     pages = cfg["pages"]
     truncated = max_pages is not None and max_pages < len(pages)
     pages = pages[:max_pages] if truncated else pages

@@ -18,6 +18,9 @@
 关键帧（做动画用，不花可灵灵感值）：script.md 里写 **p01b.png** ← p01.png，下面代码块只写"改哪里"。
 脚本先出底图，再把底图当第一张参考图，让 Codex 只改动作、其余不动，出同一镜头的下一张画。
 
+单集自己的角色（专属绘本线 x：孩子本人）：集目录里放 characters.json（photo_character.py pick 会写），
+里面的角色和系列角色一样用 [[id]]，参考图从集目录 refs/<id>.png 取，不进 series/refs。
+
 已有的图跳过；script.md 里某张图的提示词改了，会自动重出那一张。--force 全部重出，--only p02,p05 只出这几张。
 图会裁成 1080×1920 存进集目录，原图路径和提示词指纹记在 images.json。
 """
@@ -113,10 +116,48 @@ def char_ids(text):
     return [k for k, d in CHARACTERS.items() if d in text or any(x in text for x in old_descs(k))]
 
 
+# 单集自己的角色（characters.json）：id → 参考图绝对路径；没登记的角色都在 series/refs/
+EP_REFS = {}
+
+
+def ref_path(k):
+    """角色 k 的参考图：单集角色在集目录里，系列角色在 series/refs/。"""
+    return EP_REFS.get(k) or os.path.join(REFS, f"{k}.png")
+
+
+def ref_by_name(basename):
+    """images.json 里记的是参考图文件名；反查它现在在哪（单集角色的在集目录）。"""
+    k = os.path.splitext(basename)[0]
+    return EP_REFS.get(k) or os.path.join(REFS, basename)
+
+
+def load_episode_characters(ep):
+    """集目录里有 characters.json 就把这一集自己的角色并进角色表（专属绘本线：孩子本人，photo_character.py pick 生成）。
+    每条：{"desc": 整句英文描述, "keep": 必保细节, "size": 身高（Pip=1）, "names": 名字/称呼的正则, "pose": 参考图姿势, "ref": 参考图相对集目录路径}。"""
+    path = os.path.join(ep, "characters.json")
+    if not os.path.exists(path):
+        return
+    data = json.load(open(path, encoding="utf-8"))
+    for k, v in data.items():
+        if k.startswith("_"):
+            continue
+        CHARACTERS[k] = v["desc"]
+        if v.get("keep"):
+            KEEP[k] = v["keep"]
+        if v.get("size"):
+            SIZES[k] = v["size"]
+        if v.get("names"):
+            NAMES[k] = v["names"]
+        if v.get("pose"):
+            POSES[k] = v["pose"]
+        EP_REFS[k] = os.path.abspath(os.path.join(ep, v.get("ref", f"refs/{k}.png")))
+    print(f"这一集自己的角色：{', '.join(k for k in data if not k.startswith('_'))}（参考图在集目录 refs/）")
+
+
 def char_refs(text):
     if not EP_CHAR_REFS:
         return []
-    return [os.path.join(REFS, f"{k}.png") for k in char_ids(text) if os.path.exists(os.path.join(REFS, f"{k}.png"))]
+    return [ref_path(k) for k in char_ids(text) if os.path.exists(ref_path(k))]
 
 
 # 角色一致性（2026-10-31 用户："这些形象怎么能集成到 skill，保证每次视频生成的一致性"）
@@ -189,8 +230,9 @@ def check_script(jobs):
         for k in ids:
             if any(x in prompt for x in old_descs(k)) and CHARACTERS[k] not in prompt:
                 old.add(k)
-            if not os.path.exists(os.path.join(REFS, f"{k}.png")):
-                print(f"  ✗ {name}: {k} 还没有参考图，先跑 codex_images.py refs --only {k}")
+            if not os.path.exists(ref_path(k)):
+                hint = "photo_character.py <集> pick N" if k in EP_REFS else f"codex_images.py refs --only {k}"
+                print(f"  ✗ {name}: {k} 还没有参考图，先跑 {hint}")
                 issues += 1
     if old:
         print(f"  提示：{', '.join(sorted(old))} 用的是旧描述（旧集可以不管；新剧本请改成 [[id]]）")
@@ -212,8 +254,8 @@ def qc_sheet(epdir, names):
         im.thumbnail((360, 640))
         refs = []
         for b in r["refs"]:
-            if os.path.exists(os.path.join(REFS, b)):
-                x = Image.open(os.path.join(REFS, b)).convert("RGB")
+            if os.path.exists(ref_by_name(b)):
+                x = Image.open(ref_by_name(b)).convert("RGB")
                 x.thumbnail((240, 320))
                 refs.append(x)
         rows.append((im, refs))
@@ -372,10 +414,18 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
             ids = names
         ask += consistency_note(ids) + "\n\n"
     ask += "Do not run shell commands and do not save or copy any files. Just generate the image and finish."
+    images = [(small_ref(r, 1280 if base or os.path.basename(r).startswith("lineup_") else 768))
+              for r in ([base] if base else []) + styles + refs]
+    return codex_run(ask, images, log)
+
+
+def codex_run(ask, images, log, timeout=600):
+    """跑一次 codex exec 出图：ask 是完整的请求文本，images 是已缩好的附图路径（≤ MAX_IMAGES）。返回生成的原图路径。
+    photo_character.py 也用它（照片 → 角色卡的请求文本不一样，自己拼）。"""
     cmd = ["codex", "exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only",
            "-c", "model_reasoning_effort=low", "--json", "-C", REFS if os.path.isdir(REFS) else HERE]
-    for r in ([base] if base else []) + styles + refs:
-        cmd += ["-i", small_ref(r, 1280 if base or os.path.basename(r).startswith("lineup_") else 768)]
+    for r in images:
+        cmd += ["-i", r]
     cmd.append("-")  # 提示词走 stdin：-i 会吞掉后面的位置参数
     # 图一落盘就收工：网络抖动时 codex 会在出图后继续重连很久
     with open(log, "a", encoding="utf-8") as f:
@@ -385,7 +435,7 @@ def codex_generate(prompt, refs, log, use_style=True, base=None, shape="vertical
         events = []
         threading.Thread(target=lambda: [events.append(l) or f.write(l) for l in p.stdout], daemon=True).start()
         thread, t0 = None, time.time()
-        while time.time() - t0 < 600 and p.poll() is None:
+        while time.time() - t0 < timeout and p.poll() is None:
             time.sleep(2)
             for l in events:
                 if '"thread.started"' in l:
@@ -605,6 +655,7 @@ def main():
         if not os.path.exists(script):
             sys.exit(f"找不到 {script}")
         load_episode_style(t)
+        load_episode_characters(t)
         if args.comic or args.comic_all:
             os.makedirs(os.path.join(t, "comic"), exist_ok=True)
             # comic/panels.json 记下每格是哪张图、写哪几句台词，comic_page.py 照它配字；--comic 没有这个文件

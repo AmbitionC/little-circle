@@ -36,3 +36,10 @@ series/**/.codex_images.log
 series/**/images.json
 series/refs_old_1030/
 series/refs_v1_1030/
+
+# 专属绘本线（x 集）：孩子的照片和外貌描述只留在本机，仓库是公开的
+episodes/x*/photos/
+episodes/x*/character_draft.json
+episodes/x*/characters.json
+episodes/x*/profile.json
+episodes/x*/.photo_character.log

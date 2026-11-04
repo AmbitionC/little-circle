@@ -1,0 +1,391 @@
+{
+ "output_name": "x00_mia_zoo",
+ "title_en": "Mia's Zoo Day",
+ "title_zh": "米娅的动物园",
+ "series": {
+  "badge_text": "栗栗学英语 · 专属绘本",
+  "badge_alpha": 0.72
+ },
+ "style": {
+  "speaker_colors": {
+   "narrator": [
+    74,
+    52,
+    38
+   ],
+   "nutty": [
+    178,
+    78,
+    22
+   ],
+   "kid": [
+    200,
+    70,
+    90
+   ]
+  },
+  "avatar_dir": [
+   "refs/avatars",
+   "../../series/refs/avatars"
+  ],
+  "tail": 0.6,
+  "bgm_rel_db": -11
+ },
+ "cast": "cast.json",
+ "hook": {
+  "frames": [
+   {
+    "image": "kling_first.png",
+    "at": 0
+   }
+  ],
+  "max_seconds": 3.0,
+  "motion": "in",
+  "zoom": 1.06,
+  "focus": [
+   0.5,
+   0.45
+  ],
+  "headline": "米娅的动物园 · 专属英文绘本",
+  "subline": "用孩子自己的照片做的绘本 · 中英字幕",
+  "say": {
+   "speaker": "narrator",
+   "en": "A zoo day!",
+   "zh": "动物园的一天！",
+   "say": "[gasps] A zoo day!",
+   "at": 0.8
+  },
+  "sfx": [
+   {
+    "file": "../../assets/sfx/jingle_in.mp3",
+    "at": 0.0,
+    "gain": 0.3
+   }
+  ]
+ },
+ "pages": [
+  {
+   "image": "p01.png",
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Let's go, Nutty!",
+     "zh": "走吧，栗栗！",
+     "say": "[excited] Let's go, Nutty!"
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/steps_grass.wav",
+     "at": 0.2,
+     "gain": 0.3
+    }
+   ],
+   "hold": 0.2
+  },
+  {
+   "image": "p02.png",
+   "motion": "up",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "frames": [
+    {
+     "image": "p02b.png",
+     "line": 1,
+     "offset": 0.9
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Wow! So tall!",
+     "zh": "哇！好高！",
+     "say": "[gasps] Wow! So tall!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "Hello, giraffe!",
+     "zh": "你好，长颈鹿！",
+     "say": "[happily] Hello, giraffe!",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/whoosh.mp3",
+     "at": 0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "p03.png",
+   "motion": "left",
+   "frames": [
+    {
+     "image": "p03b.png",
+     "line": 0,
+     "offset": 0.3,
+     "shake": true
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "en": "Splash! A big elephant!",
+     "zh": "哗！一头大大象！",
+     "say": "[playful] Splash! A big elephant!"
+    },
+    {
+     "speaker": "kid",
+     "en": "Again, elephant!",
+     "zh": "再来一次，大象！",
+     "say": "[laughing] Again, elephant!",
+     "gap": 0.8
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/whoosh.mp3",
+     "at": 0.1,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "image": "p04.png",
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Look! A monkey!",
+     "zh": "看！一只猴子！",
+     "say": "[excited] Look! A monkey!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "He copies you!",
+     "zh": "他在学你！",
+     "say": "[giggles] He copies you!",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "image": "p05.png",
+   "motion": "right",
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "It's so big...",
+     "zh": "它好大……",
+     "say": "[whispers, nervous] It's so big...",
+     "gain": 0.75,
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "image": "p06.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p06b.png",
+     "line": 0,
+     "offset": 1.6
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "Feed the sheep! Like this.",
+     "zh": "喂羊！像这样。",
+     "say": "[warmly] Feed the sheep! Like this.",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/chomp.mp3",
+     "at": 1.8,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "image": "p07.png",
+   "motion": "out",
+   "frames": [
+    {
+     "image": "p07b.png",
+     "line": 1,
+     "offset": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "It tickles!",
+     "zh": "好痒！",
+     "say": "[laughs] It tickles!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "You did it, Mia!",
+     "zh": "你做到啦，米娅！",
+     "say": "[excited] You did it, Mia!",
+     "gap": 0.5
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 1.2,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "image": "p08.png",
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Bye-bye, animals!",
+     "zh": "再见，动物们！",
+     "say": "[warmly] Bye-bye, animals!"
+    },
+    {
+     "speaker": "kid",
+     "en": "I can feed the sheep!",
+     "zh": "我会喂羊啦！",
+     "say": "[proudly] I can feed the sheep!",
+     "gap": 0.5
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p02b.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "Giraffe!",
+     "zh": "长颈鹿！",
+     "say": "[clearly] Giraffe!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "giraffe",
+    "zh": "长颈鹿"
+   },
+   "lead": 0.3,
+   "transition": "dip",
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "p03.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Elephant!",
+     "zh": "大象！",
+     "say": "[clearly] Elephant!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "elephant",
+    "zh": "大象"
+   },
+   "lead": 0.3
+  },
+  {
+   "image": "p07.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Feed!",
+     "zh": "喂！",
+     "say": "[clearly, slowly] Feed!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "feed",
+    "zh": "喂"
+   },
+   "lead": 0.3,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    }
+   ]
+  }
+ ],
+ "ending": {
+  "headline": "Mia's Zoo Day 米娅的动物园",
+  "subline": "这是米娅自己的英文绘本",
+  "seconds": 2.5
+ },
+ "bgm": {
+  "cues": [
+   {
+    "page": 0,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.2
+   },
+   {
+    "page": 5,
+    "file": "../../assets/bgm/bgm_tiptoe.mp3",
+    "volume": 0.14,
+    "fade": 0.8
+   },
+   {
+    "page": 7,
+    "file": "../../assets/bgm/bgm_happy.mp3",
+    "volume": 0.24,
+    "fade": 0.3
+   },
+   {
+    "page": 8,
+    "file": "../../assets/bgm/bgm_calm.mp3",
+    "volume": 0.18,
+    "fade": 1.0
+   },
+   {
+    "page": 9,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.12,
+    "fade": 0.6
+   }
+  ]
+ },
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ },
+ "_说明": "x00 测试集。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。steps_grass 是 wav 时改后缀。"
+}
