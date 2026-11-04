@@ -103,7 +103,7 @@
      "speaker": "kid",
      "en": "Wow! So tall!",
      "zh": "哇！好高！",
-     "say": "[gasps] Wow! So tall!"
+     "say": "[excited] Wow! So tall!"
     },
     {
      "speaker": "nutty",
@@ -119,7 +119,8 @@
      "at": 0,
      "gain": 0.3
     }
-   ]
+   ],
+   "hold": 0.4
   },
   {
    "image": "p03.png",
@@ -153,7 +154,8 @@
      "at": 0.1,
      "gain": 0.4
     }
-   ]
+   ],
+   "hold": 0.4
   },
   {
    "image": "p04.png",
@@ -179,11 +181,12 @@
      "at": 0.0,
      "gain": 0.4
     }
-   ]
+   ],
+   "hold": 0.4
   },
   {
    "image": "p05.png",
-   "motion": "right",
+   "motion": "in",
    "lines": [
     {
      "speaker": "kid",
@@ -193,7 +196,13 @@
      "gain": 0.75,
      "gap": 0.8
     }
-   ]
+   ],
+   "hold": 0.8,
+   "focus": [
+    0.75,
+    0.32
+   ],
+   "zoom": 1.06
   },
   {
    "image": "p06.png",
@@ -220,7 +229,8 @@
      "at": 1.8,
      "gain": 0.5
     }
-   ]
+   ],
+   "hold": 0.4
   },
   {
    "image": "p07.png",
@@ -237,7 +247,8 @@
      "speaker": "kid",
      "en": "It tickles!",
      "zh": "好痒！",
-     "say": "[laughs] It tickles!"
+     "say": "[laughs] It tickles!",
+     "gap": 1.2
     },
     {
      "speaker": "nutty",
@@ -253,7 +264,8 @@
      "at": 1.2,
      "gain": 0.4
     }
-   ]
+   ],
+   "hold": 0.5
   },
   {
    "image": "p08.png",
@@ -263,7 +275,7 @@
      "speaker": "kid",
      "en": "Bye-bye, animals!",
      "zh": "再见，动物们！",
-     "say": "[warmly] Bye-bye, animals!"
+     "say": "[warmly] Bye bye, animals!"
     },
     {
      "speaker": "kid",
@@ -273,7 +285,7 @@
      "gap": 0.5
     }
    ],
-   "hold": 0.3
+   "hold": 0.8
   },
   {
    "image": "p02b.png",
@@ -283,7 +295,7 @@
      "speaker": "nutty",
      "en": "Giraffe!",
      "zh": "长颈鹿！",
-     "say": "[clearly] Giraffe!",
+     "say": "Giraffe!",
      "gap": 1.5
     }
    ],
@@ -309,7 +321,7 @@
      "speaker": "kid",
      "en": "Elephant!",
      "zh": "大象！",
-     "say": "[clearly] Elephant!",
+     "say": "Elephant!",
      "gap": 1.5
     }
    ],
@@ -327,7 +339,7 @@
      "speaker": "kid",
      "en": "Feed!",
      "zh": "喂！",
-     "say": "[clearly, slowly] Feed!",
+     "say": "Feed!",
      "gap": 1.5
     }
    ],
@@ -347,8 +359,8 @@
  ],
  "ending": {
   "headline": "Mia's Zoo Day 米娅的动物园",
-  "subline": "这是米娅自己的英文绘本",
-  "seconds": 2.5
+  "subline": "这是米娅自己的英文绘本 · 画面和配音由 AI 生成",
+  "seconds": 3.0
  },
  "bgm": {
   "cues": [
@@ -387,5 +399,6 @@
   "I": -16,
   "TP": -1.5
  },
- "_说明": "x00 测试集。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。steps_grass 是 wav 时改后缀。"
+ "_说明": "x00 测试集。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。steps_grass 是 wav 时改后缀。",
+ "ai_note": "本书画面和配音由 AI 生成"
 }

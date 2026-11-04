@@ -184,6 +184,23 @@ def main():
         want_n, got_n = norm_words(ln["en"]), norm_words(heard)
         ratio = difflib.SequenceMatcher(None, want_n, got_n).ratio()
         ok = ratio >= (0.6 if song else 0.75)
+        if not ok and not song:
+            # VAD 和系列名字的 prompt 会让短句听丢（x00 "Look! A monkey!" 只听到 Look），不带它们再听一次，取好的那次。
+            # 真有杂音（Ahem, giraffe）重听还是不过，不会被放过
+            a0 = max(0.0, s["start"] - 0.1)
+            a1 = min(s["end"], srt[i + 1]["start"] - 0.05) if i + 1 < len(srt) else s["end"]
+            raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}", "-i", a.mp4,
+                                  "-f", "f32le", "-ac", "1", "-ar", "16000", "-"], check=True, capture_output=True).stdout
+            segs = model.transcribe(np.frombuffer(raw, dtype=np.float32), language="en", beam_size=5, word_timestamps=True,
+                                    condition_on_previous_text=False)[0]
+            got2 = [w for g in segs for w in g.words]
+            for w in got2:
+                w.start, w.end = w.start + a0, w.end + a0
+            again = " ".join(w.word.strip() for w in got2)
+            r2 = difflib.SequenceMatcher(None, want_n, norm_words(again)).ratio()
+            if r2 > ratio:
+                got, heard, ratio = got2, again, r2   # got 也换掉：下面字幕对齐用它的首词时间
+                ok = ratio >= 0.75
         print(f"  {'✅' if ok else '⚠️'} {i + 1:2d} [{ln.get('speaker', 'narrator'):8s}] {ln['en']!r} → {heard!r} ({ratio:.2f})")
         if not ok:
             bad.append(i + 1)

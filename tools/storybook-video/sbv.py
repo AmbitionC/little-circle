@@ -1588,6 +1588,8 @@ def export_pdf(cfg, pages, base, fonts, path):
     d.text((PW // 2, 620), cfg.get("title_en", ""), font=fonts.get("en", 96, "Bold"), fill=ink, anchor="mm")
     d.text((PW // 2, 760), cfg.get("title_zh", ""), font=fonts.get("zh", 64), fill=soft, anchor="mm")
     d.text((PW // 2, 880), (cfg.get("series") or {}).get("badge_text", ""), font=fonts.get("zh", 40), fill=soft, anchor="mm")
+    if cfg.get("ai_note"):   # 专属绘本线红线：成品标 AI 生成（story.json 顶层 ai_note，不写就不印）
+        d.text((PW // 2, PH - 90), cfg["ai_note"], font=fonts.get("zh", 28), fill=soft, anchor="mm")
     sheets = [cover]
     for i, page in enumerate(pages, 1):
         sh = Image.new("RGB", (PW, PH), (255, 255, 255))

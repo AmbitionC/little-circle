@@ -76,5 +76,13 @@ python brand.py ../../episodes/x01-zoo/story.json --ep 1 --title-en "Mia's Zoo D
 
 ## 7. 已知坑
 
-- 2026-11-04 首跑前：`photo_character.py describe` 依赖 `codex exec -o` 把最后一条回复写到文件，老版本 Codex CLI 没有这个参数时会退回从 stdout 里找 JSON；两个都不行就先 `codex update`。
+- `photo_character.py describe` 依赖 `codex exec -o` 把最后一条回复写到文件，老版本 Codex CLI 没有这个参数时会退回从 stdout 里找 JSON；两个都不行就先 `codex update`。
+- **发色**（x00）：黑发孩子 describe 常写 dark brown，角色卡就画成中棕，一眼不像。对着照片核，近黑就改成 `near-black`，keep 里写 `almost black, not brown`，再 `cards --force`。
+- **手持物不进 desc**（x00）：照片里拿着的玩具写进去，孩子每页都拿着，和牵手、喂东西冲突。describe 提示词已禁；desc 句尾的句号也自动去掉（`[[kid]]` 嵌在句子中间）。
+- **复习页别用 `[clearly]`**（x00）：v3 念成 "Ahem, giraffe!" "Mm-hmm elephant"，混音里 qa 还可能听不出来。复习词 `say` 不写标签。`[gasps]` 开口前有约 0.8 秒吸气，句首要对字幕时换 `[excited]`。
+- **qa 发音报警先单独听缓存 wav**：`out/<集>/.cache/*.wav` 逐句听写，能分清配音错还是混音窗口误报。qa 现在对不达标的句子会去掉 VAD 和 prompt 重听。
+- **看总览图的孩子脸**（x00）：`motion: right/left` 会把靠边的孩子推出画面，qa 查不到。孩子靠边的页用 `"motion": "in"` + `focus` 对准她。
+- **3:4 封面**：孩子站得高时中文标题压头发，加 `--crop-3x4 0.1`。
+- **AI 标识要自己写**：story.json 顶层 `"ai_note": "本书画面和配音由 AI 生成"`（PDF 封面底部），片尾写进 `ending.subline`。qa 不查这一项。
+- ElevenLabs key 没有读账户用量的权限（`/v1/user/subscription` 返回 401），字符数只能按文本估。
 - Codex 一次最多 5 张附图：画风样张 2 张 + 照片最多 3 张。照片超过 3 张时只取前 3 张，把正脸和全身放前面。

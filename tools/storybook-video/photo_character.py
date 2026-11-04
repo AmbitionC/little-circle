@@ -27,8 +27,8 @@ Look at the photos and write an objective visual description that an illustrator
 that the family will instantly recognize. Describe only what you see; do not guess names or feelings.
 
 Return ONLY a JSON object with these keys (English values):
-- "desc": one sentence, max 45 words, in this exact shape: "a {age}-year-old {gender} with <hair color, length and style>, <face shape and skin tone>, <eyes>, wearing <the main outfit from the photos, with colors>, <one signature item if any: glasses, hair clip, hat, backpack>". No name in it.
-- "keep": a comma-separated list of the 3–5 most recognizable details to keep in every drawing (hair style, outfit colors, signature item). Prefer symmetric items; avoid single-side details (one earring, one hair clip) because they tend to flip sides.
+- "desc": one sentence, max 45 words, in this exact shape: "a {age}-year-old {gender} with <hair color, length and style>, <face shape and skin tone>, <eyes>, wearing <the main outfit from the photos, with colors>, <one signature item if any, only something WORN on the body: glasses, hair clip, hat, backpack>". No name in it. No final period. Never mention anything held in the hands (toys, food, balloons): the child must have free hands for the story.
+- "keep": a comma-separated list of the 3–5 most recognizable details to keep in every drawing (hair style, outfit colors, signature worn item; nothing held in the hands). Prefer symmetric items; avoid single-side details (one earring, one hair clip) because they tend to flip sides.
 - "hair": short phrase.
 - "outfit": short phrase.
 - "notes": anything the illustrator should avoid (e.g. "no glasses", "hair is not braided").
@@ -106,6 +106,7 @@ def cmd_describe(ep, args):
     print(f"看 {len(photos)} 张照片，写外貌描述…")
     ask = DESCRIBE_ASK.format(who=who(k), age=k.get("age", 3), gender={"girl": "girl", "boy": "boy"}.get(k.get("gender", ""), "child"))
     data = codex_text(ask, [ci.small_ref(p, 1024) for p in photos], log)
+    data["desc"] = data.get("desc", "").strip().rstrip(".")   # desc 要嵌进句子中间（[[kid]] stands…），句号会把句子切断
     data["_说明"] = "photo_character.py describe 写的草稿；desc 是出图用的整句描述，keep 是每张图必保的细节。可以手改，改完再 cards"
     path = os.path.join(ep, "character_draft.json")
     json.dump(data, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
