@@ -1152,7 +1152,7 @@ class PageSeg:
             cx = self.ctx.st.get("subtitle_x", W // 2) if self.ctx.st.get("subtitle_mode", "outline") == "outline" else W // 2
             x0, y0 = int(cx - c.width / 2), int(self.ctx.st["subtitle_center"] - c.height / 2)
             frame.alpha_composite(c, (x0, y0))
-            av = self.ctx.avatar(self.lines[li]["speaker"])
+            av = None if self.lines[li].get("no_avatar") else self.ctx.avatar(self.lines[li]["speaker"])  # 头像会挡住角色的页可关
             if av is not None:   # 字幕左上角挂说话人的小头像，谁在说一眼就知道
                 k = min(1.0, max(0.0, (t - self.lines[li]["start"] + 0.1) / 0.18))
                 size = int(av.width * (0.6 + 0.4 * ease(k)) + 0.5)
