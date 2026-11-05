@@ -13,7 +13,7 @@ from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-NAMES = {"narrator": "旁白", "nutty": "栗栗", "hazel": "Hazel", "bun": "Bun", "pip": "皮皮", "bruno": "Bruno",
+NAMES = {"all": "大家", "duo": "两人", "narrator": "旁白", "nutty": "栗栗", "hazel": "Hazel", "bun": "Bun", "pip": "皮皮", "bruno": "Bruno",
          "fern": "Fern", "ruby": "Ruby", "ollie": "Ollie", "rocky": "Rocky", "dot": "Dot", "bo": "Bo", "wiggles": "Wiggles", "song": "唱"}
 
 
@@ -62,6 +62,13 @@ def table_rows(script):
     return rows, hook
 
 
+def zh_scene(path):
+    """分镜表里「p01b.png：中文画面」→ {图: 中文}，没有台词的格子优先显示中文"""
+    if not path or not os.path.exists(path):
+        return {}
+    return {m.group(1): m.group(2).strip() for m in re.finditer(r"([\w-]+\.png)：(.+?)(?=\s*(?:→|（硬切）|\|))", open(path, encoding="utf-8").read())}
+
+
 def keys_of(ep):
     sys.path.insert(0, HERE)
     from codex_images import parse_keys
@@ -79,7 +86,7 @@ def every_card(every, j, story, rows, hook_beats, keys):
         beats = [b.strip(" -") for b in hook_beats.splitlines()]
         scene = md(beats[n]) if n < len(beats) else ""
         say = h.get("say", {})
-        lines = [("旁白", say.get("en", ""), say.get("zh", ""))] if 0 in p["lines"] and say else []
+        lines = [(NAMES.get(say.get("speaker", "narrator"), say.get("speaker")), say.get("en", ""), say.get("zh", ""))] if 0 in p["lines"] and say else []
         if n == 0:
             title = f"开头钩子 · {h.get('max_seconds') or 5:g} 秒"
             extra = (f"<p class=big>第 0 帧大字：<b>{html.escape(h.get('headline', ''))}</b><br>"
@@ -95,6 +102,8 @@ def every_card(every, j, story, rows, hook_beats, keys):
     main = im == page["image"]
     if im in desc:
         scene = md(desc[im])
+    elif im in zh_scene(story.get("_script", "")):
+        scene = html.escape(zh_scene(story["_script"])[im])
     elif im in keys:
         scene = f"<span lang=en>{html.escape(keys[im][1])}</span>"
     else:
@@ -127,6 +136,7 @@ def main():
     ep = os.path.abspath(args.episode)
     story = json.load(open(os.path.join(ep, "story.json"), encoding="utf-8"))
     rows, hook_beats = table_rows(os.path.join(ep, "script.md"))
+    story["_script"] = os.path.join(ep, "script.md")
     sheets = sorted(glob.glob(os.path.join(ep, "comic", "sheet*.png")), key=lambda p: int(re.findall(r"\d+", os.path.basename(p))[0]))
     if not sheets:
         sys.exit("还没有漫画：先跑 codex_images.py <集> --comic")
@@ -143,6 +153,7 @@ def main():
     for j, (k, im) in enumerate(zip(keys, panels)):
         if every:
             title, seg, scene, lines, extra, meta = every_card(every, j, story, rows, hook_beats, keys_of(ep))
+            scene = scene or html.escape(zh_scene(story["_script"]).get(every[j]["image"], ""))
         elif k == "hook":
             h = story.get("hook", {})
             say = h.get("say", {})
@@ -150,7 +161,7 @@ def main():
             secs = h.get("max_seconds") or intro or 5
             title, seg = f"开头钩子 · {secs:g} 秒", "前奏" if story.get("song") else "钩子"
             scene = md(hook_beats).replace("\n", "<br>")
-            lines = [("旁白", say.get("en", ""), say.get("zh", ""))] if say else []
+            lines = [(NAMES.get(say.get("speaker", "narrator"), say.get("speaker")), say.get("en", ""), say.get("zh", ""))] if say else []
             extra = f"<p class=big>第 0 帧大字：<b>{html.escape(h.get('headline', ''))}</b><br><span>{html.escape(h.get('subline', ''))}</span></p>"
             meta = ""
         else:
