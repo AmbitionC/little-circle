@@ -435,11 +435,14 @@ class Sparkles:
             img.alpha_composite(Image.fromarray(spr.astype(np.uint8), "RGBA").resize((s, s)), (dx, dy))
 
 
+KB_LINEAR = False
+
+
 def kb_box(motion, u, iw, ih, rw, rh, focus, zoom=1.12, z0=1.0):
     """Ken Burns 运镜：返回原图坐标下的取景框（亚像素，画面不抖）。"""
     s0 = max(rw / iw, rh / ih)
     vw0, vh0 = rw / s0, rh / s0
-    e = ease(u)
+    e = u if KB_LINEAR else ease(u)   # 匀速：每页不再慢起慢停，避免硬切前后走走停停
     if motion in ("in", "out"):
         k = e if motion == "in" else 1 - e
         z = z0 + (zoom - z0) * k
@@ -1176,12 +1179,19 @@ class EndSeg:
             img = cover_crop(Image.open(last_img).convert("RGB")).filter(ImageFilter.GaussianBlur(14))
             bg = ImageEnhance.Brightness(img).enhance(0.55).convert("RGBA")
             d = ImageDraw.Draw(bg)
+            self.move = ending.get("motion")     # 片尾慢推：背景缓缓放大，文字不动，避免整段静止
+            txt = Image.new("RGBA", bg.size, (0, 0, 0, 0)) if self.move else bg
+            d = ImageDraw.Draw(txt)
             stroke_text(d, (W // 2, 860), ending.get("headline", ""), f.get("zh", 80), rgb(st["headline_color"]), rgb(st["stroke"]))
             stroke_text(d, (W // 2, 990), ending.get("subline", ""), f.get("zh", 50), rgb(st["accent"]), (255, 255, 255), 6)
-            self.bg = bg
+            self.bg, self.txt = bg, txt
 
     def render(self, t, gt):
         frame = self.bg.copy()
+        if getattr(self, "move", None):
+            z = 1 + .08 * t / self.dur; w, h = int(W / z), int(H / z); x, y = (W - w) // 2, (H - h) // 2
+            frame = frame.crop((x, y, x + w, y + h)).resize((W, H), Image.BILINEAR)
+            frame.alpha_composite(self.txt)
         if self.ctx.sparkles:
             self.ctx.sparkles.draw(frame, gt)
         frame = frame.convert("RGB")
@@ -1324,6 +1334,8 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
     with open(story_path) as f:
         cfg = json.load(f)
     st = json.loads(json.dumps(DEFAULT_STYLE))
+    global KB_LINEAR
+    KB_LINEAR = bool((cfg.get("style") or {}).get("kb_linear"))
     for k, v in (cfg.get("style") or {}).items():
         if isinstance(v, dict) and isinstance(st.get(k), dict):
             st[k].update(v)

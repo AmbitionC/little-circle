@@ -33,11 +33,17 @@
     150,
     70,
     40
+   ],
+   "song": [
+    190,
+    130,
+    20
    ]
   },
   "tail": 0,
-  "bgm_rel_db": -11,
-  "bgm_duck_db": 0
+  "bgm_rel_db": -11.0,
+  "bgm_duck_db": 0,
+  "kb_linear": true
  },
  "cast": "../../series/cast.json",
  "hook": {
@@ -48,20 +54,20 @@
    },
    {
     "image": "h02.png",
-    "at": 1.4,
+    "at": 1.43,
     "cut": true
    },
    {
     "image": "h03.png",
-    "at": 2.8
+    "at": 2.87
    }
   ],
-  "max_seconds": 4.2,
+  "max_seconds": 4.3999999999999995,
   "motion": "in",
-  "zoom": 1.06,
+  "zoom": 1.12,
   "focus": [
    0.5,
-   0.45
+   0.5
   ],
   "headline": "小星星掉下来了！",
   "subline": "经典儿歌小星星 · 英文对话版",
@@ -70,7 +76,7 @@
    "en": "Oh! A star fell down!",
    "zh": "哇！星星掉下来了！",
    "say": "[gasps] Oh! A star fell down!",
-   "at": 1.6
+   "at": 1.45
   }
  },
  "pages": [
@@ -80,112 +86,360 @@
     "en": "star",
     "zh": "星星"
    },
+   "focus": [
+    0.42,
+    0.45
+   ],
+   "zoom": 1.08,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "pip",
+     "audio": "../../out/m03/lines/pip_4927e9a07a.wav",
+     "words": [
+      {
+       "w": "[softly]",
+       "s": 0.0,
+       "e": 0.055238095238095246
+      },
+      {
+       "w": "It",
+       "s": 0.06571428571428573,
+       "e": 0.08571428571428572
+      },
+      {
+       "w": "wants",
+       "s": 0.14952380952380953,
+       "e": 0.4666666666666667
+      },
+      {
+       "w": "to",
+       "s": 0.5171428571428571,
+       "e": 0.6190476190476191
+      },
+      {
+       "w": "go",
+       "s": 0.6952380952380953,
+       "e": 0.8476190476190476
+      },
+      {
+       "w": "home.",
+       "s": 1.0,
+       "e": 2.142857142857143
+      }
+     ],
      "en": "It wants to go home.",
-     "zh": "它想回家。",
-     "say": "[softly, worried] It wants to go home."
+     "zh": "它想回家。"
     }
    ],
+   "hold": 0.65,
    "frames": [
     {
      "image": "p01b.png",
-     "at": 1.4
-    }
-   ]
-  },
-  {
-   "image": "p02.png",
-   "word": {
-    "en": "up",
-    "zh": "上"
-   },
-   "motion": "left",
-   "lines": [
-    {
-     "speaker": "bruno",
-     "en": "I am big! Up you go!",
-     "zh": "我个子大！上去吧！",
-     "say": "[proudly] I am big! Up you go!"
-    },
-    {
-     "speaker": "bruno",
-     "en": "Oops!",
-     "zh": "哎呀！",
-     "say": "[embarrassed] Oops!"
-    }
-   ],
-   "frames": [
-    {
-     "image": "p02b.png",
-     "at": 1.5
-    },
-    {
-     "image": "p02c.png",
-     "at": 3.0,
+     "at": 1.29,
      "cut": true
     }
    ]
   },
   {
-   "image": "p03.png",
-   "word": {
-    "en": "up",
-    "zh": "上"
-   },
+   "image": "p02.png",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.1,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
+   "lines": [
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m03/lines/bruno_bcae3d279f.wav",
+     "words": [
+      {
+       "w": "[proudly]",
+       "s": 0.0,
+       "e": 0.16190476190476188
+      },
+      {
+       "w": "I",
+       "s": 0.19047619047619044,
+       "e": 0.21904761904761902
+      },
+      {
+       "w": "am",
+       "s": 0.32095238095238093,
+       "e": 0.5238095238095238
+      },
+      {
+       "w": "big!",
+       "s": 0.6571428571428571,
+       "e": 1.3238095238095238
+      },
+      {
+       "w": "Up",
+       "s": 1.4123809523809523,
+       "e": 1.5904761904761904
+      },
+      {
+       "w": "you",
+       "s": 1.6095238095238094,
+       "e": 1.6666666666666665
+      },
+      {
+       "w": "go!",
+       "s": 1.7685714285714285,
+       "e": 2.047619047619048
+      }
+     ],
+     "en": "I am big! Up you go!",
+     "zh": "我个子大！上去吧！",
+     "gap": 0.31
+    },
+    {
+     "speaker": "bruno",
+     "audio": "../../out/m03/lines/bruno_0e97a47c70.wav",
+     "words": [
+      {
+       "w": "[embarrassed]",
+       "s": 0.0,
+       "e": 0.35619047619047617
+      },
+      {
+       "w": "Oops!",
+       "s": 0.3742857142857142,
+       "e": 0.5238095238095238
+      }
+     ],
+     "en": "Oops!",
+     "zh": "哎呀！"
+    }
+   ],
+   "hold": 0.25,
+   "frames": [
+    {
+     "image": "p02b.png",
+     "at": 1.186,
+     "cut": true
+    },
+    {
+     "image": "p02c.png",
+     "at": 2.358,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/whoosh.mp3",
+     "at": 1.186,
+     "gain": 0.25
+    },
+    {
+     "file": "../../assets/sfx/bonk.mp3",
+     "at": 2.358,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "image": "p03.png",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.114,
+   "motion": "in",
+   "cut": true,
+   "lead": 0.7,
    "lines": [
     {
      "speaker": "bun",
+     "audio": "../../out/m03/lines/bun_3d372e0a83.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.13523809523809524
+      },
+      {
+       "w": "Up!",
+       "s": 0.15047619047619046,
+       "e": 0.2571428571428572
+      },
+      {
+       "w": "Up!",
+       "s": 0.43523809523809526,
+       "e": 1.4761904761904763
+      }
+     ],
      "en": "Up! Up!",
      "zh": "上！上！",
-     "say": "[jumping] Up! Up!"
+     "gap": 0.36
     },
     {
      "speaker": "pip",
+     "audio": "../../out/m03/lines/pip_002027a230.wav",
+     "words": [
+      {
+       "w": "[worried]",
+       "s": 0.0,
+       "e": 0.057142857142857155
+      },
+      {
+       "w": "Oh",
+       "s": 0.0638095238095238,
+       "e": 0.07619047619047618
+      },
+      {
+       "w": "no!",
+       "s": 0.20285714285714282,
+       "e": 0.6857142857142857
+      },
+      {
+       "w": "It's",
+       "s": 0.7619047619047619,
+       "e": 0.9904761904761905
+      },
+      {
+       "w": "so",
+       "s": 1.0666666666666664,
+       "e": 1.219047619047619
+      },
+      {
+       "w": "dark!",
+       "s": 1.340952380952381,
+       "e": 1.9047619047619047
+      }
+     ],
      "en": "Oh no! It's so dark!",
-     "zh": "糟了！它好暗！",
-     "say": "[worried] Oh no! It's so dark!"
+     "zh": "糟了！它好暗！"
     }
    ],
+   "hold": 0.25,
    "frames": [
     {
      "image": "p03b.png",
-     "at": 0.8
+     "at": 0.65,
+     "cut": true
+    },
+    {
+     "image": "p03d.png",
+     "at": 1.35,
+     "cut": true
     },
     {
      "image": "p03c.png",
-     "at": 2.2
+     "at": 2.2,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 0.65,
+     "gain": 0.25
     }
    ]
   },
   {
    "image": "p04.png",
-   "word": {
-    "en": "sing",
-    "zh": "唱"
-   },
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.095,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "bun",
+     "audio": "../../out/m03/lines/bun_97450a6f04.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.055238095238095246
+      },
+      {
+       "w": "I",
+       "s": 0.07047619047619047,
+       "e": 0.08571428571428572
+      },
+      {
+       "w": "have",
+       "s": 0.11619047619047619,
+       "e": 0.23809523809523808
+      },
+      {
+       "w": "an",
+       "s": 0.26380952380952377,
+       "e": 0.3142857142857143
+      },
+      {
+       "w": "idea!",
+       "s": 0.4057142857142857,
+       "e": 1.038095238095238
+      },
+      {
+       "w": "Let's",
+       "s": 1.1047619047619046,
+       "e": 1.380952380952381
+      },
+      {
+       "w": "sing!",
+       "s": 1.457142857142857,
+       "e": 2.142857142857143
+      }
+     ],
      "en": "I have an idea! Let's sing!",
      "zh": "我有个好主意！我们来唱歌！",
-     "say": "[brightly] I have an idea! Let's sing!"
+     "gap": 0.16
     },
     {
      "speaker": "bun",
+     "audio": "../../out/m03/lines/bun_1294b1c7ae.wav",
+     "words": [
+      {
+       "w": "[warmly]",
+       "s": 0.0,
+       "e": 0.18095238095238095
+      },
+      {
+       "w": "Sing",
+       "s": 0.1961904761904762,
+       "e": 0.2571428571428572
+      },
+      {
+       "w": "with",
+       "s": 0.2876190476190476,
+       "e": 0.40952380952380957
+      },
+      {
+       "w": "us!",
+       "s": 0.5361904761904761,
+       "e": 1.5523809523809522
+      }
+     ],
      "en": "Sing with us!",
-     "zh": "和我们一起唱！",
-     "say": "[to the viewer, warm] Sing with us!"
+     "zh": "和我们一起唱！"
     }
    ],
+   "hold": 0.2,
    "frames": [
     {
      "image": "p04b.png",
-     "at": 2.2
+     "at": 2.095,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.02,
+     "gain": 0.35
     }
    ]
   },
@@ -195,143 +449,480 @@
     "en": "star",
     "zh": "星星"
    },
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "zoom": 1.16,
    "motion": "in",
-   "song_section": true,
-   "lines": [],
-   "seconds": 8.0,
+   "cut": true,
+   "lead": 0.0,
+   "lines": [
+    {
+     "speaker": "song",
+     "audio": "../../out/m03/lines/song_0.wav",
+     "words": [
+      {
+       "w": "Twinkle,",
+       "s": 0.0,
+       "e": 0.5555555555555556
+      },
+      {
+       "w": "twinkle,",
+       "s": 1.1111111111111112,
+       "e": 1.6666666666666667
+      },
+      {
+       "w": "little",
+       "s": 2.2222222222222223,
+       "e": 2.7777777777777777
+      },
+      {
+       "w": "star,",
+       "s": 3.3333333333333335,
+       "e": 3.8888888888888893
+      }
+     ],
+     "en": "Twinkle, twinkle, little star,",
+     "zh": "一闪一闪小星星，",
+     "gap": 0,
+     "no_avatar": true
+    },
+    {
+     "speaker": "song",
+     "audio": "../../out/m03/lines/song_1.wav",
+     "words": [
+      {
+       "w": "How",
+       "s": 0.0,
+       "e": 0.5555555555555556
+      },
+      {
+       "w": "I",
+       "s": 0.5555555555555556,
+       "e": 1.1111111111111112
+      },
+      {
+       "w": "wonder",
+       "s": 1.1111111111111112,
+       "e": 1.6666666666666667
+      },
+      {
+       "w": "what",
+       "s": 2.2222222222222223,
+       "e": 2.7777777777777777
+      },
+      {
+       "w": "you",
+       "s": 2.7777777777777777,
+       "e": 3.3333333333333335
+      },
+      {
+       "w": "are!",
+       "s": 3.3333333333333335,
+       "e": 3.8888888888888893
+      }
+     ],
+     "en": "How I wonder what you are!",
+     "zh": "你是多么奇妙呀！",
+     "gap": 0,
+     "no_avatar": true
+    }
+   ],
+   "hold": 0.0,
    "frames": [
     {
      "image": "p05b.png",
-     "at": 2.0
+     "at": 1.481,
+     "cut": true
+    },
+    {
+     "image": "p05e.png",
+     "at": 2.963,
+     "cut": true
     },
     {
      "image": "p05c.png",
-     "at": 4.0
+     "at": 4.444,
+     "cut": true
+    },
+    {
+     "image": "p05f.png",
+     "at": 5.926,
+     "cut": true
     },
     {
      "image": "p05d.png",
-     "at": 6.0
+     "at": 7.407,
+     "cut": true
     }
    ],
-   "_说明": "整段演唱 Twinkle, twinkle, little star / How I wonder what you are，没有台词；歌词字幕照唱的显示"
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 1.481,
+     "gain": 0.08
+    },
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 4.444,
+     "gain": 0.1
+    },
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 7.407,
+     "gain": 0.12
+    }
+   ]
   },
   {
    "image": "p06.png",
-   "word": {
-    "en": "up",
-    "zh": "上"
-   },
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.16,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "bruno",
+     "audio": "../../out/m03/lines/bruno_14c0584cd4.wav",
+     "words": [
+      {
+       "w": "[cheerful]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "Bounce",
+       "s": 0.0028571428571428597,
+       "e": 0.23809523809523808
+      },
+      {
+       "w": "on",
+       "s": 0.28857142857142853,
+       "e": 0.3904761904761904
+      },
+      {
+       "w": "my",
+       "s": 0.4666666666666667,
+       "e": 0.6190476190476191
+      },
+      {
+       "w": "tummy!",
+       "s": 0.6952380952380953,
+       "e": 2.142857142857143
+      }
+     ],
      "en": "Bounce on my tummy!",
      "zh": "在我肚子上弹！",
-     "say": "[cheerful] Bounce on my tummy!"
+     "gap": 0.16
     },
     {
      "speaker": "all",
+     "audio": "../../out/m03/lines/all_8d3d71989a.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.20847457627118646
+      },
+      {
+       "w": "One,",
+       "s": 0.22203389830508477,
+       "e": 0.3305084745762712
+      },
+      {
+       "w": "two,",
+       "s": 0.5338983050847458,
+       "e": 1.5847457627118644
+      },
+      {
+       "w": "three...",
+       "s": 1.6584745762711866,
+       "e": 2.4322033898305087
+      },
+      {
+       "w": "[shouting]",
+       "s": 2.4661016949152543,
+       "e": 2.703389830508475
+      },
+      {
+       "w": "UP!",
+       "s": 2.726271186440678,
+       "e": 2.838983050847458
+      }
+     ],
      "en": "One, two, three... UP!",
-     "zh": "一、二、三……上！"
+     "zh": "一、二、三……上！",
+     "gap": 0.66
     },
     {
      "speaker": "bruno",
+     "audio": "../../out/m03/lines/bruno_8470611045.wav",
+     "words": [
+      {
+       "w": "[surprised]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "Ouch!",
+       "s": 0.06666666666666665,
+       "e": 0.6761904761904762
+      },
+      {
+       "w": "My",
+       "s": 0.7266666666666667,
+       "e": 0.8285714285714285
+      },
+      {
+       "w": "nose!",
+       "s": 0.9809523809523809,
+       "e": 2.2
+      }
+     ],
      "en": "Ouch! My nose!",
-     "zh": "哎哟！我的鼻子！",
-     "say": "[funny] Ouch! My nose!"
+     "zh": "哎哟！我的鼻子！"
     }
    ],
+   "hold": 0.15,
    "frames": [
     {
      "image": "p06b.png",
-     "at": 1.4
+     "at": 1.867,
+     "cut": true
     },
     {
      "image": "p06c.png",
-     "at": 3.0
+     "at": 4.178,
+     "cut": true
     },
     {
      "image": "p06d.png",
-     "at": 4.2,
+     "at": 4.947,
      "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 4.178,
+     "gain": 0.35
+    },
+    {
+     "file": "../../assets/sfx/bonk.mp3",
+     "at": 4.947,
+     "gain": 0.4
     }
    ]
   },
   {
    "image": "p07.png",
-   "word": {
-    "en": "up",
-    "zh": "上"
-   },
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.083,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "all",
+     "audio": "../../out/m03/lines/all_fe15c81215.wav",
+     "words": [
+      {
+       "w": "[shouting]",
+       "s": 0.0,
+       "e": 0.22857142857142856
+      },
+      {
+       "w": "UP,",
+       "s": 0.2542857142857142,
+       "e": 0.41904761904761906
+      },
+      {
+       "w": "UP,",
+       "s": 0.4571428571428572,
+       "e": 0.6095238095238095
+      },
+      {
+       "w": "UP!",
+       "s": 0.7876190476190477,
+       "e": 2.438095238095238
+      }
+     ],
      "en": "UP, UP, UP!",
-     "zh": "上，上，上！",
-     "say": "[shouting together, getting louder] UP, UP, UP!",
-     "pause_after": 0.8
+     "zh": "上，上，上！"
     }
    ],
+   "hold": 1.6,
    "frames": [
     {
      "image": "p07b.png",
-     "at": 1.4
+     "at": 0.74,
+     "cut": true
+    },
+    {
+     "image": "p07d.png",
+     "at": 1.48,
+     "cut": true
     },
     {
      "image": "p07c.png",
-     "at": 2.8
+     "at": 2.221,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    },
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 0.74,
+     "gain": 0.3
     }
    ]
   },
   {
    "image": "p08.png",
-   "word": {
-    "en": "good night",
-    "zh": "晚安"
-   },
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.08,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "pip",
+     "audio": "../../out/m03/lines/pip_f449d29120.wav",
+     "words": [
+      {
+       "w": "[warmly]",
+       "s": 0.0,
+       "e": 0.1219047619047619
+      },
+      {
+       "w": "Good",
+       "s": 0.12761904761904763,
+       "e": 0.15238095238095237
+      },
+      {
+       "w": "night,",
+       "s": 0.20285714285714285,
+       "e": 0.5333333333333333
+      },
+      {
+       "w": "little",
+       "s": 0.5657142857142856,
+       "e": 0.7619047619047619
+      },
+      {
+       "w": "star!",
+       "s": 0.8838095238095238,
+       "e": 1.5238095238095237
+      }
+     ],
      "en": "Good night, little star!",
-     "zh": "晚安，小星星！",
-     "say": "[soft, happy] Good night, little star!"
+     "zh": "晚安，小星星！"
     }
    ],
+   "hold": 0.4,
    "frames": [
     {
      "image": "p08b.png",
-     "at": 1.8
+     "at": 1.014,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 1.014,
+     "gain": 0.2
     }
    ]
   },
   {
    "image": "p09.png",
-   "word": {
-    "en": "star",
-    "zh": "星星"
-   },
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom": 1.08,
    "motion": "in",
+   "cut": true,
+   "lead": 0.08,
    "lines": [
     {
      "speaker": "bruno",
+     "audio": "../../out/m03/lines/bruno_510f8f89b2.wav",
+     "words": [
+      {
+       "w": "[laughs]",
+       "s": 0.0,
+       "e": 0.7333333333333333
+      },
+      {
+       "w": "My",
+       "s": 0.8352380952380952,
+       "e": 1.0380952380952382
+      },
+      {
+       "w": "nose",
+       "s": 1.1295238095238094,
+       "e": 1.4952380952380953
+      },
+      {
+       "w": "is",
+       "s": 1.5714285714285712,
+       "e": 1.7238095238095237
+      },
+      {
+       "w": "a",
+       "s": 1.7619047619047616,
+       "e": 1.7999999999999998
+      },
+      {
+       "w": "star!",
+       "s": 1.9066666666666667,
+       "e": 2.942857142857143
+      }
+     ],
      "en": "My nose is a star!",
-     "zh": "我的鼻子变成星星啦！",
-     "say": "[proud, funny] My nose is a star!"
+     "zh": "我的鼻子变成星星啦！"
     }
    ],
+   "hold": 0.15,
    "frames": [
     {
      "image": "p09b.png",
-     "at": 1.2
+     "at": 1.391,
+     "cut": true
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 1.391,
+     "gain": 0.3
     }
    ]
   }
  ],
  "ending": {
   "headline": "star 星星 · up 上 · good night 晚安",
-  "subline": "和宝宝一起唱：Twinkle, twinkle, little star!"
+  "subline": "和宝宝一起唱：Twinkle, twinkle, little star!",
+  "seconds": 3.7,
+  "motion": true
  },
  "ai_note": "画面和配音由 AI 生成",
  "loudness": {
@@ -348,5 +939,9 @@
     "fade": 1.0
    }
   ]
+ },
+ "bgm": {
+  "file": "../../out/m03/bgm_talk.wav",
+  "volume": 0.2
  }
 }

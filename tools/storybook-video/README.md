@@ -47,6 +47,7 @@ curl -L -o fonts/Fredoka.ttf "https://raw.githubusercontent.com/google/fonts/mai
 | 页面 `clip`（可选） | 这一页放一段视频（H3 / 可灵动作镜头）代替静态图运镜，台词和字幕照常叠上；`clip_from`、`clip_seconds` 截取。页长至少放完视频。 |
 | `bgm.wav`（可选） | 背景音乐，有人说话时自动压到一半。分段配乐写 `"bgm": {"cues": [{"page": 0, "file": "a.mp3", "volume": 0.22}, {"page": 6, "offset": -0.35, "file": null}, {"page": 6, "file": "b.mp3", "volume": 0.24, "fade": 0.1}]}`：`page` 0 是钩子、1 起是第几页，`offset` 秒（可为负），`file: null` 是静音，`fade` 交叉淡入淡出秒数，`skip` 从音乐第几秒开始放。每段放到下一段开始。 |
 | `sfx/*.wav`（可选） | 音效，按页内时间点放。可加 `skip`（从第几秒开始用）、`dur`（最多用几秒，切口淡出）。 |
+| `style.kb_linear`、`ending.motion`（可选） | 运镜匀速；片尾卡背景慢推。 |
 | 台词字段 `no_avatar`（可选） | `true` 时这句不显示字幕旁的圆头像，头像挡住角色时用。 |
 | 顶层 `ambience`（可选） | 环境底声（鸟叫、溪水、风），单独一层，不触发压音乐。写法同 `bgm.cues`；`volume: 1.0` = 比人声低 `style.amb_rel_db`（默认 24 dB），说话时一起压。工具：`sfx_probe.py` 看音效形状，`sfx_import.py` 把 Freesound 原始文件切好、统一电平、记出处进 `series/sfx_sources.csv`。见 `docs/skill-sound-design.md`。 |
 
