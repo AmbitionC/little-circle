@@ -35,7 +35,7 @@
 | p03 | p03.png：Bun 蹦进来 → p03b.png：转身对镜头，两手高高举起 → p03c.png：踮脚蹦起来喊 UP | **bun**：`Can you reach up? Up, up, UP!`<br>你能够到吗？上，上，上！ | 三个 Up 一个比一个高，句后留 1.2 秒给宝宝跟喊 |
 | p04 | p04.png：Bruno 踮脚晃 → p04d.png：往另一边歪 → p04b.png：三个往后倒进落叶堆 → p04e.png：叶子飘下来落在头上 → p04c.png：皮皮抱膝，难过 | **all**：`Whoa... whoa... OOPS!`<br>哎……哎……哎呀！<br>**pip**：`No star...`<br>没有星星了…… | Whoa 两下音乐跟着歪；OOPS 那一小节**伴奏停**；No star 只留八音盒一个长音 |
 | p05 | p05.png：Bun 一只耳朵"叮"地竖起、竖手指 → p05b.png：拎着一小桶水跑回来 | **bun**：`I have an idea!`<br>我有个好主意！ | 叮一声，旋律回来 |
-| p06 | p06.png：三个趴在桶边往里看 → p06b.png：俯拍桶里，星星的倒影一闪一闪（硬切）→ p06d.png：皮皮手指点水，星星晃了 → p06e.png：水静下来，星星又亮了 → p06c.png：皮皮抱着水桶，脸被映成金色 | **bun**：`Look!`<br>看！<br>**pip**：`My star! My little star!`<br>我的星星！我的小星星！ | 揭晓那一下钢片琴刮奏 + 风铃，接 Twinkle 副句最满的一段 |
+| p06 | p06.png：三个趴在桶边往里看 → p06b.png：正上方俯拍水桶，画面只有桶和星星倒影（硬切）→ p06d.png：一根小手指从桶沿伸进来点水，星星晃了 → p06e.png：水静下来，星星更亮 → p06c.png：皮皮抱着水桶，脸被映成金色 | **bun**：`Look!`<br>看！<br>**pip**：`My star! My little star!`<br>我的星星！我的小星星！ | 揭晓那一下钢片琴刮奏 + 风铃，接 Twinkle 副句最满的一段 |
 | p07 | p07.png：皮皮挨着水桶睡着，Bruno 给他盖一片大叶子 → p07b.png：Bruno 和 Bun 手指放嘴边踮脚走开 | **pip**：`Good night, star.`<br>晚安，星星。 | 放慢、变轻，像摇篮曲 |
 | p08 | p08.png：彩蛋：Bruno 回来捧起水桶咕咚咕咚喝 → p08d.png：Bruno 腮帮子鼓成球 → p08b.png：皮皮惊醒坐直，指着他（硬切）→ p08c.png：Bruno 鼓着腮帮子、下巴滴水，皮皮叉腰，天上真星星还在闪 | **sfx**：`Gulp, gulp!`<br>咕咚咕咚！<br>**pip**：`Bruno! My STAR!`<br>Bruno！我的星星！ | 喝水时音乐停，喊完一个滑稽低音 |
 
@@ -53,7 +53,7 @@
 
 - **钩子首帧出图提示词**：
   ```
-  a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] lies on his back on a small soft bed of leaves in the middle of the clearing, wide awake, eyes sparkling as he looks up at the big golden star twinkling high above him, the star shines with little sparkle rays, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+  a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] lies on his back on a small soft bed of leaves in the middle of the clearing, wide awake, eyes sparkling as he looks up at the big golden star twinkling high above him, the star shines with little sparkle rays, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
   ```
 
 **h02.png** ← kling_first.png
@@ -73,7 +73,7 @@ the big golden five-pointed star above flashes brighter with a sparkle burst, th
 
 **p01.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] crouches low in the middle of the clearing, knees bent, ready to jump, looking up at the big golden star with a determined face, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] crouches low in the middle of the clearing, knees bent, ready to jump, looking up at the big golden star with a determined face, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p01b.png** ← p01.png
@@ -93,7 +93,7 @@ the mouse jumps again even higher with all his might, legs tucked, both arms and
 
 **p02.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]] walks up next to [[pip]] and pats his own round tummy proudly with a big confident grin, chin up, the mouse looks up at him hopefully, sizes: the bear is about three times as tall as the mouse, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]] walks up next to [[pip]] and pats his own round tummy proudly with a big confident grin, chin up, the mouse looks up at him hopefully, sizes: the bear is about three times as tall as the mouse, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p02b.png** ← p02.png
@@ -108,32 +108,32 @@ the bear stands on his tiptoes lifting the mouse as high as he can, the bear's c
 
 **p02d.png** ← p02b.png
 ```
-close-up from below: the tiny mouse at the very top stretches one arm up so hard that only his fingertips reach, tongue poking out in effort, the big golden star still far away in the sky
+a completely new close-up camera angle from low down looking up: the tiny mouse fills the upper middle of the frame and stretches one arm up so hard that only his fingertips reach, tongue poking out in effort, the big golden star still far away above him in the night sky; his feet stand on the bear's two big furry paws, and the bear's two long furry arms run all the way down to the very bottom edge of the image, solid fur with no fade, filling the lower part of the frame
 ```
 
-**p02e.png** ← p02.png
+**p02e.png** ← p02c.png
 ```
-the bear on tiptoes starts to wobble a little, one foot lifting, the mouse still held up high grabbing at the air, both of them with big surprised eyes
+the bear still holds the tiny mouse high above his head with both paws, exactly as before, but now he starts to wobble: he leans to one side with one foot lifting off the ground, little wobble lines, both of them with big surprised eyes, the mouse grabbing at the air
 ```
 
-**p03.png**
+**p03.png** ← p02c.png
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bun]] hops in from the side toward [[bruno]] who is holding [[pip]] up high above his head, then she turns to face the viewer, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+the bear keeps holding the tiny mouse high above his head with both paws, exactly as before, the mouse stays up there and does not come down; [[bun]] hops in from the left side next to the bear, turning to face the viewer, sizes: the bear about twice as tall as the bunny
 ```
 
 **p03b.png** ← p03.png
 ```
-the bunny stands facing the viewer and looks straight into the camera, stretching both of her arms straight up high with an eager encouraging face, inviting the viewer to reach up too, behind her the bear on tiptoes still lifts the mouse up toward the star
+the bunny stands facing the viewer and looks straight into the camera, stretching both of her arms straight up high with an eager encouraging face, inviting the viewer to reach up too; behind her the bear keeps holding the mouse high above his head, unchanged
 ```
 
 **p03c.png** ← p03b.png
 ```
-the bunny now jumps up on her tiptoes facing the viewer, both arms stretched as high as they go, mouth wide open shouting, ears straight up, full of energy
+the bunny now jumps up on her tiptoes facing the viewer, both arms stretched as high as they go, mouth wide open shouting, ears straight up, full of energy; the bear keeps holding the mouse high above his head, unchanged
 ```
 
 **p04.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]] wobbles on his tiptoes holding [[pip]] high above his head, leaning to one side, both of them with big worried eyes, [[bun]] beside them with her paws up in alarm, little wobble lines, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]] wobbles on his tiptoes holding [[pip]] high above his head, leaning to one side, both of them with big worried eyes, [[bun]] beside them with her paws up in alarm, little wobble lines, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p04b.png** ← p04.png
@@ -148,7 +148,7 @@ the three sit in the soft leaf heap with leaves on their heads, the tiny mouse h
 
 **p04d.png** ← p04.png
 ```
-the bear tips the other way now, one foot in the air, the mouse up high flailing his little arms, the bunny reaching out to help
+the bear tips the other way now, one foot in the air, still firmly gripping the mouse in both paws high above his head, the mouse is not thrown and stays in the bear's paws, flailing his little arms, the bunny reaching out to help
 ```
 
 **p04e.png** ← p04b.png
@@ -158,7 +158,7 @@ the three lie in the soft leaf heap as the puffed-up leaves float gently down on
 
 **p05.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bun]] sits in the soft leaf heap next to [[bruno]] and [[pip]]; suddenly one of the bunny's long ears springs straight up with a little 'ping' and she raises one finger with a bright clever smile, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bun]] sits in the soft leaf heap next to [[bruno]] and [[pip]]; suddenly one of the bunny's long ears springs straight up with a little 'ping' and she raises one finger with a bright clever smile, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p05b.png** ← p05.png
@@ -168,12 +168,12 @@ the bunny hops back fast carrying a small round wooden bucket about as tall as t
 
 **p06.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]], [[bun]] and [[pip]] lean over a small round wooden bucket about as tall as the bunny's knees, full of still water on the grass and peek into it, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]], [[bun]] and [[pip]] lean over a small round wooden bucket about as tall as the bunny's knees, full of still water on the grass and peek into it, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
-**p06b.png** ← p06.png
+**p06b.png**
 ```
-a different camera angle: a top-down close-up looking straight down into the bucket: the big golden star shines right there on the still water as a bright twinkling reflection, the mouse's face glowing with surprise at the edge of the bucket
+a shot taken from directly overhead, camera pointing straight down at the ground: we look straight down into a small round wooden bucket full of still dark night-blue water, the bucket's rim is a perfect circle, seen from exactly above so no outside wall of the bucket is visible, the circle is about 85 percent of the image width and its center is 38 percent down from the top of the image, the big bright golden five-pointed star shines exactly in the center of the water as a twinkling reflection with soft sparkle rays, around the bucket only soft dark grass, the lower 35 percent of the image is plain soft dark grass with nothing on it, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, no characters at all, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16
 ```
 
 **p06c.png** ← p06.png
@@ -183,42 +183,42 @@ the tiny mouse hugs the side of the bucket with both arms, his face lit warm gol
 
 **p06d.png** ← p06b.png
 ```
-in the same top-down view the tiny mouse gently pokes the water with one finger, little round ripples spread and the star reflection wobbles
+keep the same overhead view and the same bucket: one tiny pink finger reaches in from the top edge of the rim and gently pokes the water, little round ripples spread and the star reflection wobbles
 ```
 
 **p06e.png** ← p06b.png
 ```
-in the same top-down view the ripples have calmed and the star reflection shines bright and still again in the middle of the water, three faces around the edge of the bucket smiling down
+keep the same overhead view and the same bucket: the water is calm again, the star reflection shines even brighter and perfectly still in the center, with a soft sparkle burst
 ```
 
 **p07.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] sleeps curled up next to the small wooden bucket with the star shining in its water, one hand on the bucket, a peaceful smile; [[bruno]] gently tucks a big leaf over him like a blanket and [[bun]] watches sweetly, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] sleeps curled up on the grass in the middle of the clearing, next to the small wooden bucket with the star shining in its water, one hand on the bucket, a peaceful smile; one single big soft leaf lies on top of him like a blanket, covering his whole body from his shoulders to his toes, only his head and the hand on the bucket stick out; [[bruno]] kneels behind him gently patting the leaf blanket, [[bun]] watches sweetly, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p07b.png** ← p07.png
 ```
-the bear and the bunny tiptoe away with fingers on their lips, the sleeping mouse and the shining bucket in the middle, the star high in the sky twinkles softly
+the bear and the bunny are now walking away on tiptoe toward the left edge, mid-step, each with one finger on the lips, looking back; the sleeping mouse under the leaf blanket and the shining bucket stay exactly as they are; the star high in the sky twinkles softly
 ```
 
-**p08.png**
+**p08.png** ← p07.png
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with only a few soft small stars and one big bright golden five-pointed star high up in the top of the sky, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]] comes back alone, picks up the same small round wooden bucket of water, about as tall as the bunny's knees, with both paws and tips it up to his mouth, drinking it thirstily, gulp, eyes closed, [[pip]] still asleep beside him under the big leaf blanket, sizes: the bear is about three times as tall as the mouse, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees, grass and sky, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+the bunny is gone. the bear has come back alone and stands up behind the sleeping mouse, he holds the same small wooden bucket in both paws, tipped up to his mouth, drinking it thirstily, gulp, eyes closed, the bucket is the same size as before and no longer on the ground; the mouse stays exactly where he was, asleep on the grass under the same big leaf blanket
 ```
 
 **p08b.png** ← p08.png
 ```
-the tiny mouse has woken up and sits bolt upright, eyes huge, both arms up in shock, pointing at the bear; the bear freezes with the bucket still at his mouth
+the tiny mouse has woken up and sits bolt upright on the grass with the leaf blanket slipping down to his lap, eyes huge, pointing up at the bear with one arm; the bear freezes with the bucket still at his mouth
 ```
 
 **p08d.png** ← p08.png
 ```
-close-up: the bear with the bucket tipped to his mouth, cheeks bulging round and full of water, eyes squeezed shut, a little splash at the rim
+the bear's cheeks now bulge round and full of water, eyes squeezed shut, the bucket tipped to his mouth with a little splash at the rim; the mouse stays asleep under the leaf blanket, unchanged
 ```
 
 **p08c.png** ← p08.png
 ```
-the bear lowers the empty bucket with puffed-out cheeks still full of water and a guilty sheepish face, water dripping down his chin, the tiny mouse stands with fists on his hips, high above them the big golden star still twinkles in the sky
+the bear lowers the empty bucket with puffed-out cheeks still full of water and a guilty sheepish face, water dripping down his chin, the tiny mouse stands on the grass with fists on his hips and the leaf blanket on the ground beside him, high above them the big golden star still twinkles in the sky
 ```
 
 ## 4. 发布文案（草稿，成片后定）
