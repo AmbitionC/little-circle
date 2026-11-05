@@ -1,0 +1,309 @@
+{
+ "output_name": "m03_twinkle_star_talk",
+ "title_en": "Twinkle, Twinkle, Little Star",
+ "title_zh": "小星星，摘星星",
+ "_说明": "2026-11-05 用户选定的第二首「老儿歌对话版」（模式同 m02 对话版）：背景音乐照公有领域旋律 Twinkle, Twinkle, Little Star 合成（八音盒/钢片琴当主旋律，不唱），角色用英文对话讲故事。lead/gap/hold 和 lines 的 audio 等配音后由本机 prep_talk 脚本按小节算，现在的 at 是草稿值，只供漫画剧本排格子。",
+ "series": {
+  "badge_text": "栗栗学英语 · 森林故事",
+  "badge_alpha": 0.72
+ },
+ "style": {
+  "speaker_colors": {
+   "sfx": [
+    184,
+    69,
+    44
+   ],
+   "bruno": [
+    120,
+    72,
+    30
+   ],
+   "bun": [
+    172,
+    56,
+    44
+   ],
+   "pip": [
+    70,
+    96,
+    150
+   ],
+   "all": [
+    150,
+    70,
+    40
+   ]
+  },
+  "tail": 0,
+  "bgm_rel_db": -8
+ },
+ "cast": "../../series/cast.json",
+ "hook": {
+  "frames": [
+   {
+    "image": "kling_first.png",
+    "at": 0
+   },
+   {
+    "image": "h02.png",
+    "at": 1.6
+   },
+   {
+    "image": "h03.png",
+    "at": 2.8
+   }
+  ],
+  "max_seconds": 4.0,
+  "motion": "in",
+  "zoom": 1.06,
+  "focus": [
+   0.5,
+   0.45
+  ],
+  "headline": "皮皮能摘到星星吗？",
+  "subline": "经典儿歌小星星 · 英文对话版",
+  "say": {
+   "speaker": "pip",
+   "en": "Look! A star!",
+   "zh": "看！一颗星星！",
+   "say": "[whispers, amazed] Look! A star!",
+   "at": 0.5
+  }
+ },
+ "pages": [
+  {
+   "image": "p01.png",
+   "word": {
+    "en": "up",
+    "zh": "上"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "I want it! Up! Up!",
+     "zh": "我要它！上！上！",
+     "say": "[excited] I want it! [jumping] Up! Up!"
+    }
+   ],
+   "frames": [
+    {
+     "image": "p01b.png",
+     "at": 1.2
+    },
+    {
+     "image": "p01c.png",
+     "at": 2.4,
+     "cut": true
+    }
+   ]
+  },
+  {
+   "image": "p02.png",
+   "word": {
+    "en": "up",
+    "zh": "上"
+   },
+   "motion": "left",
+   "lines": [
+    {
+     "speaker": "bruno",
+     "en": "I am big! Up you go!",
+     "zh": "我个子大！上去吧！",
+     "say": "[proudly] I am big! Up you go!"
+    },
+    {
+     "speaker": "pip",
+     "en": "Up... up... too far!",
+     "zh": "上……上……太远啦！",
+     "say": "[straining] Up... up... [sighs] too far!"
+    }
+   ],
+   "frames": [
+    {
+     "image": "p02b.png",
+     "at": 1.6
+    },
+    {
+     "image": "p02c.png",
+     "at": 3.0
+    }
+   ]
+  },
+  {
+   "image": "p03.png",
+   "word": {
+    "en": "up",
+    "zh": "上"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "bun",
+     "en": "Can you reach up? Up, up, UP!",
+     "zh": "你能够到吗？上，上，上！",
+     "say": "[to the viewer, cheerful] Can you reach up? [getting louder] Up, up, UP!",
+     "pause_after": 1.2
+    }
+   ],
+   "frames": [
+    {
+     "image": "p03b.png",
+     "at": 0.6
+    }
+   ]
+  },
+  {
+   "image": "p04.png",
+   "word": {
+    "en": "star",
+    "zh": "星星"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "all",
+     "en": "Whoa... whoa... OOPS!",
+     "zh": "哎……哎……哎呀！"
+    },
+    {
+     "speaker": "pip",
+     "en": "No star...",
+     "zh": "没有星星了……",
+     "say": "[sadly, small voice] No star..."
+    }
+   ],
+   "frames": [
+    {
+     "image": "p04b.png",
+     "at": 1.6,
+     "cut": true,
+     "shake": true
+    },
+    {
+     "image": "p04c.png",
+     "at": 2.8
+    }
+   ]
+  },
+  {
+   "image": "p05.png",
+   "word": {
+    "en": "star",
+    "zh": "星星"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "bun",
+     "en": "I have an idea!",
+     "zh": "我有个好主意！",
+     "say": "[brightly] I have an idea!"
+    }
+   ],
+   "frames": [
+    {
+     "image": "p05b.png",
+     "at": 1.4
+    }
+   ]
+  },
+  {
+   "image": "p06.png",
+   "word": {
+    "en": "star",
+    "zh": "星星"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "bun",
+     "en": "Look!",
+     "zh": "看！",
+     "say": "[whispers] Look!"
+    },
+    {
+     "speaker": "pip",
+     "en": "My star! My little star!",
+     "zh": "我的星星！我的小星星！",
+     "say": "[gasps, delighted] My star! My little star!"
+    }
+   ],
+   "frames": [
+    {
+     "image": "p06b.png",
+     "at": 0.8,
+     "cut": true
+    },
+    {
+     "image": "p06c.png",
+     "at": 2.0
+    }
+   ]
+  },
+  {
+   "image": "p07.png",
+   "word": {
+    "en": "good night",
+    "zh": "晚安"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "pip",
+     "en": "Good night, star.",
+     "zh": "晚安，星星。",
+     "say": "[sleepy, soft] Good night, star."
+    }
+   ],
+   "frames": [
+    {
+     "image": "p07b.png",
+     "at": 1.8
+    }
+   ]
+  },
+  {
+   "image": "p08.png",
+   "word": {
+    "en": "star",
+    "zh": "星星"
+   },
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "sfx",
+     "en": "Gulp, gulp!",
+     "zh": "咕咚咕咚！"
+    },
+    {
+     "speaker": "pip",
+     "en": "Bruno! My STAR!",
+     "zh": "Bruno！我的星星！",
+     "say": "[shocked shout] Bruno! My STAR!"
+    }
+   ],
+   "frames": [
+    {
+     "image": "p08b.png",
+     "at": 1.0,
+     "cut": true
+    },
+    {
+     "image": "p08c.png",
+     "at": 2.4
+    }
+   ]
+  }
+ ],
+ "ending": {
+  "headline": "star 星星 · up 上 · good night 晚安",
+  "subline": "和宝宝一起说：Good night, star!"
+ },
+ "ai_note": "画面和配音由 AI 生成",
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ }
+}
