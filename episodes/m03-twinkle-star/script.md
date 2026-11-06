@@ -67,7 +67,7 @@
 
 **h00.png** ← kling_first.png
 ```
-nothing is falling yet, remove the streak and its trail completely: the little golden star (a small golden five-pointed star a bit smaller than the mouse's head, with two tiny round black eyes and a small smiling mouth) sits still high in the sky near the very top of the picture, about 60 percent across from the left, twinkling with bright soft sparkle rays among the small stars; the mouse sits in the same place with his hands in his lap, looking down at the leaves with a calm sleepy smile, not pointing, unaware of the star
+nothing is falling yet, remove the streak and its trail completely: the little golden star (a small golden five-pointed star a bit smaller than the mouse's head, with two tiny round black eyes and a small smiling mouth) sits still high in the sky about 23 percent down from the top of the picture, about 60 percent across from the left, twinkling with bright soft sparkle rays among the small stars; the mouse sits in the same place with his hands in his lap, looking down at the leaves with a calm sleepy smile, not pointing, unaware of the star
 ```
 
 **h00t.png** ← h00.png
@@ -82,7 +82,7 @@ same shot, the mouse stays exactly the same: the little star tilts over sideways
 
 **h00c.png** ← h00.png
 ```
-the little star is falling: it is now about 79 percent across from the left and about 19 percent down from the top of the picture, tilted, eyes shut tight, with a short golden sparkly trail curving back up and to the left toward where it was; the mouse lifts his head, ears up, starting to look up at the sky with round eyes, his hands still in his lap
+the little star is falling: it is now about 72 percent across from the left and about 27 percent down from the top of the picture, tilted, eyes shut tight, with a short golden sparkly trail curving back up and to the left toward where it was; the mouse lifts his head, ears up, starting to look up at the sky with round eyes, his hands still in his lap
 ```
 
 **h02.png** ← kling_first.png
@@ -152,7 +152,7 @@ the bunny turns to face the viewer and looks straight into the camera with an in
 
 **p05.png**
 ```
-a quiet forest clearing at night under a deep calm navy-blue sky with a few soft small stars, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]], [[bun]] and [[pip]] sit in a little circle around the little fallen star (a small golden five-pointed star about the size of the mouse's head, with two tiny round black eyes and a small mouth), it has gone almost completely dark, a flat dull grey star with no glow and no light on the ground around it, its eyes closed, resting on a leaf on the grass, swaying gently and singing softly to it with their eyes half closed, little music notes in the air, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
+a quiet forest clearing at night under a deep calm navy-blue sky with a few soft small stars, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[bruno]], [[bun]] and [[pip]] sit in a little circle around the little fallen star (a small golden five-pointed star about the size of the mouse's head, with two tiny round black eyes and a small mouth), it has gone almost completely dark, a flat dull grey star with no glow and no light on the ground around it, its eyes closed, resting on a leaf on the grass in front of them at about 78% of the image height, the three sit behind it close together, the bunny and the mouse sit up tall side by side with the bear, every face no lower than 58% of the image height, swaying gently and singing softly to it with their eyes half closed, little music notes in the air, sizes: the bear about twice as tall as the bunny, the mouse about two thirds of the bunny's height, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
 ```
 
 **p05b.png** ← p05.png
@@ -197,7 +197,7 @@ the bear bounces his tummy like a trampoline, the tummy squishes down and the li
 
 **p06d.png** ← p06.png
 ```
-the little star has come down and bonked right onto the bear's nose, the bear's eyes cross looking at it, the bunny and the mouse gasp and giggle
+the little star has come down and bonked right onto the bear's nose, the bear's eyes cross looking at it, the bunny and the mouse gasp and giggle, no little marks or lines drawn beside the bunny and the mouse, no letter-like shapes
 ```
 
 **p07.png**
@@ -237,7 +237,7 @@ a quiet forest clearing at night under a deep calm navy-blue sky with a few soft
 
 **p08b.png**
 ```
-close-up of the night sky: the little golden five-pointed star about half the image width, with two round black eyes and a small smiling mouth, shines in the upper part of the image among a few soft small stars, it winks one eye happily, one eye is a closed happy arc, soft sparkle rays around it, the lower 40% of the image is plain deep navy sky fading into soft dark treetops, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16
+close-up of the night sky: the little golden five-pointed star about half the image width, with two round black eyes and a small smiling mouth, shines in the very middle of the image among a few soft small stars, it winks one eye happily, one eye is a closed happy arc, soft sparkle rays around it, soft dark treetops rise all the way along the bottom edge of the image with no empty band, nothing important in the bottom 15%, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16
 ```
 
 **p09.png**

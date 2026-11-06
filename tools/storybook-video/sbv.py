@@ -1169,11 +1169,11 @@ class PageSeg:
             x0, y0 = int(cx - c.width / 2), int(self.ctx.st["subtitle_center"] - c.height / 2)
             frame.alpha_composite(c, (x0, y0))
             av = None if self.lines[li].get("no_avatar") else self.ctx.avatar(self.lines[li]["speaker"])  # 头像会挡住角色的页可关
-            if av is not None:   # 字幕左上角挂说话人的小头像，谁在说一眼就知道
+            if av is not None:   # 字幕左下角挂说话人的小头像，谁在说一眼就知道（2026-11-06 主体居中后，挂左上角会压到字幕正上方的脸）
                 k = min(1.0, max(0.0, (t - self.lines[li]["start"] + 0.1) / 0.18))
                 size = int(av.width * (0.6 + 0.4 * ease(k)) + 0.5)
                 a = av.resize((size, size), Image.LANCZOS)
-                frame.alpha_composite(a, (max(8, x0 + 10 - size // 4), max(0, y0 - size + 12 + (av.width - size) // 2)))
+                frame.alpha_composite(a, (max(8, x0 + 10 - size // 4), y0 + c.height - 12 + (av.width - size) // 2))
         if self.ctx.badge is not None:
             frame.alpha_composite(self.ctx.badge, tuple(self.ctx.st["badge_pos"]))
         return frame.convert("RGB")
