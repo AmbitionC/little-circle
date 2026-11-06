@@ -1,0 +1,45 @@
+{
+  "h3_a_fall": {
+    "task_id": 207105003,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=h00.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Night meadow. The same tiny yellow smiling star in the sky twinkles twice, wobbles once, then slips loose and falls diagonally down to the right, leaving a soft golden light trail, and lands with a soft poof in the big autumn leaf pile on the right, splashing up a burst of golden sparkles and a few leaves. a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up stays on his leaf mat, lifts his head, sits up with wide surprised eyes and looks at the leaf pile. The camera gently follows the star downward. The star keeps the same shape and small size the whole time. Mouse stays the same size and in the same place. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. All the animal friends are little children about five years old: child proportions with a big head and short legs, simple round eyes with a white highlight, no eyelashes, no winking, no half-closed eyes, never a grown-up figure and never a chubby baby (Bruno is just a bigger child). Must-keep details for each character (check every one before finishing): pip: ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays.",
+    "at": "2026-11-06 13:04",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/06/20261106130810_18e55c766a2679cfae0c.mp4",
+    "wait_min": 3.9
+  },
+  "h3_b_bounce_v1": {
+    "task_id": 207105657,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p07.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Night meadow. a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains lies on his back; his big round tummy presses down and springs back up in one soft bounce, and the glowing star keeps shooting straight up into the night sky with a golden sparkle trail until it sits high and small in the sky. a nimble little light-gray bunny girl with child proportions like her friends, long narrow upright rabbit ears tapered to a soft point, about as long as her head, bright clever eyes with a lively sparkle, a white fluffy cotton-tail, wearing a small red vest with a little carrot-shaped badge and a tiny magnifying glass on a string around her neck and a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up jump and cheer, land on the grass, run to the bear and all three hug together, looking up at the sky and laughing with big happy open mouths. Happy dry eyes, no tears. Bear stays about twice as tall as the friends. Same star shape throughout. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. All the animal friends are little children about five years old: child proportions with a big head and short legs, simple round eyes with a white highlight, no eyelashes, no winking, no half-closed eyes, never a grown-up figure and never a chubby baby (Bruno is just a bigger child). Must-keep details for each character (check every one before finishing): bun: long narrow upright rabbit ears about as long as her head (NOT big round mouse ears), child proportions like Nutty and Hazel with short legs (not a baby, not a grown-up), bright clever eyes with no eyelashes and no winking, red vest with a carrot badge, tiny magnifying glass on a string, white cotton-tail; pip: ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves; bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: pip about 1x, bun about 1.35x, bruno about 2.6x (Pip = 1x).",
+    "at": "2026-11-06 13:04",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/06/20261106130834_18e55c7c1cb3b8786fe7.mp4",
+    "wait_min": 3.7
+  },
+  "h3_b_bounce": {
+    "task_id": 207113816,
+    "model": "minimax-h3",
+    "inputs": [
+      "首帧=p07.png",
+      "尾帧=p07c.png"
+    ],
+    "resolution": "768P",
+    "duration": 5,
+    "prompt": "Locked-off camera, no zoom, no pan, the framing never changes. Night meadow. a big chubby brown bear cub, twice as tall as his friends, with broad square shoulders, a round soft tummy, small round ears and a little red bee-sting bump on the tip of his nose, wearing a little orange neckerchief with sticky golden honey drip stains stays lying on his back the whole time and never sits up; his big round tummy gives one soft bounce, down and back up. The glowing star rises a little higher, slows and stays visible in the sky, shrinking to a small bright star, its golden sparkle trail fading away. a nimble little light-gray bunny girl with child proportions like her friends, long narrow upright rabbit ears tapered to a soft point, about as long as her head, bright clever eyes with a lively sparkle, a white fluffy cotton-tail, wearing a small red vest with a little carrot-shaped badge and a tiny magnifying glass on a string around her neck and a tiny gray mouse with huge round pink ears even bigger than his head, a small nibbled notch in his left ear, a pink nose and one long thin unbroken pink tail growing from behind his bottom, wearing a hand-me-down blue-and-white striped shirt too big for him with the sleeves rolled up drop back down from their jump, hop onto the bear's chest facing the camera, and all three hug and laugh, looking up at the star with big happy open mouths. Happy dry eyes, no tears. Friends always face the camera. Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. All the animal friends are little children about five years old: child proportions with a big head and short legs, simple round eyes with a white highlight, no eyelashes, no winking, no half-closed eyes, never a grown-up figure and never a chubby baby (Bruno is just a bigger child). Must-keep details for each character (check every one before finishing): bun: long narrow upright rabbit ears about as long as her head (NOT big round mouse ears), child proportions like Nutty and Hazel with short legs (not a baby, not a grown-up), bright clever eyes with no eyelashes and no winking, red vest with a carrot badge, tiny magnifying glass on a string, white cotton-tail; pip: ears bigger than his head with a notch in the left ear, ONE continuous unbroken tail (no bandage), oversized striped shirt with rolled sleeves; bruno: about twice as tall as the small friends, square shoulders, red bee-sting bump on his nose, honey stains on the orange neckerchief. Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, but everything in the character description always stays. Keep the series' height ladder when they stand together: pip about 1x, bun about 1.35x, bruno about 2.6x (Pip = 1x).",
+    "at": "2026-11-06 13:10",
+    "cost": 0.4555,
+    "result_url": "https://tos-hk.lingkeai.vip/uploads/2026.11/06/20261106131421_18e55ccce6678ce5514f.mp4",
+    "wait_min": 4.0
+  }
+}
