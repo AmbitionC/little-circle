@@ -222,12 +222,12 @@ same shot, the long sparkly trail fades high in the sky: the bear sits up on the
 
 **p07e.png** ← p07c.png
 ```
-closer shot of the same hug, the bear, the bunny and the mouse fill the middle of the picture: all three hug tight and throw their heads back looking up at the star, all three laughing with huge wide open mouths and eyes curved shut into happy arcs, tiny joyful tears at the corners of their eyes, the little golden star still shines high above them
+closer shot of the same hug, the bear, the bunny and the mouse fill the middle of the picture: all three hug tight and throw their heads back looking up at the star, all three laughing with huge wide open mouths and eyes curved shut into happy arcs, dry happy eyes, no tears, no teardrops, no sweat drops, the little golden star still shines high above them
 ```
 
 **p07f.png** ← p07e.png
 ```
-same closer shot: still hugging, all three bounce up off the grass together in a happy jump, feet in the air with a small soft shadow on the grass below them, heads thrown back, mouths wide open laughing, eyes curved shut, a few golden sparkles falling around them
+same closer shot: still hugging, all three bounce up off the grass together in a happy jump, feet in the air with a small soft shadow on the grass below them, heads thrown back, mouths wide open laughing, eyes curved shut, dry happy eyes, no tears, no teardrops, no sweat drops, remove any drops near the eyes, a few golden sparkles falling around them
 ```
 
 **p08.png**
