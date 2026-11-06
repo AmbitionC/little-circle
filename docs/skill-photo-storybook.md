@@ -95,3 +95,5 @@ python brand.py ../../episodes/x01-zoo/story.json --ribbon 专属绘本 --taglin
 - **封面**（x01）：专属绘本用 `brand.py --ribbon 专属绘本`，不用 `--ep`；默认底部小字是「3岁+」，孩子更小时用 `--tagline` 换掉。`script.md` 里有「封面关键画面」就会自动出 `cover.png`，构图取自最后一页、顶部留天空，比用主图当 `--key-art` 好，标题不会盖住动物；`--crop-3x4 0` 让中文标题离开头发。
 - **qa 发音报警要看干净 wav**（x01）：混音里被听错的句子，单听缓存 wav 多半是对的；干净 wav 也听错才算真错。"A tiger! Roar!" 的 Roar 在干净 wav 里听成 Run，`say` 写成 `ROAR!` 后听写正确。
 - **改 story.json 别用 json.dump 整体重写**：格式全变，diff 几百行。用正则或 sed 只改数值。
+- **去掉陪伴角色后要重排构图**（x01）：p02 孩子坐看台时脸跑到画面 20% 高度，要写明孩子在画面哪一侧、脸在竖直中间，再让动物让开。
+- **source ~/.zshrc 要放在激活 .venv 之前**（x01）：反过来 PATH 回到 Anaconda 的 Python 3.7，sbv 报 `FreeTypeFont` 没有 `getlength`。

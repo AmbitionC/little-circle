@@ -55,7 +55,7 @@ inside a goldfish hall, one big clear glass tank filling the background with cal
 
 **p02.png**
 ```
-inside a sea lion show arena, a big blue pool with a low curved white wall and a few empty rows of simple stone seats behind, a sleek dark brown sea lion bursting up out of the water right in front of them with its mouth wide open barking and water drops flying; [[kid]] sits alone on the front seat covering her face with both small hands, her big wide eyes peeking out between her fingers, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes, plenty of open empty space, no small scattered details like flowers, pebbles or signs unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters and animals named in the prompt and no extra animals or people, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, the characters fill the frame naturally and are centered vertically, faces between 25% and 65% of the image height, the scene continues all the way to the bottom edge with no empty band, nothing important in the bottom 15%
+inside a sea lion show arena, a big blue pool with a low curved white wall and a few empty rows of simple stone seats behind, a sleek dark brown sea lion bursting up out of the water at the lower left with its mouth wide open barking and water drops flying; [[kid]] sits on the low front seat on the right side of the picture, her face around the vertical middle of the image, startled, both small hands resting on her cheeks with her big round eyes fully visible and wide open, the empty seat rows filling the space above her head, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes, plenty of open empty space, no small scattered details like flowers, pebbles or signs unless the prompt names them, gentle warm light, a limited harmonious palette of soft greens, warm browns and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters and animals named in the prompt and no extra animals or people, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, the characters fill the frame naturally and are centered vertically, faces between 25% and 65% of the image height, the scene continues all the way to the bottom edge with no empty band, nothing important in the bottom 15%
 ```
 
 **p03.png**
@@ -102,7 +102,7 @@ the goldfish blows three little round bubbles right in front of the toddler, she
 
 **p02b.png** ← p02.png
 ```
-the sea lion has settled back half in the water and tilts its head curiously at the toddler with a friendly closed mouth, the toddler lowers her hands a little so half her face shows and she peeks at the sea lion with one small smile starting
+the sea lion has settled back half in the water and tilts its head curiously at the toddler with a friendly closed mouth, the toddler keeps sitting upright in the same place and size, her head level and not tilted, she lowers her hands to her lap and looks at the sea lion with a small shy closed-mouth smile and big round eyes
 ```
 
 **p03b.png** ← p03.png
@@ -112,7 +112,7 @@ the toddler now claps her own small hands together with a big proud open-mouthed
 
 **p04b.png** ← p04.png
 ```
-the sea lion has flicked the red ball high into the air and dives into the pool, a big splash of white water bursting up over the wall, the toddler squealing with delight and leaning back from the splash, her whole head well inside the frame, both stay in the same place and size as before with the toddler's whole head and hair fully inside the picture and well away from the left edge
+the sea lion has flicked the red ball high into the air and dives into the pool, a big splash of white water bursting up over the wall, the toddler squealing with delight, standing upright in exactly the same place and size as before, not leaning, her whole head and hair well inside the picture and far from the left edge
 ```
 
 **p05b.png** ← p05.png
@@ -127,7 +127,7 @@ the monkey now scratches behind its own ear with one hand and the toddler scratc
 
 ### 封面关键画面
 
-用 p04（海狮顶球、圆圆大笑）出 `cover.png`，`brand.py --crop-3x4 0.1 --title-en "Yuanyuan's Zoo Day" --title-zh 圆圆的动物园 --words "sea lion"=海狮 elephant=大象 tiger=老虎`。
+用 p04（海狮顶球、圆圆大笑）出 `cover.png`，`brand.py --crop-3x4 0 --title-en "Yuanyuan's Zoo Day" --title-zh 圆圆的动物园 --words "sea lion"=海狮 elephant=大象 tiger=老虎`。
 
 ## 5. 配音清单
 

@@ -62,6 +62,7 @@
   {
    "image": "p01.png",
    "motion": "in",
+   "focus": [0.38, 0.35],
    "frames": [
     {
      "image": "p01b.png",
@@ -136,6 +137,7 @@
   {
    "image": "p03.png",
    "motion": "in",
+   "focus": [0.35, 0.55],
    "frames": [
     {
      "image": "p03b.png",
@@ -310,7 +312,7 @@
      "speaker": "narrator",
      "en": "He copies you!",
      "zh": "他在学你！",
-     "say": "[giggles] He copies you!",
+     "say": "[happily] He copies you!",
      "gap": 0.7
     }
    ],
