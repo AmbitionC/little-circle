@@ -27,7 +27,7 @@ Look at the photos and write an objective visual description that an illustrator
 that the family will instantly recognize. Describe only what you see; do not guess names or feelings.
 
 Return ONLY a JSON object with these keys (English values):
-- "desc": one sentence, max 45 words, in this exact shape: "a {age}-year-old {gender} with <hair color, length and style>, <face shape and skin tone>, <eyes>, wearing <the main outfit from the photos, with colors>, <one signature item if any, only something WORN on the body: glasses, hair clip, hat, backpack>". No name in it. No final period. Never mention anything held in the hands (toys, food, balloons): the child must have free hands for the story.
+- "desc": one sentence, max 45 words, in this exact shape: "a {age}-year-old {gender} with <hair color, length and style>, <face shape and skin tone>, big round bright dark eyes, wearing <the main outfit from the photos, with colors>, <one signature item if any, only something WORN on the body: glasses, hair clip, hat, backpack>". No name in it. No final period. The eyes are ALWAYS written as "big round bright dark eyes": never describe eyes as narrow, small, almond, slanted or half-closed, whatever the photo looks like. Never mention anything held in the hands (toys, food, balloons): the child must have free hands for the story.
 - "keep": a comma-separated list of the 3–5 most recognizable details to keep in every drawing (hair style, outfit colors, signature worn item; nothing held in the hands). Prefer symmetric items; avoid single-side details (one earring, one hair clip) because they tend to flip sides.
 - "hair": short phrase.
 - "outfit": short phrase.
@@ -45,7 +45,7 @@ cel shading, eye style, lighting, color palette. Do not copy their characters, p
 
 The other attached image(s) are PHOTOS of the real child this character is based on. Draw a CARTOON character in the series style
 that the child's own family would recognize at first glance: same hair color, length and style, same face shape and skin tone,
-same eye shape and expression habits, and the exact outfit and colors from the first photo. Child proportions like the rest of the
+BIG ROUND bright eyes with a white highlight (never narrow, small, almond or slanted eyes, even if the photo suggests it; likeness comes from hair, face shape and outfit, not from eye shape), and the exact outfit and colors from the first photo. Child proportions like the rest of the
 series: big head, short legs, round eyes with a white highlight, no eyelashes. Do NOT render photo-realistically, do NOT paste the
 photo, do NOT add text, name or watermark. {keep}
 

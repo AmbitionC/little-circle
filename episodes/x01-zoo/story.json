@@ -13,11 +13,6 @@
     52,
     38
    ],
-   "nutty": [
-    178,
-    78,
-    22
-   ],
    "kid": [
     200,
     70,
@@ -82,7 +77,7 @@
      "say": "[excited] Fish! Fish!"
     },
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "A red goldfish!",
      "zh": "一条红金鱼！",
      "say": "[happily] A red goldfish!",
@@ -150,7 +145,7 @@
    ],
    "lines": [
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "Clap, clap! Like this!",
      "zh": "拍拍手！像这样！",
      "say": "[warmly] Clap, clap! Like this!",
@@ -204,7 +199,7 @@
      "gap": 0.4
     },
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "Good job, sea lion!",
      "zh": "真棒，海狮！",
      "say": "[excited] Good job, sea lion!",
@@ -260,7 +255,7 @@
    "motion": "in",
    "lines": [
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "A tiger! Roar!",
      "zh": "老虎！吼！",
      "say": "[playful] A tiger! ROAR!",
@@ -285,7 +280,7 @@
    ],
    "lines": [
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "A leopard! Spots, spots!",
      "zh": "一只豹子！斑点，斑点！",
      "say": "[happily] A leopard! Spots, spots!",
@@ -312,7 +307,7 @@
      "say": "[excited] Monkey!"
     },
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "He copies you!",
      "zh": "他在学你！",
      "say": "[giggles] He copies you!",
@@ -339,7 +334,7 @@
      "say": "[warmly] Bye bye, sea lion!"
     },
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "What a day!",
      "zh": "多棒的一天！",
      "say": "[warmly] What a day!",
@@ -353,7 +348,7 @@
    "cut": true,
    "lines": [
     {
-     "speaker": "nutty",
+     "speaker": "narrator",
      "en": "Sea lion!",
      "zh": "海狮！",
      "say": "Sea lion!",
@@ -466,6 +461,6 @@
   "I": -16,
   "TP": -1.5
  },
- "_说明": "x01 第一单真实孩子圆圆（1 岁半）。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。页序按家长给的实际游园顺序：金鱼→海狮→大象→老虎→豹子→猴子和大猩猩。",
+ "_说明": "x01 第一单真实孩子圆圆（1 岁半）。11-06 用户看第一版后：去掉栗栗（专属绘本只有孩子和动物，原栗栗台词改旁白），角色卡眼睛改大圆亮、不要眯眯眼。kid 的声音借 bun。页序按家长给的实际游园顺序：金鱼→海狮→大象→老虎→豹子→猴子和大猩猩。",
  "ai_note": "本书画面和配音由 AI 生成"
 }
