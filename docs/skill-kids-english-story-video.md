@@ -149,7 +149,9 @@ Japanese hand-painted 2D animation film style, clean cel-shaded characters with 
 
 **画风样张**：用户挑定的样图放在 Mac 的 `series/style/`（只留本机，`.gitignore` 已忽略，不进公开仓库）。`codex_images.py` 每出一张图都会把样张排在最前面发给 Codex，并告诉它"只学画风，不抄角色和构图"。换画风就换这个文件夹里的图。**画风变了，`series/refs/` 的角色参考图要先用 `codex_images.py refs --force` 重出**，否则旧参考图会把画风拉回去。
 
-页面图再加 `keep every face in the upper 55% of the image and the lower 40% simple open ground`（字幕中心在 y≈1320，下面还有抖音标题和简介，所以脸都放在上半部分，下 40% 只留地面、草地这类简单背景）。
+页面图再加 `the characters fill the frame naturally and are centered vertically, faces between 25% and 65% of the image height, the scene continues all the way to the bottom edge with no empty band, nothing important in the bottom 15%`。
+
+**构图（2026-11-06 用户纠正）**：用户 10-28 说抖音标题和简介会挡字幕，意思是**把字幕往上调**（字幕已在 y≈1320），**不是把画面主体往上推**。之前写的「脸放上 55%、下 40% 留空地」导致主体全偏上、底部空一块，用户原话：「视频底部总有一块空白，人物主体位置都偏上」。现在：主体居中占满画面，场景一直画到底边，只让最底下 15% 别放脸和关键道具。`codex_images.py` 会把旧剧本里的老写法自动换成新写法。质检加一条：缩到手机大小看，底部没有空带、主角在画面中间。
 
 ### 5.2 角色固定描述（出现角色名时原文替换，一个字都别改）
 

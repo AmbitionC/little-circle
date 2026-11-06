@@ -182,7 +182,24 @@ NAMES = {"nutty": r"\bnutty\b|squirrel", "hazel": r"\bhazel\b|hedgehog", "bun": 
          "dot": r"\bdot\b|fawn|\bdeer\b", "bo": r"\bbo\b|badger", "wiggles": r"\bwiggles\b|otter"}
 
 
+# 构图（2026-11-06 用户：「视频底部总有一块空白，人物主体位置都偏上……我当时的意思是把字幕往上调，不是让你把主体内容往上调」）。
+# 10-28 起每张图都写了「脸放上 55%、下 40% 留空地」，导致主体全偏上、底部空一块。改成主体居中占满画面，只让底部 15%（抖音标题/简介）别放脸。
+# 旧剧本里的老写法出图时自动换成新写法，不用逐集改。
+OLD_COMPOSE = [", keep every face in the upper 55% of the image and the lower 40% simple open ground",
+               ", keep the face in the upper 55% of the image and the lower 40% simple empty space",
+               ", the lower 40% simple open grass"]
+COMPOSE = (", the characters fill the frame naturally and are centered vertically, faces between 25% and 65% of the image height, "
+           "the scene continues all the way to the bottom edge with no empty band, nothing important in the bottom 15%")
+
+
+def fix_compose(text):
+    for o in OLD_COMPOSE:
+        text = text.replace(o, COMPOSE)
+    return text
+
+
 def expand(text):
+    text = fix_compose(text)
     def one(m):
         k = m.group(1).lower()
         if k not in CHARACTERS:
@@ -294,7 +311,7 @@ def parse_script(path):
         jobs["kling_first.png"] = " ".join(m.group(1).split())
     last = sorted(k for k in jobs if k.startswith("p"))
     if last and "封面关键画面" in text:
-        base = jobs[last[-1]].replace(", keep every face in the upper 55% of the image and the lower 40% simple open ground", "")
+        base = jobs[last[-1]].replace(COMPOSE, "")
         jobs["cover.png"] = base + ", the characters and props sit in the lower half, the top 40% is clean open sky and soft tree canopy with empty space for a title"
     return jobs
 
