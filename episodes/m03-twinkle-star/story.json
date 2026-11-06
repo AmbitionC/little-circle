@@ -47,44 +47,7 @@
  },
  "cast": "../../series/cast.json",
  "hook": {
-  "frames": [
-   {
-    "image": "h00.png",
-    "at": 0
-   },
-   {
-    "image": "h00t.png",
-    "at": 0.42
-   },
-   {
-    "image": "h00b.png",
-    "at": 0.84
-   },
-   {
-    "image": "h00c.png",
-    "at": 1.34
-   },
-   {
-    "image": "kling_first.png",
-    "at": 1.84
-   },
-   {
-    "image": "h02.png",
-    "at": 2.34,
-    "shake": true
-   },
-   {
-    "image": "h03.png",
-    "at": 3.75
-   }
-  ],
   "max_seconds": 5.5,
-  "motion": "in",
-  "zoom": 1.12,
-  "focus": [
-   0.5,
-   0.5
-  ],
   "headline": "小星星掉下来了！",
   "subline": "经典儿歌小星星 · 英文对话版",
   "say": {
@@ -95,48 +58,6 @@
    "at": 2.65
   },
   "headline_y": 300,
-  "camera": [
-   {
-    "t": 0,
-    "focus": [
-     0.5,
-     0.2
-    ],
-    "zoom": 1.5
-   },
-   {
-    "t": 0.84,
-    "focus": [
-     0.52,
-     0.2
-    ],
-    "zoom": 1.46
-   },
-   {
-    "t": 2.34,
-    "focus": [
-     0.52,
-     0.52
-    ],
-    "zoom": 1.1
-   },
-   {
-    "t": 3.3,
-    "focus": [
-     0.5,
-     0.5
-    ],
-    "zoom": 1.08
-   },
-   {
-    "t": 5.4,
-    "focus": [
-     0.5,
-     0.5
-    ],
-    "zoom": 1.05
-   }
-  ],
   "sfx": [
    {
     "file": "../../assets/sfx/whoosh.mp3",
@@ -159,7 +80,8 @@
     "at": 2.44,
     "gain": 0.12
    }
-  ]
+  ],
+  "clip": "h3_a_cut.mp4"
  },
  "pages": [
   {
@@ -842,33 +764,6 @@
     }
    ],
    "hold": 2.82,
-   "frames": [
-    {
-     "image": "p07b.png",
-     "at": 0.9,
-     "cut": true
-    },
-    {
-     "image": "p07d.png",
-     "at": 1.6,
-     "cut": true
-    },
-    {
-     "image": "p07c.png",
-     "at": 2.25,
-     "cut": true
-    },
-    {
-     "image": "p07e.png",
-     "at": 2.85,
-     "cut": true
-    },
-    {
-     "image": "p07f.png",
-     "at": 3.5,
-     "cut": true
-    }
-   ],
    "sfx": [
     {
      "file": "../../assets/sfx/boing.mp3",
@@ -890,7 +785,9 @@
      "at": 2.25,
      "gain": 0.55
     }
-   ]
+   ],
+   "clip": "h3_b_cut.mp4",
+   "clip_seconds": 4.15
   },
   {
    "image": "p08.png",
