@@ -1,0 +1,471 @@
+{
+ "output_name": "x01_zoo",
+ "title_en": "A Zoo Day",
+ "title_zh": "宝宝的动物园",
+ "series": {
+  "badge_text": "栗栗学英语 · 专属绘本",
+  "badge_alpha": 0.72
+ },
+ "style": {
+  "speaker_colors": {
+   "narrator": [
+    74,
+    52,
+    38
+   ],
+   "nutty": [
+    178,
+    78,
+    22
+   ],
+   "kid": [
+    200,
+    70,
+    90
+   ]
+  },
+  "avatar_dir": [
+   "refs/avatars",
+   "../../series/refs/avatars"
+  ],
+  "tail": 0.6,
+  "bgm_rel_db": -11
+ },
+ "cast": "cast.json",
+ "hook": {
+  "frames": [
+   {
+    "image": "kling_first.png",
+    "at": 0
+   }
+  ],
+  "max_seconds": 3.0,
+  "motion": "in",
+  "zoom": 1.06,
+  "focus": [
+   0.5,
+   0.45
+  ],
+  "headline": "宝宝的动物园 · 专属英文绘本",
+  "subline": "用孩子自己的照片做的绘本 · 中英字幕",
+  "say": {
+   "speaker": "narrator",
+   "en": "A zoo day!",
+   "zh": "动物园的一天！",
+   "say": "[excited] A zoo day!",
+   "at": 0.8
+  },
+  "sfx": [
+   {
+    "file": "../../assets/sfx/jingle_in.mp3",
+    "at": 0.0,
+    "gain": 0.3
+   }
+  ]
+ },
+ "pages": [
+  {
+   "image": "p01.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p01b.png",
+     "line": 1,
+     "offset": 0.4
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Fish! Fish!",
+     "zh": "鱼！鱼！",
+     "say": "[excited] Fish! Fish!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "A red goldfish!",
+     "zh": "一条红金鱼！",
+     "say": "[happily] A red goldfish!",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p02.png",
+   "motion": "in",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "zoom": 1.06,
+   "frames": [
+    {
+     "image": "p02b.png",
+     "line": 1,
+     "offset": 0.3
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "en": "Arf! Arf! A sea lion!",
+     "zh": "嗷！嗷！一只海狮！",
+     "say": "[playful] Arf! Arf! A sea lion!"
+    },
+    {
+     "speaker": "kid",
+     "en": "Oh...",
+     "zh": "哦……",
+     "say": "[whispers, nervous] Oh...",
+     "gain": 0.75,
+     "gap": 0.9
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/whoosh.mp3",
+     "at": 0.0,
+     "gain": 0.4
+    }
+   ],
+   "hold": 0.5
+  },
+  {
+   "image": "p03.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p03b.png",
+     "line": 1,
+     "offset": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "Clap, clap! Like this!",
+     "zh": "拍拍手！像这样！",
+     "say": "[warmly] Clap, clap! Like this!",
+     "gap": 0.5
+    },
+    {
+     "speaker": "kid",
+     "en": "Clap, clap!",
+     "zh": "拍拍手！",
+     "say": "[excited] Clap, clap!",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.3,
+     "gain": 0.35
+    },
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.7,
+     "gain": 0.35
+    }
+   ],
+   "hold": 0.4
+  },
+  {
+   "image": "p04.png",
+   "motion": "out",
+   "frames": [
+    {
+     "image": "p04b.png",
+     "line": 2,
+     "offset": 0,
+     "shake": true
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "en": "Ball on the nose!",
+     "zh": "球顶在鼻子上！",
+     "say": "[playful] Ball on the nose!"
+    },
+    {
+     "speaker": "kid",
+     "en": "Yay!",
+     "zh": "耶！",
+     "say": "[laughing] Yay!",
+     "gap": 0.4
+    },
+    {
+     "speaker": "nutty",
+     "en": "Good job, sea lion!",
+     "zh": "真棒，海狮！",
+     "say": "[excited] Good job, sea lion!",
+     "gap": 0.5
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 0.2,
+     "gain": 0.4
+    }
+   ],
+   "hold": 0.4
+  },
+  {
+   "image": "p05.png",
+   "motion": "left",
+   "frames": [
+    {
+     "image": "p05b.png",
+     "line": 0,
+     "offset": 0.3,
+     "shake": true
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "en": "Splash! A big elephant!",
+     "zh": "哗！一头大大象！",
+     "say": "[playful] Splash! A big elephant!"
+    },
+    {
+     "speaker": "kid",
+     "en": "Again!",
+     "zh": "再来！",
+     "say": "[laughing] Again!",
+     "gap": 0.6
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/whoosh.mp3",
+     "at": 0.1,
+     "gain": 0.4
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p06.png",
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "A tiger! Roar!",
+     "zh": "老虎！吼！",
+     "say": "[playful] A tiger! Roar!",
+     "gap": 0.3
+    },
+    {
+     "speaker": "kid",
+     "en": "Roar!",
+     "zh": "吼！",
+     "say": "[excited] Roar!",
+     "gap": 0.6
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p07.png",
+   "motion": "up",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "A leopard! Spots, spots!",
+     "zh": "一只豹子！斑点，斑点！",
+     "say": "[happily] A leopard! Spots, spots!",
+     "gap": 0.6
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p08.png",
+   "motion": "in",
+   "frames": [
+    {
+     "image": "p08b.png",
+     "line": 1,
+     "offset": 0.6
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Monkey!",
+     "zh": "猴子！",
+     "say": "[excited] Monkey!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "He copies you!",
+     "zh": "他在学你！",
+     "say": "[giggles] He copies you!",
+     "gap": 0.7
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 0.0,
+     "gain": 0.4
+    }
+   ],
+   "hold": 0.3
+  },
+  {
+   "image": "p09.png",
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Bye-bye, sea lion!",
+     "zh": "再见，海狮！",
+     "say": "[warmly] Bye bye, sea lion!"
+    },
+    {
+     "speaker": "nutty",
+     "en": "What a day!",
+     "zh": "多棒的一天！",
+     "say": "[warmly] What a day!",
+     "gap": 0.5
+    }
+   ],
+   "hold": 0.8
+  },
+  {
+   "image": "p04.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "nutty",
+     "en": "Sea lion!",
+     "zh": "海狮！",
+     "say": "Sea lion!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "sea lion",
+    "zh": "海狮"
+   },
+   "lead": 0.3,
+   "transition": "dip",
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "p05.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Elephant!",
+     "zh": "大象！",
+     "say": "Elephant!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "elephant",
+    "zh": "大象"
+   },
+   "lead": 0.3
+  },
+  {
+   "image": "p06.png",
+   "cut": true,
+   "lines": [
+    {
+     "speaker": "kid",
+     "en": "Tiger!",
+     "zh": "老虎！",
+     "say": "Tiger!",
+     "gap": 1.5
+    }
+   ],
+   "word": {
+    "en": "tiger",
+    "zh": "老虎"
+   },
+   "lead": 0.3,
+   "sfx": [
+    {
+     "file": "../../assets/sfx/ding.mp3",
+     "at": 0.0,
+     "gain": 0.3
+    }
+   ]
+  }
+ ],
+ "ending": {
+  "headline": "A Zoo Day 宝宝的动物园",
+  "subline": "这是宝宝自己的英文绘本 · 画面和配音由 AI 生成",
+  "seconds": 3.0
+ },
+ "bgm": {
+  "cues": [
+   {
+    "page": 0,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.2
+   },
+   {
+    "page": 1,
+    "file": "../../assets/bgm/bgm_tiptoe.mp3",
+    "volume": 0.14,
+    "fade": 0.8
+   },
+   {
+    "page": 3,
+    "file": "../../assets/bgm/bgm_happy.mp3",
+    "volume": 0.24,
+    "fade": 0.3
+   },
+   {
+    "page": 5,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.2,
+    "fade": 0.6
+   },
+   {
+    "page": 8,
+    "file": "../../assets/bgm/bgm_calm.mp3",
+    "volume": 0.18,
+    "fade": 1.0
+   },
+   {
+    "page": 9,
+    "file": "../../assets/bgm/bgm_play.mp3",
+    "volume": 0.12,
+    "fade": 0.6
+   }
+  ]
+ },
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ },
+ "_说明": "x01 第一单真实孩子。标题/片尾里的「宝宝」等家长给小名后替换（title_zh、hook.headline、ending）。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。页序按家长给的实际游园顺序：金鱼→海狮→大象→老虎→豹子→猴子和大猩猩。",
+ "ai_note": "本书画面和配音由 AI 生成"
+}
