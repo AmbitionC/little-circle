@@ -35,22 +35,22 @@
 
 | 页 | 画面 | 台词 | 音乐 |
 |---|---|---|---|
-| hook | kling_first.png：皮皮坐起来，指着一颗拖着光尾巴往下掉的星星 → h02.png：星星噗地落进落叶堆（硬切）→ h03.png：皮皮捧出暗暗的小星星 | **pip**：`Oh! A star fell down!`<br>哇！星星掉下来了！ | 八音盒起头，下落时一串下行音 |
+| hook | h00.png / h00t.png：夜空里小星星一闪一闪（镜头推到天上）→ h00b.png：它晃了一下、滑出原位 → h00c.png：拖着光尾巴往下落，镜头跟着往下摇 → kling_first.png：落得更低，皮皮指着它 → h02.png：噗地落进落叶堆（硬切）→ h03.png：皮皮捧出暗暗的小星星 | **pip**：`Oh! A star fell down!`<br>哇！星星掉下来了！（落地后才说） | 一闪时高音钢片琴，下落一串下行钢片琴 + 很轻的咻，落地软软的噗，主旋律从落地那一下进来 |
 | p01 | p01.png：特写，皮皮双手捧着暗淡、难过的小星星 → p01b.png：星星抬头望着天上的空缺 | **pip**：`It wants to go home.`<br>它想回家。 | 旋律（乐器版，固定音量，下同） |
 | p02 | p02.png：Bruno 举着星星准备扔 → p02b.png：使劲往上扔，只高过头一点 → p02c.png：掉回来砸进爪子里（硬切） | **bruno**：`I am big! Up you go!`<br>我个子大！上去吧！<br>**bruno**：`Oops!`<br>哎呀！ | |
 | p03 | p03.png：Bun 捧着星星蹲下 → p03b.png：高高跳起 → p03d.png：落地，低头看星星 → p03c.png：落地，星星几乎全暗，三个凑过来 | **bun**：`Up! Up!`<br>上！上！<br>**pip**：`Oh no! It's so dark!`<br>糟了！它好暗！ | 星星变暗时旋律只剩单音 |
 | p04 | p04.png：Bun 耳朵"叮"地竖起、竖手指 → p04b.png：转身对镜头招手 | **bun**：`I have an idea! Let's sing!`<br>我有个好主意！我们来唱歌！<br>**bun**：`Sing with us!`<br>和我们一起唱！ | 叮一声 |
 | p05 | p05.png：三个围着星星轻轻摇着唱 → p05b.png：星星亮了一点、睁开眼 → p05e.png：一起摇向另一边，又亮一点 → p05c.png：更亮、笑了 → p05f.png：唱得更响，星星离开叶子 → p05d.png：亮到照亮整片空地，飘起来 | （演唱，无台词）`Twinkle, twinkle, little star, how I wonder what you are!` | **整段英文演唱**（8 秒），伴奏渐强，越唱越亮 |
 | p06 | p06.png：Bruno 躺下拍肚子 → p06b.png：皮皮把星星放到他肚子上 → p06c.png：肚子一弹，星星往旁边飞 → p06d.png：砸到 Bruno 鼻子（硬切） | **bruno**：`Bounce on my tummy!`<br>在我肚子上弹！<br>**all**：`One, two, three... UP!`<br>一、二、三……上！<br>**bruno**：`Ouch! My nose!`<br>哎哟！我的鼻子！ | 弹的那下一个 boing 音效 |
-| p07 | p07.png：再弹一次，星星笔直冲上去 → p07b.png：远景，拖着光尾巴飞向天上的空缺 → p07d.png：Bruno 坐起来张开手，两人跑过去 → p07c.png：回到天上，三个欢呼抱在一起 | **all**：`UP, UP, UP!`<br>上，上，上！ | 一个比一个高，钢片琴上行刮奏 |
+| p07 | p07.png：再弹一次，星星笔直冲上去 → p07b.png：远景，拖着光尾巴飞向天上的空缺 → p07d.png：Bruno 坐起来张开手，两人跑过去 → p07c.png：回到天上，三个欢呼抱在一起（笑声从这一下进来）→ p07e.png：三个抱着仰头大笑 → p07f.png：抱着一起跳起来 | **all**：`UP, UP, UP!`<br>上，上，上！<br>（星星到天上时三个角色各自的笑声叠在一起：`Ha ha ha! Yay!`，走音效层，不上字幕） | 一个比一个高，钢片琴上行刮奏 |
 | p08 | p08.png：皮皮朝天上挥手 → p08b.png：特写，天上的小星星冲他眨眼 | **pip**：`Good night, little star!`<br>晚安，小星星！ | 放慢、变轻 |
 | p09 | p09.png：彩蛋：Bruno 揉鼻子，鼻尖的小包变成金色发光的小星星，Bun 指着笑 → p09b.png：Bruno 斗鸡眼看自己的鼻子，得意地指着 | **bruno**：`My nose is a star!`<br>我的鼻子变成星星啦！ | 一个滑稽的叮 |
 
-片尾复习卡：star 星星 · up 上 · good night 晚安，伴奏上轻声唱最后一句 *Twinkle, twinkle, little star*（复习页没有台词，不抢）。
+片尾复习卡：star 星星 · up 上 · good night 晚安，伴奏上轻声唱最后一句 *How I wonder what you are*，一直唱到最后一个音落在主音 do 上，再留约 1 秒余音收尾（复习页没有台词，不抢）。
 
-**时长**：目标 45 秒（qa 卡 43–47）。台词 13 句约 45 词 + 8 秒演唱；超了先砍各页 hold 和片尾，不砍 p04b、p07 的跟唱跟喊停顿。
+**时长**：第三版放宽到 50 秒以内（用户 11-06：「时间多几秒没关系」，qa 卡 46–50）。台词 13 句约 45 词 + 8 秒演唱；超了先砍各页 hold 和片尾，不砍 p04b、p07 的跟唱跟喊停顿。
 
-**换图节奏**：32 张图（补了 p05e、p05f、p03d、p07d 四张过渡帧），按每 1.3–1.8 秒一张排匀；同一页的关键帧角色位置锁住只改动作；不连着半秒内切两张，也不 3 秒以上不换图或不动镜头；片尾复习页也要缓慢运镜。
+**换图节奏**：38 张图（第二版补了 p05e、p05f、p03d、p07d，第三版钩子补 h00、h00t、h00b、h00c，p07 补 p07e、p07f），按每 1.3–1.8 秒一张排匀，只有钩子下落和 p07 大笑这两段动作戏是约 0.5–0.9 秒一张；同一页的关键帧角色位置锁住只改动作；不连着半秒内切两张，也不 3 秒以上不换图或不动镜头；片尾复习页也要缓慢运镜。
 
 **音乐**：乐器版（八音盒 + 钢片琴 + 竖琴，本机合成原旋律）全片一个固定电平，台词时不压、不开关；演唱人声沿用第一版修到原调的 v3 人声，只取第一、二句放在 p05，最后一句放在片尾。OOPS（p02 Oops）和砸鼻子不停音乐，只加音效。
 
@@ -62,6 +62,28 @@
   ```
   a quiet forest clearing at night under a deep calm navy-blue sky with a few soft small stars, soft silver moonlight, one big round soft heap of fallen leaves on the right; [[pip]] sits up on a small bed of leaves in the middle of the clearing, eyes wide, pointing up as a little golden star streaks down across the night sky with a soft sparkly trail, falling toward the leaf heap, Japanese hand-painted 2D animation film style, clean cel-shaded characters with soft outlines, big expressive eyes, cute rounded proportions, simple calm background painted with a few big soft shapes of trees and a deep blue night sky with a few soft stars, plenty of open empty space, no small scattered details like flowers, mushrooms, pebbles or falling leaves unless the prompt names them, gentle warm light, a limited harmonious palette of soft night blues, warm lamp yellow and cream, the characters brighter and sharper than the background, background softer and lower in contrast, only the characters named in the prompt and no extra animals, one clear focal point, clean uncluttered picture-book composition, no text, no watermark, vertical 9:16, keep every face in the upper 55% of the image and the lower 40% simple open ground
   ```
+
+> 第三版（2026-11-06）钩子补的下落过程：几张都和 kling_first 同一构图，镜头由 story.json 的 `hook.camera` 从天上往下摇。
+
+**h00.png** ← kling_first.png
+```
+nothing is falling yet, remove the streak and its trail completely: the little golden star (a small golden five-pointed star a bit smaller than the mouse's head, with two tiny round black eyes and a small smiling mouth) sits still high in the sky near the very top of the picture, about 60 percent across from the left, twinkling with bright soft sparkle rays among the small stars; the mouse sits in the same place with his hands in his lap, looking down at the leaves with a calm sleepy smile, not pointing, unaware of the star
+```
+
+**h00t.png** ← h00.png
+```
+same shot, nothing moves except: the little star's light shrinks to a small soft gleam with very short rays and it closes its eyes in a happy blink, same place, same size
+```
+
+**h00b.png** ← h00.png
+```
+same shot, the mouse stays exactly the same: the little star tilts over sideways with wide surprised eyes and a small round open mouth, it has slipped a little down and to the right of its place, two tiny curved wobble lines beside it, and there is a small empty dark gap where it was
+```
+
+**h00c.png** ← h00.png
+```
+the little star is falling: it is now about 79 percent across from the left and about 19 percent down from the top of the picture, tilted, eyes shut tight, with a short golden sparkly trail curving back up and to the left toward where it was; the mouse lifts his head, ears up, starting to look up at the sky with round eyes, his hands still in his lap
+```
 
 **h02.png** ← kling_first.png
 ```
@@ -196,6 +218,16 @@ the little star has reached its place in the sky and shines among the other star
 **p07d.png** ← p07b.png
 ```
 same shot, the long sparkly trail fades high in the sky: the bear sits up on the grass with both arms opening wide and laughing, the bunny and the mouse land and run toward him with their arms out
+```
+
+**p07e.png** ← p07c.png
+```
+closer shot of the same hug, the bear, the bunny and the mouse fill the middle of the picture: all three hug tight and throw their heads back looking up at the star, all three laughing with huge wide open mouths and eyes curved shut into happy arcs, tiny joyful tears at the corners of their eyes, the little golden star still shines high above them
+```
+
+**p07f.png** ← p07e.png
+```
+same closer shot: still hugging, all three bounce up off the grass together in a happy jump, feet in the air with a small soft shadow on the grass below them, heads thrown back, mouths wide open laughing, eyes curved shut, a few golden sparkles falling around them
 ```
 
 **p08.png**

@@ -691,6 +691,18 @@ def shake_box(box, kick, iw, ih, amp=0.012, dur=0.3):
     return (x0 + dx, y0 + dy, x1 + dx, y1 + dy)
 
 
+def camera_box(cam, t, iw, ih):
+    """钩子的镜头路线：hook.camera = [{"t": 秒, "focus": [x, y], "zoom": 倍数}, ...]，关键点之间匀速走（比如跟着掉下来的星星往下摇）。"""
+    ts = [c["t"] for c in cam]
+    z = float(np.interp(t, ts, [c["zoom"] for c in cam]))
+    cx = float(np.interp(t, ts, [c["focus"][0] for c in cam])) * iw
+    cy = float(np.interp(t, ts, [c["focus"][1] for c in cam])) * ih
+    s0 = max(W / iw, H / ih)
+    vw, vh = W / s0 / z, H / s0 / z
+    cx, cy = min(max(cx, vw / 2), iw - vw / 2), min(max(cy, vh / 2), ih - vh / 2)
+    return (cx - vw / 2, cy - vh / 2, cx + vw / 2, cy + vh / 2)
+
+
 def render_flipbook(hook, base, out_dir):
     """没有可灵视频时，用几张关键帧做钩子：hook.frames 到点硬切 + 缓推 + 换图震屏，输出成 h_####.jpg。"""
     dur = hook.get("max_seconds", 5)
@@ -703,8 +715,9 @@ def render_flipbook(hook, base, out_dir):
     for i in range(n):
         t = i / FPS
         img, kick = pick_key(kf, t)
-        box = kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
-                     hook.get("zoom", 1.08))
+        box = (camera_box(hook["camera"], t, iw, ih) if hook.get("camera") else
+               kb_box(hook.get("motion", "in"), t / dur, iw, ih, W, H, hook.get("focus", [0.5, 0.45]),
+                      hook.get("zoom", 1.08)))
         img.resize((W, H), Image.BICUBIC, box=shake_box(box, kick, iw, ih)).save(
             os.path.join(out_dir, f"h_{i + 1:04d}.jpg"), quality=92)
     return n
