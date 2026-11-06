@@ -1,7 +1,7 @@
 {
  "output_name": "x01_zoo",
- "title_en": "A Zoo Day",
- "title_zh": "宝宝的动物园",
+ "title_en": "Yuanyuan's Zoo Day",
+ "title_zh": "圆圆的动物园",
  "series": {
   "badge_text": "栗栗学英语 · 专属绘本",
   "badge_alpha": 0.72
@@ -46,7 +46,7 @@
    0.5,
    0.45
   ],
-  "headline": "宝宝的动物园 · 专属英文绘本",
+  "headline": "圆圆的动物园 · 专属英文绘本",
   "subline": "用孩子自己的照片做的绘本 · 中英字幕",
   "say": {
    "speaker": "narrator",
@@ -419,8 +419,8 @@
   }
  ],
  "ending": {
-  "headline": "A Zoo Day 宝宝的动物园",
-  "subline": "这是宝宝自己的英文绘本 · 画面和配音由 AI 生成",
+  "headline": "Yuanyuan's Zoo Day 圆圆的动物园",
+  "subline": "这是圆圆自己的英文绘本 · 画面和配音由 AI 生成",
   "seconds": 3.0
  },
  "bgm": {
@@ -466,6 +466,6 @@
   "I": -16,
   "TP": -1.5
  },
- "_说明": "x01 第一单真实孩子。标题/片尾里的「宝宝」等家长给小名后替换（title_zh、hook.headline、ending）。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。页序按家长给的实际游园顺序：金鱼→海狮→大象→老虎→豹子→猴子和大猩猩。",
+ "_说明": "x01 第一单真实孩子圆圆（1 岁半）。kid 的声音借 bun（cast.json 由 photo_character.py pick 生成）。页序按家长给的实际游园顺序：金鱼→海狮→大象→老虎→豹子→猴子和大猩猩。",
  "ai_note": "本书画面和配音由 AI 生成"
 }
