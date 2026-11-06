@@ -61,7 +61,7 @@ python3 codex_images.py ../../episodes/x01-zoo -j 2             # 主图 → 关
 source .venv/bin/activate && export PATH=~/Downloads/Anaconda3/anaconda3/envs/sbv-ffmpeg/bin:$PATH
 python sbv.py ../../episodes/x01-zoo/story.json --out ../../out/x01   # mp4、srt、A4 打印 PDF
 python qa.py ../../episodes/x01-zoo/story.json ../../out/x01/<name>.mp4 --dur 45 58
-python brand.py ../../episodes/x01-zoo/story.json --ep 1 --title-en "Mia's Zoo Day" --title-zh 米娅的动物园 --words giraffe=长颈鹿 elephant=大象 feed=喂 --out ../../out/x01
+python brand.py ../../episodes/x01-zoo/story.json --ribbon 专属绘本 --tagline "<小名>的专属英文绘本 · 中英字幕" --crop-3x4 0 --title-en "Mia's Zoo Day" --title-zh 米娅的动物园 --words giraffe=长颈鹿 elephant=大象 feed=喂 --out ../../out/x01
 ```
 
 质检在主文件第 9 节和口语分册第 8 节之上加一关：**每张图里孩子像不像角色卡**（发型、衣服颜色、keep 里的细节），`qc/characters.jpg` 逐张看，不像的 `--only pXX --force` 重出；出完抽 3 张给家长看一眼再渲染。
@@ -86,3 +86,11 @@ python brand.py ../../episodes/x01-zoo/story.json --ep 1 --title-en "Mia's Zoo D
 - **AI 标识要自己写**：story.json 顶层 `"ai_note": "本书画面和配音由 AI 生成"`（PDF 封面底部），片尾写进 `ending.subline`。qa 不查这一项。
 - ElevenLabs key 没有读账户用量的权限（`/v1/user/subscription` 返回 401），字符数只能按文本估。
 - Codex 一次最多 5 张附图：画风样张 2 张 + 照片最多 3 张。照片超过 3 张时只取前 3 张，把正脸和全身放前面。
+- **只有脸部裁剪照时 describe 会编衣服**（x01）：它把照片边上的装饰写成衣服细节，发色也写深一档。衣服、发色由人写进 `desc`；`CARD_ASK` 写的是"照片里的衣服"，所以 `notes` 里要写明照片只看脸和头发、衣服以文字为准。
+- **角色卡第一轮常见的偏差是头发太厚、眼睛太圆**（x01）：系列画风会把稀疏的婴儿发画成一头蓬发，把杏仁眼画圆。发量、发际线、发色的冷暖、眼型都写具体，再在 `notes` 里写一遍反面。`cards -n 6` 只补 4–6，不覆盖前三版，方便两轮一起比。
+- **挑角色卡把头部放大和照片并排看**：contact.jpg 全身图太小，看不出发际线和眼型。系列规定不画睫毛，候选带睫毛的不选。
+- **`contact.jpg` 左边是真实照片，绝不上传**（x01）：交付页的候选对比只放 `refs/candidates/kid_N.png` 的缩略图，发布前逐个核对目录里没有带照片的文件。
+- **幼儿别写 grin、squished**（x01）：p01b 写 "squished happy grin" 画成露齿咧嘴、脸压变形。写 "small open-mouthed baby smile with no teeth showing"，再写一句脸保持原样。关键帧里人物贴边时，提示词写明整个头在画面内、离边缘远。
+- **封面**（x01）：专属绘本用 `brand.py --ribbon 专属绘本`，不用 `--ep`；默认底部小字是「3岁+」，孩子更小时用 `--tagline` 换掉。`script.md` 里有「封面关键画面」就会自动出 `cover.png`，构图取自最后一页、顶部留天空，比用主图当 `--key-art` 好，标题不会盖住动物；`--crop-3x4 0` 让中文标题离开头发。
+- **qa 发音报警要看干净 wav**（x01）：混音里被听错的句子，单听缓存 wav 多半是对的；干净 wav 也听错才算真错。"A tiger! Roar!" 的 Roar 在干净 wav 里听成 Run，`say` 写成 `ROAR!` 后听写正确。
+- **改 story.json 别用 json.dump 整体重写**：格式全变，diff 几百行。用正则或 sed 只改数值。

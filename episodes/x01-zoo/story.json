@@ -96,7 +96,7 @@
      "gain": 0.3
     }
    ],
-   "hold": 0.3
+   "hold": 0.15
   },
   {
    "image": "p02.png",
@@ -136,7 +136,7 @@
      "gain": 0.4
     }
    ],
-   "hold": 0.5
+   "hold": 0.15
   },
   {
    "image": "p03.png",
@@ -176,7 +176,7 @@
      "gain": 0.35
     }
    ],
-   "hold": 0.4
+   "hold": 0.15
   },
   {
    "image": "p04.png",
@@ -218,7 +218,7 @@
      "gain": 0.4
     }
    ],
-   "hold": 0.4
+   "hold": 0.15
   },
   {
    "image": "p05.png",
@@ -253,7 +253,7 @@
      "gain": 0.4
     }
    ],
-   "hold": 0.3
+   "hold": 0.15
   },
   {
    "image": "p06.png",
@@ -263,7 +263,7 @@
      "speaker": "nutty",
      "en": "A tiger! Roar!",
      "zh": "老虎！吼！",
-     "say": "[playful] A tiger! Roar!",
+     "say": "[playful] A tiger! ROAR!",
      "gap": 0.3
     },
     {
@@ -274,7 +274,7 @@
      "gap": 0.6
     }
    ],
-   "hold": 0.3
+   "hold": 0.15
   },
   {
    "image": "p07.png",
@@ -292,7 +292,7 @@
      "gap": 0.6
     }
    ],
-   "hold": 0.3
+   "hold": 0.15
   },
   {
    "image": "p08.png",
@@ -326,7 +326,7 @@
      "gain": 0.4
     }
    ],
-   "hold": 0.3
+   "hold": 0.15
   },
   {
    "image": "p09.png",
@@ -346,7 +346,7 @@
      "gap": 0.5
     }
    ],
-   "hold": 0.8
+   "hold": 0.15
   },
   {
    "image": "p04.png",
@@ -364,7 +364,7 @@
     "en": "sea lion",
     "zh": "海狮"
    },
-   "lead": 0.3,
+   "lead": 0.2,
    "transition": "dip",
    "sfx": [
     {
@@ -390,7 +390,7 @@
     "en": "elephant",
     "zh": "大象"
    },
-   "lead": 0.3
+   "lead": 0.2
   },
   {
    "image": "p06.png",
@@ -408,7 +408,7 @@
     "en": "tiger",
     "zh": "老虎"
    },
-   "lead": 0.3,
+   "lead": 0.2,
    "sfx": [
     {
      "file": "../../assets/sfx/ding.mp3",

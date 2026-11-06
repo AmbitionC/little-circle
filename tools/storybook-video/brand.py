@@ -96,6 +96,14 @@ def ep_ribbon(ep, scale=1.0):
     return im
 
 
+def text_ribbon(text, scale=1.0):
+    """自定义彩带（专属绘本没有集数，如「专属绘本」），代替 EP 彩带。"""
+    f = zh(int(36*scale)); w, h = int(f.getlength(text)+70*scale), int(66*scale)
+    im = pill(w, h, BRAND['orange'], None, 255)
+    ImageDraw.Draw(im).text((15+w/2, 15+h/2+2*scale), text, font=f, fill=(255, 255, 255), anchor='mm')
+    return im
+
+
 def wrap_title(text, font, maxw):
     if font.getlength(text) <= maxw: return [text]
     words, best = text.split(), None
@@ -126,7 +134,7 @@ def word_chip(en, zh_txt, scale=1.0):
     return im
 
 
-def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y=0.55, fade=235, zh_size=66):
+def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y=0.55, fade=235, zh_size=66, ribbon=None, tagline=None):
     cw, ch = size; k = max(cw/key_art.width, ch/key_art.height)
     art = key_art.convert('RGBA').resize((int(key_art.width*k), int(key_art.height*k)), Image.LANCZOS)
     oy, ox = int((art.height-ch)*crop_y), (art.width-cw)//2
@@ -136,7 +144,7 @@ def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y
     cv.alpha_composite(gradient(size, 0, 190, BRAND['ink'], int(ch*0.72), ch))
     y = 95*s
     b = series_badge(s); paste_c(cv, b, cw/2, y+b.height/2-15); y += b.height+10*s
-    r = ep_ribbon(ep, s); paste_c(cv, r, cw/2, y+r.height/2-10); y += r.height+5*s
+    r = text_ribbon(ribbon, s) if ribbon else ep_ribbon(ep, s); paste_c(cv, r, cw/2, y+r.height/2-10); y += r.height+5*s
     ft = fr(int(126*s))
     for line in wrap_title(title_en, ft, cw-120*s):
         t = text_block(line, ft, BRAND['cream_txt'], int(12*s), BRAND['brown'], int(14*s))
@@ -156,14 +164,16 @@ def make_cover(key_art, ep, title_en, title_zh, words, size=(1080, 1920), crop_y
         paste_c(cv, text_block("Today's words  今日单词", zh(int(30*s), True), BRAND['cream']), cw/2, cy_chips-105*s)
     x = cw/2-total/2
     for c in chips: cv.alpha_composite(c, (int(x), int(cy_chips-c.height/2))); x += c.width-30
-    paste_c(cv, text_block(BRAND['tagline_zh'], zh(int(30*s), True), (255, 236, 205)), cw/2, ch-80*s)
+    paste_c(cv, text_block(tagline or BRAND['tagline_zh'], zh(int(30*s), True), (255, 236, 205)), cw/2, ch-80*s)
     return cv.convert('RGB')
 
 
 def main():
     ap = argparse.ArgumentParser(description="出封面图：3:4 1080×1440（加 --with-9x16 才另出 9:16）")
     ap.add_argument("story")
-    ap.add_argument("--ep", type=int, required=True, help="集数（封面上的 EP.xx）")
+    ap.add_argument("--ep", type=int, help="集数（封面上的 EP.xx）；给了 --ribbon 可以不写")
+    ap.add_argument("--ribbon", help="彩带文字，代替 EP.xx，如 专属绘本（专属绘本线没有集数）")
+    ap.add_argument("--tagline", help="封面底部小字，默认系列的「幼儿英语启蒙 · 中英字幕 · 3岁+」")
     ap.add_argument("--words", nargs="+", required=True, help="今日单词，写成 help=帮忙")
     ap.add_argument("--key-art", help="默认用 story.json 同目录的 cover.png")
     ap.add_argument("--title-en", help="封面英文大字，默认 story.json 的 title_en")
@@ -174,6 +184,8 @@ def main():
     ap.add_argument("--with-9x16", action="store_true", help="另出 9:16 封面。默认不出：2026-10-29 用户定封面只留 3:4")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
+    if a.ep is None and not a.ribbon:
+        ap.error("--ep 和 --ribbon 至少给一个")
     base = os.path.dirname(os.path.abspath(a.story))
     with open(a.story) as f:
         cfg = json.load(f)
@@ -186,7 +198,7 @@ def main():
         sizes.append(((1080, 1920), "9x16", 0.55))
     for size, tag, crop_y in sizes:
         p = os.path.join(a.out, f"{name}_cover_{tag}.jpg")
-        make_cover(art, a.ep, a.title_en or cfg["title_en"], a.title_zh or cfg["title_zh"], words, size, crop_y, a.fade, a.zh_size).save(p, quality=93)
+        make_cover(art, a.ep, a.title_en or cfg["title_en"], a.title_zh or cfg["title_zh"], words, size, crop_y, a.fade, a.zh_size, a.ribbon, a.tagline).save(p, quality=93)
         print(p)
 
 

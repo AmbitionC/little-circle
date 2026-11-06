@@ -97,7 +97,7 @@ late afternoon warm golden light on a quiet zoo path, [[kid]] and [[nutty]] sit 
 
 **p01b.png** ← p01.png
 ```
-the goldfish blows three little round bubbles right in front of the toddler, she presses her nose flat against the glass with a huge squished happy grin, and the squirrel laughs
+the goldfish blows three little round bubbles right in front of the toddler, she leans in close to the glass with her head and face staying exactly as round and cute as before, eyes wide with delight and a small open-mouthed baby smile with no teeth showing, and the squirrel laughs
 ```
 
 **p02b.png** ← p02.png
@@ -112,7 +112,7 @@ the toddler now claps her own small hands together with a big proud open-mouthed
 
 **p04b.png** ← p04.png
 ```
-the sea lion has flicked the red ball high into the air and dives into the pool, a big splash of white water bursting up over the wall, the toddler and the squirrel squealing with delight and leaning back from the splash
+the sea lion has flicked the red ball high into the air and dives into the pool, a big splash of white water bursting up over the wall, the toddler and the squirrel squealing with delight and leaning back from the splash, both stay in the same place and size as before with the toddler's whole head and hair fully inside the picture and well away from the left edge
 ```
 
 **p05b.png** ← p05.png
