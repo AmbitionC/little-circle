@@ -1,0 +1,19 @@
+{
+  "_说明": "这一集自己的角色（不是森林伙伴）。参考图 refs/<id>.png 由 script.md 的 char_mouse / char_cat 挑好后拷过去，图片不进仓库。",
+  "mouse": {
+    "desc": "a tiny round grey-brown baby mouse with big round pink-lined ears, big round shiny dark eyes with white highlights, a little pink nose, short whiskers, a thin long pink tail, wearing a small red Chinese dudou apron with a little gold coin embroidered on it",
+    "keep": "small red dudou apron with a gold coin, big round ears, big ROUND eyes (never narrow), thin pink tail",
+    "size": 1,
+    "names": "\\bmouse\\b|小老鼠",
+    "pose": "standing",
+    "ref": "refs/mouse.png"
+  },
+  "cat": {
+    "desc": "a big chubby round orange-and-white tabby cat with a round soft face and fluffy cheeks, big round warm amber eyes with white highlights, a small pink nose, a gentle smile with no teeth showing, soft round paws with no claws, a red string collar with one small golden bell, a big fluffy striped tail",
+    "keep": "red string collar with ONE small golden bell, orange-and-white stripes, big ROUND amber eyes, no teeth or claws showing",
+    "size": 3.5,
+    "names": "\\bcat\\b|猫",
+    "pose": "sitting",
+    "ref": "refs/cat.png"
+  }
+}

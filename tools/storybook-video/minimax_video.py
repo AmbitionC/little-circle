@@ -20,7 +20,7 @@ key 只从环境变量 AI778_API_KEY 读（跑 set_ai778_key.sh 弹框写进 ~/.
 import argparse, base64, io, json, os, sys, time, urllib.error, urllib.request
 
 from PIL import Image
-from codex_images import REFS, char_ids, consistency_note, expand
+from codex_images import REFS, char_ids, consistency_note, expand, load_episode_characters
 
 BASE = os.environ.get("AI778_API_BASE", "https://api.lk888.ai").rstrip("/")
 MODEL = os.environ.get("AI778_VIDEO_MODEL", "minimax-h3")
@@ -59,7 +59,11 @@ def build(args, epdir):
     if not prompt:
         sys.exit("要给 --prompt 或 --prompt-file")
     ids = char_ids(expand(prompt))
-    text = f"{expand(prompt).strip()} {STYLE} {consistency_note(ids)}".strip()
+    style = STYLE
+    cfg = os.path.join(epdir, "style.json")
+    if os.path.exists(cfg):   # 单集画风（国风水彩等）：style.json 的 video_style 代替默认日系手绘
+        style = json.load(open(cfg, encoding="utf-8")).get("video_style", STYLE)
+    text = f"{expand(prompt).strip()} {style} {consistency_note(ids)}".strip()
     params = {"duration": str(args.duration), "resolution": args.resolution}
     shown = []
     if args.first or args.last:
@@ -111,6 +115,7 @@ def main():
     ap.add_argument("--status", help="已提交的 task_id：只查结果、下载，不重新提交")
     args = ap.parse_args()
     epdir = os.path.abspath(args.episode)
+    load_episode_characters(epdir)   # 单集自己的角色（characters.json），[[id]] 才展得开
     meta = os.path.join(epdir, "minimax.json")
     log = json.load(open(meta)) if os.path.exists(meta) else {}
 
