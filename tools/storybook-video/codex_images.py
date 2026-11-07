@@ -304,7 +304,7 @@ def parse_script(path):
     """从 script.md 取出 {文件名: 提示词}：**p01.png** 下面的代码块、可灵首帧、封面关键画面。"""
     text = expand(open(path, encoding="utf-8").read())
     jobs = {}
-    for name, body in re.findall(r"\*\*(p\d+[a-z]?\.png)\*\*\s*\n```[^\n]*\n(.*?)```", text, re.S):
+    for name, body in re.findall(r"\*\*([\w-]+\.png)\*\*\s*\n```[^\n]*\n(.*?)```", text, re.S):
         jobs[name] = " ".join(body.split())
     m = re.search(r"(?:可灵|钩子)首帧出图提示词.*?```[^\n]*\n(.*?)```", text, re.S)
     if m:
