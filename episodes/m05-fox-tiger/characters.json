@@ -1,0 +1,27 @@
+{
+  "_说明": "这一集自己的角色。参考图 refs/<id>.png 由 script.md 的 char_* 挑好后拷过去，图片不进仓库。小兔、小鹿只出现一次，不单独做角色，提示词里写全外形。",
+  "fox": {
+    "desc": "a small slim young fox with bright orange-red fur, a white chest and white tail tip, big pointy ears, big round shiny amber eyes with white highlights, a small black nose, a big fluffy tail, and a tiny red Chinese knot tassel tied around his neck",
+    "keep": "tiny red Chinese knot tassel at the neck, white tail tip, big ROUND amber eyes (never narrow)",
+    "size": 1.3,
+    "names": "\\bfox\\b|狐狸",
+    "pose": "standing",
+    "ref": "refs/fox.png"
+  },
+  "tiger": {
+    "desc": "a big chubby friendly tiger with soft orange fur, dark brush-stroke stripes, a classic three-line stripe mark on his forehead, big round gentle amber eyes with white highlights, round soft cheeks and a calm friendly closed-mouth smile, big soft round paws",
+    "keep": "three-line stripe mark on the forehead, big ROUND eyes, mouth closed with no teeth, no claws, plush-toy friendly",
+    "size": 5,
+    "names": "\\btiger\\b|老虎",
+    "pose": "standing on all fours",
+    "ref": "refs/tiger.png"
+  },
+  "chick": {
+    "desc": "a tiny round fluffy yellow baby chick with a little orange beak, big round shiny black eyes and one little tuft of fluff on top of the head",
+    "keep": "one tuft of fluff on the head, smaller than a fist",
+    "size": 0.35,
+    "names": "\\bchick\\b|小鸡",
+    "pose": "standing",
+    "ref": "refs/chick.png"
+  }
+}
