@@ -1,0 +1,11 @@
+{
+  "_说明": "国风水彩特别版（同 m02）。样张不进仓库，在 Mac 上沿用 m02 的 style/ 两张（11-02 用户看过的中国水彩样图，m04 起沿用）。video_style 给 minimax_video.py 用。",
+  "name": "中国水彩画",
+  "style": "Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of peach pink, vermilion, willow green, pale indigo and warm ochre, generous empty white space, cute rounded proportions and big round gentle eyes, simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy",
+  "style_refs": [
+    "../m02-pull-radish/style/cn_watercolor_mouse_lamp.png",
+    "../m02-pull-radish/style/cn_watercolor_radish_pull.png"
+  ],
+  "char_refs": true,
+  "video_style": "Chinese watercolor children's picture book look, soft transparent washes on rice paper, fine ink outlines, soft summer light on a lotus pond, clear water. Keep every character exactly as in the input image: same colors, clothes, proportions and big round eyes, no morphing. One clear continuous action, smooth gentle camera, no fast cuts, no text, no subtitles."
+}
