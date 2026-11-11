@@ -63,6 +63,8 @@
 ## 4. H3 动作提示词
 
 > 每段一个文件 `h3_s1.txt`…`h3_s8.txt`，`minimax_video.py <集> s1 --first f1.png --prompt-file h3_s1.txt --duration 5`（不带 --go 只报价）。S6 用 `--first f6.png --last f6e.png --duration 6`。**风险点**：S3、S4 "长腿"要在一个镜头里长出来，H3 可能做不到；做不到就改首尾帧（f3 无腿 → 带腿尾帧）。
+> **11-11 补**：S3 第一版 H3 里金鱼噘嘴贴到小蝌蚪脸上（3.75–4.5 秒，像亲吻），作废；改用 f3c → f3d（两张脸之间留一段水），提示词写明嘴不碰脸。
+> **11-11 定**：S3、S4 直接用首尾帧锁住长腿：S3 `--first f3a.png --last f3.png`（无腿 → 两条后腿），S4 `--first f4a.png --last f4.png`（两条后腿 → 四条腿、尾巴变短）。f3a、f4a 是 Codex 关键帧（见第 5 节），不花钱。时长：S2、S3、S4、S6 出 6 秒，其余 5 秒。
 
 ## 5. 出图提示词
 
@@ -110,12 +112,12 @@ a calm summer lotus pond, clear pale jade water, a few big round lotus leaves an
 
 **f4.png**
 ```
-a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; underwater: [[turtle]] paddles slowly past with his four chubby legs, [[tadpole]] swims beside him, comparing his own little legs to the turtle's legs; the tadpole now has four tiny legs and a shorter tail, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
+a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; underwater: [[turtle]] paddles slowly past with his four chubby legs, [[tadpole]] swims beside him, comparing his own little legs to the turtle's legs; the tadpole now has four tiny legs and a shorter tail; the tadpole's FOUR little legs must be clearly visible: two small back legs and two small front legs sticking out from his round black body, each a little bent leg with tiny round toes, drawn clearly like a baby frog's legs, and his tail is now only half as long as before, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
 ```
 
 **f5.png**
 ```
-a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; above the water a big lotus leaf, on it [[frogmom]] sits with her back to the viewer, only her big green back and the top of her head visible; under the water [[tadpole]] with four tiny legs looks up at the green shape, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
+a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; above the water a big lotus leaf, on it [[frogmom]] sits with her back to the viewer, only her big green back and the top of her head visible; under the water [[tadpole]] with four tiny legs looks up at the green shape; the tadpole's FOUR little legs must be clearly visible: two small back legs and two small front legs sticking out from his round black body, each a little bent leg with tiny round toes, drawn clearly like a baby frog's legs, and his tail is now only half as long as before, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
 ```
 
 **f6.png**
@@ -135,7 +137,27 @@ a calm summer lotus pond, clear pale jade water, a few big round lotus leaves an
 
 **f8.png**
 ```
-a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; on the lotus leaf the tiny green froglet sits proudly; in the water right below him a brand-new tiny black tadpole (looks just like [[tadpole]]) pops its head up and looks up at him with big hopeful round eyes; the froglet's eyes go wide in surprise, cheeks blushing, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
+a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; on the lotus leaf the tiny green froglet sits proudly; in the water right below him a brand-new tiny black tadpole (looks just like [[tadpole]]) pops its head up and looks up at him with big hopeful round eyes; the froglet's eyes go wide in surprise, cheeks blushing; the new baby tadpole is exactly like the tadpole at the start: a tiny round pure BLACK ink-drop body, no legs, a thin wiggly black tail, big round shiny white eyes and rosy cheeks, NOT green and NOT brown, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
+```
+
+**f3a.png** ← f3.png（S3 首帧：长腿之前）
+```
+remove the tadpole's two little back legs completely, so his round black body has no legs at all, only the round body and the thin wiggly tail; everything else stays exactly the same
+```
+
+**f3c.png** ← f3a.png（S3 首帧 v2：金鱼和小蝌蚪之间留空隙，11-11 第一版 H3 演成了亲吻）
+```
+move the goldfish a little further away to the right so there is a clear gap of open water, about as wide as the whole tadpole, between the goldfish's mouth and the tadpole's face; nothing touches; the goldfish's mouth is a small round O blowing one bubble toward the space between them; everything else stays exactly the same
+```
+
+**f3d.png** ← f3.png（S3 尾帧 v2）
+```
+move the goldfish a little further away to the right so there is a clear gap of open water, about as wide as the whole tadpole, between the goldfish's mouth and the tadpole's face; nothing touches; the goldfish's mouth is a small round O blowing one bubble toward the space between them; everything else stays exactly the same
+```
+
+**f4a.png** ← f4.png（S4 首帧：只有后腿）
+```
+remove only the tadpole's two little FRONT legs, keep his two little back legs, and make his tail long again like before; everything else stays exactly the same
 ```
 
 **r1.png**

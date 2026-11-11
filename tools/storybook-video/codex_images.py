@@ -216,7 +216,7 @@ AGE_NOTE = ("All the animal friends are little children about five years old: ch
 
 def consistency_note(ids):
     """附在出图请求后面：逐个角色点名要保留的细节；两人以上同框时说明身高比例。"""
-    note = AGE_NOTE if any(k in KEEP for k in ids) else ""
+    note = AGE_NOTE if any(k in KEEP and k not in EP_REFS for k in ids) else ""   # 单集角色（青蛙妈妈、孩子本人）不套"都是五岁小朋友"
     keep = [f"{k}: {KEEP[k]}" for k in ids if k in KEEP]
     if keep:
         note += ("Must-keep details for each character (check every one before finishing): " + "; ".join(keep) + ". "

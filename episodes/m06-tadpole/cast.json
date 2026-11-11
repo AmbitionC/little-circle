@@ -1,0 +1,66 @@
+{
+ "_说明": "m06 小蝌蚪找妈妈单集音色（2026-11-11 用户按推荐定）：小蝌蚪 Little Dude、青蛙妈妈 Ashley、鸭妈妈 Laura、金鱼 Elmoe、老乌龟 Wilf、新小蝌蚪用系列 Ruby。Voice ID 不是密钥。",
+ "tadpole": {
+  "provider": "elevenlabs",
+  "voice": "fBD19tfE58bkETeiwUoC",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.0,
+   "similarity_boost": 0.75
+  }
+ },
+ "frogmom": {
+  "provider": "elevenlabs",
+  "voice": "juBxruQqF2lTwAptoNSg",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75
+  }
+ },
+ "duck": {
+  "provider": "elevenlabs",
+  "voice": "FGY2WhTYpPnrIDTdsKH5",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.0,
+   "similarity_boost": 0.75
+  }
+ },
+ "goldfish": {
+  "provider": "elevenlabs",
+  "voice": "1kvnzrSTos1KbmLKMLCC",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.0,
+   "similarity_boost": 0.75
+  }
+ },
+ "turtle": {
+  "provider": "elevenlabs",
+  "voice": "yZ3w1DL4ZAxIdOscv2t8",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75
+  }
+ },
+ "baby": {
+  "provider": "elevenlabs",
+  "voice": "H3183Z9ZcjE80HwRu4PY",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.0,
+   "similarity_boost": 0.75
+  }
+ },
+ "narrator": {
+  "provider": "elevenlabs",
+  "voice": "eIu3yWnYwRobofvvNUiW",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75
+  }
+ }
+}

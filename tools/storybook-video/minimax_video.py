@@ -26,10 +26,12 @@ BASE = os.environ.get("AI778_API_BASE", "https://api.lk888.ai").rstrip("/")
 MODEL = os.environ.get("AI778_VIDEO_MODEL", "minimax-h3")
 # 七七八AI 实扣（元/秒）：2026-10-31 s04 钩子 768P 5 秒扣 3.795 元；2K 按文档"约 768P 的 1.6 倍"估。真实扣费以返回的 cost 为准
 PRICE = {"768P": 0.76, "2K": 1.21}
+# 儿童片硬约束（2026-11-11 m06 金鱼段演成了嘴对嘴亲吻，用户：儿童片里绝对不行）：每次提交都带，不管单集 style.json 怎么写
+SAFETY = "No kissing, no mouth-to-mouth contact, faces never touch at the mouth."
 # 画面要求：和出图同一画风；儿童片，动作要清楚、不要镜头乱甩
 STYLE = ("Japanese hand-painted 2D animation, cel-shaded characters with soft outlines, calm simple background. "
          "Keep every character exactly as in the input images: same colors, outfit, proportions and details, no morphing. "
-         "One clear action, smooth gentle camera, no fast cuts, no text, no subtitles.")
+         "One clear action, smooth gentle camera, no fast cuts, no text, no subtitles. " + SAFETY)
 TIMEOUT = 75 * 60   # 文档说常见 5~60 分钟，超过 70 分钟多半是上游拥堵
 
 
@@ -48,7 +50,7 @@ def call(method, path, body=None):
     req = urllib.request.Request(BASE + path, method=method, data=json.dumps(body).encode() if body else None,
                                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=120) as r:
+        with urllib.request.urlopen(req, timeout=300 if method == "POST" else 120) as r:   # 带两张图的提交 120 秒会超时（11-11）
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
         sys.exit(f"接口报错 {e.code}：{e.read().decode(errors='replace')[:500]}")
@@ -63,6 +65,8 @@ def build(args, epdir):
     cfg = os.path.join(epdir, "style.json")
     if os.path.exists(cfg):   # 单集画风（国风水彩等）：style.json 的 video_style 代替默认日系手绘
         style = json.load(open(cfg, encoding="utf-8")).get("video_style", STYLE)
+    if SAFETY not in style:
+        style = f"{style} {SAFETY}"
     text = f"{expand(prompt).strip()} {style} {consistency_note(ids)}".strip()
     params = {"duration": str(args.duration), "resolution": args.resolution}
     shown = []
