@@ -105,8 +105,8 @@
   },
   {
    "image": "f3.png",
-   "clip": "s3c.mp4",
-   "clip_seconds": 6.0,
+   "clip": "s3d.mp4",
+   "clip_seconds": 5.8,
    "cut": true,
    "lead": 0.3,
    "word": {
@@ -144,7 +144,7 @@
   },
   {
    "image": "f4.png",
-   "clip": "s4b.mp4",
+   "clip": "s4c.mp4",
    "clip_seconds": 6.0,
    "cut": true,
    "lead": 0.3,
@@ -224,7 +224,8 @@
      "speaker": "tadpole",
      "en": "MAMA!",
      "zh": "妈妈！",
-     "say": "[shouting with joy] MAMA!"
+     "say": "[joyful, loud] Mama!",
+     "take": 2
     }
    ],
    "sfx": [
@@ -273,8 +274,9 @@
      "speaker": "baby",
      "en": "Mama?",
      "zh": "妈妈？",
-     "say": "[curious] Mama?",
-     "gap": 0.35
+     "say": "[softly, curious] Mama?",
+     "gap": 0.35,
+     "take": 2
     },
     {
      "speaker": "tadpole",

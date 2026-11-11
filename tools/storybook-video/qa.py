@@ -128,6 +128,8 @@ def main():
     for pi, p in enumerate(pages):
         ls = srt[k:k + len(sbv.page_lines(p))]
         k += len(ls)
+        if not ls:   # 复习卡这类没台词的页（m06 r1）
+            continue
         for t, tag in ((ls[0]["start"] + 0.5, "a"), (ls[-1]["end"] - 0.5, "b")):
             shots.append((f"p{pi + 1:02d}{tag} {t:.1f}s", frame(a.mp4, t, os.path.join(tmp, f"{pi}{tag}.jpg"))))
     tw, th, cols = 270, 480, 8
