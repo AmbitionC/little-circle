@@ -288,3 +288,20 @@ the froglet points at himself with one little hand, both cheeks blushing pink, b
 ```
 only the white mother duck opens her beak WIDE as if talking cheerfully, a big open beak showing the pink inside, her eyes stay as they are; the ducklings and the tadpole keep their mouths as they are; nothing else changes
 ```
+
+## 8. 青蛙妈妈转身（11-12 用户嫌 H3 转身怪异：0.4 秒扭过来、背景跟着重画、小蝌蚪瞬移；改成三张关键帧）
+
+**f5c.png** ← f5b.png
+```
+the mother frog on the lotus leaf has turned her body halfway, now seen from the side, and looks back over her shoulder down at the tadpole in the water with big round gentle eyes and a small closed-mouth smile; the tadpole stays exactly where he is; same background, same water line, same camera; nothing else changes, no text
+```
+
+**f5d.png** ← f5c.png
+```
+the mother frog has now turned all the way around and sits facing the viewer on the lotus leaf, smiling warmly with her mouth closed, looking down at the tadpole; the tadpole stays where he is under the water; same background, same water line, same camera; nothing else changes, no text
+```
+
+**f5e.png** ← f5d.png
+```
+the mother frog opens both arms wide with a big warm closed-mouth smile; the tadpole swims up and pops his head out of the water right in front of her leaf, looking up at her with big shining eyes; same background, same water line, same camera; nothing else changes, no text
+```
