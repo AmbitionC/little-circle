@@ -1,12 +1,23 @@
 {
- "_说明": "m06 小蝌蚪找妈妈单集音色（2026-11-11 用户按推荐定）：小蝌蚪 Little Dude、青蛙妈妈 Ashley、鸭妈妈 Laura、金鱼 Elmoe、老乌龟 Wilf、新小蝌蚪用系列 Ruby。Voice ID 不是密钥。",
+ "_说明": "m06 第二版音色（11-12 用户按第二轮试音推荐定）：小蝌蚪 Omar J、新小蝌蚪 Ruby、青蛙妈妈 Ashley、鸭妈妈 Paula Paw、金鱼 Milly Mouse、老乌龟 Wilf。稳定度 0.5、语速 1.12，每句最多 1 个标签，不用 laughing/silly/softly。",
  "tadpole": {
   "provider": "elevenlabs",
-  "voice": "fBD19tfE58bkETeiwUoC",
+  "voice": "S7IsvAvEoDfui6GSZK3A",
   "model": "eleven_v3",
   "settings": {
-   "stability": 0.0,
-   "similarity_boost": 0.75
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
+  }
+ },
+ "baby": {
+  "provider": "elevenlabs",
+  "voice": "H3183Z9ZcjE80HwRu4PY",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
   }
  },
  "frogmom": {
@@ -15,25 +26,28 @@
   "model": "eleven_v3",
   "settings": {
    "stability": 0.5,
-   "similarity_boost": 0.75
+   "similarity_boost": 0.75,
+   "speed": 1.12
   }
  },
  "duck": {
   "provider": "elevenlabs",
-  "voice": "FGY2WhTYpPnrIDTdsKH5",
+  "voice": "iukn3a1vSSNFmdi5NZS4",
   "model": "eleven_v3",
   "settings": {
-   "stability": 0.0,
-   "similarity_boost": 0.75
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
   }
  },
  "goldfish": {
   "provider": "elevenlabs",
-  "voice": "1kvnzrSTos1KbmLKMLCC",
+  "voice": "M5t0724ORuAGCh3p3DUR",
   "model": "eleven_v3",
   "settings": {
-   "stability": 0.0,
-   "similarity_boost": 0.75
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
   }
  },
  "turtle": {
@@ -42,16 +56,8 @@
   "model": "eleven_v3",
   "settings": {
    "stability": 0.5,
-   "similarity_boost": 0.75
-  }
- },
- "baby": {
-  "provider": "elevenlabs",
-  "voice": "H3183Z9ZcjE80HwRu4PY",
-  "model": "eleven_v3",
-  "settings": {
-   "stability": 0.0,
-   "similarity_boost": 0.75
+   "similarity_boost": 0.75,
+   "speed": 1.0
   }
  },
  "narrator": {
@@ -60,7 +66,8 @@
   "model": "eleven_v3",
   "settings": {
    "stability": 0.5,
-   "similarity_boost": 0.75
+   "similarity_boost": 0.75,
+   "speed": 1.12
   }
  }
 }

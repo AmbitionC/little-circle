@@ -541,7 +541,7 @@ def talk_paste(base_im, talk_im, hint=None, debug=None):
     for i in range(1, n):
         x, y, bw, bh, area = stats[i]
         frac = area / (w * h)
-        if not ((0.0001 if hint else 0.0003) <= frac <= 0.015):   # 写了 where 就放宽下限：小老鼠的嘴只有几百像素
+        if not ((0.0001 if hint else 0.0003) <= frac <= (0.025 if hint else 0.015)):   # 写了 where 时近景脸张大嘴能到 1.6%（m06 小青蛙）   # 写了 where 就放宽下限：小老鼠的嘴只有几百像素
             continue
         if x <= 2 or y <= 2 or x + bw >= w - 2 or y + bh >= h - 2:
             continue

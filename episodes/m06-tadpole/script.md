@@ -164,3 +164,127 @@ remove only the tadpole's two little FRONT legs, keep his two little back legs, 
 ```
 a calm summer lotus pond, clear pale jade water, a few big round lotus leaves and one pink lotus flower, soft sunlight; half-underwater view: the water surface line across the upper part of the picture, sky and lotus leaves above, clear water below with soft light rays; golden evening light: [[frogmom]] and the tiny green froglet sit together on the big lotus leaf next to the pink lotus flower, the little new tadpole floats happily in the water below, everyone smiling, calm and warm, Chinese watercolor painting style for a children's picture book, soft transparent watercolor washes blooming gently on textured xuan rice paper, delicate fine ink brush outlines, fresh light Chinese palette of lotus pink, jade green, willow green, pale indigo and warm ochre, generous empty space, cute rounded proportions and big round shiny eyes with white highlights (never narrow eyes), simple uncluttered composition with one clear focus, only the characters named in the prompt and no extra animals, no text, no watermark, no seal, no calligraphy, the scene painted all the way to the bottom edge with no blank paper, vertical 9:16, keep every face in the upper 60% of the image
 ```
+
+## 6. 张嘴帧（11-12 改回关键帧模式：每句台词一张，只有说话的角色张嘴）
+
+**f1_tadpole.png** ← f1.png
+```
+the tiny black tadpole opens his mouth WIDE as if calling out loudly, a big round open mouth showing the pink inside, clearly bigger than before, big round eyes stay open; nothing else in the picture changes
+```
+
+**f2_tadpole.png** ← f2.png
+```
+only the tiny black tadpole under the water opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the white duck and the ducklings keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f2_duck.png** ← f2.png
+```
+only the white mother duck opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the tadpole and the ducklings keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f3c_tadpole.png** ← f3c.png
+```
+only the tiny black tadpole opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the goldfish keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f3d_goldfish.png** ← f3d.png
+```
+the big goldfish opens her mouth WIDE as if talking, a big open mouth showing the pink inside, clearly different from the small round O before, still keeping the clear gap of water to the tadpole; the tadpole keeps his mouth closed; nothing else changes
+```
+
+**f4a_tadpole.png** ← f4a.png
+```
+ONLY the tiny black tadpole on the right opens his mouth wide as if talking, a big open mouth showing the pink inside; the turtle on the left keeps exactly the same face and mouth as before; nothing else changes
+```
+
+**f4_turtle.png** ← f4.png
+```
+the old turtle opens his mouth WIDE as if talking slowly, a big open mouth showing the pink inside, big round eyes stay wide open; the tadpole keeps his mouth closed; nothing else changes
+```
+
+**f5_tadpole.png** ← f5.png
+```
+only the tiny black tadpole under the water opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the frog on the lotus leaf (still seen from behind) keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f6_frogmom.png** ← f6.png
+```
+only the mother frog opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the tadpole keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f6_tadpole.png** ← f6.png
+```
+only the leaping tadpole opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the mother frog keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f7_tadpole.png** ← f7.png
+```
+only the tiny green froglet opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; his reflection follows him keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f8_baby.png** ← f8.png
+```
+only the new tiny black tadpole in the water opens the mouth a little as if talking, a small round open mouth with no teeth showing, big round eyes stay open; the green froglet on the leaf keep their mouths closed; nothing else changes, same pose, same place, same size
+```
+
+**f8_tadpole.png** ← f8.png
+```
+ONLY the green froglet on the lotus leaf opens his mouth WIDE in surprise as if shouting, a big open mouth showing the pink inside, clearly bigger than before; the black tadpole in the water keeps his mouth closed; nothing else changes
+```
+
+## 7. 反应帧和过渡帧（11-12 用户：图片可以多一些，每 1.3–1.8 秒换一张）
+
+**f1b.png** ← f1.png
+```
+the tiny tadpole has turned around to face the other way, swimming a little to the left, looking around with big round worried eyes; same art style, same characters, nothing else changes, no text
+```
+
+**f1c.png** ← f1.png
+```
+the tiny tadpole swims up closer to the camera, bigger in the picture, big round shiny eyes looking up hopefully, mouth closed; same art style, same characters, nothing else changes, no text
+```
+
+**f2b.png** ← f2.png
+```
+the tiny tadpole has swum right up under the duck's beak and looks up at her hopefully; the duck looks down at him with a kind surprised smile; same art style, same characters, nothing else changes, no text
+```
+
+**f2c.png** ← f2b.png
+```
+the white duck gently shakes her head with a big cheerful closed-mouth smile and the three ducklings giggle with closed eyes; the tadpole's face looks a little disappointed, big round eyes; same art style, same characters, nothing else changes, no text
+```
+
+**f3e.png** ← f3d.png
+```
+the tadpole looks back over his shoulder at his own two new little back legs with big round surprised happy eyes; the goldfish smiles, keeping the same clear gap of water between them; same art style, same characters, nothing else changes, no text
+```
+
+**f4b.png** ← f4.png
+```
+the tadpole looks down at his own four little legs with big round delighted eyes and wiggles them; the turtle smiles kindly; same art style, same characters, nothing else changes, no text
+```
+
+**f5b.png** ← f5.png
+```
+the tiny tadpole swims a little higher, closer to the lotus leaf, looking up hopefully at the big green back; the frog still sits with her back to the viewer; same art style, same characters, nothing else changes, no text
+```
+
+**f6b.png** ← f6e.png
+```
+both open their big round eyes and smile at each other cheek to cheek, mouths closed, still hugging; same art style, same characters, nothing else changes, no text
+```
+
+**f7b.png** ← f7.png
+```
+the froglet lifts one little front leg and waves, his reflection in the water waves the same way, a big happy closed-mouth smile; same art style, same characters, nothing else changes, no text
+```
+
+**f8b.png** ← f8.png
+```
+the froglet points at himself with one little hand, both cheeks blushing pink, big round surprised eyes, mouth closed; the new tadpole smiles up at him; same art style, same characters, nothing else changes, no text
+```
+
+**f2c_duck.png** ← f2c.png
+```
+only the white mother duck opens her beak WIDE as if talking cheerfully, a big open beak showing the pink inside, her eyes stay as they are; the ducklings and the tadpole keep their mouths as they are; nothing else changes
+```

@@ -220,7 +220,7 @@ def consistency_note(ids):
     keep = [f"{k}: {KEEP[k]}" for k in ids if k in KEEP]
     if keep:
         note += ("Must-keep details for each character (check every one before finishing): " + "; ".join(keep) + ". "
-                 "Props a character holds in the reference pose (like a chestnut) appear only if the prompt asks for them, "
+                 "Characters hold nothing in their hands unless the prompt says so (no nuts, no fruit, no extra props), "
                  "but everything in the character description always stays. ")
     sized = [k for k in ids if k in SIZES]
     if len(sized) >= 2:
