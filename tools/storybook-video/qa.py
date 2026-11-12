@@ -215,6 +215,49 @@ def main():
     print("字幕对齐")
     check(not any(f.startswith("字幕") for f in fails), "每条字幕出现后 0.6 秒内都有人声")
 
+    # 7 版式和音量硬检查（2026-11-12 m06：头像跑到字幕下面、说话中途换图嘴不动、老乌龟小 8 dB，截图自查全没发现）
+    lay_path = stem + "_layout.json"
+    if not song:
+        if not os.path.exists(lay_path):
+            fails.append(f"没有 {os.path.basename(lay_path)}：用新版 sbv.py 重新合成（它会写每句的画面、张嘴帧和头像位置）")
+        else:
+            lay = json.load(open(lay_path, encoding="utf-8"))
+            page_of = [(ln, p) for p in pages for ln in sbv.page_lines(p)]
+            # 7a 头像在字幕左上方（c18 基准）；只有那一页 / 那一句写了 avatar_pos: below 才允许在下面
+            print("字幕头像位置（基准：字幕左上方）")
+            badav = []
+            for i, L in enumerate(lay):
+                if not L["avatar"]:
+                    continue
+                ln, p = page_of[i] if i < len(page_of) else ({}, {})
+                below_ok = (ln.get("avatar_pos") or p.get("avatar_pos")) == "below"   # 只认按页 / 按句挪；整集改到下面不算（11-06 就是全局改的）
+                ax, ay, asz = L["avatar"]
+                if ay + asz > L["subtitle"][1] + 40 and not below_ok:
+                    badav.append(i + 1)
+            check(not badav, "每句头像都在字幕左上方" if not badav else f"头像不在字幕左上方的句子：{badav}")
+            # 7b 每句说话时段里，画面上的每张图都要有张嘴帧
+            print("张嘴帧覆盖（说话时段里显示的每张图都要有张嘴帧）")
+            for i, L in enumerate(lay):
+                ok = L["talk_cover"] >= 0.999
+                miss = "、".join(f"{k} {v}s" for k, v in L["no_talk"].items())
+                print(f"  {'✅' if ok else '❌'} {i + 1:2d} [{L['speaker']:8s}] {L['en'][:34]!r} 覆盖 {L['talk_cover']:.0%}" + ("" if ok else f"，缺：{miss}"))
+                if not ok:
+                    fails.append(f"第 {i + 1} 句说话时 {miss} 没有张嘴帧（嘴不动）")
+            # 7c 逐句响度：各角色中位数相差 ≤3 dB，单句偏离全片中位数 ≤3 dB
+            print("逐句响度（干声）")
+            lv = [(L["speaker"], sbv.line_loudness(L["wav"])) for L in lay]
+            med = float(np.median([v for _, v in lv]))
+            by = {}
+            for sp, v in lv:
+                by.setdefault(sp, []).append(v)
+            spm = {sp: float(np.median(v)) for sp, v in by.items()}
+            for sp, v in spm.items():
+                print(f"  {sp:8s} {v:6.1f} LUFS（{len(by[sp])} 句）")
+            spread = max(spm.values()) - min(spm.values())
+            check(spread <= 3, f"各角色响度最大差 {spread:.1f} dB（要求 ≤3）")
+            far = [(i + 1, sp, round(v, 1)) for i, (sp, v) in enumerate(lv) if abs(v - med) > 3]
+            check(not far, "每句响度离全片中位数都在 3 dB 内" if not far else f"响度偏离超过 3 dB 的句子：{far}")
+
     if song:   # 儿歌没有配音，不查角色声音
         print("\n结论：" + ("全部通过" if not fails else "有问题：\n  - " + "\n  - ".join(fails)))
         return 1 if fails else 0

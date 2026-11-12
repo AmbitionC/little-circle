@@ -296,6 +296,30 @@ def synthesize(text, voice, cache_dir):
     return wav, words
 
 
+def line_loudness(wav):
+    """一句配音的响度（LUFS）。太短测不出积分响度时用 RMS 换算近似。"""
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af", "ebur128", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", out)
+    v = float(m[-1]) if m else -70.0
+    if v <= -69:
+        x = decode_audio(wav)
+        v = 20 * np.log10(float(np.sqrt(np.mean(x ** 2))) + 1e-9) - 0.7
+    return v
+
+
+def level_line(wav, cache_dir, target):
+    """逐句响度归一（2026-11-12 m06：老乌龟 Wilf 出声比小蝌蚪小 8 dB，整片 loudnorm 拉不回来）。返回拉到 target LUFS 的副本。"""
+    if target is None:
+        return wav
+    key = hashlib.sha1(f"{os.path.abspath(wav)}|{os.path.getmtime(wav)}|{target}".encode()).hexdigest()[:16]
+    dst = os.path.join(cache_dir, f"lvl_{key}.wav")
+    if not os.path.exists(dst):
+        g = target - line_loudness(wav)
+        run(["ffmpeg", "-v", "error", "-y", "-i", wav, "-af", f"volume={g:.2f}dB", "-c:a", "pcm_f32le", dst])
+    return dst
+
+
 def norm(s):
     return re.sub(r"[^a-z0-9]", "", s.lower())
 
@@ -631,6 +655,16 @@ def keyframes(page, lines, base, img0, tween=None):
         talk.append(dict(page_talk, **build(m, ln.get("where"))) if m else page_talk)
     spoken = [(ln["start"] + s, ln["start"] + e, li) for li, ln in enumerate(lines) for s, e in ln.get("spans", [])]
     return {"keys": keys, "cyc": cyc, "talk": talk, "spoken": spoken, "tweens": {}}
+
+
+def avatar_xy(seg, li, x0, y0, card, full, size):
+    """字幕旁说话人头像的位置。默认字幕左上方（c18 用户认可的位置；2026-11-06 改到左下方没问过用户，11-12 用户："字幕的头像怎么又搞到下面去了？"）。
+    某一页头像挡脸时，在那一页（或那一句）写 avatar_pos: "below" 单独挪到左下方，或写 no_avatar 关掉；不要再全局改。"""
+    pos = seg.lines[li].get("avatar_pos") or seg.page.get("avatar_pos") or seg.ctx.st.get("avatar_pos", "above")
+    x = max(8, x0 + 10 - size // 4)
+    if pos == "below":
+        return x, y0 + card.height - 12 + (full - size) // 2
+    return x, max(0, y0 - size + 12 + (full - size) // 2)
 
 
 def speaker_at(kf, lines, li, name):
@@ -1176,11 +1210,11 @@ class PageSeg:
             x0, y0 = int(cx - c.width / 2), int(self.ctx.st["subtitle_center"] - c.height / 2)
             frame.alpha_composite(c, (x0, y0))
             av = None if self.lines[li].get("no_avatar") else self.ctx.avatar(self.lines[li]["speaker"])  # 头像会挡住角色的页可关
-            if av is not None:   # 字幕左下角挂说话人的小头像，谁在说一眼就知道（2026-11-06 主体居中后，挂左上角会压到字幕正上方的脸）
+            if av is not None:
                 k = min(1.0, max(0.0, (t - self.lines[li]["start"] + 0.1) / 0.18))
                 size = int(av.width * (0.6 + 0.4 * ease(k)) + 0.5)
                 a = av.resize((size, size), Image.LANCZOS)
-                frame.alpha_composite(a, (max(8, x0 + 10 - size // 4), y0 + c.height - 12 + (av.width - size) // 2))
+                frame.alpha_composite(a, avatar_xy(self, li, x0, y0, c, av.width, size))
         if self.ctx.badge is not None:
             frame.alpha_composite(self.ctx.badge, tuple(self.ctx.st["badge_pos"]))
         return frame.convert("RGB")
@@ -1428,6 +1462,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
         if hook.get("say"):
             say = hook["say"]
             wav, _ = synthesize(say.get("say", say["en"]), cast[say.get("speaker", "narrator")], cache)
+            wav = level_line(wav, cache, st.get("line_lufs", -15))
             placements.append((wav, seg.start + say.get("at", 0.4), 1.0))
         if clip and hook.get("keep_clip_audio"):
             placements.append((clip, seg.start, hook.get("clip_gain", 1.0)))
@@ -1457,6 +1492,7 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
                 if ln.get("take"):
                     voice["take"] = ln["take"]
                 wav, words = synthesize(ln.get("say", ln["en"]), voice, cache)
+            wav = level_line(wav, cache, st.get("line_lufs", -15))
             dur = probe_duration(wav)
             tokens = ln["en"].split()
             lines.append(dict(ln, speaker=ln.get("speaker", "narrator"), start=cur, end=cur + dur,
@@ -1573,6 +1609,34 @@ def build(story_path, out_dir, max_pages=None, sparkle=True, cast_override=None)
           f"offset={m['target_offset']}:linear=true,aresample={SR}")
     name = cfg.get("output_name", "storybook") + ("_feed" if truncated else "")
     mp4 = os.path.join(out_dir, f"{name}.mp4")
+    # 给 qa.py 用的版式记录（2026-11-12 m06：说话中途换图没配张嘴帧、头像位置变了，截图自查都没发现）
+    layout = []
+    for sg in segs:
+        if not isinstance(sg, PageSeg):
+            continue
+        for li, ln in enumerate(sg.lines):
+            shown, miss = {}, {}
+            n_s = max(1, int((ln["end"] - ln["start"]) * FPS))
+            for j in range(n_s):
+                tt = ln["start"] + j / FPS
+                nm = "<视频片段>" if sg.clip else sg.keys_name(tt)
+                shown[nm] = shown.get(nm, 0) + 1
+                hit = None if sg.clip else (sg.kf["talk"][li].get(nm) if li < len(sg.kf["talk"]) else None)
+                if hit is None:
+                    miss[nm] = miss.get(nm, 0) + 1
+            av = None if ln.get("no_avatar") else ctx.avatar(ln["speaker"])
+            c = sg.card(li, 0)
+            cx = st.get("subtitle_x", W // 2) if st.get("subtitle_mode", "outline") == "outline" else W // 2
+            x0, y0 = int(cx - c.width / 2), int(st["subtitle_center"] - c.height / 2)
+            ab = list(avatar_xy(sg, li, x0, y0, c, av.width, av.width)) + [av.width] if av is not None else None
+            layout.append({"start": round(sg.start + ln["start"], 3), "end": round(sg.start + ln["end"], 3),
+                           "speaker": ln["speaker"], "en": ln["en"], "wav": ln["wav"],
+                           "talk_cover": round(1 - sum(miss.values()) / n_s, 3),
+                           "no_talk": {k: round(v / FPS, 2) for k, v in miss.items()},
+                           "shown": {k: round(v / FPS, 2) for k, v in shown.items()},
+                           "avatar": ab, "subtitle": [x0, y0, c.width, c.height]})
+    with open(os.path.join(out_dir, f"{name}_layout.json"), "w", encoding="utf-8") as f:
+        json.dump(layout, f, ensure_ascii=False, indent=1)
     enc = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-i", wav, "-map", "0:v", "-map", "1:a",
