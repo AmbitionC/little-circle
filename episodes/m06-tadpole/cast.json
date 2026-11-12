@@ -1,5 +1,5 @@
 {
- "_说明": "m06 第二版音色（11-12 用户按第二轮试音推荐定）：小蝌蚪 Omar J、新小蝌蚪 Ruby、青蛙妈妈 Ashley、鸭妈妈 Paula Paw、金鱼 Milly Mouse、老乌龟 Wilf。稳定度 0.5、语速 1.12，每句最多 1 个标签，不用 laughing/silly/softly。",
+ "_说明": "m06 第二版音色（11-12 用户按第二轮试音推荐定）：小蝌蚪 Omar J、新小蝌蚪 Ruby、青蛙妈妈 Aerisita（11-13 用户在第二轮换声里选的，原 Ashley 用户嫌难听）、鸭妈妈 Paula Paw、金鱼 Milly Mouse、老乌龟 Wilf。稳定度 0.5、语速 1.12，每句最多 1 个标签，不用 laughing/silly/softly。",
  "tadpole": {
   "provider": "elevenlabs",
   "voice": "S7IsvAvEoDfui6GSZK3A",
@@ -22,7 +22,7 @@
  },
  "frogmom": {
   "provider": "elevenlabs",
-  "voice": "juBxruQqF2lTwAptoNSg",
+  "voice": "vGQNBgLaiM3EdZtxIiuY",
   "model": "eleven_v3",
   "settings": {
    "stability": 0.5,

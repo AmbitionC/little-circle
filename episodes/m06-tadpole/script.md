@@ -305,3 +305,8 @@ the mother frog has now turned all the way around and sits facing the viewer on 
 ```
 the mother frog opens both arms wide with a big warm closed-mouth smile; the tadpole swims up and pops his head out of the water right in front of her leaf, looking up at her with big shining eyes; same background, same water line, same camera; nothing else changes, no text
 ```
+
+**f5e_frogmom.png** ← f5e.png
+```
+only the mother frog opens her mouth WIDE as if talking warmly, a big open mouth showing the pink inside, big round eyes stay open, arms still open; the tadpole keeps his mouth closed; nothing else changes
+```

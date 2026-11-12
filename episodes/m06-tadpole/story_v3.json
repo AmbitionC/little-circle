@@ -1,0 +1,1019 @@
+{
+ "title_en": "Mama, Where Are You?",
+ "title_zh": "小蝌蚪找妈妈",
+ "series": {
+  "badge_text": "栗栗学英语 · 国风故事",
+  "badge_alpha": 0.72
+ },
+ "cast": "cast.json",
+ "ai_note": "画面和配音由 AI 生成",
+ "loudness": {
+  "I": -16,
+  "TP": -1.5
+ },
+ "ambience": {
+  "cues": [
+   {
+    "page": 0,
+    "file": "../../assets/sfx/amb_pond.wav",
+    "volume": 0.9,
+    "fade": 1.0
+   }
+  ]
+ },
+ "bgm": {
+  "file": "../../out/m06/music/bgm_m06.wav",
+  "volume": 0.2
+ },
+ "output_name": "m06_tadpole_v3",
+ "_说明": "2026-11-13 第三版：台词补完整（每次问 Are you my mama?、妈妈说 I'm your mama、结尾帮新蝌蚪找妈妈）；青蛙妈妈换 Aerisita；转身改成 f5b→f5c→f5d→f5e 三张关键帧（H3 转身作废）；新蝌蚪出场改关键帧。H3 只留 x3（长腿）、x6（扑进怀里）。",
+ "style": {
+  "speaker_colors": {
+   "tadpole": [
+    40,
+    40,
+    48
+   ],
+   "frogmom": [
+    60,
+    120,
+    60
+   ],
+   "duck": [
+    60,
+    90,
+    150
+   ],
+   "goldfish": [
+    200,
+    80,
+    50
+   ],
+   "turtle": [
+    90,
+    110,
+    70
+   ],
+   "baby": [
+    40,
+    40,
+    48
+   ],
+   "all": [
+    150,
+    70,
+    40
+   ]
+  },
+  "tail": 0,
+  "bgm_rel_db": -11.0,
+  "bgm_duck_db": 0,
+  "kb_linear": true,
+  "avatar_dir": [
+   "refs/avatars",
+   "../../series/refs/avatars"
+  ]
+ },
+ "target_seconds": 50,
+ "hook": {
+  "frames": [
+   {
+    "image": "f1b.png"
+   }
+  ],
+  "max_seconds": 0.9,
+  "headline": "小蝌蚪找妈妈，英文版来了！",
+  "subline": "中国水彩 · 中英字幕",
+  "headline_y": 300,
+  "motion": "in",
+  "zoom": 1.05,
+  "sfx": [
+   {
+    "file": "../../assets/sfx/bubbles.wav",
+    "at": 0.1,
+    "gain": 0.3,
+    "dur": 1.1
+   }
+  ]
+ },
+ "pages": [
+  {
+   "image": "f1.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.2,
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Mama? Where are you? I want my mama!",
+     "zh": "妈妈？你在哪儿？我要找妈妈！",
+     "say": "Mama? Where are you? I want my mama!",
+     "talk": {
+      "f1.png": "f1_tadpole.png"
+     },
+     "where": [
+      0.65,
+      0.44
+     ],
+     "audio": "../../out/m06v3/lines/f8efd2350e6f4bb7_t118.wav",
+     "words": [
+      {
+       "w": "Mama?",
+       "s": 0.0,
+       "e": 0.6016949152542372
+      },
+      {
+       "w": "Where",
+       "s": 0.7033898305084746,
+       "e": 1.2118644067796611
+      },
+      {
+       "w": "are",
+       "s": 1.2966101694915255,
+       "e": 1.5508474576271187
+      },
+      {
+       "w": "you?",
+       "s": 1.6186440677966103,
+       "e": 1.8898305084745768
+      },
+      {
+       "w": "I",
+       "s": 2.161016949152543,
+       "e": 2.4322033898305087
+      },
+      {
+       "w": "want",
+       "s": 2.5135593220338985,
+       "e": 2.838983050847458
+      },
+      {
+       "w": "my",
+       "s": 2.9067796610169494,
+       "e": 3.0423728813559325
+      },
+      {
+       "w": "mama!",
+       "s": 3.1915254237288138,
+       "e": 3.9237288135593222
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f1c.png",
+     "line": 0,
+     "offset": 2.03
+    }
+   ]
+  },
+  {
+   "image": "f2.png",
+   "lead": 0.15,
+   "hold": 0.2,
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Hello, Duck! Are you my mama?",
+     "zh": "鸭子你好！你是我妈妈吗？",
+     "say": "Hello, Duck! Are you my mama?",
+     "talk": {
+      "f2.png": "f2_tadpole.png"
+     },
+     "where": [
+      0.51,
+      0.59
+     ],
+     "gap": 0.25,
+     "audio": "../../out/m06v3/lines/8b5296186306e559_t118.wav",
+     "words": [
+      {
+       "w": "Hello,",
+       "s": 0.0,
+       "e": 0.49152542372881364
+      },
+      {
+       "w": "Duck!",
+       "s": 0.5389830508474577,
+       "e": 1.0
+      },
+      {
+       "w": "Are",
+       "s": 1.0677966101694916,
+       "e": 1.2711864406779663
+      },
+      {
+       "w": "you",
+       "s": 1.3050847457627117,
+       "e": 1.4067796610169492
+      },
+      {
+       "w": "my",
+       "s": 1.4745762711864407,
+       "e": 1.6101694915254237
+      },
+      {
+       "w": "mama?",
+       "s": 1.6915254237288135,
+       "e": 2.152542372881356
+      }
+     ]
+    },
+    {
+     "speaker": "duck",
+     "en": "Quack! Quack! No! Your mama has big eyes!",
+     "zh": "嘎嘎！不是哦！你妈妈眼睛大大的！",
+     "say": "[cheerful] Quack! Quack! No! Your mama has big eyes!",
+     "talk": {
+      "f2.png": "f2_duck.png",
+      "f2c.png": "f2c_duck.png"
+     },
+     "where": [
+      0.87,
+      0.31
+     ],
+     "take": 3,
+     "audio": "../../out/m06v3/lines/b817f92704d641bc_t118.wav",
+     "words": [
+      {
+       "w": "[cheerful]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "Quack!",
+       "s": 0.0008474576271186449,
+       "e": 0.41525423728813565
+      },
+      {
+       "w": "Quack!",
+       "s": 0.4601694915254238,
+       "e": 0.8220338983050849
+      },
+      {
+       "w": "No!",
+       "s": 1.0483050847457627,
+       "e": 1.5677966101694916
+      },
+      {
+       "w": "Your",
+       "s": 1.6627118644067798,
+       "e": 2.0423728813559325
+      },
+      {
+       "w": "mama",
+       "s": 2.096610169491526,
+       "e": 2.3135593220338984
+      },
+      {
+       "w": "has",
+       "s": 2.3644067796610173,
+       "e": 2.5169491525423733
+      },
+      {
+       "w": "big",
+       "s": 2.6016949152542375,
+       "e": 2.855932203389831
+      },
+      {
+       "w": "eyes!",
+       "s": 2.9644067796610174,
+       "e": 3.5338983050847457
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f2b.png",
+     "line": 0,
+     "offset": 0.34
+    },
+    {
+     "image": "f2c.png",
+     "line": 1,
+     "offset": 1.78
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/splash.wav",
+     "at": 0.1,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "image": "f3c.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.3,
+   "motion": "out",
+   "word": {
+    "en": "big eyes",
+    "zh": "大眼睛"
+   },
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Big eyes! Are you my mama?",
+     "zh": "大眼睛！你是我妈妈吗？",
+     "say": "[excited] Big eyes! Are you my mama?",
+     "talk": {
+      "f3c.png": "f3c_tadpole.png"
+     },
+     "where": [
+      0.28,
+      0.41
+     ],
+     "audio": "../../out/m06v3/lines/55e06356ff6bb03b_t118.wav",
+     "words": [
+      {
+       "w": "[excited]",
+       "s": 0.0,
+       "e": 0.11016949152542374
+      },
+      {
+       "w": "Big",
+       "s": 0.12288135593220341,
+       "e": 0.1610169491525424
+      },
+      {
+       "w": "eyes!",
+       "s": 0.33728813559322035,
+       "e": 1.2796610169491525
+      },
+      {
+       "w": "Are",
+       "s": 1.3389830508474578,
+       "e": 1.516949152542373
+      },
+      {
+       "w": "you",
+       "s": 1.5847457627118646,
+       "e": 1.7881355932203393
+      },
+      {
+       "w": "my",
+       "s": 1.878813559322034,
+       "e": 2.0593220338983054
+      },
+      {
+       "w": "mama?",
+       "s": 2.1271186440677967,
+       "e": 2.533898305084746
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/bubbles.wav",
+     "at": 0.3,
+     "gain": 0.25,
+     "dur": 1.5
+    }
+   ]
+  },
+  {
+   "image": "f3c.png",
+   "clip": "x3.mp4",
+   "transition": "fade",
+   "lines": [],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 1.3,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "f3d.png",
+   "transition": "fade",
+   "lead": 0.15,
+   "hold": 0.3,
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "goldfish",
+     "en": "Blub! Blub! No! Your mama has four legs!",
+     "zh": "咕噜咕噜！不是！你妈妈有四条腿！",
+     "say": "Blub! Blub! No! Your mama has four legs!",
+     "talk": {
+      "f3d.png": "f3d_goldfish.png"
+     },
+     "where": [
+      0.53,
+      0.39
+     ],
+     "audio": "../../out/m06v3/lines/5801cac56de176df_t118.wav",
+     "words": [
+      {
+       "w": "Blub!",
+       "s": 0.0,
+       "e": 0.5423728813559322
+      },
+      {
+       "w": "Blub!",
+       "s": 0.6330508474576272,
+       "e": 1.3898305084745763
+      },
+      {
+       "w": "No!",
+       "s": 1.514406779661017,
+       "e": 2.0
+      },
+      {
+       "w": "Your",
+       "s": 2.047457627118644,
+       "e": 2.2372881355932206
+      },
+      {
+       "w": "mama",
+       "s": 2.31864406779661,
+       "e": 2.6440677966101696
+      },
+      {
+       "w": "has",
+       "s": 2.711864406779661,
+       "e": 2.915254237288136
+      },
+      {
+       "w": "four",
+       "s": 2.983050847457627,
+       "e": 3.2542372881355934
+      },
+      {
+       "w": "legs!",
+       "s": 3.36271186440678,
+       "e": 3.932203389830508
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f3e.png",
+     "line": 0,
+     "offset": 2.2
+    }
+   ]
+  },
+  {
+   "image": "f4a.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.15,
+   "motion": "in",
+   "word": {
+    "en": "legs",
+    "zh": "宝宝发现了吗？小蝌蚪长腿啦！"
+   },
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Four legs! Are you my mama?",
+     "zh": "四条腿！你是我妈妈吗？",
+     "say": "Four legs! Are you my mama?",
+     "talk": {
+      "f4a.png": "f4a_tadpole.png"
+     },
+     "where": [
+      0.75,
+      0.44
+     ],
+     "gap": 0.25,
+     "audio": "../../out/m06v3/lines/66635dfd6d6eef1d_t118.wav",
+     "words": [
+      {
+       "w": "Four",
+       "s": 0.0,
+       "e": 0.18644067796610173
+      },
+      {
+       "w": "legs!",
+       "s": 0.2949152542372882,
+       "e": 0.7966101694915255
+      },
+      {
+       "w": "Are",
+       "s": 0.9152542372881355,
+       "e": 1.2711864406779663
+      },
+      {
+       "w": "you",
+       "s": 1.3220338983050848,
+       "e": 1.4745762711864407
+      },
+      {
+       "w": "my",
+       "s": 1.5652542372881357,
+       "e": 1.745762711864407
+      },
+      {
+       "w": "mama?",
+       "s": 1.8271186440677964,
+       "e": 2.2881355932203387
+      }
+     ]
+    },
+    {
+     "speaker": "turtle",
+     "en": "Nooo... your mama... is green.",
+     "zh": "不——是——，你妈妈……是绿色的。",
+     "say": "Nooo... your mama... is green.",
+     "talk": {
+      "f4.png": "f4_turtle.png"
+     },
+     "where": [
+      0.62,
+      0.4
+     ],
+     "audio": "../../out/m06v3/lines/6a26b993f9590dba_t110.wav",
+     "words": [
+      {
+       "w": "Nooo...",
+       "s": 0.0,
+       "e": 1.2363636363636363
+      },
+      {
+       "w": "your",
+       "s": 1.2799999999999998,
+       "e": 1.4545454545454546
+      },
+      {
+       "w": "mama...",
+       "s": 1.5709090909090908,
+       "e": 2.7636363636363632
+      },
+      {
+       "w": "is",
+       "s": 2.8363636363636364,
+       "e": 2.9818181818181815
+      },
+      {
+       "w": "green.",
+       "s": 3.0663636363636364,
+       "e": 3.7818181818181817
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f4.png",
+     "line": 1,
+     "offset": -0.45,
+     "tween": 0.45
+    },
+    {
+     "image": "f4b.png",
+     "line": 1,
+     "offset": 3.05
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/pop.mp3",
+     "at": 2.6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "f5.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.35,
+   "motion": "in",
+   "word": {
+    "en": "Mama!",
+    "zh": "宝宝快喊"
+   },
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Green... Is that my mama?",
+     "zh": "绿色的……那是我妈妈吗？",
+     "say": "Green... Is that my mama?",
+     "talk": {
+      "f5.png": "f5_tadpole.png"
+     },
+     "where": [
+      0.49,
+      0.51
+     ],
+     "audio": "../../out/m06v3/lines/d1bb8c231807ecf3_t118.wav",
+     "words": [
+      {
+       "w": "Green...",
+       "s": 0.0,
+       "e": 0.8389830508474576
+      },
+      {
+       "w": "Is",
+       "s": 0.8838983050847458,
+       "e": 0.9745762711864406
+      },
+      {
+       "w": "that",
+       "s": 1.028813559322034,
+       "e": 1.2457627118644068
+      },
+      {
+       "w": "my",
+       "s": 1.3364406779661018,
+       "e": 1.516949152542373
+      },
+      {
+       "w": "mama?",
+       "s": 1.5847457627118644,
+       "e": 1.9237288135593222
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f5b.png",
+     "line": 0,
+     "offset": 0.7
+    },
+    {
+     "image": "f5c.png",
+     "line": 0,
+     "offset": 1.2,
+     "tween": 0.4
+    },
+    {
+     "image": "f5d.png",
+     "line": 0,
+     "offset": 1.7,
+     "tween": 0.4
+    }
+   ]
+  },
+  {
+   "image": "f5d.png",
+   "lead": 0.35,
+   "hold": 0.2,
+   "motion": "in",
+   "zoom": 1.05,
+   "lines": [
+    {
+     "speaker": "frogmom",
+     "en": "Ribbit! Yes, my baby! I'm your mama!",
+     "zh": "呱！是呀宝宝，我就是你妈妈！",
+     "say": "[warmly] Ribbit! Yes, my baby! I'm your mama!",
+     "talk": {
+      "f5e.png": "f5e_frogmom.png"
+     },
+     "where": [
+      0.43,
+      0.21
+     ],
+     "audio": "../../out/m06v3/lines/3b348fff92c7db5e_t118.wav",
+     "words": [
+      {
+       "w": "[warmly]",
+       "s": 0.0,
+       "e": 0.1033898305084746
+      },
+      {
+       "w": "Ribbit!",
+       "s": 0.11355932203389832,
+       "e": 0.3474576271186441
+      },
+      {
+       "w": "Yes,",
+       "s": 0.46610169491525427,
+       "e": 0.8898305084745763
+      },
+      {
+       "w": "my",
+       "s": 0.9576271186440678,
+       "e": 1.093220338983051
+      },
+      {
+       "w": "baby!",
+       "s": 1.188135593220339,
+       "e": 1.6355932203389831
+      },
+      {
+       "w": "I'm",
+       "s": 1.838983050847458,
+       "e": 2.110169491525424
+      },
+      {
+       "w": "your",
+       "s": 2.164406779661017,
+       "e": 2.38135593220339
+      },
+      {
+       "w": "mama!",
+       "s": 2.476271186440678,
+       "e": 3.1271186440677967
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f5e.png",
+     "at": 0.0,
+     "tween": 0.35
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/splash.wav",
+     "at": 0.1,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "f6.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.3,
+   "motion": "out",
+   "zoom": 1.05,
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Mama! I found you!",
+     "zh": "妈妈！我找到你啦！",
+     "say": "[happy] Mama! I found you!",
+     "talk": {
+      "f6.png": "f6_tadpole.png"
+     },
+     "where": [
+      0.61,
+      0.28
+     ],
+     "audio": "../../out/m06v3/lines/2ff25ade1114a6cc_t118.wav",
+     "words": [
+      {
+       "w": "[happy]",
+       "s": 0.0,
+       "e": 0.0
+      },
+      {
+       "w": "Mama!",
+       "s": 0.08644067796610169,
+       "e": 0.5338983050847458
+      },
+      {
+       "w": "I",
+       "s": 0.7033898305084747,
+       "e": 0.8728813559322035
+      },
+      {
+       "w": "found",
+       "s": 0.9635593220338984,
+       "e": 1.4152542372881356
+      },
+      {
+       "w": "you!",
+       "s": 1.5169491525423728,
+       "e": 2.3644067796610173
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/sparkle.mp3",
+     "at": 0.2,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "image": "f6.png",
+   "clip": "x6.mp4",
+   "transition": "fade",
+   "lines": [],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/drop.wav",
+     "at": 1.6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "image": "f7.png",
+   "cut": true,
+   "lead": 0.15,
+   "hold": 0.1,
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "tadpole",
+     "en": "Look! I look just like Mama!",
+     "zh": "看！我和妈妈一模一样！",
+     "say": "[delighted] Look! I look just like Mama!",
+     "talk": {
+      "f7.png": "f7_tadpole.png"
+     },
+     "where": [
+      0.58,
+      0.34
+     ],
+     "audio": "../../out/m06v3/lines/7c7c05fa258a5569_t118.wav",
+     "words": [
+      {
+       "w": "[delighted]",
+       "s": 0.0,
+       "e": 0.050847457627118654
+      },
+      {
+       "w": "Look!",
+       "s": 0.1322033898305085,
+       "e": 0.5254237288135594
+      },
+      {
+       "w": "I",
+       "s": 0.7627118644067797,
+       "e": 1.0
+      },
+      {
+       "w": "look",
+       "s": 1.0677966101694916,
+       "e": 1.3389830508474576
+      },
+      {
+       "w": "just",
+       "s": 1.3932203389830509,
+       "e": 1.6101694915254237
+      },
+      {
+       "w": "like",
+       "s": 1.6779661016949152,
+       "e": 1.9491525423728813
+      },
+      {
+       "w": "Mama!",
+       "s": 2.071186440677966,
+       "e": 2.694915254237288
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f7b.png",
+     "line": 0,
+     "offset": 1.86
+    }
+   ]
+  },
+  {
+   "image": "f8.png",
+   "lead": 0.15,
+   "hold": 0.3,
+   "motion": "in",
+   "lines": [
+    {
+     "speaker": "baby",
+     "en": "Are you my mama?",
+     "zh": "你是我妈妈吗？",
+     "say": "Are you my mama?",
+     "talk": {
+      "f8.png": "f8_baby.png"
+     },
+     "where": [
+      0.49,
+      0.43
+     ],
+     "gap": 0.25,
+     "audio": "../../out/m06v3/lines/82692b7d7b54c496_t118.wav",
+     "words": [
+      {
+       "w": "Are",
+       "s": 0.0,
+       "e": 0.08474576271186442
+      },
+      {
+       "w": "you",
+       "s": 0.13559322033898305,
+       "e": 0.288135593220339
+      },
+      {
+       "w": "my",
+       "s": 0.3559322033898305,
+       "e": 0.49152542372881364
+      },
+      {
+       "w": "mama?",
+       "s": 0.5728813559322034,
+       "e": 1.2372881355932204
+      }
+     ]
+    },
+    {
+     "speaker": "tadpole",
+     "en": "Me?! Come on, let's find your mama!",
+     "zh": "我？！走，我们一起去找你妈妈！",
+     "say": "[surprised] Me?! Come on, let's find your mama!",
+     "talk": {
+      "f8.png": "f8_tadpole.png",
+      "f8b.png": "f8_tadpole.png"
+     },
+     "where": [
+      0.4,
+      0.22
+     ],
+     "audio": "../../out/m06v3/lines/1a27b78172ea8b36_t118.wav",
+     "words": [
+      {
+       "w": "[surprised]",
+       "s": 0.0,
+       "e": 0.32542372881355935
+      },
+      {
+       "w": "Me?!",
+       "s": 0.3525423728813559,
+       "e": 0.47457627118644075
+      },
+      {
+       "w": "Come",
+       "s": 0.5694915254237288,
+       "e": 0.9491525423728813
+      },
+      {
+       "w": "on,",
+       "s": 1.0398305084745763,
+       "e": 1.3559322033898304
+      },
+      {
+       "w": "let's",
+       "s": 1.3898305084745763,
+       "e": 1.5593220338983051
+      },
+      {
+       "w": "find",
+       "s": 1.6135593220338984,
+       "e": 1.8305084745762714
+      },
+      {
+       "w": "your",
+       "s": 1.8576271186440676,
+       "e": 1.966101694915254
+      },
+      {
+       "w": "mama!",
+       "s": 2.0203389830508476,
+       "e": 2.711864406779661
+      }
+     ]
+    }
+   ],
+   "frames": [
+    {
+     "image": "f8b.png",
+     "line": 1,
+     "offset": 0.51
+    }
+   ],
+   "sfx": [
+    {
+     "file": "../../assets/sfx/drop.wav",
+     "at": 0.2,
+     "gain": 0.35
+    },
+    {
+     "file": "../../assets/sfx/boing.mp3",
+     "at": 1.6,
+     "gain": 0.2
+    }
+   ],
+   "cut": true
+  },
+  {
+   "image": "r1.png",
+   "cut": true,
+   "motion": "in",
+   "zoom": 1.08,
+   "lead": 0.2,
+   "hold": 0.35,
+   "lines": [],
+   "word": {
+    "en": "mama · big eyes · legs · green",
+    "zh": "妈妈 · 大眼睛 · 腿 · 绿色"
+   }
+  }
+ ],
+ "ending": {
+  "headline": "mama 妈妈 · legs 腿 · green 绿色",
+  "subline": "和宝宝一起说：Mama, I love you!",
+  "seconds": 1.3,
+  "motion": true
+ }
+}
