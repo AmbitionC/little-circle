@@ -238,7 +238,7 @@ python3 codex_images.py ../../episodes/c01-fruits --only p02,p05 --force   # 只
     质检：渲染时设 `SBV_TALK_DEBUG=<目录>`，每句台词会存一张红框图，逐张确认红框框在说话角色的嘴上；再在每句台词中间抽帧，看背景有没有在动。
 - **谁在说话要一眼看出来（2026-10-29 用户："我们这个严格意义上不算视频，多个角色在一个分镜的时候，谁知道谁在说话？"）**：
   - **每一句角色台词都要有张嘴帧**，不止重要台词。给这句说话时屏幕上那张图出一张：`**p05_bruno.png** ← p05.png`，改动只写 `only the bear opens his mouth wide talking, everyone else keeps their mouth closed, nothing else changes`。story.json 写在那一句上：`"talk": "p05_bruno.png"`（说话期间换了关键帧，就写成 `{"p05.png": "p05_bruno.png", "p05b.png": "p05b_bruno.png"}`）。同一张图两个人轮流说，各出各的张嘴帧。
-  - sbv.py 拿张嘴帧算出嘴在哪，然后自动做三件事：镜头往说话的人那边轻轻靠（`speaker_pull`，默认 0.3）；说话人周围亮、远处最多暗 14%（`speaker_spotlight`）；字幕左上角弹出说话人的圆头像，圈是角色色（头像用 `codex_images.py avatars` 出到 `series/refs/avatars/`，新角色出参考图后顺手出头像）。算不出嘴的位置时，在那一句写 `"where": [x, y]`（比例坐标）。
+  - sbv.py 拿张嘴帧算出嘴在哪，然后自动做三件事：镜头往说话的人那边轻轻靠（`speaker_pull`，默认 0.3）；说话人周围亮、远处最多暗 14%（`speaker_spotlight`）；字幕左上角弹出说话人的圆头像，圈是角色色（头像用 `codex_images.py avatars` 出到 `series/refs/avatars/`；**单集角色用 `codex_images.py <集目录> --avatars` 出到集目录 `refs/avatars/`**，缺头像 sbv 会报错停下，2026-11-12 m06 漏过一次）。算不出嘴的位置时，在那一句写 `"where": [x, y]`（比例坐标）。
   - 分镜就要帮忙：两人对话时一左一右站，说话的那个更靠前、更大；需要的话说话前加一张"转向对方 / 抬手"的关键帧。
   - 质检：关掉声音看一遍，每一句都能指出是谁在说；指不出来就补张嘴帧或调站位。
 - **质检**：关键帧和主图的背景、光线、角色位置要对得上，只有动作变了；对不上就 `--only p04b --force` 重出。抽帧看换图那一下有没有跳画风。

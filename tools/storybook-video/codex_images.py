@@ -631,6 +631,7 @@ def main():
     ap.add_argument("--comic", action="store_true", help="只出漫画剧本（三联横版漫画），剧本确认前给用户看")
     ap.add_argument("--comic-all", action="store_true", help="漫画剧本画全部格子：钩子 + 每页主图 + 每个动作关键帧，一格一个画面")
     ap.add_argument("--styles-config", default="style_tests.json", help="styles 用哪份画风对比配置（series/ 下的文件名），如 style_tests_guofeng.json，出到 out/<文件名去掉 .json>/")
+    ap.add_argument("--avatars", action="store_true", help="给这一集自己的角色（characters.json）出字幕头像 → 集目录 refs/avatars/<id>.png")
     ap.add_argument("--variant", help="换一种画法出对比图（series/style_variants.json），出到 out/<集>/variant_<名字>/，不动集目录")
     args = ap.parse_args()
 
@@ -673,6 +674,18 @@ def main():
             sys.exit(f"找不到 {script}")
         load_episode_style(t)
         load_episode_characters(t)
+        if args.avatars:
+            # 单集角色的字幕头像：以集目录 refs/<id>.png 为准，画风用这一集的（国风水彩等），出到 refs/avatars/
+            outdir = os.path.join(os.path.abspath(t), "refs", "avatars")
+            os.makedirs(outdir, exist_ok=True)
+            prompt = ("close-up head-and-shoulders portrait of {desc}, facing the viewer with a friendly smile, the face filling most "
+                      "of the square picture and centered, plain soft warm cream background, nothing else in the picture, " + STYLE + ", square 1:1")
+            jobs = {f"{k}.png": (prompt.format(desc=CHARACTERS[k]), [p]) for k, p in EP_REFS.items() if os.path.exists(p)}
+            missing = [k for k, p in EP_REFS.items() if not os.path.exists(p)]
+            if missing:
+                print("  这些角色还没有参考图，先出参考图再出头像：" + "、".join(missing))
+            failed += run_jobs(outdir, jobs, args, frame=False, shape="square image (1:1)")
+            continue
         if args.comic or args.comic_all:
             os.makedirs(os.path.join(t, "comic"), exist_ok=True)
             # comic/panels.json 记下每格是哪张图、写哪几句台词，comic_page.py 照它配字；--comic 没有这个文件

@@ -737,6 +737,11 @@ class Ctx:
         # avatar_dir 可以是一个目录，也可以是一串目录（专属绘本线：先找集目录 refs/avatars/ 里孩子的头像，再找系列头像）
         dirs = self.avatar_dir if isinstance(self.avatar_dir, (list, tuple)) else [self.avatar_dir or ""]
         path = next((p for p in (os.path.join(d, f"{speaker}.png") for d in dirs) if os.path.exists(p)), "")
+        # 2026-11-12 m06：新角色没出头像，字幕旁头像整集悄悄消失，用户发现了。缺头像直接停，不默默跳过
+        if speaker not in ("narrator", "all", "song") and self.st.get("speaker_avatar", True) and not path:
+            raise SystemExit(f"角色 {speaker} 没有字幕头像：在 {', '.join(dirs)} 里都找不到 {speaker}.png。"
+                             f"单集角色跑 codex_images.py <集目录> --avatars，系列角色跑 codex_images.py avatars --only {speaker}；"
+                             f"story.json 的 style.avatar_dir 写上集目录 refs/avatars。确实不要头像就在 style 里写 speaker_avatar: false")
         if speaker != "narrator" and self.st.get("speaker_avatar", True) and path:
             size, ring = self.st.get("avatar_size", 132), 7
             src = cover_crop(Image.open(path).convert("RGB"), size, size)
@@ -786,7 +791,7 @@ class HookSeg:
         self.overlay, self.y = ov, y
 
     def render(self, t, gt):
-        i = min(int(t * FPS), self.n - 1)
+        i = min(int(t * FPS + 1e-4), self.n - 1)
         frame = Image.open(os.path.join(self.dir, f"h_{i + 1:04d}.jpg")).convert("RGBA")
         # 第 1 帧就要有完整标题（平台默认截第一帧当封面）；结尾 0.3 秒淡出
         a = 1 - ease((t - (self.dur - 0.3)) / 0.3)
@@ -922,7 +927,9 @@ class PageSeg:
         if "dur" in page:     # 儿歌：卡片时长由歌的分段定，到点硬切
             self.dur = page["dur"]
         else:
-            self.dur = lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines else page.get("seconds", 3)
+            # 没台词的视频衔接页按视频本身长度放（默认 3 秒会让 1.8 秒的片段定格 1.2 秒，m06 卡顿的原因之一）
+            self.dur = (lines[-1]["end"] + st["tail"] + page.get("hold", 0) if lines
+                        else page.get("seconds", 0 if page.get("_clip") else 3))
         # clip：这一页放一段视频（H3 / 可灵动作镜头），台词、字幕照常叠在上面；页长至少放完这段视频
         self.clip = page.get("_clip")
         if self.clip:
@@ -1124,7 +1131,7 @@ class PageSeg:
     def render(self, t, gt):
         if self.clip:
             cdir, n = self.clip
-            frame = Image.open(os.path.join(cdir, f"c_{min(int(t * FPS), n - 1) + 1:04d}.jpg")).convert("RGBA")
+            frame = Image.open(os.path.join(cdir, f"c_{min(int(t * FPS + 1e-4), n - 1) + 1:04d}.jpg")).convert("RGBA")   # +1e-4：起点在两帧之间时浮点误差会让帧号重复又跳（m06 卡顿）
         else:
             frame = Image.new("RGBA", (W, H), (0, 0, 0, 255))
             if self.bg is not None:
