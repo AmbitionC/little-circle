@@ -1,0 +1,56 @@
+{
+ "_说明": "m07 儿歌试听专用（只有 song 段），正式 story.json 等漫画剧本确认后再写",
+ "output_name": "m07_song_trial",
+ "pages": [],
+ "song": {
+  "model": "music_v2_5",
+  "variants": 3,
+  "styles": [
+   "children's song to the traditional French nursery tune Frere Jacques (the same melody as 'Are you sleeping, Brother John'), sung exactly on that melody",
+   "a warm, smiling young female singer with a small group of happy kids singing along, joyful and expressive, clear English diction",
+   "bright xylophone, glockenspiel and pizzicato strings, light shaker, 120 BPM, C major, bouncy preschool cartoon feel"
+  ],
+  "negative": [
+   "flat monotone vocal",
+   "robotic voice",
+   "autotune",
+   "rap",
+   "adult pop ballad",
+   "heavy drums",
+   "electric guitar"
+  ],
+  "sections": [
+   {
+    "name": "Verse 1",
+    "seconds": 17,
+    "direction": "happy and playful, running feeling",
+    "lines": [
+     "Two little friends, two little friends,",
+     "Run so fast, run so fast!",
+     "One has got no ears, one has got no tail.",
+     "How strange! How strange!"
+    ]
+   },
+   {
+    "name": "Verse 2",
+    "seconds": 17,
+    "direction": "start soft like a whisper, then get louder and louder, ding dang dong very loud and happy at the end",
+    "lines": [
+     "Are you sleeping, are you sleeping,",
+     "Bruno? Bruno?",
+     "Morning bells are ringing, morning bells are ringing,",
+     "Ding, dang, dong! Ding, dang, dong!"
+    ]
+   },
+   {
+    "name": "Verse 3",
+    "seconds": 9,
+    "direction": "big happy cheer, everyone singing together",
+    "lines": [
+     "Now we've got our ears, now we've got our tail.",
+     "Hooray! Hooray!"
+    ]
+   }
+  ]
+ }
+}
