@@ -1,0 +1,43 @@
+{
+ "_说明": "这一集自己的角色，参考图 refs/<id>.png 由 char_* 挑好后拷过去，图片不进仓库。小鸭子只是背景，不单独做角色。",
+ "tadpole": {
+  "desc": "a tiny round black tadpole like a little ink drop, with a round head, big round shiny white eyes with black pupils and highlights, rosy cheeks, a tiny smile and a thin wiggly black tail",
+  "keep": "big ROUND white eyes, rosy cheeks, ink-drop black body",
+  "size": 0.3,
+  "names": "\\btadpole\\b|蝌蚪",
+  "pose": "swimming",
+  "ref": "../refs/tadpole.png"
+ },
+ "frogmom": {
+  "desc": "a big gentle mother frog with bright jade-green skin, a soft cream-white belly, big round golden eyes with white highlights, a wide warm smile and a small pink lotus petal tucked behind one eye",
+  "keep": "pink lotus petal by one eye, jade green with cream belly, big ROUND golden eyes",
+  "size": 1.5,
+  "names": "\\bfrog\\b|青蛙妈妈",
+  "pose": "sitting",
+  "ref": "../refs/frogmom.png"
+ },
+ "duck": {
+  "desc": "a plump white mother duck with an orange beak and feet, round black eyes and a tiny blue scarf",
+  "keep": "tiny blue scarf",
+  "size": 2,
+  "names": "\\bduck\\b|鸭",
+  "pose": "swimming",
+  "ref": "../refs/duck.png"
+ },
+ "goldfish": {
+  "desc": "a round red-and-white goldfish with huge round bulging googly eyes, a flowing veil tail and a little round O-shaped mouth",
+  "keep": "HUGE googly eyes",
+  "size": 1,
+  "names": "\\bgoldfish\\b|金鱼",
+  "pose": "swimming",
+  "ref": "../refs/goldfish.png"
+ },
+ "turtle": {
+  "desc": "an old slow sea-green pond turtle with a round shell, four chubby flipper legs, round sleepy kind eyes and a tiny white beard tuft",
+  "keep": "tiny white beard tuft, four chubby legs",
+  "size": 1.6,
+  "names": "\\bturtle\\b|乌龟",
+  "pose": "swimming",
+  "ref": "../refs/turtle.png"
+ }
+}
