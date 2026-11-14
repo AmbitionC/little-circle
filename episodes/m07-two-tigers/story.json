@@ -25,32 +25,24 @@
     "seconds": 17,
     "direction": "happy and playful, running feeling",
     "lines": [
-     "Two little friends, two little friends,",
+     "Two little tigers, two little tigers,",
      "Run so fast, run so fast!",
      "One has got no ears, one has got no tail.",
      "How strange! How strange!"
     ]
    },
    {
-    "name": "Verse 2",
-    "seconds": 17,
-    "direction": "start soft like a whisper, then get louder and louder, ding dang dong very loud and happy at the end",
-    "lines": [
-     "Are you sleeping, are you sleeping,",
-     "Bruno? Bruno?",
-     "Morning bells are ringing, morning bells are ringing,",
-     "Ding, dang, dong! Ding, dang, dong!"
-    ]
-   },
-   {
     "name": "Verse 3",
-    "seconds": 9,
+    "seconds": 17,
     "direction": "big happy cheer, everyone singing together",
     "lines": [
+     "Two little tigers, two little tigers,",
+     "Happy now, happy now!",
      "Now we've got our ears, now we've got our tail.",
      "Hooray! Hooray!"
     ]
    }
-  ]
+  ],
+  "_说明": "11-14 主角改成两只小老虎：只重唱第一段和片尾（都以 Two little tigers 开头）；叫醒段用 out/m07/song 的 v1"
  }
 }

@@ -1,0 +1,19 @@
+{
+ "_说明": "m07 主角两只小老虎（11-14 选角：Tigo 选 1 蓝领巾、Mimi 选 3 奶油色紫点点领巾）。描述里不写尾巴：Tigo 的尾巴有的页丢了，在提示词里按页写。",
+ "tigo": {
+  "desc": "a cheerful orange baby tiger boy cub with bright orange fur, a few soft dark stripes, a cream belly and muzzle, small round ears, very big round shiny eyes with white highlights, rosy cheeks, a tiny soft three-line stripe mark on his forehead, wearing a little sky-blue scarf tied at the neck",
+  "keep": "sky-blue scarf, bright orange with soft dark stripes, tiny cute forehead mark, big ROUND eyes, no teeth or claws; his tail only as the prompt says",
+  "size": 1.3,
+  "names": "\\btigo\\b",
+  "pose": "standing",
+  "ref": "refs/tigo.png"
+ },
+ "mimi": {
+  "desc": "a cuddly cream-and-pale-orange baby tiger girl cub with very light creamy orange fur and faint stripes, two big perfectly round ears with pink insides, very big round shiny eyes with white highlights, rosy cheeks, a short fluffy striped tail, wearing a purple scarf with little white spots",
+  "keep": "two big ROUND ears with pink insides, cream pale-orange fur, purple spotted scarf, big ROUND eyes",
+  "size": 1.25,
+  "names": "\\bmimi\\b",
+  "pose": "standing",
+  "ref": "refs/mimi.png"
+ }
+}
