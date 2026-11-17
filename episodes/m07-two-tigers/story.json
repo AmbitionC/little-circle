@@ -6,16 +6,17 @@
   "model": "music_v2_5",
   "variants": 3,
   "styles": [
-   "children's song to the traditional French nursery tune Frere Jacques (the same melody as 'Are you sleeping, Brother John'), sung exactly on that melody",
-   "a warm, smiling young female singer with a small group of happy kids singing along, joyful and expressive, clear English diction",
-   "bright xylophone, glockenspiel and pizzicato strings, light shaker, 120 BPM, C major, bouncy preschool cartoon feel"
+   "the traditional French nursery round Frere Jacques (Are You Sleeping Brother John), its exact original melody and rhythm, nothing else",
+   "a warm, smiling young female singer with a few happy kids singing along, natural expressive human voice, joyful",
+   "simple glockenspiel and pizzicato strings doubling the melody, 120 BPM, C major"
   ],
   "negative": [
    "flat monotone vocal",
    "robotic voice",
    "autotune",
    "rap",
-   "adult pop ballad",
+   "new melody",
+   "improvised melody",
    "heavy drums",
    "electric guitar"
   ],
@@ -23,7 +24,7 @@
    {
     "name": "Verse 1",
     "seconds": 17,
-    "direction": "happy and playful, running feeling",
+    "direction": "sing the exact Frere Jacques melody: C D E C, C D E C, E F G-, E F G-, G A G F E C, G A G F E C, C G, C-, C G, C-; happy running feeling",
     "lines": [
      "Two little tigers, two little tigers,",
      "Run so fast, run so fast!",
@@ -32,17 +33,26 @@
     ]
    },
    {
-    "name": "Verse 3",
-    "seconds": 17,
-    "direction": "big happy cheer, everyone singing together",
+    "name": "Verse 2",
+    "seconds": 13,
+    "direction": "exact Frere Jacques melody: C D E C, C D E C, E F G-, E F G-, G A G F E C, C G, C-; start soft, then louder and louder, ding dang dong very loud and happy",
     "lines": [
-     "Two little tigers, two little tigers,",
-     "Happy now, happy now!",
+     "Are you sleeping, are you sleeping,",
+     "Bruno? Bruno?",
+     "Morning bells are ringing,",
+     "Ding, dang, dong!"
+    ]
+   },
+   {
+    "name": "Verse 3",
+    "seconds": 9,
+    "direction": "exact Frere Jacques melody: G A G F E C, G A G F E C, C G, C-, C G, C-; big happy cheer, everyone together",
+    "lines": [
      "Now we've got our ears, now we've got our tail.",
      "Hooray! Hooray!"
     ]
    }
   ],
-  "_说明": "11-14 主角改成两只小老虎：只重唱第一段和片尾（都以 Two little tigers 开头）；叫醒段用 out/m07/song 的 v1"
+  "_说明": "11-17 成片用：三段按剧本截短（钩子整段 / 叫醒 A A B B C D / 片尾 C C D D），多出几版挑最像原旋律的再柔修"
  }
 }
