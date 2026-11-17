@@ -1,0 +1,42 @@
+{
+ "_说明": "m07 两只小老虎：Tigo 男孩声 Omar J；Mimi 系列 Ruby（奶声小女孩）；Bruno 沿用系列 Chintu。稳定度 0.5，每句最多 1 个标签。",
+ "tigo": {
+  "provider": "elevenlabs",
+  "voice": "S7IsvAvEoDfui6GSZK3A",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
+  }
+ },
+ "mimi": {
+  "provider": "elevenlabs",
+  "voice": "H3183Z9ZcjE80HwRu4PY",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.12
+  }
+ },
+ "bruno": {
+  "provider": "elevenlabs",
+  "voice": "aPE0uHZbwrQVPMm3ihPH",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75,
+   "speed": 1.05
+  }
+ },
+ "narrator": {
+  "provider": "elevenlabs",
+  "voice": "eIu3yWnYwRobofvvNUiW",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.75
+  }
+ }
+}

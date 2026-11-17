@@ -131,3 +131,45 @@ a sunny afternoon on a winding forest path, a few big soft round trees, one big 
 ```
 Bruno is still lying on his back in exactly the same sleeping pose and place, mouth now closed in a sleepy smile; he opens only ONE big round eye a little, the other eye still closed, a sleepy surprised look; Tigo and Mimi keep singing even louder with bigger open mouths and more music-note shapes; Tigo has NO tail on his body (his tail is still stuck under Bruno's bottom); nothing else changes
 ```
+
+## 张嘴帧（11-17 成片用：每句说话时画面上那张图都要有）
+
+**p02_tigo.png** ← p02.png
+```
+only the orange tiger cub with the blue scarf (Tigo) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the cream tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p02_mimi.png** ← p02.png
+```
+only the cream tiger cub with the purple scarf (Mimi) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the orange tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p03_tigo.png** ← p03.png
+```
+only the orange tiger cub with the blue scarf (Tigo) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the bear and the cream tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p05_mimi.png** ← p05.png
+```
+only the cream tiger cub with the purple scarf (Mimi) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the orange tiger cub and the bear keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p07_bruno.png** ← p07.png
+```
+only the big brown bear (Bruno) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the two tiger cubs keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p07_tigo.png** ← p07.png
+```
+only the orange tiger cub with the blue scarf (Tigo) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the bear and the cream tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p08_bruno.png** ← p08.png
+```
+only the big brown bear (Bruno) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the two tiger cubs keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**p09_mimi.png** ← p09.png
+```
+only the cream tiger cub lying under the bear's head (Mimi) opens her mouth VERY WIDE in a funny surprised shout, a big round open mouth clearly showing the pink inside, much bigger than before, no teeth, big round eyes stay open; the bear and the orange tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```

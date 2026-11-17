@@ -569,7 +569,7 @@ def talk_paste(base_im, talk_im, hint=None, debug=None):
             continue
         if x <= 2 or y <= 2 or x + bw >= w - 2 or y + bh >= h - 2:
             continue
-        if cents[i][1] > 0.7 * h or max(bw, bh) > 0.3 * w:   # 近景熊脸张嘴能到 0.27 宽；c18 重画的树有 0.4 宽
+        if cents[i][1] > (0.85 if hint else 0.7) * h or max(bw, bh) > 0.3 * w:   # 写了 where 时放宽到 85%（m07 Mimi 被压在画面下方）   # 近景熊脸张嘴能到 0.27 宽；c18 重画的树有 0.4 宽
             continue
         cand.append(i)
     if not cand:
