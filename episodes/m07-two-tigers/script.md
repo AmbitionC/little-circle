@@ -173,3 +173,37 @@ only the big brown bear (Bruno) opens the mouth WIDE as if talking, a big open m
 ```
 only the cream tiger cub lying under the bear's head (Mimi) opens her mouth VERY WIDE in a funny surprised shout, a big round open mouth clearly showing the pink inside, much bigger than before, no teeth, big round eyes stay open; the bear and the orange tiger cub keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
 ```
+
+## 过渡帧（11-17：p4、p7 不用 H3，硬切过渡）
+
+**p04x1.png** ← p04.png
+```
+the sleeping bear takes a huge breath in: his round belly and cheeks puff up big and round, eyes still closed; the orange tiger cub is still pulling the tail; nothing else changes
+```
+
+**p04x2.png** ← p04b.png
+```
+the orange tiger cub has landed sitting on the grass a little further away, dizzy with swirly round eyes and a few tiny stars around his head, not hurt, still no tail on his body; the bear sleeps again with a calm smile; nothing else changes
+```
+
+**p07x1.png** ← p06c.png
+```
+the bear opens BOTH big round eyes wide and starts to sit up, his upper body lifted halfway off the tree, arms rising, a surprised round O mouth with no teeth; the two tiger cubs stop singing and look at him with big surprised eyes; the orange striped tail is still under his bottom; nothing else changes
+```
+
+## 唱段变化帧（11-17：唱段一张图放太久，补）
+
+**h01b.png** ← h01.png
+```
+the two tiger cubs have run much closer to the viewer, bigger in the picture, the cream tiger cub catching up beside the orange one, both laughing with open mouths; same path, same trees
+```
+
+**p01b.png** ← p01.png
+```
+the orange tiger cub now holds both paws on his cheeks with a big round shocked face, looking back at his bottom where there is no tail; the cream tiger cub tilts her head and pats the acorn cap on her head, puzzled; nothing else changes
+```
+
+**p08b.png** ← p08.png
+```
+all three cheer: the bear lifts both arms up high laughing, the orange tiger cub jumps up waving his tail (on his bottom), the cream tiger cub hops with both paws up, all with big happy open smiles and no teeth; same place
+```

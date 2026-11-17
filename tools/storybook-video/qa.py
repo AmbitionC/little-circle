@@ -238,6 +238,8 @@ def main():
             # 7b 每句说话时段里，画面上的每张图都要有张嘴帧
             print("张嘴帧覆盖（说话时段里显示的每张图都要有张嘴帧）")
             for i, L in enumerate(lay):
+                if L["speaker"] in ("song", "narrator"):   # 唱段（画外合唱，字幕用静音占位）和旁白没有张嘴帧
+                    continue
                 ok = L["talk_cover"] >= 0.999
                 miss = "、".join(f"{k} {v}s" for k, v in L["no_talk"].items())
                 print(f"  {'✅' if ok else '❌'} {i + 1:2d} [{L['speaker']:8s}] {L['en'][:34]!r} 覆盖 {L['talk_cover']:.0%}" + ("" if ok else f"，缺：{miss}"))
@@ -245,7 +247,7 @@ def main():
                     fails.append(f"第 {i + 1} 句说话时 {miss} 没有张嘴帧（嘴不动）")
             # 7c 逐句响度：各角色中位数相差 ≤3 dB，单句偏离全片中位数 ≤3 dB
             print("逐句响度（干声）")
-            lv = [(L["speaker"], sbv.line_loudness(L["wav"])) for L in lay]
+            lv = [(L["speaker"], sbv.line_loudness(L["wav"])) for L in lay if L["speaker"] != "song"]   # 唱段的音量在配乐里，不在字幕占位 wav
             med = float(np.median([v for _, v in lv]))
             by = {}
             for sp, v in lv:

@@ -1,8 +1,8 @@
 {
- "_说明": "m07 两只小老虎：Tigo 男孩声 Omar J；Mimi 系列 Ruby（奶声小女孩）；Bruno 沿用系列 Chintu。稳定度 0.5，每句最多 1 个标签。",
+ "_说明": "m07 两只小老虎：Tigo 男孩声 Teddy Twinkle（Omar J 和 Mimi 的 Ruby 基频只差 6 Hz，换掉）；Mimi 系列 Ruby（奶声小女孩）；Bruno 沿用系列 Chintu。稳定度 0.5，每句最多 1 个标签。",
  "tigo": {
   "provider": "elevenlabs",
-  "voice": "S7IsvAvEoDfui6GSZK3A",
+  "voice": "XjGYkUkzth8BPs29fmcV",
   "model": "eleven_v3",
   "settings": {
    "stability": 0.5,
