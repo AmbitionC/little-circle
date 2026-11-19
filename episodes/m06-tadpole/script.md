@@ -362,3 +362,65 @@ only the little green froglet opens the mouth WIDE as if talking, a big open mou
 ```
 only the little green froglet on the leaf opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the black tadpole in the water keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
 ```
+
+## 第四次成片加密配图（说话段每 1.3–1.8 秒一张）
+
+**f3c_b.png** ← f3c.png
+```
+the tadpole swims a little closer and points one tiny fin-hand at the goldfish's huge round eyes, excited, keeping the same clear gap of water; the goldfish stays the same; nothing else changes, no text
+```
+
+**f3d_b.png** ← f3d.png
+```
+the goldfish tilts her body a little and blows one more round bubble upward, smiling, still keeping the clear gap of water to the tadpole; the tadpole looks at the bubble; nothing else changes, no text
+```
+
+**f4a_b.png** ← f4a.png
+```
+the tadpole looks back at his two little back legs and wiggles them proudly, then looks at the turtle; the turtle stays the same; nothing else changes, no text
+```
+
+**f4c.png** ← f4b.png
+```
+the old turtle slowly lifts one front flipper as if explaining, big round eyes wide open and kind; the tadpole listens with big eyes; nothing else changes, no text
+```
+
+**f5e_b.png** ← f5e.png
+```
+the mother frog tilts her head a little with a loving smile, arms still open; the tadpole in the water smiles up at her; nothing else changes, no text
+```
+
+**f7c.png** ← f7b.png
+```
+the little green froglet pats his own round tummy with both hands and smiles at his reflection, his reflection does the same; nothing else changes, no text
+```
+
+**f3c_b_tadpole.png** ← f3c_b.png
+```
+only the tiny black tadpole opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the goldfish keep their mouths exactly as they were; nothing else changes
+```
+
+**f3d_b_goldfish.png** ← f3d_b.png
+```
+only the goldfish (keeping the clear gap of water) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole keep their mouths exactly as they were; nothing else changes
+```
+
+**f4a_b_tadpole.png** ← f4a_b.png
+```
+only the tiny black tadpole opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the turtle keep their mouths exactly as they were; nothing else changes
+```
+
+**f4c_turtle.png** ← f4c.png
+```
+only the old turtle opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole keep their mouths exactly as they were; nothing else changes
+```
+
+**f5e_b_frogmom.png** ← f5e_b.png
+```
+only the mother frog opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole keep their mouths exactly as they were; nothing else changes
+```
+
+**f7c_tadpole.png** ← f7c.png
+```
+only the little green froglet opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; his reflection follows him keep their mouths exactly as they were; nothing else changes
+```
