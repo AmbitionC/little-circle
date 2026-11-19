@@ -310,3 +310,55 @@ the mother frog opens both arms wide with a big warm closed-mouth smile; the tad
 ```
 only the mother frog opens her mouth WIDE as if talking warmly, a big open mouth showing the pink inside, big round eyes stay open, arms still open; the tadpole keeps his mouth closed; nothing else changes
 ```
+
+## 第四次成片补的张嘴帧（11-20：说话中途出现的图都要有）
+
+**f1c_tadpole.png** ← f1c.png
+```
+only the tiny black tadpole opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; nobody else keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f2b_tadpole.png** ← f2b.png
+```
+only the tiny black tadpole under the water opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the white duck and the ducklings keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f2b_duck.png** ← f2b.png
+```
+only the white mother duck opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole and the ducklings keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f3e_goldfish.png** ← f3e.png
+```
+only the big goldfish (keeping the clear gap of water to the tadpole) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f4b_turtle.png** ← f4b.png
+```
+only the old turtle (big round eyes wide open) opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the tadpole keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f5b_tadpole.png** ← f5b.png
+```
+only the tiny black tadpole under the water opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the frog on the lotus leaf keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f5c_tadpole.png** ← f5c.png
+```
+only the tiny black tadpole under the water opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the frog on the lotus leaf keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f5d_tadpole.png** ← f5d.png
+```
+only the tiny black tadpole under the water opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the frog on the lotus leaf keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f7b_tadpole.png** ← f7b.png
+```
+only the little green froglet opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; his reflection follows him keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
+
+**f8b_tadpole.png** ← f8b.png
+```
+only the little green froglet on the leaf opens the mouth WIDE as if talking, a big open mouth showing the pink inside, no teeth, big round eyes stay open; the black tadpole in the water keep their mouths exactly as they were; nothing else changes, same pose, same place, same size
+```
